@@ -1,0 +1,96 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CAB", "CAB", "{CC51C7FA-856F-43E6-9895-AEBE50B5CADE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankShell", "QuickStarts\BankTeller\BankShell\BankShell.csproj", "{62B89443-7C08-4753-9C43-F53DABF7549D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5461523C-4DCE-4672-BC72-7F0C99501F43} = {5461523C-4DCE-4672-BC72-7F0C99501F43}
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5} = {A7848178-09E6-4FC7-A21E-9CB9418984A5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTellerCommon", "QuickStarts\BankTeller\BankTellerCommon\BankTellerCommon.csproj", "{5461523C-4DCE-4672-BC72-7F0C99501F43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMapExtensionModule", "QuickStarts\BankTeller\BankTellerModuleExtension\CustomerMapExtensionModule.csproj", "{A7848178-09E6-4FC7-A21E-9CB9418984A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTellerModule", "QuickStarts\BankTeller\BankTellerModule\BankTellerModule.csproj", "{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositeUI", "c:\Program Files\Microsoft Composite UI App Block\Source\CompositeUI\CompositeUI.csproj", "{C478E40B-A05E-4C69-9AB3-7A3BB374243F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositeUI.WinForms", "c:\Program Files\Microsoft Composite UI App Block\Source\CompositeUI.WinForms\CompositeUI.WinForms.csproj", "{073BCD60-F2FB-4DB9-92FB-403C8F9E8DD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectBuilder", "c:\Program Files\Microsoft Composite UI App Block\Source\ObjectBuilder\ObjectBuilder.csproj", "{2AE49F19-392B-4C50-A13C-F49B2579849D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevExpress.CompositeUI", "..\DevExpress.CompositeUI\DevExpress.CompositeUI.csproj", "{811DD8C8-6696-4566-A142-8ED28759D7A5}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs03.codeplex.com/
+		SccProjectUniqueName0 = ..\\DevExpress.CompositeUI\\DevExpress.CompositeUI.csproj
+		SccProjectTopLevelParentUniqueName0 = BankTeller\u0020QuickStart.sln
+		SccProjectName0 = ../DevExpress.CompositeUI
+		SccLocalPath0 = ..\\DevExpress.CompositeUI
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = QuickStarts\\BankTeller\\BankShell\\BankShell.csproj
+		SccProjectName2 = QuickStarts/BankTeller/BankShell
+		SccLocalPath2 = QuickStarts\\BankTeller\\BankShell
+		SccProjectUniqueName3 = QuickStarts\\BankTeller\\BankTellerCommon\\BankTellerCommon.csproj
+		SccProjectName3 = QuickStarts/BankTeller/BankTellerCommon
+		SccLocalPath3 = QuickStarts\\BankTeller\\BankTellerCommon
+		SccProjectUniqueName4 = QuickStarts\\BankTeller\\BankTellerModule\\BankTellerModule.csproj
+		SccProjectName4 = QuickStarts/BankTeller/BankTellerModule
+		SccLocalPath4 = QuickStarts\\BankTeller\\BankTellerModule
+		SccProjectUniqueName5 = QuickStarts\\BankTeller\\BankTellerModuleExtension\\CustomerMapExtensionModule.csproj
+		SccProjectName5 = QuickStarts/BankTeller/BankTellerModuleExtension
+		SccLocalPath5 = QuickStarts\\BankTeller\\BankTellerModuleExtension
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62B89443-7C08-4753-9C43-F53DABF7549D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B89443-7C08-4753-9C43-F53DABF7549D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B89443-7C08-4753-9C43-F53DABF7549D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B89443-7C08-4753-9C43-F53DABF7549D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C478E40B-A05E-4C69-9AB3-7A3BB374243F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C478E40B-A05E-4C69-9AB3-7A3BB374243F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C478E40B-A05E-4C69-9AB3-7A3BB374243F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C478E40B-A05E-4C69-9AB3-7A3BB374243F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{073BCD60-F2FB-4DB9-92FB-403C8F9E8DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{073BCD60-F2FB-4DB9-92FB-403C8F9E8DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{073BCD60-F2FB-4DB9-92FB-403C8F9E8DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{073BCD60-F2FB-4DB9-92FB-403C8F9E8DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AE49F19-392B-4C50-A13C-F49B2579849D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE49F19-392B-4C50-A13C-F49B2579849D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE49F19-392B-4C50-A13C-F49B2579849D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE49F19-392B-4C50-A13C-F49B2579849D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{811DD8C8-6696-4566-A142-8ED28759D7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{811DD8C8-6696-4566-A142-8ED28759D7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{811DD8C8-6696-4566-A142-8ED28759D7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{811DD8C8-6696-4566-A142-8ED28759D7A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C478E40B-A05E-4C69-9AB3-7A3BB374243F} = {CC51C7FA-856F-43E6-9895-AEBE50B5CADE}
+		{073BCD60-F2FB-4DB9-92FB-403C8F9E8DD0} = {CC51C7FA-856F-43E6-9895-AEBE50B5CADE}
+		{2AE49F19-392B-4C50-A13C-F49B2579849D} = {CC51C7FA-856F-43E6-9895-AEBE50B5CADE}
+		{811DD8C8-6696-4566-A142-8ED28759D7A5} = {CC51C7FA-856F-43E6-9895-AEBE50B5CADE}
+	EndGlobalSection
+EndGlobal
