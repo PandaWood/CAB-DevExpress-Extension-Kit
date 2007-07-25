@@ -6,6 +6,7 @@ using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.WinForms;
+using DevExpress.Utils.Menu;
 
 namespace DevExpress.CompositeUI
 {
@@ -45,6 +46,7 @@ namespace DevExpress.CompositeUI
             ICommandAdapterMapService mapService = RootWorkItem.Services.Get<ICommandAdapterMapService>();
             mapService.Register(typeof (BarItem), typeof (BarItemCommandAdapter));
             mapService.Register(typeof (NavBarItem), typeof (NavBarItemCommandAdapter));
+            mapService.Register(typeof(DXMenuItem), typeof(MenuItemCommandAdapter));
         }
 
         private void RegisterUIElementAdapterFactories()
@@ -52,6 +54,9 @@ namespace DevExpress.CompositeUI
             IUIElementAdapterFactoryCatalog catalog = RootWorkItem.Services.Get<IUIElementAdapterFactoryCatalog>();
             catalog.RegisterFactory(new XtraNavBarUIAdapterFactory());
             catalog.RegisterFactory(new XtraBarUIAdapterFactory());
+            catalog.RegisterFactory(new XtraRibbonBarUIAdapterFactory());
+            catalog.RegisterFactory(new NavigatorCustomButtonUIAdapterFactory());
+            catalog.RegisterFactory(new EditorButtonCollectionUIAdapterFactory());
         }
 
         #endregion
