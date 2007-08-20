@@ -1,15 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Reflection;
-using DevExpress;
-using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars;
-using DevExpress.Utils;
+using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.EventBroker;
 
 namespace DevExpress.CompositeUI.UIElements
@@ -23,13 +14,7 @@ namespace DevExpress.CompositeUI.UIElements
     [Description("non visual component used to configure a ribbonpagegroup")]
     public class RibbonGroupUI : RibbonPageGroup
     {
-
-        public RibbonGroupUI()
-        {
-
-        }
-
-        /// <summary>
+    	/// <summary>
         /// Actual base ribbon page group object
         /// </summary>
         [Browsable(false)]
@@ -37,17 +22,11 @@ namespace DevExpress.CompositeUI.UIElements
         {
             get
             {
-
                 return this;
             }
         }
 
-        private void InitializeComponent()
-        {
-
-        }
-
-        private string ribbonPageName;
+    	private string ribbonPageName;
 
         [Description("Name of the Ribbon Page to Place this Ribbon Group")]
         [Category("Ribbon Data")]
@@ -84,11 +63,11 @@ namespace DevExpress.CompositeUI.UIElements
 
     }
     
-    [TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
     public class DexCheckItem : BarCheckItem
     {
         private UIEvent uIIEvent;
-        [TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
+        [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
         [Category("CAB")]
         [NotifyParentProperty(true)]
         [RefreshProperties(RefreshProperties.All)]
@@ -118,10 +97,9 @@ namespace DevExpress.CompositeUI.UIElements
                 return this;
             }
         }
-
     }
 
-    [TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
+    [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
     public class DexButtonItem : BarButtonItem
     {
 
@@ -131,11 +109,10 @@ namespace DevExpress.CompositeUI.UIElements
             {
 
             }
-
         }
 
         private UIEvent _UIEvent;
-        [TypeConverterAttribute(typeof(System.ComponentModel.ExpandableObjectConverter))]
+        [TypeConverterAttribute(typeof(ExpandableObjectConverter))]
         [Category("CAB")]
         [NotifyParentProperty(true)]
         [RefreshProperties(RefreshProperties.All)]
@@ -217,5 +194,4 @@ namespace DevExpress.CompositeUI.UIElements
             set { _PublicationScope = value; }
         }
     }
-
 }

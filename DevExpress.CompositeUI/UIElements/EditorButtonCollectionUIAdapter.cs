@@ -16,7 +16,6 @@ namespace DevExpress.CompositeUI.UIElements
         /// <summary>
         /// Initializes a new instance of the <see cref="NavBarItemCollectionUIAdapter"/> class.
         /// </summary>
-        /// <param name="linkCollection"></param>
         /// <param name="collection"></param>
         public EditorButtonCollectionUIAdapter(EditorButtonCollection collection)
         {

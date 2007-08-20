@@ -16,9 +16,9 @@ namespace DevExpress.CompositeUI.Workspaces
     {
         #region Private Members
 
-        private Dictionary<Control, DockPanel> dockPanelDictionary = new Dictionary<Control, DockPanel>();
+        private readonly Dictionary<Control, DockPanel> dockPanelDictionary = new Dictionary<Control, DockPanel>();
         private bool fireActivatedFromDockPanel = true; // TODO field never used
-        private DockManager dockManager;
+        private readonly DockManager dockManager;
 
         #endregion
 
@@ -64,6 +64,7 @@ namespace DevExpress.CompositeUI.Workspaces
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
+        /// <param name="smartPartInfo"></param>
         protected DockPanel GetOrCreateDockPanel(Control control, DockManagerSmartPartInfo smartPartInfo)
         {
             DockPanel dockPanel = null;
@@ -109,9 +110,9 @@ namespace DevExpress.CompositeUI.Workspaces
         /// <summary>
         /// Sets specific properties for the given dockpanel. 
         /// </summary>
-        protected void SetDockPanelProperties(DockPanel dockPanel, DockManagerSmartPartInfo info)
+        protected static void SetDockPanelProperties(DockPanel dockPanel, DockManagerSmartPartInfo info)
         {
-            //this code needs serious cleanup!!!
+            //TODO this code needs serious cleanup!!!
 
             //dockPanel.ActiveChild = info.ActiveChild;
             //dockPanel.ActiveChildIndex = info.ActiveChildIndex;
@@ -142,7 +143,7 @@ namespace DevExpress.CompositeUI.Workspaces
         /// <summary>
         /// Sets the location information for the given DockPaneø
         /// </summary>
-        protected void SetDockPanelLocation(DockPanel dockPanel, DockManagerSmartPartInfo info)
+        protected static void SetDockPanelLocation(DockPanel dockPanel, DockManagerSmartPartInfo info)
         {
             //We do not need this!
             //dockPanel.Location = info.Location;
@@ -202,7 +203,7 @@ namespace DevExpress.CompositeUI.Workspaces
         }
         */
 
-        private void ShowDockPanel(DockPanel dockPanel, DockManagerSmartPartInfo smartPartInfo)
+        private static void ShowDockPanel(DockPanel dockPanel, DockManagerSmartPartInfo smartPartInfo)
         {
             SetDockPanelProperties(dockPanel, smartPartInfo);
         }

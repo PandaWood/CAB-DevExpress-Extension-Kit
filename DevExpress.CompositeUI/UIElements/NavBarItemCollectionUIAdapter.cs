@@ -11,7 +11,7 @@ namespace DevExpress.CompositeUI.UIElements
     public class NavBarItemCollectionUIAdapter : UIElementAdapter<NavBarItem>
     {
         private NavItemCollection collection;
-        private NavLinkCollection linkCollection;
+        private readonly NavLinkCollection linkCollection;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="NavBarItemCollectionUIAdapter"/> class.

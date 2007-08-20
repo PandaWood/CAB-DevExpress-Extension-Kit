@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
+using DevExpress.CompositeUI.Workspaces;
 using DevExpress.Utils;
 using DevExpress.XtraBars.Docking;
 using Microsoft.Practices.CompositeUI.SmartParts;

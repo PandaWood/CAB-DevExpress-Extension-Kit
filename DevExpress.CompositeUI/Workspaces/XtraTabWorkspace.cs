@@ -21,8 +21,8 @@ namespace DevExpress.CompositeUI.Workspaces
     {
         #region Private Members
 
-        private Dictionary<Control, XtraTabPage> pages = new Dictionary<Control, XtraTabPage>();
-        private WorkspaceComposer<Control, XtraTabSmartPartInfo> composer;
+        private readonly Dictionary<Control, XtraTabPage> pages = new Dictionary<Control, XtraTabPage>();
+        private readonly WorkspaceComposer<Control, XtraTabSmartPartInfo> composer;
         private bool callComposerActivateOnIndexChange = true;
         private bool populatingPages = false;
 
@@ -96,7 +96,7 @@ namespace DevExpress.CompositeUI.Workspaces
                 page.PageVisible = smartPartInfo.PageVisible;
                 //Do not apply if not set: 
                 if (smartPartInfo.Text != null || smartPartInfo.Text != null)
-                    page.Text = smartPartInfo.Text == null ? smartPartInfo.Title : smartPartInfo.Text;
+                    page.Text = smartPartInfo.Text ?? smartPartInfo.Title;
                 page.Tooltip = smartPartInfo.Tooltip;
                 // Preserve selection through the operation.
                 SelectedTabPage = currentSelection;
@@ -209,7 +209,7 @@ namespace DevExpress.CompositeUI.Workspaces
             return GetControlFromPage(SelectedTabPage);
         }*/
 
-        private Control GetControlFromPage(XtraTabPage page)
+        private static Control GetControlFromPage(Control page)
         {
             Control control = null;
             if (page.Controls.Count > 0)
@@ -228,6 +228,7 @@ namespace DevExpress.CompositeUI.Workspaces
         /// Fires the <see cref="SmartPartActivated"/> event whenever 
         /// the selected tab index changes.
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="e">An <see cref="EventArgs"/> that contains the event data.</param>
         protected override void OnSelectedPageChanged(object sender, ViewInfoTabPageChangedEventArgs e)
         {

@@ -19,7 +19,6 @@ namespace DevExpress.CompositeUI.SmartPartInfos
         /// Initializes the smart part info without any values.
         /// </summary>
         public XtraImageSmartPartInfo()
-            : base()
         {
         }
 

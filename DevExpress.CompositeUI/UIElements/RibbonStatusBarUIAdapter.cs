@@ -1,8 +1,6 @@
 using System;
-using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars;
-using DevExpress.Utils;
-
+using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
@@ -13,16 +11,16 @@ namespace DevExpress.CompositeUI.UIElements
     /// </summary>
     public class RibbonStatusBarUIAdapter : UIElementAdapter<BarItem>
     {
-        private RibbonStatusBar ribbonStatusBar;
+        private readonly RibbonStatusBar ribbonStatusBar;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BarsUIAdapter"/> class.
         /// </summary>
-        /// <param name="bars"></param>
-        public RibbonStatusBarUIAdapter(RibbonStatusBar RibbonStatusBar)
+		/// <param name="ribbonStatusBar"></param>
+        public RibbonStatusBarUIAdapter(RibbonStatusBar ribbonStatusBar)
         {
-            Guard.ArgumentNotNull(RibbonStatusBar, "RibbonStatusBar");
-            ribbonStatusBar = RibbonStatusBar;
+            Guard.ArgumentNotNull(ribbonStatusBar, "RibbonStatusBar");
+            this.ribbonStatusBar = ribbonStatusBar;
         }
 
         /// <summary>
@@ -66,10 +64,6 @@ namespace DevExpress.CompositeUI.UIElements
             get
             {
                 return ribbonStatusBar.ItemLinks;
-            }
-            set
-            {
-                //ribbonStatusBar.ItemLinks = value; }
             }
         }
     }

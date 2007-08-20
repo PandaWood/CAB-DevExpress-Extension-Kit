@@ -8,21 +8,21 @@ namespace DevExpress.CompositeUI.Commands
     /// An <see cref="EventCommandAdapter{TInvoker}"/> that updates a 
     /// <see cref="DXMenuItem"/> based on the changes to the <see cref="Command.Status"/> property value.
     /// </summary>
-    public class MenuItemCommandAdapter : EventCommandAdapter<DXMenuItem>
+    public class DXMenuItemCommandAdapter : EventCommandAdapter<DXMenuItem>
     {
         #region Constructors
 
         /// <summary>
         /// Initializes a new <see cref="DXMenuItemCommandAdapter"/>
         /// </summary>
-        public MenuItemCommandAdapter()
+        public DXMenuItemCommandAdapter()
         { }
 
         /// <summary>
         /// Initializes  a new <see cref="DXMenuItemCommandAdapter"/> with the 
         /// given <see cref="DXMenuItem"/>.
         /// </summary>
-        public MenuItemCommandAdapter(DXMenuItem item, string eventName)
+        public DXMenuItemCommandAdapter(DXMenuItem item, string eventName)
             : base(item, eventName)
         { }
 

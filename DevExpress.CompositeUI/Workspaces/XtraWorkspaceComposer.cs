@@ -17,11 +17,11 @@ namespace DevExpress.CompositeUI
     {
         #region Private Members
 
-        private Dictionary<Control, TWorkspaceItem> smartParts = new Dictionary<Control, TWorkspaceItem>();
-        private Dictionary<TWorkspaceItem, Control> items = new Dictionary<TWorkspaceItem, Control>();
+        private readonly Dictionary<Control, TWorkspaceItem> smartParts = new Dictionary<Control, TWorkspaceItem>();
+        private readonly Dictionary<TWorkspaceItem, Control> items = new Dictionary<TWorkspaceItem, Control>();
 
         private Control smartPartBeingActivated = null;
-        private bool hookControlEnter = false;
+        private readonly bool hookControlEnter = false;
 
         #endregion
 

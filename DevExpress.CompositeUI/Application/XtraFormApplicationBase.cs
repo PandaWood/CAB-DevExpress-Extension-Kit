@@ -1,6 +1,7 @@
 using DevExpress.CompositeUI.Commands;
 using DevExpress.CompositeUI.UIElements;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
@@ -18,17 +19,6 @@ namespace DevExpress.CompositeUI
     public abstract class XtraFormApplicationBase<TWorkItem, TShell> : WindowsFormsApplication<TWorkItem, TShell>
         where TWorkItem : WorkItem, new()
     {
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new <see cref="XtraFormApplicationBase{TWorkItem,TShell}"/>
-        /// </summary>
-        protected XtraFormApplicationBase() : base()
-        {
-        }
-
-        #endregion
-
         #region Overrides
 
         /// <summary>
@@ -46,7 +36,8 @@ namespace DevExpress.CompositeUI
             ICommandAdapterMapService mapService = RootWorkItem.Services.Get<ICommandAdapterMapService>();
             mapService.Register(typeof (BarItem), typeof (BarItemCommandAdapter));
             mapService.Register(typeof (NavBarItem), typeof (NavBarItemCommandAdapter));
-            mapService.Register(typeof(DXMenuItem), typeof(MenuItemCommandAdapter));
+            mapService.Register(typeof(DXMenuItem), typeof(DXMenuItemCommandAdapter));
+			mapService.Register(typeof(RepositoryItemHyperLinkEdit), typeof(RepositoryItemHyperLinkEditCommandAdapter));
         }
 
         private void RegisterUIElementAdapterFactories()

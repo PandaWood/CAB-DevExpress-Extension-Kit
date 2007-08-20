@@ -15,9 +15,9 @@ namespace DevExpress.CompositeUI.Workspaces
     /// </summary>
     public class XtraWindowWorkspace : Workspace<Control, XtraWindowSmartPartInfo>
     {
-        private Dictionary<Control, XtraForm> windowDictionary = new Dictionary<Control, XtraForm>();
+        private readonly Dictionary<Control, XtraForm> windowDictionary = new Dictionary<Control, XtraForm>();
         private bool fireActivatedFromForm = true;
-        IWin32Window ownerForm;
+    	readonly IWin32Window ownerForm;
 
         /// <summary>
         /// Initializes the workspace with a no-owner form to use to show a new windows
@@ -143,7 +143,7 @@ namespace DevExpress.CompositeUI.Workspaces
             RaiseSmartPartClosing(e);
         }
 
-        private static void CalculateSize(Control smartPart, XtraForm form)
+        private static void CalculateSize(Control smartPart, Form form)
         {
             form.Size = new Size(smartPart.Size.Width, smartPart.Size.Height + 20);
         }

@@ -1,5 +1,6 @@
 using System;
 using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 

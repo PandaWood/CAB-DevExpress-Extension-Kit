@@ -17,11 +17,11 @@ namespace DevExpress.CompositeUI.UIElements
         /// <summary>
         /// Initializes a new instance of the <see cref="BarsUIAdapter"/> class.
         /// </summary>
-        /// <param name="bars"></param>
-        public RibbonUIAdapter(RibbonControl RibbonControl)
+		/// <param name="ribbonControl"></param>
+        public RibbonUIAdapter(RibbonControl ribbonControl)
         {
-            Guard.ArgumentNotNull(RibbonControl, "RibbonControl");
-            ribbonControl = RibbonControl;
+			Guard.ArgumentNotNull(ribbonControl, "RibbonControl");
+			this.ribbonControl = ribbonControl;
         }
 
         /// <summary>

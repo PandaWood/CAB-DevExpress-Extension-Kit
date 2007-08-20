@@ -17,7 +17,7 @@ namespace DevExpress.CompositeUI.Workspaces
     {
         #region Private Members
 
-        private XtraWorkspaceComposer<NavBarGroup, XtraNavBarGroupSmartPartInfo> composer;
+        private readonly XtraWorkspaceComposer<NavBarGroup, XtraNavBarGroupSmartPartInfo> composer;
 
         #endregion
 
@@ -48,7 +48,7 @@ namespace DevExpress.CompositeUI.Workspaces
 
         #region Private Methods
 
-        private void ApplySmartPartInfoHelper(NavBarGroup group, XtraNavBarGroupSmartPartInfo smartPartInfo)
+        private static void ApplySmartPartInfoHelper(NavBarGroup group, XtraImageSmartPartInfo smartPartInfo)
         {
             group.Caption = smartPartInfo.Title;
             group.Hint = smartPartInfo.Description;
@@ -311,7 +311,7 @@ namespace DevExpress.CompositeUI.Workspaces
         public void Show(object smartPart, ISmartPartInfo smartPartInfo)
         {
             // Ensure DockStyle.fill for the ControlContainer smartPart
-            (smartPart as Control).Dock = DockStyle.Fill;
+            ((Control) smartPart).Dock = DockStyle.Fill;
             composer.Show(smartPart, smartPartInfo);
         }
 

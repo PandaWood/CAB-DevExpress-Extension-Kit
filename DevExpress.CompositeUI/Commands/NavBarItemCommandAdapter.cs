@@ -16,7 +16,6 @@ namespace DevExpress.CompositeUI.Commands
         /// Initializes a new <see cref="NavBarItemCommandAdapter"/>
         /// </summary>
         public NavBarItemCommandAdapter()
-            : base()
         {
         }
 

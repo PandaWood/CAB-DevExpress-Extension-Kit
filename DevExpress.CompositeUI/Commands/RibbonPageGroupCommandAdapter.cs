@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using DevExpress.Utils.Menu;
-using Microsoft.Practices.CompositeUI.Commands;
 using DevExpress.XtraBars.Ribbon;
+using Microsoft.Practices.CompositeUI.Commands;
 
 namespace DevExpress.CompositeUI.Commands
 {

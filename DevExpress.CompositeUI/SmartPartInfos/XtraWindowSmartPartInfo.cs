@@ -28,7 +28,7 @@ namespace DevExpress.CompositeUI.SmartPartInfos
         //-----
 
         ///
-        /// Whether the forms shows in the taskbar (TODO make work)
+        /// Whether the form shows in the Window taskbar
         ///
         [DefaultValue(false)]
         [Category("Layout")]

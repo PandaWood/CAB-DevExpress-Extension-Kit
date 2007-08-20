@@ -16,7 +16,6 @@ namespace DevExpress.CompositeUI.Commands
         /// Initializes a new instance of the <see cref="BarItemCommandAdapter"/> class
         /// </summary>
         public BarItemCommandAdapter()
-            : base()
         {
         }
 
