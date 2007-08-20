@@ -22,7 +22,7 @@ namespace BankTellerCommon
 		private string comments;
 		private string emailAddress;
 		private string firstName;
-		private int id;
+		private readonly int id;
 		private string lastName;
 		private string phone1;
 		private string phone2;

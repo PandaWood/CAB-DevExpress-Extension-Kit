@@ -9,6 +9,8 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
+using DevExpress.XtraEditors;
+
 namespace BankShell
 {
 	partial class BankShellForm

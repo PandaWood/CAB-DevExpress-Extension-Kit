@@ -9,10 +9,8 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System.Collections.Generic;
-using Microsoft.Practices.CompositeUI;
 using BankTellerCommon;
-using Microsoft.Practices.CompositeUI.Utility;
+using Microsoft.Practices.CompositeUI;
 
 namespace BankTellerModule
 {

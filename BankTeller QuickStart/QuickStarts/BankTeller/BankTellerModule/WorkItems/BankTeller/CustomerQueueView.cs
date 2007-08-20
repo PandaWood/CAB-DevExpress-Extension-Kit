@@ -11,14 +11,11 @@
 
 using System;
 using System.Windows.Forms;
-using Microsoft.Practices.CompositeUI;
+using BankTellerCommon;
+using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.SmartParts;
-using BankTellerCommon;
-using System.Collections.Generic;
-using Microsoft.Practices.CompositeUI.Utility;
 using Microsoft.Practices.ObjectBuilder;
-using DevExpress.XtraEditors;
 
 namespace BankTellerModule
 {
@@ -52,7 +49,7 @@ namespace BankTellerModule
 
 			if (customer == null)
 			{
-				MessageBox.Show(this, "There are no more customers in the queue.", "Bank Teller", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				XtraMessageBox.Show(this, "There are no more customers in the queue.", "Bank Teller", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 			}
 

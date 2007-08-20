@@ -10,8 +10,8 @@ namespace BankShell
         #region Private Members
 
         private Bar bar;
-        private XtraTabbedMdiManager mdiManager;
-        private Form shell;
+        private readonly XtraTabbedMdiManager mdiManager;
+        private readonly Form shell;
 
         private MdiMode mdiMode = MdiMode.Tabbed;
 

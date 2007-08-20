@@ -1,16 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Windows.Forms;
-using Microsoft.Practices.CompositeUI.SmartParts;
-using BankTellerModule;
-using Microsoft.Practices.CompositeUI;
-using System.Web;
 using BankTellerCommon;
 using DevExpress.XtraEditors;
+using Microsoft.Practices.CompositeUI;
+using Microsoft.Practices.CompositeUI.SmartParts;
 
 namespace CustomerMapExtensionModule
 {
@@ -37,7 +29,7 @@ namespace CustomerMapExtensionModule
 		{
 			base.OnVisibleChanged(e);
 			
-			if (this.Visible == true && mapLoaded == false)
+			if (this.Visible && mapLoaded == false)
 			{
 				LoadMap();
 				mapLoaded = true;
@@ -48,6 +40,7 @@ namespace CustomerMapExtensionModule
 		{
 			if (customer != null)
 			{
+				// does anybody realise that customer.Address2 below is not actually used?
 				string url = String.Format(mapUrlFormat, customer.Address1, customer.Address2, customer.City, customer.State, customer.ZipCode);				
 				browser.Navigate(Uri.EscapeUriString(url));
 			}

@@ -10,17 +10,13 @@
 //===============================================================================
 
 using System;
-using System.Windows.Forms;
-using Microsoft.Practices.CompositeUI;
-using Microsoft.Practices.CompositeUI.UIElements;
-using Microsoft.Practices.CompositeUI.WinForms;
-using Microsoft.Practices.CompositeUI.Commands;
-using Microsoft.Practices.CompositeUI.Services;
 using BankTellerCommon;
 using DevExpress.CompositeUI;
-using DevExpress.XtraBars;
 using DevExpress.CompositeUI.UIElements;
 using DevExpress.Practices;
+using DevExpress.XtraEditors;
+using Microsoft.Practices.CompositeUI;
+using Microsoft.Practices.CompositeUI.WinForms;
 
 namespace BankShell
 {
@@ -30,6 +26,8 @@ namespace BankShell
         public static void Main()
         {
             DevExpress.UserSkins.BonusSkins.Register();
+//			DevExpress.UserSkins.OfficeSkins.Register();	// comment in for more skins
+        	DevExpress.Skins.SkinManager.EnableFormSkins();
             new BankShellApplication().Run();
         }
 
@@ -64,17 +62,17 @@ namespace BankShell
 
             if (ex != null)
             {
-                MessageBox.Show(BuildExceptionString(ex));
+                XtraMessageBox.Show(BuildExceptionString(ex));
             }
             else
             {
-                MessageBox.Show("An Exception has occured, unable to get details");
+				XtraMessageBox.Show("An Exception has occured, unable to get details");
             }
 
             Environment.Exit(0);
         }
 
-        private string BuildExceptionString(Exception exception)
+        private static string BuildExceptionString(Exception exception)
         {
             string errMessage = string.Empty;
 
@@ -89,7 +87,7 @@ namespace BankShell
             return errMessage;
         }
 
-        private string BuildInnerExceptionString(Exception innerException)
+        private static string BuildInnerExceptionString(Exception innerException)
         {
             string errMessage = string.Empty;
 

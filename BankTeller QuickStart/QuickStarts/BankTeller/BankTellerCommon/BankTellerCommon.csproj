@@ -9,10 +9,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BankTellerCommon</RootNamespace>
     <AssemblyName>BankTellerCommon</AssemblyName>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +36,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Practices.CompositeUI, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\DevExpress.CompositeUI\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.CompositeUI.WinForms, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\DevExpress.CompositeUI\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\DevExpress.CompositeUI\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -42,20 +58,6 @@
     <Compile Include="BusinessEntities\CustomerAccount.cs" />
     <Compile Include="IShowInShell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="E:\dotnet\Microsoft Composite UI App Block\Source\CompositeUI.WinForms\CompositeUI.WinForms.csproj">
-      <Project>{073BCD60-F2FB-4DB9-92FB-403C8F9E8DD0}</Project>
-      <Name>CompositeUI.WinForms</Name>
-    </ProjectReference>
-    <ProjectReference Include="E:\dotnet\Microsoft Composite UI App Block\Source\CompositeUI\CompositeUI.csproj">
-      <Project>{C478E40B-A05E-4C69-9AB3-7A3BB374243F}</Project>
-      <Name>CompositeUI</Name>
-    </ProjectReference>
-    <ProjectReference Include="E:\dotnet\Microsoft Composite UI App Block\Source\ObjectBuilder\ObjectBuilder.csproj">
-      <Project>{2AE49F19-392B-4C50-A13C-F49B2579849D}</Project>
-      <Name>ObjectBuilder</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

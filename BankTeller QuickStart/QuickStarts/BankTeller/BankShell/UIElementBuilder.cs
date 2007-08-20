@@ -1,10 +1,7 @@
 using System;
 using System.Configuration;
-using System.Windows.Forms;
-using Microsoft.Practices.CompositeUI;
-using Microsoft.Practices.CompositeUI.UIElements;
-using Microsoft.Practices.CompositeUI.WinForms;
 using DevExpress.XtraBars;
+using Microsoft.Practices.CompositeUI;
 
 namespace BankShell
 {

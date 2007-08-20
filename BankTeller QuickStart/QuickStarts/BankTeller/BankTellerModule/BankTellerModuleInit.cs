@@ -9,16 +9,11 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System;
-using System.Configuration;
-using System.Windows.Forms;
-using Microsoft.Practices.CompositeUI;
-using Microsoft.Practices.CompositeUI.UIElements;
-using Microsoft.Practices.CompositeUI.SmartParts;
-using Microsoft.Practices.CompositeUI.Services;
-using Microsoft.Practices.ObjectBuilder;
 using BankTellerCommon;
 using DevExpress.XtraBars;
+using Microsoft.Practices.CompositeUI;
+using Microsoft.Practices.CompositeUI.SmartParts;
+using Microsoft.Practices.ObjectBuilder;
 
 namespace BankTellerModule
 {
@@ -28,7 +23,7 @@ namespace BankTellerModule
 
 	public class BankTellerModuleInit : ModuleInit
 	{
-		private WorkItem workItem;
+		private readonly WorkItem workItem;
 		
 		[InjectionConstructor]
 		public BankTellerModuleInit([ServiceDependency] WorkItem workItem)

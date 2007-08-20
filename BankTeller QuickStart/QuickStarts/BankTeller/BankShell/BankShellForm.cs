@@ -11,14 +11,15 @@
 
 using System;
 using System.Windows.Forms;
+using DevExpress.CompositeUI.SmartPartInfos;
+using DevExpress.CompositeUI.Workspaces;
+using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
-using Microsoft.Practices.CompositeUI.Utility;
-using Microsoft.Practices.CompositeUI.Services;
-using BankTellerCommon;
 using Microsoft.Practices.CompositeUI.EventBroker;
+using Microsoft.Practices.CompositeUI.Services;
+using Microsoft.Practices.CompositeUI.Utility;
 using Microsoft.Practices.ObjectBuilder;
-using DevExpress.Practices;
 
 namespace BankShell
 {
@@ -33,10 +34,11 @@ namespace BankShell
     //
     // We listen for status update events. Modules can fire status update
     // events to tell us to change the status bar.
-    public partial class BankShellForm : DevExpress.XtraEditors.XtraForm
+    public partial class BankShellForm : XtraForm
     {
-        private WorkItem workItem;
+        private readonly WorkItem workItem;
         private IWorkItemTypeCatalogService workItemTypeCatalog;
+		private const string AboutDialog = "AboutDialog";
 
         public BankShellForm()
         {
@@ -50,8 +52,7 @@ namespace BankShell
         /// by calling WorkItem.Items.AddNew.
         /// </summary>
         [InjectionConstructor]
-        public BankShellForm(WorkItem workItem, IWorkItemTypeCatalogService workItemTypeCatalog)
-            : this()
+        public BankShellForm(WorkItem workItem, IWorkItemTypeCatalogService workItemTypeCatalog) : this()
         {
             this.workItem = workItem;
             this.workItemTypeCatalog = workItemTypeCatalog;
@@ -60,13 +61,36 @@ namespace BankShell
         [CommandHandler("FileExit")]
         public void OnFileExit(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
+		/// <summary>
+		/// CAB DevExpress Extension Kit XtraWindowWorkspace and XtraWindowSmartPartInfo sample
+		/// </summary>
         [CommandHandler("HelpAbout")]
         public void OnHelpAbout(object sender, EventArgs e)
         {
-            MessageBox.Show(this, "Bank Teller QuickStart Version 1.0", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        	if (!workItem.SmartParts.Contains(AboutDialog))
+				workItem.SmartParts.AddNew<AboutDialog>(AboutDialog);
+
+			XtraWindowSmartPartInfo smartPartInfo = new XtraWindowSmartPartInfo();
+			smartPartInfo.Modal = true;
+
+			// the two properties added by CAB DevExpress Extension Kit's XtraWindowSmartPartInfo
+			smartPartInfo.StartPosition = FormStartPosition.CenterParent;
+			smartPartInfo.ShowInTaskbar = false;
+
+			smartPartInfo.Height = 130;
+			smartPartInfo.Width = 350;
+			smartPartInfo.Title = "About";
+
+			XtraWindowWorkspace xtraWindow = new XtraWindowWorkspace();
+
+			// like all good dialogs, it's resizeable. We have to set the XtraUserControl's Dock property to get this
+			// you could get a reference to the View/XtraUserControl and set it, which might look nicer
+			((XtraUserControl)workItem.SmartParts[AboutDialog]).Dock = DockStyle.Fill;
+
+			xtraWindow.Show(workItem.SmartParts[AboutDialog], smartPartInfo);
         }
 
         [EventSubscription("topic://BankShell/statusupdate", Thread = ThreadOption.UserInterface)]

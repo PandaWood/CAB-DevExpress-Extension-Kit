@@ -10,7 +10,6 @@
 //===============================================================================
 
 using System.Threading;
-using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
 namespace BankTellerModule

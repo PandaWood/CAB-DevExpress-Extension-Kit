@@ -41,7 +41,7 @@ namespace BankTellerModule
 		{
 			this.components = new System.ComponentModel.Container();
 			this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.barManager1 = new DevExpress.XtraBars.BarManager();
+			this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
 			this.bar1 = new DevExpress.XtraBars.Bar();
 			this.bbiComments = new DevExpress.XtraBars.BarButtonItem();
 			this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -72,6 +72,7 @@ namespace BankTellerModule
 			this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
 			this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
 			this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+			this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
 			((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -99,6 +100,7 @@ namespace BankTellerModule
 			((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// customerBindingSource
@@ -137,6 +139,9 @@ namespace BankTellerModule
 			// 
 			// layoutControl1
 			// 
+			this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.layoutControl1.Controls.Add(this.textEdit10);
 			this.layoutControl1.Controls.Add(this.textEdit9);
 			this.layoutControl1.Controls.Add(this.textEdit8);
@@ -147,169 +152,174 @@ namespace BankTellerModule
 			this.layoutControl1.Controls.Add(this.textEdit3);
 			this.layoutControl1.Controls.Add(this.textEdit2);
 			this.layoutControl1.Controls.Add(this.textEdit1);
-			this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.layoutControl1.Location = new System.Drawing.Point(0, 22);
 			this.layoutControl1.Name = "layoutControl1";
+			this.layoutControl1.OptionsItemText.TextAlignMode = DevExpress.XtraLayout.TextAlignMode.AlignInGroups;
+			this.layoutControl1.OptionsView.AllowHotTrack = true;
+			this.layoutControl1.OptionsView.HighlightFocusedItem = true;
 			this.layoutControl1.Root = this.layoutControlGroup1;
-			this.layoutControl1.Size = new System.Drawing.Size(325, 230);
+			this.layoutControl1.Size = new System.Drawing.Size(383, 266);
 			this.layoutControl1.TabIndex = 28;
 			this.layoutControl1.Text = "layoutControl1";
 			// 
 			// textEdit10
 			// 
 			this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "EmailAddress", true));
-			this.textEdit10.Location = new System.Drawing.Point(65, 201);
+			this.textEdit10.Location = new System.Drawing.Point(54, 207);
 			this.textEdit10.Name = "textEdit10";
-			this.textEdit10.Size = new System.Drawing.Size(251, 20);
+			this.textEdit10.Size = new System.Drawing.Size(320, 20);
 			this.textEdit10.StyleController = this.layoutControl1;
 			this.textEdit10.TabIndex = 12;
 			// 
 			// textEdit9
 			// 
 			this.textEdit9.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "Phone2", true));
-			this.textEdit9.Location = new System.Drawing.Point(223, 171);
+			this.textEdit9.Location = new System.Drawing.Point(241, 176);
 			this.textEdit9.Name = "textEdit9";
-			this.textEdit9.Size = new System.Drawing.Size(93, 20);
+			this.textEdit9.Size = new System.Drawing.Size(133, 20);
 			this.textEdit9.StyleController = this.layoutControl1;
 			this.textEdit9.TabIndex = 11;
 			// 
 			// textEdit8
 			// 
 			this.textEdit8.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "Phone1", true));
-			this.textEdit8.Location = new System.Drawing.Point(65, 171);
+			this.textEdit8.Location = new System.Drawing.Point(54, 176);
 			this.textEdit8.Name = "textEdit8";
-			this.textEdit8.Size = new System.Drawing.Size(92, 20);
+			this.textEdit8.Size = new System.Drawing.Size(132, 20);
 			this.textEdit8.StyleController = this.layoutControl1;
 			this.textEdit8.TabIndex = 10;
 			// 
 			// textEdit7
 			// 
 			this.textEdit7.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "ZipCode", true));
-			this.textEdit7.Location = new System.Drawing.Point(303, 117);
+			this.textEdit7.Location = new System.Drawing.Point(324, 121);
 			this.textEdit7.Name = "textEdit7";
-			this.textEdit7.Size = new System.Drawing.Size(13, 20);
+			this.textEdit7.Size = new System.Drawing.Size(50, 20);
 			this.textEdit7.StyleController = this.layoutControl1;
 			this.textEdit7.TabIndex = 9;
 			// 
 			// textEdit6
 			// 
 			this.textEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "State", true));
-			this.textEdit6.Location = new System.Drawing.Point(223, 117);
+			this.textEdit6.Location = new System.Drawing.Point(207, 121);
 			this.textEdit6.Name = "textEdit6";
-			this.textEdit6.Size = new System.Drawing.Size(14, 20);
+			this.textEdit6.Size = new System.Drawing.Size(50, 20);
 			this.textEdit6.StyleController = this.layoutControl1;
 			this.textEdit6.TabIndex = 8;
 			// 
 			// textEdit5
 			// 
 			this.textEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "City", true));
-			this.textEdit5.Location = new System.Drawing.Point(65, 117);
+			this.textEdit5.Location = new System.Drawing.Point(66, 121);
 			this.textEdit5.Name = "textEdit5";
-			this.textEdit5.Size = new System.Drawing.Size(92, 20);
+			this.textEdit5.Size = new System.Drawing.Size(74, 20);
 			this.textEdit5.StyleController = this.layoutControl1;
 			this.textEdit5.TabIndex = 7;
 			// 
 			// textEdit4
 			// 
 			this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "Address2", true));
-			this.textEdit4.Location = new System.Drawing.Point(65, 87);
+			this.textEdit4.Location = new System.Drawing.Point(66, 90);
 			this.textEdit4.Name = "textEdit4";
-			this.textEdit4.Size = new System.Drawing.Size(251, 20);
+			this.textEdit4.Size = new System.Drawing.Size(308, 20);
 			this.textEdit4.StyleController = this.layoutControl1;
 			this.textEdit4.TabIndex = 6;
 			// 
 			// textEdit3
 			// 
 			this.textEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "Address1", true));
-			this.textEdit3.Location = new System.Drawing.Point(65, 57);
+			this.textEdit3.Location = new System.Drawing.Point(66, 59);
 			this.textEdit3.Name = "textEdit3";
-			this.textEdit3.Size = new System.Drawing.Size(251, 20);
+			this.textEdit3.Size = new System.Drawing.Size(308, 20);
 			this.textEdit3.StyleController = this.layoutControl1;
 			this.textEdit3.TabIndex = 5;
 			// 
 			// textEdit2
 			// 
 			this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "LastName", true));
-			this.textEdit2.Location = new System.Drawing.Point(223, 27);
+			this.textEdit2.Location = new System.Drawing.Point(253, 28);
 			this.textEdit2.Name = "textEdit2";
-			this.textEdit2.Size = new System.Drawing.Size(93, 20);
+			this.textEdit2.Size = new System.Drawing.Size(121, 20);
 			this.textEdit2.StyleController = this.layoutControl1;
 			this.textEdit2.TabIndex = 4;
 			// 
 			// textEdit1
 			// 
 			this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "FirstName", true));
-			this.textEdit1.Location = new System.Drawing.Point(65, 27);
+			this.textEdit1.Location = new System.Drawing.Point(66, 28);
 			this.textEdit1.Name = "textEdit1";
-			this.textEdit1.Size = new System.Drawing.Size(92, 20);
+			this.textEdit1.Size = new System.Drawing.Size(120, 20);
 			this.textEdit1.StyleController = this.layoutControl1;
 			this.textEdit1.TabIndex = 3;
 			// 
 			// layoutControlGroup1
 			// 
+			this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
 			this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup3,
             this.layoutControlGroup2});
 			this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
 			this.layoutControlGroup1.Name = "layoutControlGroup1";
 			this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-			this.layoutControlGroup1.Size = new System.Drawing.Size(325, 230);
+			this.layoutControlGroup1.Size = new System.Drawing.Size(383, 266);
 			this.layoutControlGroup1.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlGroup1.Text = "layoutControlGroup1";
 			this.layoutControlGroup1.TextVisible = false;
 			// 
 			// layoutControlGroup3
 			// 
+			this.layoutControlGroup3.CustomizationFormText = "Contact";
 			this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem8,
             this.layoutControlItem9,
-            this.layoutControlItem10});
-			this.layoutControlGroup3.Location = new System.Drawing.Point(0, 144);
+            this.layoutControlItem10,
+            this.emptySpaceItem1});
+			this.layoutControlGroup3.Location = new System.Drawing.Point(0, 148);
 			this.layoutControlGroup3.Name = "layoutControlGroup3";
 			this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-			this.layoutControlGroup3.Size = new System.Drawing.Size(323, 84);
+			this.layoutControlGroup3.Size = new System.Drawing.Size(381, 116);
 			this.layoutControlGroup3.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
 			this.layoutControlGroup3.Text = "Contact";
-			this.layoutControlGroup3.TextVisible = true;
 			// 
 			// layoutControlItem8
 			// 
 			this.layoutControlItem8.Control = this.textEdit8;
+			this.layoutControlItem8.CustomizationFormText = "Phone 1";
 			this.layoutControlItem8.Location = new System.Drawing.Point(0, 0);
 			this.layoutControlItem8.Name = "layoutControlItem8";
 			this.layoutControlItem8.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem8.Size = new System.Drawing.Size(158, 30);
+			this.layoutControlItem8.Size = new System.Drawing.Size(187, 31);
 			this.layoutControlItem8.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem8.Text = "Phone 1";
-			this.layoutControlItem8.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem8.TextVisible = true;
+			this.layoutControlItem8.TextSize = new System.Drawing.Size(39, 20);
 			// 
 			// layoutControlItem9
 			// 
 			this.layoutControlItem9.Control = this.textEdit10;
-			this.layoutControlItem9.Location = new System.Drawing.Point(0, 30);
+			this.layoutControlItem9.CustomizationFormText = "E-mail";
+			this.layoutControlItem9.Location = new System.Drawing.Point(0, 31);
 			this.layoutControlItem9.Name = "layoutControlItem10";
 			this.layoutControlItem9.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem9.Size = new System.Drawing.Size(317, 30);
+			this.layoutControlItem9.Size = new System.Drawing.Size(375, 31);
 			this.layoutControlItem9.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem9.Text = "E-mail";
-			this.layoutControlItem9.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem9.TextVisible = true;
+			this.layoutControlItem9.TextSize = new System.Drawing.Size(39, 20);
 			// 
 			// layoutControlItem10
 			// 
 			this.layoutControlItem10.Control = this.textEdit9;
-			this.layoutControlItem10.Location = new System.Drawing.Point(158, 0);
+			this.layoutControlItem10.CustomizationFormText = "Phone 2";
+			this.layoutControlItem10.Location = new System.Drawing.Point(187, 0);
 			this.layoutControlItem10.Name = "layoutControlItem9";
 			this.layoutControlItem10.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem10.Size = new System.Drawing.Size(159, 30);
+			this.layoutControlItem10.Size = new System.Drawing.Size(188, 31);
 			this.layoutControlItem10.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem10.Text = "Phone 2";
-			this.layoutControlItem10.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem10.TextVisible = true;
+			this.layoutControlItem10.TextSize = new System.Drawing.Size(39, 20);
 			// 
 			// layoutControlGroup2
 			// 
+			this.layoutControlGroup2.CustomizationFormText = "Address";
 			this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem5,
@@ -321,94 +331,104 @@ namespace BankTellerModule
 			this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
 			this.layoutControlGroup2.Name = "layoutControlGroup2";
 			this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-			this.layoutControlGroup2.Size = new System.Drawing.Size(323, 144);
+			this.layoutControlGroup2.Size = new System.Drawing.Size(381, 148);
 			this.layoutControlGroup2.Spacing = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
 			this.layoutControlGroup2.Text = "Address";
-			this.layoutControlGroup2.TextVisible = true;
 			// 
 			// layoutControlItem1
 			// 
 			this.layoutControlItem1.Control = this.textEdit1;
+			this.layoutControlItem1.CustomizationFormText = "First Name";
 			this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
 			this.layoutControlItem1.Name = "layoutControlItem1";
 			this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem1.Size = new System.Drawing.Size(158, 30);
+			this.layoutControlItem1.Size = new System.Drawing.Size(187, 31);
 			this.layoutControlItem1.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem1.Text = "First Name";
 			this.layoutControlItem1.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem1.TextVisible = true;
 			// 
 			// layoutControlItem5
 			// 
 			this.layoutControlItem5.Control = this.textEdit5;
-			this.layoutControlItem5.Location = new System.Drawing.Point(0, 90);
+			this.layoutControlItem5.CustomizationFormText = "City";
+			this.layoutControlItem5.Location = new System.Drawing.Point(0, 93);
 			this.layoutControlItem5.Name = "layoutControlItem5";
 			this.layoutControlItem5.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem5.Size = new System.Drawing.Size(158, 30);
+			this.layoutControlItem5.Size = new System.Drawing.Size(141, 31);
 			this.layoutControlItem5.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem5.Text = "City";
 			this.layoutControlItem5.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem5.TextVisible = true;
 			// 
 			// layoutControlItem4
 			// 
 			this.layoutControlItem4.Control = this.textEdit4;
-			this.layoutControlItem4.Location = new System.Drawing.Point(0, 60);
+			this.layoutControlItem4.CustomizationFormText = " ";
+			this.layoutControlItem4.Location = new System.Drawing.Point(0, 62);
 			this.layoutControlItem4.Name = "layoutControlItem4";
 			this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem4.Size = new System.Drawing.Size(317, 30);
+			this.layoutControlItem4.Size = new System.Drawing.Size(375, 31);
 			this.layoutControlItem4.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem4.Text = " ";
 			this.layoutControlItem4.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem4.TextVisible = true;
 			// 
 			// layoutControlItem3
 			// 
 			this.layoutControlItem3.Control = this.textEdit3;
-			this.layoutControlItem3.Location = new System.Drawing.Point(0, 30);
+			this.layoutControlItem3.CustomizationFormText = "Address";
+			this.layoutControlItem3.Location = new System.Drawing.Point(0, 31);
 			this.layoutControlItem3.Name = "layoutControlItem3";
 			this.layoutControlItem3.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem3.Size = new System.Drawing.Size(317, 30);
+			this.layoutControlItem3.Size = new System.Drawing.Size(375, 31);
 			this.layoutControlItem3.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem3.Text = "Address";
 			this.layoutControlItem3.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem3.TextVisible = true;
 			// 
 			// layoutControlItem2
 			// 
 			this.layoutControlItem2.Control = this.textEdit2;
-			this.layoutControlItem2.Location = new System.Drawing.Point(158, 0);
+			this.layoutControlItem2.CustomizationFormText = "Last Name";
+			this.layoutControlItem2.Location = new System.Drawing.Point(187, 0);
 			this.layoutControlItem2.Name = "layoutControlItem2";
 			this.layoutControlItem2.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem2.Size = new System.Drawing.Size(159, 30);
+			this.layoutControlItem2.Size = new System.Drawing.Size(188, 31);
 			this.layoutControlItem2.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem2.Text = "Last Name";
 			this.layoutControlItem2.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem2.TextVisible = true;
 			// 
 			// layoutControlItem6
 			// 
 			this.layoutControlItem6.Control = this.textEdit6;
-			this.layoutControlItem6.Location = new System.Drawing.Point(158, 90);
+			this.layoutControlItem6.CustomizationFormText = "State";
+			this.layoutControlItem6.Location = new System.Drawing.Point(141, 93);
 			this.layoutControlItem6.Name = "layoutControlItem6";
 			this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem6.Size = new System.Drawing.Size(80, 30);
+			this.layoutControlItem6.Size = new System.Drawing.Size(117, 31);
 			this.layoutControlItem6.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem6.Text = "State";
 			this.layoutControlItem6.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem6.TextVisible = true;
 			// 
 			// layoutControlItem7
 			// 
 			this.layoutControlItem7.Control = this.textEdit7;
-			this.layoutControlItem7.Location = new System.Drawing.Point(238, 90);
+			this.layoutControlItem7.CustomizationFormText = "Zip";
+			this.layoutControlItem7.Location = new System.Drawing.Point(258, 93);
 			this.layoutControlItem7.Name = "layoutControlItem7";
 			this.layoutControlItem7.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-			this.layoutControlItem7.Size = new System.Drawing.Size(79, 30);
+			this.layoutControlItem7.Size = new System.Drawing.Size(117, 31);
 			this.layoutControlItem7.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
 			this.layoutControlItem7.Text = "Zip";
 			this.layoutControlItem7.TextSize = new System.Drawing.Size(51, 20);
-			this.layoutControlItem7.TextVisible = true;
+			// 
+			// emptySpaceItem1
+			// 
+			this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
+			this.emptySpaceItem1.Location = new System.Drawing.Point(0, 62);
+			this.emptySpaceItem1.Name = "emptySpaceItem1";
+			this.emptySpaceItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
+			this.emptySpaceItem1.Size = new System.Drawing.Size(375, 30);
+			this.emptySpaceItem1.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
+			this.emptySpaceItem1.Text = "emptySpaceItem1";
+			this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
 			// 
 			// CustomerDetailView
 			// 
@@ -421,7 +441,7 @@ namespace BankTellerModule
 			this.Controls.Add(this.barDockControlBottom);
 			this.Controls.Add(this.barDockControlTop);
 			this.Name = "CustomerDetailView";
-			this.Size = new System.Drawing.Size(325, 279);
+			this.Size = new System.Drawing.Size(383, 289);
 			((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
@@ -449,6 +469,7 @@ namespace BankTellerModule
 			((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -487,6 +508,7 @@ namespace BankTellerModule
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+		private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
 
 
 

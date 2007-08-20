@@ -13,9 +13,9 @@ namespace BankTellerCommon
 {
 	public class CustomerAccount
 	{
-		private long accountNumber;
-		private string accountType;
-		private decimal currentBalance;
+		private readonly long accountNumber;
+		private readonly string accountType;
+		private readonly decimal currentBalance;
 
 		public CustomerAccount(long accountNumber, string accountType, decimal currentBalance)
 		{

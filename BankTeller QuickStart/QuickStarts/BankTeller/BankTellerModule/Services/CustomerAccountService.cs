@@ -15,7 +15,6 @@
 // person, places, or events is intended or should be inferred.
 
 using System.Collections;
-using System.Collections.Generic;
 using BankTellerCommon;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Utility;
@@ -30,7 +29,7 @@ namespace BankTellerModule
 	[Service]
 	public class CustomerAccountService
 	{
-		private ListDictionary<int, CustomerAccount> customerAccounts;
+		private readonly ListDictionary<int, CustomerAccount> customerAccounts;
 
 		public CustomerAccountService()
 		{

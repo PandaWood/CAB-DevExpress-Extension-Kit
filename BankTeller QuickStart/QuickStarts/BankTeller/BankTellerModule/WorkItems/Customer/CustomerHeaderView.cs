@@ -10,11 +10,10 @@
 //===============================================================================
 
 using System;
-using System.Windows.Forms;
-using Microsoft.Practices.CompositeUI;
-using Microsoft.Practices.CompositeUI.SmartParts;
 using BankTellerCommon;
 using DevExpress.XtraEditors;
+using Microsoft.Practices.CompositeUI;
+using Microsoft.Practices.CompositeUI.SmartParts;
 
 namespace BankTellerModule
 {

@@ -9,6 +9,8 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
+using DevExpress.XtraEditors;
+
 namespace BankTellerModule
 {
 	partial class CustomerQueueView
@@ -41,8 +43,8 @@ namespace BankTellerModule
 		{
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnNextCustomer = new DevExpress.XtraEditors.SimpleButton();
-            this.listCustomers = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.listCustomers = new ListBoxControl();
+            this.label1 = new LabelControl();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,8 +77,6 @@ namespace BankTellerModule
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.listCustomers.DisplayMember = "Count";
-            this.listCustomers.FormattingEnabled = true;
-            this.listCustomers.IntegralHeight = false;
             this.listCustomers.Location = new System.Drawing.Point(8, 61);
             this.listCustomers.Name = "listCustomers";
             this.listCustomers.Size = new System.Drawing.Size(173, 328);
@@ -110,9 +110,9 @@ namespace BankTellerModule
 		#endregion
 
 		private System.Windows.Forms.Panel panel1;
-		private DevExpress.XtraEditors.SimpleButton btnNextCustomer;
-		private System.Windows.Forms.ListBox listCustomers;
-		private System.Windows.Forms.Label label1;
+		private SimpleButton btnNextCustomer;
+		private ListBoxControl listCustomers;
+		private LabelControl label1;
 
 	}
 }

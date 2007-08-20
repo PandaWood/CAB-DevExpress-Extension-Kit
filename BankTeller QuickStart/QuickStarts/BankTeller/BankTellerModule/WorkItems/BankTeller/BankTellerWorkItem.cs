@@ -9,18 +9,13 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System;
-using BankTellerModule.WorkItems.BankTeller;
-using Microsoft.Practices.CompositeUI;
-using Microsoft.Practices.CompositeUI.SmartParts;
-using Microsoft.Practices.CompositeUI.Services;
-using BankTellerCommon;
-using Microsoft.Practices.ObjectBuilder;
-using Microsoft.Practices.CompositeUI.UIElements;
 using System.Windows.Forms;
-using Microsoft.Practices.CompositeUI.WinForms;
-using Microsoft.Practices.CompositeUI.Utility;
+using BankTellerCommon;
+using BankTellerModule.WorkItems.BankTeller;
 using DevExpress.XtraBars;
+using Microsoft.Practices.CompositeUI;
+using Microsoft.Practices.CompositeUI.Services;
+using Microsoft.Practices.CompositeUI.SmartParts;
 
 namespace BankTellerModule
 {
