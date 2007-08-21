@@ -10,6 +10,7 @@
 //===============================================================================
 
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
@@ -92,12 +93,11 @@ namespace BankTellerModule
 
 		private void SetUIElementVisibility(bool visible)
 		{
-				if (editCustomerMenuItem1 != null)
-                    editCustomerMenuItem1.Visibility = visible ? BarItemVisibility.Always : BarItemVisibility.Never ;
-				
-				if(addressLabel != null)
-                    addressLabel.Visibility = visible ? BarItemVisibility.Always : BarItemVisibility.Never;
+			if (editCustomerMenuItem1 != null)
+				editCustomerMenuItem1.Visibility = visible ? BarItemVisibility.Always : BarItemVisibility.Never;
 
+			if (addressLabel != null)
+				addressLabel.Visibility = visible ? BarItemVisibility.Always : BarItemVisibility.Never;
 		}
 
 		// We watch for when we are activated (i.e., shown to
@@ -141,11 +141,12 @@ namespace BankTellerModule
 
 		private void CreateCommentsView()
 		{
-				commentsView = commentsView ?? Items.AddNew<CustomerCommentsView>();
-				XtraTabSmartPartInfo info = new XtraTabSmartPartInfo();
-                info.Title = "Title";
-                info.Text = "Comments";
-				RegisterSmartPartInfo(commentsView, info);
+			commentsView = commentsView ?? Items.AddNew<CustomerCommentsView>();
+			XtraTabSmartPartInfo info = new XtraTabSmartPartInfo();
+			info.Title = "Title";
+			info.Text = "Comments";
+			info.PageHeaderFont = new Font("Comic Sans MS", 11.25F, FontStyle.Regular); //CABDevExpress added property
+			RegisterSmartPartInfo(commentsView, info);
 		}
 
 		[CommandHandler(CommandConstants.CUSTOMER_MOUSEOVER)]

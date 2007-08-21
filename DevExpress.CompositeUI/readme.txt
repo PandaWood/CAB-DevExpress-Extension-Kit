@@ -28,8 +28,17 @@ must inherit from DevExpress 'XtraForm'
 Program().Run() in your main method.
 The BankTeller App has all this, so check it for example usage.
 
+* XtraTabSmartPartInfo - added the PageHeaderFont property. Just something
+that CAB didn't have that you might need (ie sets the font of the text on 
+each of the tab pages) eg:
+XtraTabSmartPartInfo info = new XtraTabSmartPartInfo();
+info.PageHeaderFont = new Font("Tahoma", 9.75F, FontStyle.Regular);
+tabWorkspace.Show(smartPart, info);
+Click on the 'Comments' button in the BankTeller ap to see this in action .
+
 * DxMenuItemCommandAdapter - required if you want to create a CAB command 
-handler for a DxMenuItem (ie a DevExpress pop-up menu)
+handler for a DxMenuItem (ie a DevExpress pop-up menu). 
+See CustomerAccountsView in the BankTeller app for sample usage.
 
 * EditorButtonCollectionUIAdapter and EditorButtonCollectionUIAdapterFactory:
 To enable adding the EditorButtonCollection as an UIExtension site. 

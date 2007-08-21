@@ -24,10 +24,10 @@ namespace BankTellerCommon
 	public class CommandConstants
 	{
 		public const string ACCEPT_CUSTOMER = "QueueAcceptCustomer";
-
 		public const string EDIT_CUSTOMER = "EditCustomer";
-
 		public const string CUSTOMER_MOUSEOVER = "CustomerMouseOver";
+
+		public const string HELLOFROMDXMENU = "RespondToPopup";
 	}
 
 	/// <summary>

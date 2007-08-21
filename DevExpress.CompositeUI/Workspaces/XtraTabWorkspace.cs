@@ -94,11 +94,19 @@ namespace DevExpress.CompositeUI.Workspaces
                 page.ImageIndex = smartPartInfo.ImageIndex;
                 page.PageEnabled = smartPartInfo.PageEnabled;
                 page.PageVisible = smartPartInfo.PageVisible;
-                //Do not apply if not set: 
-                if (smartPartInfo.Text != null || smartPartInfo.Text != null)
+
+				if (smartPartInfo.Text != null || smartPartInfo.Text != null)	// don't apply if not set
                     page.Text = smartPartInfo.Text ?? smartPartInfo.Title;
+
                 page.Tooltip = smartPartInfo.Tooltip;
-                // Preserve selection through the operation.
+				
+				if (smartPartInfo.PageHeaderFont != null)
+				{
+					page.Appearance.Header.Font = smartPartInfo.PageHeaderFont;
+					page.Appearance.Header.Options.UseFont = true;
+				}
+
+                // preserve selection through the operation
                 SelectedTabPage = currentSelection;
             }
             finally
@@ -117,21 +125,6 @@ namespace DevExpress.CompositeUI.Workspaces
 
             return tabPages;
         }
-
-        /* TODO : Unused code
-        private void ShowExistingTab(Control smartPart)
-        {
-            string key = pages[smartPart].Name;
-            foreach (XtraTabPage tabPage in TabPages)
-            {
-                if (tabPage.Name == key)
-                {
-                    tabPage.Show();
-                    return;
-                }
-            }
-            //this.TabPages[key].Show();
-        }*/
 
         private XtraTabPage GetOrCreateTabPage(Control smartPart)
         {
@@ -203,12 +196,6 @@ namespace DevExpress.CompositeUI.Workspaces
             }
         }
 
-        /* TODO : Unused code
-        private Control GetControlFromSelectedPage()
-        {
-            return GetControlFromPage(SelectedTabPage);
-        }*/
-
         private static Control GetControlFromPage(Control page)
         {
             Control control = null;
@@ -250,27 +237,6 @@ namespace DevExpress.CompositeUI.Workspaces
                 composer.SetActiveSmartPart(null);
             }
         }
-
-        //protected override void OnSelectedIndexChanged(EventArgs e)
-        //    {
-        //        base.OnSelectedIndexChanged(e);
-        //        if (callComposerActivateOnIndexChange && TabPages.Count != 0)
-        //        {
-        //            // Locate the smart part corresponding to the page.
-        //            foreach (KeyValuePair<Control, TabPage> pair in pages)
-        //            {
-        //                if (pair.Value == this.SelectedTab)
-        //                {
-        //                    ((IComposableWorkspace<Control, XtraTabSmartPartInfo>)this).Activate(pair.Key);
-        //                    return;
-        //                }
-        //            }
-
-        //            // If we got here, we couldn't find a corresponding smart part for the 
-        //            // currently active tab, hence we reset the ActiveSmartPart value.
-        //            composer.SetActiveSmartPart(null);
-        //        }
-        //    }
 
         /// <summary>
         /// Hooks up tab pages added at design-time.
@@ -341,8 +307,6 @@ namespace DevExpress.CompositeUI.Workspaces
             try
             {
                 callComposerActivateOnIndexChange = false;
-                //SelectedTabPage = TabPages[key];
-                //TabPages[key].Show();
                 SelectedTabPage = GetTabPageFromName(key);
                 SelectedTabPage.Show();
             }
@@ -361,7 +325,6 @@ namespace DevExpress.CompositeUI.Workspaces
         {
             PopulatePages();
             string key = pages[smartPart].Name;
-            //                SetTabProperties(TabPages[key], smartPartInfo);
             SetTabProperties(GetTabPageFromName(key), smartPartInfo);
             if (smartPartInfo.ActivateTab)
             {

@@ -150,5 +150,16 @@ namespace DevExpress.CompositeUI.SmartPartInfos
             get { return visible; }
             set { visible = value; }
         }
+
+		/// <summary>
+		/// Gets or sets the page header font (CABDevExpress added property)
+		/// </summary>
+		private Font pageHeaderFont;
+
+		public Font PageHeaderFont
+		{
+			get { return pageHeaderFont; }
+			set { pageHeaderFont = value; }
+		}
     }
 }

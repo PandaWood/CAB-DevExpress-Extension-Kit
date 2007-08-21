@@ -56,6 +56,12 @@ namespace BankTellerModule
 			listCustomers.Items.Add(customer);
 		}
 
+		[CommandHandler(CommandConstants.HELLOFROMDXMENU)]
+		public void OnSayHello(object sender, EventArgs e)
+		{
+			XtraMessageBox.Show("Hello from DxMenuItemCommandAdapter");
+		}
+
 		private void OnCustomerSelectionChanged(object sender, EventArgs e)
 		{
 			Customer customer = listCustomers.SelectedItem as Customer;
