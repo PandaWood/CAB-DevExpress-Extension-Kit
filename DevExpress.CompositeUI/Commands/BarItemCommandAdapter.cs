@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI.Commands;
 
-namespace DevExpress.CompositeUI.Commands
+namespace CABDevExpress.Commands
 {
     /// <summary>
     /// An <see cref="EventCommandAdapter{TInvoker}"/> that updates a <see cref="BarItem"/> based on the changes to 

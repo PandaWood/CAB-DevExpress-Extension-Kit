@@ -2,15 +2,15 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Forms;
-using DevExpress.CompositeUI.SmartPartInfos;
+using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;
 
-namespace DevExpress.CompositeUI.Workspaces
+namespace CABDevExpress.Workspaces
 {
     /// <summary>
-    /// A workspace that displays smart parts within an <see cref="XtraNavBar"/>
+	/// A workspace that displays smart parts within an <see cref="NavBarControl"/>
     /// </summary>
     [Description("XtraNavBar Workspace")]
     public class XtraNavBarWorkspace : NavBarControl, IComposableWorkspace<Control, XtraNavBarGroupSmartPartInfo>
@@ -55,6 +55,7 @@ namespace DevExpress.CompositeUI.Workspaces
 
             if (smartPartInfo.SmallImage != null)
                 group.SmallImage = smartPartInfo.SmallImage;
+
             if (smartPartInfo.LargeImage != null)
             {
                 group.LargeImage = smartPartInfo.LargeImage;

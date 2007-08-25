@@ -9,7 +9,7 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
 	partial class CustomerDetailView
 	{
@@ -110,14 +110,14 @@ namespace BankTellerModule
 			// barManager1
 			// 
 			this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1});
+			                                                             	this.bar1});
 			this.barManager1.DockControls.Add(this.barDockControlTop);
 			this.barManager1.DockControls.Add(this.barDockControlBottom);
 			this.barManager1.DockControls.Add(this.barDockControlLeft);
 			this.barManager1.DockControls.Add(this.barDockControlRight);
 			this.barManager1.Form = this;
 			this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.bbiComments});
+			                                                                  	this.bbiComments});
 			this.barManager1.MaxItemId = 1;
 			// 
 			// bar1
@@ -127,7 +127,7 @@ namespace BankTellerModule
 			this.bar1.DockRow = 0;
 			this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
 			this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiComments)});
+			                                                                              	new DevExpress.XtraBars.LinkPersistInfo(this.bbiComments)});
 			this.bar1.Text = "Custom 1";
 			// 
 			// bbiComments
@@ -140,8 +140,8 @@ namespace BankTellerModule
 			// layoutControl1
 			// 
 			this.layoutControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			                                                                    | System.Windows.Forms.AnchorStyles.Left)
+			                                                                   | System.Windows.Forms.AnchorStyles.Right)));
 			this.layoutControl1.Controls.Add(this.textEdit10);
 			this.layoutControl1.Controls.Add(this.textEdit9);
 			this.layoutControl1.Controls.Add(this.textEdit8);
@@ -256,8 +256,8 @@ namespace BankTellerModule
 			// 
 			this.layoutControlGroup1.CustomizationFormText = "layoutControlGroup1";
 			this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup3,
-            this.layoutControlGroup2});
+			                                                                                   	this.layoutControlGroup3,
+			                                                                                   	this.layoutControlGroup2});
 			this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
 			this.layoutControlGroup1.Name = "layoutControlGroup1";
 			this.layoutControlGroup1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
@@ -270,10 +270,10 @@ namespace BankTellerModule
 			// 
 			this.layoutControlGroup3.CustomizationFormText = "Contact";
 			this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem8,
-            this.layoutControlItem9,
-            this.layoutControlItem10,
-            this.emptySpaceItem1});
+			                                                                                   	this.layoutControlItem8,
+			                                                                                   	this.layoutControlItem9,
+			                                                                                   	this.layoutControlItem10,
+			                                                                                   	this.emptySpaceItem1});
 			this.layoutControlGroup3.Location = new System.Drawing.Point(0, 148);
 			this.layoutControlGroup3.Name = "layoutControlGroup3";
 			this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
@@ -321,13 +321,13 @@ namespace BankTellerModule
 			// 
 			this.layoutControlGroup2.CustomizationFormText = "Address";
 			this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
-            this.layoutControlItem5,
-            this.layoutControlItem4,
-            this.layoutControlItem3,
-            this.layoutControlItem2,
-            this.layoutControlItem6,
-            this.layoutControlItem7});
+			                                                                                   	this.layoutControlItem1,
+			                                                                                   	this.layoutControlItem5,
+			                                                                                   	this.layoutControlItem4,
+			                                                                                   	this.layoutControlItem3,
+			                                                                                   	this.layoutControlItem2,
+			                                                                                   	this.layoutControlItem6,
+			                                                                                   	this.layoutControlItem7});
 			this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
 			this.layoutControlGroup2.Name = "layoutControlGroup2";
 			this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
@@ -476,38 +476,38 @@ namespace BankTellerModule
 
 		#endregion
 
-        private System.Windows.Forms.BindingSource customerBindingSource;
-        private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarDockControl barDockControlTop;
-        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
-        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
-        private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem bbiComments;
-        private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraEditors.TextEdit textEdit5;
-        private DevExpress.XtraEditors.TextEdit textEdit4;
-        private DevExpress.XtraEditors.TextEdit textEdit3;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit7;
-        private DevExpress.XtraEditors.TextEdit textEdit6;
-        private DevExpress.XtraEditors.TextEdit textEdit10;
-        private DevExpress.XtraEditors.TextEdit textEdit9;
-        private DevExpress.XtraEditors.TextEdit textEdit8;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+		private System.Windows.Forms.BindingSource customerBindingSource;
+		private DevExpress.XtraBars.BarManager barManager1;
+		private DevExpress.XtraBars.Bar bar1;
+		private DevExpress.XtraBars.BarDockControl barDockControlTop;
+		private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+		private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+		private DevExpress.XtraBars.BarDockControl barDockControlRight;
+		private DevExpress.XtraBars.BarButtonItem bbiComments;
+		private DevExpress.XtraLayout.LayoutControl layoutControl1;
+		private DevExpress.XtraEditors.TextEdit textEdit1;
+		private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+		private DevExpress.XtraEditors.TextEdit textEdit5;
+		private DevExpress.XtraEditors.TextEdit textEdit4;
+		private DevExpress.XtraEditors.TextEdit textEdit3;
+		private DevExpress.XtraEditors.TextEdit textEdit2;
+		private DevExpress.XtraEditors.TextEdit textEdit7;
+		private DevExpress.XtraEditors.TextEdit textEdit6;
+		private DevExpress.XtraEditors.TextEdit textEdit10;
+		private DevExpress.XtraEditors.TextEdit textEdit9;
+		private DevExpress.XtraEditors.TextEdit textEdit8;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+		private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+		private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
 		private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
 
 

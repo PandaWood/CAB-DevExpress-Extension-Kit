@@ -3,7 +3,7 @@ using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace DevExpress.CompositeUI.UIElements
+namespace CABDevExpress.UIElements
 {
     /// <summary>
     /// An adapter that wraps a <see cref="Bars"/> for use as an <see cref="IUIElementAdapter"/>.

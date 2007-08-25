@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
 using DevExpress.XtraBars;
 
-namespace DevExpress.CompositeUI.UIElements
+namespace CABDevExpress.UIElements
 {
     class BarLinksOwnerCollectionUIAdapter : BarLinksCollectionUIAdapter
     {
@@ -12,7 +9,7 @@ namespace DevExpress.CompositeUI.UIElements
 	/// Provides an adapter for BarItems where new items will be added to the item's owner collection, 
 	/// after the item to which the adapter is attached.
 	/// </summary>
-		BarItem item;
+	readonly BarItem item;
 
 		/// <summary>
         /// Initializes a new instance of the <see cref="BarLinksOwnerCollectionUIAdapter"/> using the
@@ -45,6 +42,7 @@ namespace DevExpress.CompositeUI.UIElements
 			return  ++index;
 		}
 
+		//TODO remove this or implement?
 		private void item_OwnerChanged(object sender, EventArgs e)
 		{
             //if (item.Owner == null)

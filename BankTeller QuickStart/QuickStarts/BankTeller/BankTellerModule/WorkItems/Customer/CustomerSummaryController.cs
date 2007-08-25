@@ -9,14 +9,13 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
+using System;
+using BankTellerCommon;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
-using System;
-using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.CompositeUI.WinForms;
-using BankTellerCommon;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
 	public class CustomerSummaryController : Controller
 	{

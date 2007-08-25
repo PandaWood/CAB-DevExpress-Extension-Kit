@@ -1,8 +1,8 @@
+using DevExpress.XtraEditors.Controls;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
-using DevExpress.XtraEditors.Controls;
 
-namespace DevExpress.CompositeUI.UIElements
+namespace CABDevExpress.UIElements
 {
     /// <summary>
     /// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraNavBar-related UI Elements.

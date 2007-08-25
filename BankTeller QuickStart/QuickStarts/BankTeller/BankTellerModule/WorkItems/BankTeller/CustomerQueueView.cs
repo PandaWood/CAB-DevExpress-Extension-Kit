@@ -12,12 +12,13 @@
 using System;
 using System.Windows.Forms;
 using BankTellerCommon;
+using BankTellerModule.WorkItems.BankTeller;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.BankTeller
 {
 	[SmartPart]
 	public partial class CustomerQueueView : XtraUserControl
@@ -45,11 +46,12 @@ namespace BankTellerModule
 		[CommandHandler(CommandConstants.ACCEPT_CUSTOMER)]
 		public void OnAcceptCustomer(object sender, EventArgs e)
 		{
-			Customer customer = myController.GetNextCustomerInQueue();
+			BankTellerCommon.Customer customer = myController.GetNextCustomerInQueue();
 
 			if (customer == null)
 			{
-				XtraMessageBox.Show(this, "There are no more customers in the queue.", "Bank Teller", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+				XtraMessageBox.Show(this, "There are no more customers in the queue.", "Bank Teller", 
+					MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 			}
 
@@ -64,7 +66,8 @@ namespace BankTellerModule
 
 		private void OnCustomerSelectionChanged(object sender, EventArgs e)
 		{
-			Customer customer = listCustomers.SelectedItem as Customer;
+			BankTellerCommon.Customer customer = 
+				listCustomers.SelectedItem as BankTellerCommon.Customer;
 
 			if (customer != null)
 			{

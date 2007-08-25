@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Forms;
-using DevExpress.CompositeUI.SmartPartInfos;
+using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
 using Microsoft.Practices.CompositeUI;
@@ -11,7 +11,7 @@ using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.CompositeUI.Utility;
 using Microsoft.Practices.CompositeUI.WinForms;
 
-namespace DevExpress.CompositeUI.Workspaces
+namespace CABDevExpress.Workspaces
 {
     /// <summary>
     /// A workspace that displays smart parts within a <see cref="XtraTabControl"/>.

@@ -1,13 +1,32 @@
 ------------------------------------------------------------------------------
-CAB DevExpress Extension Kit - Third Drop
+CAB DevExpress Extension Kit - 1st Release (Third GotDotNet Drop)
 http://www.codeplex.com/CABDevExpress
 ------------------------------------------------------------------------------
-Introduction
 
-This is the third drop of the CAB DevExpress Extension Kit. 
+This is the first release of the CAB DevExpress Extension Kit on CodePlex
+(or the 3rd drop if you're coming from GotDotNet)
 
-This time we've added:
+*** Release Notes ***
 
+Things changed
+--------------
+* Project/Solution changes
+The project name has been changed (mainly because the name 'DevExpress' 
+is reserved for (guess who) 'DevExpress' controls. 
+We found that anything that begins with 'DevExpress' in a project file
+gets renamed by DevExpress's 'Project Converter' tool - by design.
+Hence the project and solution were renamed to CABDevExpress.ExtensionKit
+ - which I think is more appropriate anyhow.
+
+ * Downloaded file changes
+The release now includes precompiled CAB dll's (in the 'lib' folder)
+which are referenced by the projects. This makes it easier to 
+download and get the sample apps compiling and running.
+You still need to generate your own 'license.licx' files by opening up
+Controls with DevExpress controls on them (as always with DevExpress)
+
+Things Added
+------------
 * Ribbon support:
 Most of the Ribbon code is from the CAB SCSF DevExpress Extension Kit 
 project, but it seems this project is not moving to CodePlex, so we've 
@@ -28,9 +47,7 @@ must inherit from DevExpress 'XtraForm'
 Program().Run() in your main method.
 The BankTeller App has all this, so check it for example usage.
 
-* XtraTabSmartPartInfo - added the PageHeaderFont property. Just something
-that CAB didn't have that you might need (ie sets the font of the text on 
-each of the tab pages) eg:
+* XtraTabSmartPartInfo - added the PageHeaderFont property.
 XtraTabSmartPartInfo info = new XtraTabSmartPartInfo();
 info.PageHeaderFont = new Font("Tahoma", 9.75F, FontStyle.Regular);
 tabWorkspace.Show(smartPart, info);
@@ -51,15 +68,12 @@ These allows you to add buttons to the XtraGridcontrol's Embedded Navigator.
 OpenLink event on a DevExpress RepositoryItemHyperLinkEdit control.
 
 See the Bankteller App for a demonstration of the CAB DevExpress Extension Kit.
-There are no Ribbon examples this time, but I guess you guys can 
-figure that one out. Besides if we released a Ribbon application we would 
-probably have to register with Microsoft. 
+There are no Ribbon examples this time, perhaps someone will help us out
+and contribute an example. 
 
-This release has only been tested with DXExperience 7.2.0, but should work 
-with other versions too. This should be a drop-in replacement of the first and 
-second drop. If you used the CAB SCSF DevExpress Extension Kit project project, 
-this will not be a drop in replacement as classes have been renamed and 
-namespaces changed. 
+This release has only been tested with DXExperience 7.2.3, but should work 
+with other versions too. This will not be a drop-in replacement of the 
+first and  second drop as namespaces and project names have been changed. 
 
 We will appreciate any comments or contributions.
 

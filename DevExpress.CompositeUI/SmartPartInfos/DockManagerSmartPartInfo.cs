@@ -2,12 +2,12 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
-using DevExpress.CompositeUI.Workspaces;
+using CABDevExpress.Workspaces;
 using DevExpress.Utils;
 using DevExpress.XtraBars.Docking;
 using Microsoft.Practices.CompositeUI.SmartParts;
 
-namespace DevExpress.CompositeUI.SmartPartInfos
+namespace CABDevExpress.SmartPartInfos
 {
     // <summary>
     /// Provides information to show smartparts in the <see cref="DockManagerWorkspace"/>.

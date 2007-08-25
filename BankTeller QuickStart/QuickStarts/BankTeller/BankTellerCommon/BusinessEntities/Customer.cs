@@ -30,8 +30,8 @@ namespace BankTellerCommon
 		private string zipCode;
 
 		public Customer(int id, string firstName, string lastName, string address1, string address2,
-					string city, string state, string zipCode, string emailAddress, string phone1, string phone2,
-					string comments)
+		                string city, string state, string zipCode, string emailAddress, string phone1, string phone2,
+		                string comments)
 		{
 			this.id = id;
 			this.firstName = firstName;
@@ -122,6 +122,5 @@ namespace BankTellerCommon
 		{
 			return string.Format("{0}, {1}", LastName, FirstName);
 		}
-
 	}
 }

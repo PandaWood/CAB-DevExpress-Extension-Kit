@@ -2,7 +2,7 @@ using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace DevExpress.CompositeUI.UIElements
+namespace CABDevExpress.UIElements
 {
     /// <summary>
     /// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraBar-related UI Elements.

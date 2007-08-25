@@ -11,8 +11,8 @@
 
 using System;
 using System.Windows.Forms;
-using DevExpress.CompositeUI.SmartPartInfos;
-using DevExpress.CompositeUI.Workspaces;
+using CABDevExpress.SmartPartInfos;
+using CABDevExpress.Workspaces;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
@@ -66,6 +66,7 @@ namespace BankShell
 
 		/// <summary>
 		/// CAB DevExpress Extension Kit XtraWindowWorkspace and XtraWindowSmartPartInfo sample
+		/// demonstrated by showing an About Box
 		/// </summary>
         [CommandHandler("HelpAbout")]
         public void OnHelpAbout(object sender, EventArgs e)
@@ -80,16 +81,11 @@ namespace BankShell
 			smartPartInfo.StartPosition = FormStartPosition.CenterParent;
 			smartPartInfo.ShowInTaskbar = false;
 
-			smartPartInfo.Height = 130;
+			smartPartInfo.Height = 150;
 			smartPartInfo.Width = 350;
 			smartPartInfo.Title = "About";
 
 			XtraWindowWorkspace xtraWindow = new XtraWindowWorkspace();
-
-			// like all good dialogs, it's resizeable. We have to set the XtraUserControl's Dock property to get this
-			// you could get a reference to the View/XtraUserControl and set it, which might look nicer
-			((XtraUserControl)workItem.SmartParts[AboutDialog]).Dock = DockStyle.Fill;
-
 			xtraWindow.Show(workItem.SmartParts[AboutDialog], smartPartInfo);
         }
 
@@ -98,6 +94,5 @@ namespace BankShell
         {
             barStaticItem1.Caption = e.Data;
         }
-
     }
 }

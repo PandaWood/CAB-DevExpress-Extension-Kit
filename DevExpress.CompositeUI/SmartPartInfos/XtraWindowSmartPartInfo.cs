@@ -1,10 +1,10 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using DevExpress.CompositeUI.Workspaces;
+using CABDevExpress.Workspaces;
 using Microsoft.Practices.CompositeUI.WinForms;
 
-namespace DevExpress.CompositeUI.SmartPartInfos
+namespace CABDevExpress.SmartPartInfos
 {
     /// <summary>
     /// Provides information to show smartparts in the <see cref="XtraWindowWorkspace"/>.
@@ -28,7 +28,7 @@ namespace DevExpress.CompositeUI.SmartPartInfos
         //-----
 
         ///
-        /// Whether the form shows in the Window taskbar
+        /// Whether or not the form shows in the Window taskbar
         ///
         [DefaultValue(false)]
         [Category("Layout")]

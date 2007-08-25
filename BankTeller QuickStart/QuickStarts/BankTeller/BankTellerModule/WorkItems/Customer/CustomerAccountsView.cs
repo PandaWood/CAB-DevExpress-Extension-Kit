@@ -12,6 +12,7 @@
 using System;
 using System.Windows.Forms;
 using BankTellerCommon;
+using BankTellerModule.Services;
 using DevExpress.Utils;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors;
@@ -21,12 +22,12 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
 	[SmartPart]
 	public partial class CustomerAccountsView : XtraUserControl
 	{
-		private Customer customer;
+		private BankTellerCommon.Customer customer;
 		private CustomerAccountService accountService;
 		private WorkItem workItem;
 
@@ -35,7 +36,7 @@ namespace BankTellerModule
 
 		// The Customer state is stored in our parent work item
 		[State]
-		public Customer Customer
+		public BankTellerCommon.Customer Customer
 		{
 			set { customer = value; }
 		}

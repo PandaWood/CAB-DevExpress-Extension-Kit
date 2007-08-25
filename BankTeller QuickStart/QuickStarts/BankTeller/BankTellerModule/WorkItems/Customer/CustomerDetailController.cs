@@ -9,19 +9,10 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.Practices.CompositeUI;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
-	// The CustomerDetailController is the controller used by CustomerDetailView.
-	// The detail view contains a "comments" button which dynamically shows the
-	// comments for the customer. The controller forwards this request on to the
-	// containing work item (CustomerWorkItem) to process, since the action takes
-	// place outside the confines of the detail view.
-
 	public class CustomerDetailController : Controller
 	{
 		public new CustomerWorkItem WorkItem

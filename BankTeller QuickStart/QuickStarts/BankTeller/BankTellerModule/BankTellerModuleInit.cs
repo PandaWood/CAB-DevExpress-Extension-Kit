@@ -10,6 +10,7 @@
 //===============================================================================
 
 using BankTellerCommon;
+using BankTellerModule.WorkItems.BankTeller;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;

@@ -9,15 +9,11 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using BankTellerCommon;
+using BankTellerModule.Services;
 using Microsoft.Practices.CompositeUI;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.BankTeller
 {
-	// The CustomerQueueController is the controller used by CustomerQueueView.
-	// The queue view displays a list of customers in your queue, so the user can
-	// select a customer and view/edit the details of them.
-
 	public class CustomerQueueController : Controller
 	{
 		// We depend on the customer queue service to tell us which customer is next
@@ -34,12 +30,12 @@ namespace BankTellerModule
 			get { return base.WorkItem as BankTellerWorkItem; }
 		}
 
-		public Customer GetNextCustomerInQueue()
+		public BankTellerCommon.Customer GetNextCustomerInQueue()
 		{
 			return customerQueueService.GetNext();
 		}
 
-		public void WorkWithCustomer(Customer customer)
+		public void WorkWithCustomer(BankTellerCommon.Customer customer)
 		{
 			WorkItem.WorkWithCustomer(customer);
 		}

@@ -12,7 +12,7 @@
 using System.Threading;
 using DevExpress.XtraEditors;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.BankTeller
 {
 	public partial class UserInfoView : XtraUserControl
 	{

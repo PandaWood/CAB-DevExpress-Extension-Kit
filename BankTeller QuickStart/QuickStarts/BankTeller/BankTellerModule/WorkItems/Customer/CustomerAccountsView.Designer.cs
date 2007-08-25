@@ -9,7 +9,9 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-namespace BankTellerModule
+using CustomerAccount=BankTellerCommon.CustomerAccount;
+
+namespace BankTellerModule.WorkItems.Customer
 {
 	partial class CustomerAccountsView
 	{
@@ -50,7 +52,7 @@ namespace BankTellerModule
 			// 
 			// CustomerAccountBindingSource
 			// 
-			this.CustomerAccountBindingSource.DataSource = typeof(BankTellerCommon.CustomerAccount);
+			this.CustomerAccountBindingSource.DataSource = typeof(CustomerAccount);
 			// 
 			// gridAccounts
 			// 
@@ -62,7 +64,7 @@ namespace BankTellerModule
 			this.gridAccounts.Size = new System.Drawing.Size(445, 271);
 			this.gridAccounts.TabIndex = 2;
 			this.gridAccounts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridAccountsView});
+			                                                                                        	this.gridAccountsView});
 			// 
 			// gridView1
 			// 
@@ -88,9 +90,9 @@ namespace BankTellerModule
 
 		#endregion
 
-        private System.Windows.Forms.BindingSource CustomerAccountBindingSource;
-        private DevExpress.XtraGrid.GridControl gridAccounts;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridAccountsView;
+		private System.Windows.Forms.BindingSource CustomerAccountBindingSource;
+		private DevExpress.XtraGrid.GridControl gridAccounts;
+		private DevExpress.XtraGrid.Views.Grid.GridView gridAccountsView;
 
 
 

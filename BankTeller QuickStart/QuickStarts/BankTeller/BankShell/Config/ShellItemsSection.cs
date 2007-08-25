@@ -9,7 +9,6 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System.Collections.Generic;
 using System.Configuration;
 
 namespace BankShell

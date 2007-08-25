@@ -12,24 +12,18 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using BankTellerCommon;
+using CABDevExpress.SmartPartInfos;
+using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
+using Microsoft.Practices.CompositeUI.EventBroker;
 using Microsoft.Practices.CompositeUI.SmartParts;
-using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 using Microsoft.Practices.CompositeUI.WinForms;
-using BankTellerCommon;
-using Microsoft.Practices.CompositeUI.EventBroker;
-using DevExpress.XtraBars;
-using DevExpress.CompositeUI.SmartPartInfos;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
-	// The CustomerWorkItem represents the use case of editing a customer's data.
-	// It contains the views necessary to edit a single customer. When it's time
-	// to edit a customer, the work item's parent calls Run and passes the
-	// workspace where the editing will take place.
-
 	public class CustomerWorkItem : WorkItem
 	{
 		public static readonly string CUSTOMERDETAIL_TABWORKSPACE = "tabbedWorkspace1";
@@ -55,12 +49,13 @@ namespace BankTellerModule
 
 			AddMenuItems();
 
-			Customer customer = (Customer)State[StateConstants.CUSTOMER];
+			BankTellerCommon.Customer customer = (BankTellerCommon.Customer)State[StateConstants.CUSTOMER];
+
 			OnStatusTextUpdate(string.Format("Editing {0}, {1}", customer.LastName, customer.FirstName));
-            WindowSmartPartInfo smartPartInfo = new WindowSmartPartInfo();
-		    smartPartInfo.Title = customer.LastName + " " + customer.FirstName;
-            customerSummaryView.Dock = DockStyle.Fill;
-		    parentWorkspace.Show(customerSummaryView, smartPartInfo);
+			WindowSmartPartInfo smartPartInfo = new WindowSmartPartInfo();
+			smartPartInfo.Title = customer.LastName + " " + customer.FirstName;
+			customerSummaryView.Dock = DockStyle.Fill;
+			parentWorkspace.Show(customerSummaryView, smartPartInfo);
 
 			UpdateUserAddressLabel(customer);
 
@@ -71,7 +66,7 @@ namespace BankTellerModule
 			customerSummaryView.FocusFirstTab();
 		}
 
-		private void UpdateUserAddressLabel(Customer customer)
+		private void UpdateUserAddressLabel(BankTellerCommon.Customer customer)
 		{
 			if (addressLabel == null)
 			{
@@ -85,9 +80,9 @@ namespace BankTellerModule
 		{
 			if (editCustomerMenuItem1 == null)
 			{
-                editCustomerMenuItem1 = new BarButtonItem();
-                editCustomerMenuItem1.Caption = "Edit";
-                UIExtensionSites[Properties.Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
+				editCustomerMenuItem1 = new BarButtonItem();
+				editCustomerMenuItem1.Caption = "Edit";
+				UIExtensionSites[Properties.Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
 			}
 		}
 
@@ -162,6 +157,5 @@ namespace BankTellerModule
 				toolTip.Show(tooltipText, form, form.Size.Width - 30, 30, 3000);
 			}
 		}
-
 	}
 }

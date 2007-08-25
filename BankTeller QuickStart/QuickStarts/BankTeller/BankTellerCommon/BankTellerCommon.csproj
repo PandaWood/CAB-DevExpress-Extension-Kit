@@ -38,15 +38,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Practices.CompositeUI, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DevExpress.CompositeUI\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.CompositeUI.WinForms, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DevExpress.CompositeUI\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\DevExpress.CompositeUI\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <HintPath>..\..\..\..\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

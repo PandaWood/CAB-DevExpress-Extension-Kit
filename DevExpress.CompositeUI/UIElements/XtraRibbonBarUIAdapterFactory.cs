@@ -2,7 +2,7 @@ using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace DevExpress.CompositeUI.UIElements
+namespace CABDevExpress.UIElements
 {
     /// <summary>
     /// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraBar-related UI Elements.
@@ -32,8 +32,8 @@ namespace DevExpress.CompositeUI.UIElements
                     ((RibbonPageGroup)uiElement).Ribbon.Items);
 
             if (uiElement is BarItemWrapper)
-                return
-                        new BarLinksOwnerCollectionUIAdapter(((BarItemWrapper)uiElement).Item, ((BarItemWrapper)uiElement).ItemLinks);
+                return new BarLinksOwnerCollectionUIAdapter(((BarItemWrapper)uiElement).Item, 
+					((BarItemWrapper)uiElement).ItemLinks);
 
             throw ExceptionFactory.CreateInvalidAdapterElementType(uiElement.GetType(), GetType());
         }

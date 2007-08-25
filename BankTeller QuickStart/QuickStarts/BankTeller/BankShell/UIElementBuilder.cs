@@ -23,7 +23,7 @@ namespace BankShell
 
                 workItem.UIExtensionSites[menuItem.Site].Add(uiMenuItem);
 
-                if (menuItem.Register == true)
+                if (menuItem.Register)
                     workItem.UIExtensionSites.RegisterSite(menuItem.RegistrationSite, uiMenuItem);
 
                 if (!String.IsNullOrEmpty(menuItem.CommandName))

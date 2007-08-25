@@ -28,7 +28,7 @@ namespace BankTellerModule.WorkItems.BankTeller
         /// </summary>
         private void InitializeComponent()
         {
-            this.xtraNavBarGroupSmartPartInfo1 = new DevExpress.CompositeUI.SmartPartInfos.XtraNavBarGroupSmartPartInfo();
+			this.xtraNavBarGroupSmartPartInfo1 = new CABDevExpress.SmartPartInfos.XtraNavBarGroupSmartPartInfo();
             this.infoProvider = new Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfoProvider();
             this.SuspendLayout();
             // 
@@ -49,7 +49,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 
         #endregion
 
-        private DevExpress.CompositeUI.SmartPartInfos.XtraNavBarGroupSmartPartInfo xtraNavBarGroupSmartPartInfo1;
+		private CABDevExpress.SmartPartInfos.XtraNavBarGroupSmartPartInfo xtraNavBarGroupSmartPartInfo1;
         private Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfoProvider infoProvider;
     }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace DevExpress.CompositeUI
+namespace CABDevExpress
 {
     internal static class ExceptionFactory
     {

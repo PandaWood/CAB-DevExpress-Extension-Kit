@@ -11,11 +11,12 @@
 
 using System;
 using BankTellerCommon;
+using BankTellerModule.WorkItems.Customer;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
 	[SmartPart]
 	public partial class CustomerSummaryView : XtraUserControl

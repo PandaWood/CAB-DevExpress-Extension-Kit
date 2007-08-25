@@ -11,7 +11,7 @@
 
 using DevExpress.XtraEditors;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.BankTeller
 {
 	partial class CustomerQueueView
 	{
@@ -41,69 +41,69 @@ namespace BankTellerModule
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnNextCustomer = new DevExpress.XtraEditors.SimpleButton();
-            this.listCustomers = new ListBoxControl();
-            this.label1 = new LabelControl();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnNextCustomer);
-            this.panel1.Controls.Add(this.listCustomers);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(189, 401);
-            this.panel1.TabIndex = 0;
-            // 
-            // btnNextCustomer
-            // 
-            this.btnNextCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNextCustomer.Location = new System.Drawing.Point(8, 28);
-            this.btnNextCustomer.Name = "btnNextCustomer";
-            this.btnNextCustomer.Size = new System.Drawing.Size(173, 26);
-            this.btnNextCustomer.TabIndex = 5;
-            this.btnNextCustomer.Text = "Accept Customer";
-            this.btnNextCustomer.Click += new System.EventHandler(this.OnAcceptCustomer);
-            // 
-            // listCustomers
-            // 
-            this.listCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.listCustomers.DisplayMember = "Count";
-            this.listCustomers.Location = new System.Drawing.Point(8, 61);
-            this.listCustomers.Name = "listCustomers";
-            this.listCustomers.Size = new System.Drawing.Size(173, 328);
-            this.listCustomers.TabIndex = 4;
-            this.listCustomers.ValueMember = "Count";
-            this.listCustomers.SelectedIndexChanged += new System.EventHandler(this.OnCustomerSelectionChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "My Customers";
-            // 
-            // CustomerQueueView
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
-            this.Name = "CustomerQueueView";
-            this.Size = new System.Drawing.Size(189, 401);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.btnNextCustomer = new DevExpress.XtraEditors.SimpleButton();
+			this.listCustomers = new ListBoxControl();
+			this.label1 = new LabelControl();
+			this.panel1.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.btnNextCustomer);
+			this.panel1.Controls.Add(this.listCustomers);
+			this.panel1.Controls.Add(this.label1);
+			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel1.Location = new System.Drawing.Point(0, 0);
+			this.panel1.Name = "panel1";
+			this.panel1.Padding = new System.Windows.Forms.Padding(5);
+			this.panel1.Size = new System.Drawing.Size(189, 401);
+			this.panel1.TabIndex = 0;
+			// 
+			// btnNextCustomer
+			// 
+			this.btnNextCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+			                                                                    | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnNextCustomer.Location = new System.Drawing.Point(8, 28);
+			this.btnNextCustomer.Name = "btnNextCustomer";
+			this.btnNextCustomer.Size = new System.Drawing.Size(173, 26);
+			this.btnNextCustomer.TabIndex = 5;
+			this.btnNextCustomer.Text = "Accept Customer";
+			this.btnNextCustomer.Click += new System.EventHandler(this.OnAcceptCustomer);
+			// 
+			// listCustomers
+			// 
+			this.listCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+			                                                                   | System.Windows.Forms.AnchorStyles.Left)
+			                                                                  | System.Windows.Forms.AnchorStyles.Right)));
+			this.listCustomers.DisplayMember = "Count";
+			this.listCustomers.Location = new System.Drawing.Point(8, 61);
+			this.listCustomers.Name = "listCustomers";
+			this.listCustomers.Size = new System.Drawing.Size(173, 328);
+			this.listCustomers.TabIndex = 4;
+			this.listCustomers.ValueMember = "Count";
+			this.listCustomers.SelectedIndexChanged += new System.EventHandler(this.OnCustomerSelectionChanged);
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Location = new System.Drawing.Point(8, 5);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(122, 20);
+			this.label1.TabIndex = 3;
+			this.label1.Text = "My Customers";
+			// 
+			// CustomerQueueView
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.Controls.Add(this.panel1);
+			this.Name = "CustomerQueueView";
+			this.Size = new System.Drawing.Size(189, 401);
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
+			this.ResumeLayout(false);
 
 		}
 

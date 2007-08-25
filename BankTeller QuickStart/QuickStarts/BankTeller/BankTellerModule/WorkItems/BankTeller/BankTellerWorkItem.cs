@@ -12,16 +12,14 @@
 using System.Windows.Forms;
 using BankTellerCommon;
 using BankTellerModule.WorkItems.BankTeller;
+using BankTellerModule.WorkItems.Customer;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Services;
 using Microsoft.Practices.CompositeUI.SmartParts;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.BankTeller
 {
-	// The BankTellerWorkItem is the core work item of the module. Rather than
-	// representing a single use case, it is the container of all the other
-	// smaller work items in the system.
 	public class BankTellerWorkItem : WorkItem, IShowInShell
 	{
 		private BarItem queueItem;
@@ -57,8 +55,8 @@ namespace BankTellerModule
 			AddMenuItems();
 
 			sideBar.Show(sideBarView);
-            sideBar.Show(statsBarView);
-            this.Activate();
+			sideBar.Show(statsBarView);
+			this.Activate();
 		}
 
 		private void AddMenuItems()
@@ -66,14 +64,14 @@ namespace BankTellerModule
 			if (queueItem == null)
 			{
 				queueItem = new BarSubItem();
-                queueItem.Caption = "Queue";
+				queueItem.Caption = "Queue";
 
-                UIExtensionSites[UIExtensionConstants.FILE].Add(queueItem);
-				UIExtensionSites.RegisterSite(UIExtensionConstants.QUEUE, (BarSubItem)queueItem);
+				UIExtensionSites[UIExtensionConstants.FILE].Add(queueItem);
+				UIExtensionSites.RegisterSite(UIExtensionConstants.QUEUE, queueItem);
 
 				BarButtonItem acceptCustomer = new BarButtonItem();
-                acceptCustomer.Caption = "Accept Customer";
-                acceptCustomer.ItemShortcut =  new BarShortcut(Keys.Control | Keys.A);
+				acceptCustomer.Caption = "Accept Customer";
+				acceptCustomer.ItemShortcut =  new BarShortcut(Keys.Control | Keys.A);
 				UIExtensionSites[UIExtensionConstants.QUEUE].Add(acceptCustomer);
 
 				Commands[CommandConstants.ACCEPT_CUSTOMER].AddInvoker(acceptCustomer, "ItemClick");
@@ -84,11 +82,11 @@ namespace BankTellerModule
 		{
 			set
 			{
-                //if (queueItem != null && queueItem.Visibility != value)
-                if (queueItem != null && ((queueItem.Visibility == BarItemVisibility.Always ? true : false) != value))
-                {
-                    queueItem.Visibility = value ? BarItemVisibility.Always : BarItemVisibility.Never;
-                }
+				//if (queueItem != null && queueItem.Visibility != value)
+				if (queueItem != null && ((queueItem.Visibility == BarItemVisibility.Always ? true : false) != value))
+				{
+					queueItem.Visibility = value ? BarItemVisibility.Always : BarItemVisibility.Never;
+				}
 			}
 		}
 
@@ -106,7 +104,7 @@ namespace BankTellerModule
 		// Editing a customer is self-contained in a work item (the CustomerWorkItem)
 		// so we end up with one CustomerWorkItem contained in ourselves for
 		// each customer that is being edited.
-		public void WorkWithCustomer(Customer customer)
+		public void WorkWithCustomer(BankTellerCommon.Customer customer)
 		{
 			// Construct a key to register the work item in ourselves
 			string key = string.Format("Customer#{0}", customer.ID);

@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using DevExpress.XtraBars;
 
-namespace DevExpress.CompositeUI.UIElements
+namespace CABDevExpress.UIElements
 {
     public class BarItemWrapper
     {
@@ -13,19 +10,18 @@ namespace DevExpress.CompositeUI.UIElements
             this.itemLinks = itemLinkCollection;
         }
 
-        private BarItem item;
+        private readonly BarItem item;
 
         public BarItem Item
         {
             get { return item; }
         }
 
-        private BarItemLinkCollection itemLinks;
+        private readonly BarItemLinkCollection itemLinks;
 
         public BarItemLinkCollection ItemLinks
         {
             get { return itemLinks; }
         }
-
     }
 }

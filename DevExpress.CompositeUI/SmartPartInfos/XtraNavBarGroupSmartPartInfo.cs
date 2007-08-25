@@ -1,4 +1,4 @@
-namespace DevExpress.CompositeUI.SmartPartInfos
+namespace CABDevExpress.SmartPartInfos
 {
     public class XtraNavBarGroupSmartPartInfo : XtraImageSmartPartInfo
     {

@@ -10,27 +10,21 @@
 //===============================================================================
 
 using System;
-using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;
-using BankTellerCommon;
-using DevExpress.XtraEditors;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
-	// This SmartPart implements ISmartPartInfoProvider because it is displayed
-	// dynamically in its tabbed workspace. The SmartPartInfo lets us tell the
-	// tabbed workspace what the name of our tab should be.
-
 	[SmartPart]
 	public partial class CustomerCommentsView : XtraUserControl
 	{
 		// The Customer state is stored in our parent work item
 
-		private Customer customer = null;
+		private BankTellerCommon.Customer customer = null;
 
 		[State]
-		public Customer Customer
+		public BankTellerCommon.Customer Customer
 		{
 			set { customer = value; }
 		}

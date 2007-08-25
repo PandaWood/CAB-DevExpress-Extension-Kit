@@ -9,7 +9,7 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.BankTeller
 {
 	partial class UserInfoView
 	{

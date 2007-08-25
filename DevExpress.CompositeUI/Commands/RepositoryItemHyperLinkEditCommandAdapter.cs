@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using DevExpress.XtraEditors.Repository;
 using Microsoft.Practices.CompositeUI.Commands;
 
-namespace DevExpress.CompositeUI.Commands
+namespace CABDevExpress.Commands
 {
 	public class RepositoryItemHyperLinkEditCommandAdapter: EventCommandAdapter<RepositoryItemHyperLinkEdit>
 	{

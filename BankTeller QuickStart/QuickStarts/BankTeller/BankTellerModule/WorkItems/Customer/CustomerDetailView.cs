@@ -10,19 +10,18 @@
 //===============================================================================
 
 using System;
-using BankTellerCommon;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
 	[SmartPart]
 	public partial class CustomerDetailView : XtraUserControl
 	{
-		private Customer customer;
+		private BankTellerCommon.Customer customer;
 		private WorkItem parentWorkItem;
 		private CustomerDetailController controller;
 
@@ -39,7 +38,7 @@ namespace BankTellerModule
 
 		// The Customer state is stored in our parent work item
 		[State]
-		public Customer Customer
+		public BankTellerCommon.Customer Customer
 		{
 			set { customer = value; }
 		}

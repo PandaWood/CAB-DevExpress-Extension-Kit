@@ -1,7 +1,7 @@
 using System.Windows.Forms;
 using Microsoft.Practices.CompositeUI;
 
-namespace DevExpress.CompositeUI
+namespace CABDevExpress
 {
     /// <summary>
     /// A CAB shell application class used to start an application using a specified Form.

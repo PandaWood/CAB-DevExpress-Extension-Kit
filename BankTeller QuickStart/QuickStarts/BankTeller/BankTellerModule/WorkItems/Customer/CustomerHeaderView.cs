@@ -10,12 +10,11 @@
 //===============================================================================
 
 using System;
-using BankTellerCommon;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
 	[SmartPart]
 	public partial class CustomerHeaderView : XtraUserControl
@@ -23,12 +22,12 @@ namespace BankTellerModule
 		// The Customer state is stored in our parent work item
 
 		[State]
-		public Customer Customer
+		public BankTellerCommon.Customer Customer
 		{
 			set { customer = value; }
 		}
 
-		private Customer customer = null;
+		private BankTellerCommon.Customer customer = null;
 
 		public CustomerHeaderView()
 		{

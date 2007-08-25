@@ -1,5 +1,6 @@
-using DevExpress.CompositeUI.Commands;
-using DevExpress.CompositeUI.UIElements;
+using CABDevExpress.Commands;
+using CABDevExpress.UIElements;
+using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraNavBar;
@@ -7,9 +8,8 @@ using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.WinForms;
-using DevExpress.Utils.Menu;
 
-namespace DevExpress.CompositeUI
+namespace CABDevExpress
 {
     /// <summary>
     /// Defines an abstract cab application which shows a shell based on a Form that uses DevExpress WinForms components.

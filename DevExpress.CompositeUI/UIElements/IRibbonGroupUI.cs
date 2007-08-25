@@ -1,4 +1,4 @@
-namespace DevExpress.CompositeUI.UIElements
+namespace CABDevExpress.UIElements
 {
 	public interface IRibbonGroupUI
 	{

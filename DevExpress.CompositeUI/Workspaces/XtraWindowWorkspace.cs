@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using DevExpress.CompositeUI.SmartPartInfos;
+using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace DevExpress.CompositeUI.Workspaces
+namespace CABDevExpress.Workspaces
 {
     /// <summary>
     /// Implements a Workspace that shows smartparts in windows.

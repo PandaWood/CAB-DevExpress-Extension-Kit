@@ -9,8 +9,11 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using DevExpress.CompositeUI.Workspaces;
-namespace BankTellerModule
+using CustomerAccountsView=BankTellerModule.WorkItems.Customer.CustomerAccountsView;
+using CustomerDetailView=BankTellerModule.WorkItems.Customer.CustomerDetailView;
+using CustomerHeaderView=BankTellerModule.WorkItems.Customer.CustomerHeaderView;
+
+namespace BankTellerModule.WorkItems.Customer
 {
 	partial class CustomerSummaryView
 	{
@@ -41,14 +44,14 @@ namespace BankTellerModule
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.tabbedWorkspace1 = new DevExpress.CompositeUI.Workspaces.XtraTabWorkspace();
+			this.tabbedWorkspace1 = new CABDevExpress.Workspaces.XtraTabWorkspace();
 			this.tabSummary = new DevExpress.XtraTab.XtraTabPage();
-			this.customerDetailView1 = new BankTellerModule.CustomerDetailView();
+			this.customerDetailView1 = new CustomerDetailView();
 			this.tabAccounts = new DevExpress.XtraTab.XtraTabPage();
-			this.customerAccountsView1 = new BankTellerModule.CustomerAccountsView();
+			this.customerAccountsView1 = new CustomerAccountsView();
 			this.SaveButton = new DevExpress.XtraEditors.SimpleButton();
 			this.customerContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.customerHeaderView1 = new BankTellerModule.CustomerHeaderView();
+			this.customerHeaderView1 = new CustomerHeaderView();
 			this.infoProvider = new Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfoProvider();
 			((System.ComponentModel.ISupportInitialize)(this.tabbedWorkspace1)).BeginInit();
 			this.tabbedWorkspace1.SuspendLayout();
@@ -59,16 +62,16 @@ namespace BankTellerModule
 			// tabbedWorkspace1
 			// 
 			this.tabbedWorkspace1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-						| System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			                                                                      | System.Windows.Forms.AnchorStyles.Left)
+			                                                                     | System.Windows.Forms.AnchorStyles.Right)));
 			this.tabbedWorkspace1.Location = new System.Drawing.Point(4, 96);
 			this.tabbedWorkspace1.Name = "tabbedWorkspace1";
 			this.tabbedWorkspace1.SelectedTabPage = this.tabSummary;
 			this.tabbedWorkspace1.Size = new System.Drawing.Size(539, 320);
 			this.tabbedWorkspace1.TabIndex = 1;
 			this.tabbedWorkspace1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.tabSummary,
-            this.tabAccounts});
+			                                                                             	this.tabSummary,
+			                                                                             	this.tabAccounts});
 			// 
 			// tabSummary
 			// 
@@ -123,7 +126,7 @@ namespace BankTellerModule
 			// customerHeaderView1
 			// 
 			this.customerHeaderView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			                                                                        | System.Windows.Forms.AnchorStyles.Right)));
 			this.customerHeaderView1.Location = new System.Drawing.Point(4, 4);
 			this.customerHeaderView1.Name = "customerHeaderView1";
 			this.customerHeaderView1.Size = new System.Drawing.Size(535, 85);
@@ -149,14 +152,14 @@ namespace BankTellerModule
 
 		#endregion
 
-		private DevExpress.CompositeUI.Workspaces.XtraTabWorkspace tabbedWorkspace1;
+		private CABDevExpress.Workspaces.XtraTabWorkspace tabbedWorkspace1;
 		private DevExpress.XtraTab.XtraTabPage tabSummary;
 		private CustomerDetailView customerDetailView1;
-        private DevExpress.XtraTab.XtraTabPage tabAccounts;
+		private DevExpress.XtraTab.XtraTabPage tabAccounts;
 		private CustomerAccountsView customerAccountsView1;
 		private CustomerHeaderView customerHeaderView1;
 		private DevExpress.XtraEditors.SimpleButton SaveButton;
-        private System.Windows.Forms.ContextMenuStrip customerContextMenu;
-        private Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfoProvider infoProvider;
+		private System.Windows.Forms.ContextMenuStrip customerContextMenu;
+		private Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfoProvider infoProvider;
 	}
 }

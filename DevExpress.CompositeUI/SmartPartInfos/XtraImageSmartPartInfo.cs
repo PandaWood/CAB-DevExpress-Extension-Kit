@@ -2,7 +2,7 @@ using System.ComponentModel;
 using System.Drawing;
 using Microsoft.Practices.CompositeUI.SmartParts;
 
-namespace DevExpress.CompositeUI.SmartPartInfos
+namespace CABDevExpress.SmartPartInfos
 {
     public class XtraImageSmartPartInfo : SmartPartInfo
     {

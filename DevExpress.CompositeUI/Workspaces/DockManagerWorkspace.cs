@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
-using DevExpress.CompositeUI.SmartPartInfos;
+using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraBars.Docking;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace DevExpress.CompositeUI.Workspaces
+namespace CABDevExpress.Workspaces
 {
     /// <summary>
     /// Implements a Workspace that shows smartparts in DockedWindows
@@ -17,10 +17,10 @@ namespace DevExpress.CompositeUI.Workspaces
         #region Private Members
 
         private readonly Dictionary<Control, DockPanel> dockPanelDictionary = new Dictionary<Control, DockPanel>();
-        private bool fireActivatedFromDockPanel = true; // TODO field never used
         private readonly DockManager dockManager;
+    	private bool fireActivatedFromDockPanel;	//TODO this value is never read
 
-        #endregion
+    	#endregion
 
         #region Constructors
 
@@ -29,8 +29,7 @@ namespace DevExpress.CompositeUI.Workspaces
         /// windows.
         /// </summary>
         public DockManagerWorkspace()
-        {
-        }
+        { }
 
         /// <summary>
         /// Initializes the workspace with the DockManager which a all new DockPanels are added to. 
@@ -140,15 +139,6 @@ namespace DevExpress.CompositeUI.Workspaces
             //////dockPanel.Visibility = info.Visibility;
         }
 
-        /// <summary>
-        /// Sets the location information for the given DockPaneø
-        /// </summary>
-        protected static void SetDockPanelLocation(DockPanel dockPanel, DockManagerSmartPartInfo info)
-        {
-            //We do not need this!
-            //dockPanel.Location = info.Location;
-        }
-
         #endregion
 
         #region Private
@@ -164,136 +154,10 @@ namespace DevExpress.CompositeUI.Workspaces
             }
         }
 
-        /* TODO : Unused Code
-        private void WireUpDockPanel(DockPanel dockPanel)
-        {
-            //dockPanel.ClosingPanel. += new EventHandler<WorkspaceCancelEventArgs>(DockPanelClosing);
-            //dockPanel.ClosedPanel += new EventHandler<WorkspaceEventArgs>(DockPanelClosed);
-            //cokcPanel.WindowFormActivated += new EventHandler<WorkspaceEventArgs>(DockPanelActivated);
-        }
-
-        private void DockPanelActivated(object sender, WorkspaceEventArgs e)
-        {
-            if (fireActivatedFromDockPanel)
-            {
-                RaiseSmartPartActivated(e.SmartPart);
-                SetActiveSmartPart(e.SmartPart);
-            }
-        }
-
-        private void DockPanelClosed(object sender, WorkspaceEventArgs e)
-        {
-            RemoveEntry((Control) e.SmartPart);
-            InnerSmartParts.Remove((Control) e.SmartPart);
-        }
-
-        private void DockPanelClosing(object sender, WorkspaceCancelEventArgs e)
-        {
-            RaiseSmartPartClosing(e);
-        }
-
-        private void CalculateSize(Control smartPart, DockPanel dockPanel)
-        {
-            //			dockPanel.Size = new Size(smartPart.Size.Width, smartPart.Size.Height + 20);
-        }
-
-        private void RemoveEntry(Control spcontrol)
-        {
-            dockPanelDictionary.Remove(spcontrol);
-        }
-        */
-
         private static void ShowDockPanel(DockPanel dockPanel, DockManagerSmartPartInfo smartPartInfo)
         {
             SetDockPanelProperties(dockPanel, smartPartInfo);
         }
-
-        #endregion
-
-        #region Private DockPanel Class
-
-        /// <summary>
-        /// DockPanelWindow class
-        /// </summary>
-        //private class DockPanelWindow : DockPanel
-        //{
-        //    /// <summary>
-        //    /// Fires when DockPanel is closing
-        //    /// </summary>
-        //    public event EventHandler<WorkspaceCancelEventArgs> DockPanelClosing;
-
-        //    /// <summary>
-        //    /// Fires when DockPanel is closed
-        //    /// </summary>
-        //    public event EventHandler<WorkspaceEventArgs> DockPanelClosed;
-
-        //    /// <summary>
-        //    /// Fires when DockPanel is activated
-        //    /// </summary>
-        //    public event EventHandler<WorkspaceEventArgs> DockPanelActivated;
-
-        //    /// <summary>
-        //    /// Handles Activated Event.
-        //    /// </summary>
-        //    /// <param name="e"></param>
-        //    protected override void OnActivated(EventArgs e)
-        //    {
-        //        if (this.Controls.Count > 0)
-        //        {
-        //            this.DockPanelActivated(this, new WorkspaceEventArgs(this.Controls[0]));
-        //        }
-
-        //        base.OnActivated(e);
-        //    }
-
-
-        //    /// <summary>
-        //    /// Handles the Closing Event
-        //    /// </summary>
-        //    /// <param name="e"></param>
-        //    protected override void OnClosing(CancelEventArgs e)
-        //    {
-        //        if (this.Controls.Count > 0)
-        //        {
-        //            WorkspaceCancelEventArgs cancelArgs = FireDockPanelClosing(this.Controls[0]);
-        //            e.Cancel = cancelArgs.Cancel;
-
-        //            if (cancelArgs.Cancel == false)
-        //            {
-        //                this.Controls[0].Hide();
-        //            }
-        //        }
-
-        //        base.OnClosing(e);
-        //    }
-
-        //    /// <summary>
-        //    /// Handles the Closed Event
-        //    /// </summary>
-        //    /// <param name="e"></param>
-        //    protected override void OnClosed(EventArgs e)
-        //    {
-        //        if ((this.DockPanelClosed != null) &&
-        //            (this.Controls.Count > 0))
-        //        {
-        //            this.DockPanelClosed(this, new WorkspaceEventArgs(this.Controls[0]));
-        //        }
-
-        //        base.OnClosed(e);
-        //    }
-
-        //    private WorkspaceCancelEventArgs FireDockPanelClosing(object smartPart)
-        //    {
-        //        WorkspaceCancelEventArgs cancelArgs = new WorkspaceCancelEventArgs(smartPart);
-
-        //        if (this.DockPanel != null)
-        //        {
-        //            this.DockPanelClosing(this, cancelArgs);
-        //        }
-
-        //        return cancelArgs;
-        //    }
-        //}
 
         #endregion
 
@@ -325,7 +189,6 @@ namespace DevExpress.CompositeUI.Workspaces
         {
             DockPanel dockPanel = dockPanelDictionary[smartPart];
             SetDockPanelProperties(dockPanel, smartPartInfo);
-            SetDockPanelLocation(dockPanel, smartPartInfo);
         }
 
         /// <summary>

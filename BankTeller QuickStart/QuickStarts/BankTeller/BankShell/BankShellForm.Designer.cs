@@ -51,7 +51,7 @@ namespace BankShell
 			this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-			this.sideBarWorkspace = new DevExpress.CompositeUI.Workspaces.XtraNavBarWorkspace();
+			this.sideBarWorkspace = new CABDevExpress.Workspaces.XtraNavBarWorkspace();
 			this.xtraTabbedMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
 			this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -175,7 +175,7 @@ namespace BankShell
         public DevExpress.XtraBars.BarSubItem barSubItemFile;
         public DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
-        private DevExpress.CompositeUI.Workspaces.XtraNavBarWorkspace sideBarWorkspace;
+        private CABDevExpress.Workspaces.XtraNavBarWorkspace sideBarWorkspace;
         public DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager;
         private DevExpress.XtraEditors.SplitterControl splitterControl1;
 	}

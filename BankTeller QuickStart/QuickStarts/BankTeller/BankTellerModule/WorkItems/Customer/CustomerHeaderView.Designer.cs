@@ -9,7 +9,7 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-namespace BankTellerModule
+namespace BankTellerModule.WorkItems.Customer
 {
 	partial class CustomerHeaderView
 	{
@@ -80,7 +80,7 @@ namespace BankTellerModule
 			// txtCustomerID
 			// 
 			this.txtCustomerID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			                                                                  | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtCustomerID.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "ID", true));
 			this.txtCustomerID.Location = new System.Drawing.Point(73, 6);
 			this.txtCustomerID.Name = "txtCustomerID";
@@ -91,22 +91,22 @@ namespace BankTellerModule
 			// txtFirstName
 			// 
 			this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			                                                                 | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtFirstName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "FirstName", true));
 			this.txtFirstName.Location = new System.Drawing.Point(73, 32);
 			this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Properties.ReadOnly = true;
+			this.txtFirstName.Properties.ReadOnly = true;
 			this.txtFirstName.Size = new System.Drawing.Size(176, 20);
 			this.txtFirstName.TabIndex = 4;
 			// 
 			// txtLastName
 			// 
 			this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			                                                                | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtLastName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "LastName", true));
 			this.txtLastName.Location = new System.Drawing.Point(73, 59);
 			this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Properties.ReadOnly = true;
+			this.txtLastName.Properties.ReadOnly = true;
 			this.txtLastName.Size = new System.Drawing.Size(176, 20);
 			this.txtLastName.TabIndex = 5;
 			// 

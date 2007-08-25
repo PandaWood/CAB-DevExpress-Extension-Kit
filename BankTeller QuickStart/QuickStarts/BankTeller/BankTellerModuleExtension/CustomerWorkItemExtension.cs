@@ -1,13 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using BankTellerModule.WorkItems.Customer;
 using Microsoft.Practices.CompositeUI;
-using BankTellerModule;
 using Microsoft.Practices.CompositeUI.WinForms;
-using Microsoft.Practices.CompositeUI.SmartParts;
-using System.Windows.Forms;
-using BankTellerCommon;
-using Microsoft.Practices.CompositeUI.UIElements;
 
 namespace CustomerMapExtensionModule
 {

@@ -3,18 +3,18 @@ using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace DevExpress.CompositeUI.UIElements
+namespace CABDevExpress.UIElements
 {
     /// <summary>
     /// An adapter that wraps a <see cref="BarItems"/> for use as an <see cref="IUIElementAdapter"/>.
     /// </summary>
     public class BarLinksCollectionUIAdapter : UIElementAdapter<BarItem>, IUIBarItemLinksAdapter
     {
-        private BarItems collection;
+        private readonly BarItems collection;
         protected BarItemLinkCollection linkCollection;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BarItemsUIAdapter"/> class.
+		/// Initializes a new instance of the <see cref="BarLinksCollectionUIAdapter"/> class.
         /// </summary>
         /// <param name="linkCollection"></param>
         /// <param name="collection"></param>
@@ -63,7 +63,7 @@ namespace DevExpress.CompositeUI.UIElements
         }
 
         /// <summary>
-        /// Returns the internal collection managed by the <see cref="BarItemsUIAdapter"/>
+		/// Returns the internal collection managed by the <see cref="BarLinksCollectionUIAdapter"/>
         /// </summary>
         public BarItemLinkCollection InternalCollection
         {
