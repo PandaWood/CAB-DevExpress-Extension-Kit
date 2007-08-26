@@ -44,15 +44,15 @@
     <Reference Include="DevExpress.XtraLayout.v7.2, Version=7.2.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" />
     <Reference Include="Microsoft.Practices.CompositeUI, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
+      <HintPath>..\..\..\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.CompositeUI.WinForms, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
+      <HintPath>..\..\..\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <HintPath>..\..\..\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -133,7 +133,7 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj">
+    <ProjectReference Include="..\..\..\CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj">
       <Project>{811DD8C8-6696-4566-A142-8ED28759D7A5}</Project>
       <Name>CABDevExpress.ExtensionKit</Name>
     </ProjectReference>

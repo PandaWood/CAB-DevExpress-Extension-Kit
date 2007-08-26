@@ -42,15 +42,15 @@
     <Reference Include="DevExpress.XtraEditors.v7.2, Version=7.2.3.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.CompositeUI, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
+      <HintPath>..\..\..\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.CompositeUI.WinForms, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
+      <HintPath>..\..\..\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+      <HintPath>..\..\..\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

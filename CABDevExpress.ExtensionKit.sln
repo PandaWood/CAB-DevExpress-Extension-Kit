@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CABDevExpress.ExtensionKit", "CABDevExpress.ExtensionKit.csproj", "{811DD8C8-6696-4566-A142-8ED28759D7A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CABDevExpress.ExtensionKit", "CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj", "{811DD8C8-6696-4566-A142-8ED28759D7A5}"
 	ProjectSection(WebsiteProperties) = preProject
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.Debug = "False"
@@ -26,7 +26,7 @@ Global
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs03.codeplex.com/
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = DevExpress.CompositeUI.csproj
+		SccProjectUniqueName1 = CABDevExpress.ExtensionKit.csproj
 		SccLocalPath1 = .
 	EndGlobalSection
 EndGlobal
