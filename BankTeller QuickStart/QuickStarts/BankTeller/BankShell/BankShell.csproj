@@ -123,7 +123,7 @@
     <Compile Include="UIElementBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\DevExpress.CompositeUI\CABDevExpress.ExtensionKit.csproj">
+    <ProjectReference Include="..\..\..\..\CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj">
       <Project>{811DD8C8-6696-4566-A142-8ED28759D7A5}</Project>
       <Name>CABDevExpress.ExtensionKit</Name>
     </ProjectReference>
