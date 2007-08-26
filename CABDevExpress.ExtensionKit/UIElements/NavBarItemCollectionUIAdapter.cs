@@ -13,6 +13,16 @@ namespace CABDevExpress.UIElements
         private NavItemCollection collection;
         private readonly NavLinkCollection linkCollection;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="NavBarItemCollectionUIAdapter"/> class.
+		/// </summary>
+		/// <param name="navBarGroup"></param>
+		public NavBarItemCollectionUIAdapter(NavBarGroup navBarGroup)
+			: this(navBarGroup.ItemLinks, navBarGroup.NavBar.Items)
+		{
+			// Do nothing.
+		}
+
         /// <summary>
         /// Initializes a new instance of the <see cref="NavBarItemCollectionUIAdapter"/> class.
         /// </summary>
