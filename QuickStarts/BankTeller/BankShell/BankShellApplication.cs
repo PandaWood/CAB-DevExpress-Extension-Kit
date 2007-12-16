@@ -26,6 +26,7 @@ namespace BankShell
         {
             DevExpress.UserSkins.BonusSkins.Register();
         	DevExpress.UserSkins.OfficeSkins.Register();
+        	DevExpress.UserSkins.XmasSkins.Register();
         	DevExpress.Skins.SkinManager.EnableFormSkins();
 
         	BankShellApplication app = new BankShellApplication();

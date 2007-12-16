@@ -1,10 +1,11 @@
 ------------------------------------------------------------------------------
-CAB DevExpress Extension Kit - 1st Release (Third GotDotNet Drop)
+CABDevExpress.ExtensionKit 3
 http://www.codeplex.com/CABDevExpress
 ------------------------------------------------------------------------------
 
-This is the first release of the CAB DevExpress Extension Kit on CodePlex
-(or the 3rd drop if you're coming from GotDotNet)
+This is the first release of the CAB DevExpress Extension Kit on CodePlex but
+because of the history before CodePlex, where 2 releases were made, is known 
+as Version 3.
 
 *** Release Notes ***
 
