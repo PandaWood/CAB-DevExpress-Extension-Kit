@@ -14,22 +14,14 @@ namespace CABDevExpress.Workspaces
     /// </summary>
     public class DockManagerWorkspace : Workspace<Control, DockManagerSmartPartInfo>
     {
-        #region Private Members
-
         private readonly Dictionary<Control, DockPanel> dockPanelDictionary = new Dictionary<Control, DockPanel>();
         private readonly DockManager dockManager;
-    	private bool fireActivatedFromDockPanel;	//TODO this value is never read
-
-    	#endregion
-
-        #region Constructors
 
         /// <summary>
         /// Initializes the workspace with no DockManager
         /// windows.
         /// </summary>
-        public DockManagerWorkspace()
-        { }
+        public DockManagerWorkspace() { }
 
         /// <summary>
         /// Initializes the workspace with the DockManager which a all new DockPanels are added to. 
@@ -41,10 +33,6 @@ namespace CABDevExpress.Workspaces
             this.dockManager = dockManager;
         }
 
-        #endregion
-
-        #region Public Properties
-
         /// <summary>
         /// Read-only view of DockPanelDictionary.
         /// </summary>
@@ -53,10 +41,6 @@ namespace CABDevExpress.Workspaces
         {
             get { return new ReadOnlyDictionary<Control, DockPanel>(dockPanelDictionary); }
         }
-
-        #endregion
-
-        #region Protected
 
         /// <summary>
         /// Creates a DockPanel if it does not already exist and adds the given control.
@@ -111,7 +95,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected static void SetDockPanelProperties(DockPanel dockPanel, DockManagerSmartPartInfo info)
         {
-            //TODO this code needs serious cleanup!!!
+            //TODO this code needs serious cleanup
 
             //dockPanel.ActiveChild = info.ActiveChild;
             //dockPanel.ActiveChildIndex = info.ActiveChildIndex;
@@ -139,10 +123,6 @@ namespace CABDevExpress.Workspaces
             //////dockPanel.Visibility = info.Visibility;
         }
 
-        #endregion
-
-        #region Private
-
         private void ControlDisposed(object sender, EventArgs e)
         {
             Control control = sender as Control;
@@ -159,26 +139,23 @@ namespace CABDevExpress.Workspaces
             SetDockPanelProperties(dockPanel, smartPartInfo);
         }
 
-        #endregion
-
-        #region Behavior overrides
-
         /// <summary>
         /// Shows the DockPanel for the smart part and brings it to the front.
         /// </summary>
         protected override void OnActivate(Control smartPart)
         {
-            // Prevent double firing from composer Workspace class and from DockPanel.
             try
             {
-                fireActivatedFromDockPanel = false;
+				// Prevent double firing from composer Workspace class and from DockPanel.
+//				fireActivatedFromDockPanel = false;		//TODO the problem is, this variable is never read anywhere
+
                 DockPanel dockPanel = dockPanelDictionary[smartPart];
                 dockPanel.BringToFront();
                 dockPanel.Show();
             }
             finally
             {
-                fireActivatedFromDockPanel = true;
+//                fireActivatedFromDockPanel = true;
             }
         }
 
@@ -206,8 +183,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnHide(Control smartPart)
         {
-            DockPanel dockPanel = dockPanelDictionary[smartPart];
-            dockPanel.Hide();
+        	dockPanelDictionary[smartPart].Hide();
         }
 
         /// <summary>
@@ -218,13 +194,10 @@ namespace CABDevExpress.Workspaces
             DockPanel dockPanel = dockPanelDictionary[smartPart];
             smartPart.Disposed -= ControlDisposed;
 
-            //// Remove the smartPart from the DockPanel to avoid disposing it.
-            dockPanel.Controls.Remove(smartPart);
+			dockPanel.Controls.Remove(smartPart);	// Remove the smartPart from the DockPanel to avoid disposing it
 
             dockPanel.Close();
             dockPanelDictionary.Remove(smartPart);
         }
-
-        #endregion
     }
 }

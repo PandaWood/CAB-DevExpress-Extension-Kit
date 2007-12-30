@@ -22,47 +22,47 @@ namespace CABDevExpress.UIElements
 			get { return this; }
 		}
 
-		private string ribbonPageName;
+		private string _ribbonPageName;
 
 		[Description("Name of the Ribbon Page to Place this Ribbon Group")]
 		[Category("Ribbon Data")]
 		public string RibbonPageName
 		{
-			get { return ribbonPageName; }
-			set { ribbonPageName = value; }
+			get { return _ribbonPageName; }
+			set { _ribbonPageName = value; }
 		}
 
 		[Description("Used to identify Unique Page Group where BarItems will be located")]
 		public string UniqueRibbonGroupName
 		{
-			get { return ribbonPageName + "_" + Name; }
+			get { return _ribbonPageName + "_" + Name; }
 		}
 
-		private DexButtonItem[] dexButtonItems;
+		private DXButtonItem[] _dxButtonItems;
 
 		[Category("Ribbon Data")]
 		[Description("Button Items To appear in Ribbon Page Group")]
-		public DexButtonItem[] BarButtonItems
+		public DXButtonItem[] BarButtonItems
 		{
-			get { return dexButtonItems; }
-			set { dexButtonItems = value; }
+			get { return _dxButtonItems; }
+			set { _dxButtonItems = value; }
 		}
 
-		private DexCheckItem[] barCheckItems;
+		private DexCheckItem[] _barCheckItems;
 
 		[Category("Ribbon Data")]
 		[Description("Check Items To appear in Ribbon Page Group")]
 		public DexCheckItem[] BarCheckItems
 		{
-			get { return barCheckItems; }
-			set { barCheckItems = value; }
+			get { return _barCheckItems; }
+			set { _barCheckItems = value; }
 		}
 	}
 
 	[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
 	public class DexCheckItem : BarCheckItem
 	{
-		private UIEvent uIIEvent;
+		private UIEvent _uiEvent;
 
 		[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
 		[Category("CAB")]
@@ -74,10 +74,10 @@ namespace CABDevExpress.UIElements
 			get
 			{
 				if (DesignMode)
-					uIIEvent = uIIEvent ?? new UIEvent();
-				return uIIEvent; //new UIEvent();//_UIEvent;
+					_uiEvent = _uiEvent ?? new UIEvent();
+				return _uiEvent; //new UIEvent();//_UIEvent;
 			}
-			set { uIIEvent = value; }
+			set { _uiEvent = value; }
 		}
 
 		/// <summary>
@@ -91,16 +91,16 @@ namespace CABDevExpress.UIElements
 	}
 
 	[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
-	public class DexButtonItem : BarButtonItem
+	public class DXButtonItem : BarButtonItem
 	{
-		public DexButtonItem()
+		public DXButtonItem()
 		{
 			if (DesignMode)
 			{
 			}
 		}
 
-		private UIEvent _UIEvent;
+		private UIEvent _uiEvent;
 
 		[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
 		[Category("CAB")]
@@ -112,10 +112,10 @@ namespace CABDevExpress.UIElements
 			get
 			{
 				if (DesignMode)
-					_UIEvent = _UIEvent ?? new UIEvent();
-				return _UIEvent;
+					_uiEvent = _uiEvent ?? new UIEvent();
+				return _uiEvent;
 			}
-			set { _UIEvent = value; }
+			set { _uiEvent = value; }
 		}
 
 		/// <summary>
@@ -131,7 +131,7 @@ namespace CABDevExpress.UIElements
 	/// <summary>
 	///  Enumeration of events 
 	/// </summary>
-	public enum DexItemEvents
+	public enum DXItemEvents
 	{
 		None,
 		ItemClick,
@@ -153,36 +153,36 @@ namespace CABDevExpress.UIElements
 	[ToolboxItem(false)]
 	public class UIEvent //: Component
 	{
-		private DexItemEvents _Event = DexItemEvents.ItemClick;
+		private DXItemEvents _event = DXItemEvents.ItemClick;
 
 		/// <summary>
 		/// Control Event
 		/// </summary>
 		[DefaultValue(1)]
-		public DexItemEvents Event
+		public DXItemEvents Event
 		{
-			get { return _Event; }
-			set { _Event = value; }
+			get { return _event; }
+			set { _event = value; }
 		}
 
-		private string _CommandName;
+		private string _commandName;
 
 		[Description(
 			"Command Name Associated with this event to pass to CAB event handler to the decorated method  [CommandHandler(''MyCommandName'')]"
 			)]
 		public string CommandName
 		{
-			get { return _CommandName; }
-			set { _CommandName = value; }
+			get { return _commandName; }
+			set { _commandName = value; }
 		}
 
-		private PublicationScope _PublicationScope;
+		private PublicationScope _publicationScope;
 
 		[Description("Publication Scope of Event -- To Do: Not wired up yet but can be in the CAB infrastructure")]
 		public PublicationScope PublicationScope
 		{
-			get { return _PublicationScope; }
-			set { _PublicationScope = value; }
+			get { return _publicationScope; }
+			set { _publicationScope = value; }
 		}
 	}
 }

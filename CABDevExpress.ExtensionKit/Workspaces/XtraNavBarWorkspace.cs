@@ -15,13 +15,7 @@ namespace CABDevExpress.Workspaces
     [Description("XtraNavBar Workspace")]
     public class XtraNavBarWorkspace : NavBarControl, IComposableWorkspace<Control, XtraNavBarGroupSmartPartInfo>
     {
-        #region Private Members
-
         private readonly XtraWorkspaceComposer<NavBarGroup, XtraNavBarGroupSmartPartInfo> composer;
-
-        #endregion
-
-        #region Constructor
 
         /// <summary>
         /// Initializes a new <see cref="XtraNavBarWorkspace"/>
@@ -31,10 +25,6 @@ namespace CABDevExpress.Workspaces
             composer = new XtraWorkspaceComposer<NavBarGroup, XtraNavBarGroupSmartPartInfo>(this, true);
         }
 
-        #endregion
-
-        #region WorkItem
-
         /// <summary>
         /// Dependency injection setter property to get the <see cref="WorkItem"/> where the object is contained.
         /// </summary>
@@ -43,10 +33,6 @@ namespace CABDevExpress.Workspaces
         {
             set { composer.WorkItem = value; }
         }
-
-        #endregion
-
-        #region Private Methods
 
         private static void ApplySmartPartInfoHelper(NavBarGroup group, XtraImageSmartPartInfo smartPartInfo)
         {
@@ -62,10 +48,6 @@ namespace CABDevExpress.Workspaces
                 group.GroupCaptionUseImage = NavBarImage.Large;
             }
         }
-
-        #endregion
-
-        #region Protected virtual implementations
 
         /// <summary>
         /// Activates the smart part within the workspace.
@@ -193,10 +175,6 @@ namespace CABDevExpress.Workspaces
             return spi;
         }
 
-        #endregion
-
-        #region IComposableWorkspace<Control,XtraNavBarGroupSmartPartInfo> Members
-
         /// <summary>
         /// See <see cref="IComposableWorkspace{TSmartPart, TSmartPartInfo}.OnActivate"/> for more information.
         /// </summary>
@@ -260,10 +238,6 @@ namespace CABDevExpress.Workspaces
         {
             return OnConvertFrom(source);
         }
-
-        #endregion
-
-        #region  IWorkspace Members
 
         /// <summary>
         /// See <see cref="IWorkspace.ActiveSmartPart"/> for more information.
@@ -343,10 +317,6 @@ namespace CABDevExpress.Workspaces
             composer.Close(smartPart);
         }
 
-        #endregion
-
-        #region Events
-
         /// <summary>
         /// See <see cref="IWorkspace.SmartPartClosing"/> for more information.
         /// </summary>
@@ -356,7 +326,5 @@ namespace CABDevExpress.Workspaces
         /// See <see cref="IWorkspace.SmartPartActivated"/> for more information.
         /// </summary>
         public event EventHandler<WorkspaceEventArgs> SmartPartActivated;
-
-        #endregion
     }
 }

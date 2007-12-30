@@ -41,9 +41,6 @@ namespace CABDevExpress.UIElements
         protected override void Remove(RibbonControl uiElement)
         {
             ribbonControl = null;
-            //int index = bars.IndexOf(uiElement); 
-            //if (index  > -1)
-            //    bars.RemoveAt(index);
         }
 
         /// <summary>
@@ -54,19 +51,16 @@ namespace CABDevExpress.UIElements
         /// <returns></returns>
         protected virtual int GetInsertingIndex(object uiElement)
         {
-            return 1; //bars.Count;
+            return 1;
         }
 
-        /// <summary>
-        /// Returns the internal bars mananged by the <see cref="BarsUIAdapter"/>
-        /// </summary>
-        protected RibbonControl InternalCollection
-        {
-            get
-            {
-                return ribbonControl;
-            }
-            set { ribbonControl = value; }
-        }
+    	/// <summary>
+    	/// Returns the internal bars mananged by the <see cref="BarsUIAdapter"/>
+    	/// </summary>
+    	protected RibbonControl InternalCollection
+    	{
+    		get { return ribbonControl; }
+    		set { ribbonControl = value; }
+    	}
     }
 }

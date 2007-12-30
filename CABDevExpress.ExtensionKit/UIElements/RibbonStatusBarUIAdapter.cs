@@ -56,15 +56,12 @@ namespace CABDevExpress.UIElements
             return ribbonStatusBar.ItemLinks.Count;
         }
 
-        /// <summary>
-        /// Returns the internal RibbonStatusBar links mananged by the <see cref="RibbonStatusBarUIAdapter"/>
-        /// </summary>
-        protected BarItemLinkCollection InternalCollection
-        {
-            get
-            {
-                return ribbonStatusBar.ItemLinks;
-            }
-        }
+    	/// <summary>
+    	/// Returns the internal RibbonStatusBar links mananged by the <see cref="RibbonStatusBarUIAdapter"/>
+    	/// </summary>
+    	protected BarItemLinkCollection InternalCollection
+    	{
+    		get { return ribbonStatusBar.ItemLinks; }
+    	}
     }
 }

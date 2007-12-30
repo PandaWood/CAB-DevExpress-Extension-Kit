@@ -31,7 +31,7 @@ namespace CABDevExpress.UIElements
             if (collection == null)
                 throw new InvalidOperationException();
 
-            collection.AddRange(new DevExpress.XtraEditors.NavigatorCustomButton[] { uiElement });
+            collection.AddRange(new NavigatorCustomButton[] { uiElement });
             return uiElement;
         }
 
@@ -41,18 +41,17 @@ namespace CABDevExpress.UIElements
         protected override void Remove(NavigatorCustomButton uiElement)
         {
             int index = -1;
-            foreach (object o in collection)
+            foreach (object obj in collection)
             {
                 index++;
-                if (o == uiElement)
+                if (obj == uiElement)
                     break;
             }
 
-            if (index > -1)
-            {
-                collection.RemoveAt(index);
-            }
-            //should we raise an exception if we're instructed to remove an item that does not exist? 
+            if (index == -1)
+				throw new InvalidOperationException("Cannot find uiElement to remove");
+
+            collection.RemoveAt(index);
         }
 
         /// <summary>

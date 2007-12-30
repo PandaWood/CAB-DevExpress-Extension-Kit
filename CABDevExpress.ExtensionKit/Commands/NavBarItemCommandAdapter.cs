@@ -10,26 +10,15 @@ namespace CABDevExpress.Commands
     /// </summary>
     public class NavBarItemCommandAdapter : EventCommandAdapter<NavBarItem>
     {
-        #region Constructors
-
         /// <summary>
         /// Initializes a new <see cref="NavBarItemCommandAdapter"/>
         /// </summary>
-        public NavBarItemCommandAdapter()
-        {
-        }
+        public NavBarItemCommandAdapter() { }
 
         /// <summary>
         /// Initializes  a new <see cref="NavBarItemCommandAdapter"/> with the given <see cref="NavBarItem"/>.
         /// </summary>
-        public NavBarItemCommandAdapter(NavBarItem item, string eventName)
-            : base(item, eventName)
-        {
-        }
-
-        #endregion
-
-        #region Overrides
+        public NavBarItemCommandAdapter(NavBarItem item, string eventName) : base(item, eventName) { }
 
         /// <summary>
         /// Handles the changes in the <see cref="Command"/> by refreshing 
@@ -45,7 +34,5 @@ namespace CABDevExpress.Commands
                 pair.Key.Visible = (command.Status != CommandStatus.Unavailable);
             }
         }
-
-        #endregion
     }
 }

@@ -29,6 +29,7 @@ namespace CABDevExpress.UIElements
         protected override BarItem Add(BarItem uiElement)
         {
             Guard.ArgumentNotNull(uiElement, "uiElement");
+
             if (applicationMenu == null)
                 throw new InvalidOperationException();
 
@@ -44,6 +45,7 @@ namespace CABDevExpress.UIElements
             Guard.ArgumentNotNull(uiElement, "uiElement");
             if (applicationMenu == null)
                 throw new InvalidOperationException();
+
             if (applicationMenu.Ribbon == null)
                 throw new InvalidOperationException();
 

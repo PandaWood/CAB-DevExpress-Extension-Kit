@@ -10,25 +10,17 @@ namespace CABDevExpress.Commands
     /// </summary>
     public class RibbonPageGroupCommandAdapter : EventCommandAdapter<RibbonPageGroup>
     {
-        #region Constructors
-
         /// <summary>
         /// Initializes a new <see cref="RibbonPageGroupCommandAdapter"/>
         /// </summary>
-        public RibbonPageGroupCommandAdapter()
-        { }
+        public RibbonPageGroupCommandAdapter() { }
 
         /// <summary>
         /// Initializes  a new <see cref="RibbonPageGroupCommandAdapter"/> with the 
         /// given <see cref="DXMenuItem"/>.
         /// </summary>
-        public RibbonPageGroupCommandAdapter(RibbonPageGroup item, string eventName)
-            : base(item, eventName)
+        public RibbonPageGroupCommandAdapter(RibbonPageGroup item, string eventName): base(item, eventName)
         { }
-
-        #endregion
-
-        #region Overrides
 
         ///// <summary>
         ///// 
@@ -43,7 +35,5 @@ namespace CABDevExpress.Commands
         //    //    pair.Key.Visible = (command.Status != CommandStatus.Unavailable);
         //    //}
         //}
-
-        #endregion
     }
 }

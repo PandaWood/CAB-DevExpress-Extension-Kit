@@ -19,16 +19,10 @@ namespace CABDevExpress.Workspaces
     [Description("XtraTab Workspace")]
     public class XtraTabWorkspace : XtraTabControl, IComposableWorkspace<Control, XtraTabSmartPartInfo>
     {
-        #region Private Members
-
         private readonly Dictionary<Control, XtraTabPage> pages = new Dictionary<Control, XtraTabPage>();
         private readonly WorkspaceComposer<Control, XtraTabSmartPartInfo> composer;
         private bool callComposerActivateOnIndexChange = true;
         private bool populatingPages = false;
-
-        #endregion
-
-        #region Constructor
 
         /// <summary>
         /// Initializes a new <see cref="XtraTabWorkspace"/>
@@ -37,10 +31,6 @@ namespace CABDevExpress.Workspaces
         {
             composer = new WorkspaceComposer<Control, XtraTabSmartPartInfo>(this);
         }
-
-        #endregion
-
-        #region WorkItem
 
         /// <summary>
         /// Dependency injection setter property to get the <see cref="WorkItem"/> where object is contained.
@@ -51,10 +41,6 @@ namespace CABDevExpress.Workspaces
             set { composer.WorkItem = value; }
         }
 
-        #endregion
-
-        #region Public Properties
-
         /// <summary>
         /// Gets the collection of pages that the tab workspace uses.
         /// </summary>
@@ -62,10 +48,6 @@ namespace CABDevExpress.Workspaces
         {
             get { return new ReadOnlyDictionary<Control, XtraTabPage>(pages); }
         }
-
-        #endregion
-
-        #region Private Methods
 
         private void SetTabProperties(XtraTabPage page, XtraTabSmartPartInfo smartPartInfo)
         {
@@ -106,8 +88,7 @@ namespace CABDevExpress.Workspaces
 					page.Appearance.Header.Options.UseFont = true;
 				}
 
-                // preserve selection through the operation
-                SelectedTabPage = currentSelection;
+				SelectedTabPage = currentSelection;		// preserve selection through the operation
             }
             finally
             {
@@ -131,7 +112,7 @@ namespace CABDevExpress.Workspaces
             XtraTabPage page = null;
 
             // If the tab was added with the control at design-time, it will have a parent control, 
-            // and somewhere up its containment chain we'll find one of our tabs.
+            // and somewhere up its containment chain we'll find one of our tabs
             Control current = smartPart;
             while (current != null && page == null)
             {
@@ -158,8 +139,7 @@ namespace CABDevExpress.Workspaces
 
         private void PopulatePages()
         {
-            // If the page count matches don't waste the 
-            // time repopulating the pages collection
+            // If the page count matches, don't bother repopulating the pages collection
             if (!populatingPages && pages.Count != TabPages.Count)
             {
                 foreach (XtraTabPage page in TabPages)
@@ -171,8 +151,7 @@ namespace CABDevExpress.Workspaces
                         {
                             XtraTabSmartPartInfo tabinfo = new XtraTabSmartPartInfo();
                             tabinfo.ActivateTab = false;
-                            // Avoid circular calls to this method.
-                            populatingPages = true;
+							populatingPages = true;		// Avoid circular calls to this method.
                             try
                             {
                                 Show(control, tabinfo);
@@ -206,10 +185,6 @@ namespace CABDevExpress.Workspaces
 
             return control;
         }
-
-        #endregion
-
-        #region Internal implementation
 
         /// <summary>
         /// Fires the <see cref="SmartPartActivated"/> event whenever 
@@ -282,15 +257,13 @@ namespace CABDevExpress.Workspaces
             }
         }
 
-        #endregion
-
-        #region Protected virtual implementations
-
         private XtraTabPage GetTabPageFromName(string name)
         {
             foreach (XtraTabPage tabPage in TabPages)
-                if (tabPage.Name == name)
-                    return tabPage;
+            {
+            	if (tabPage.Name == name)
+            		return tabPage;
+            }
             return null;
         }
 
@@ -411,10 +384,6 @@ namespace CABDevExpress.Workspaces
             return SmartPartInfo.ConvertTo<XtraTabSmartPartInfo>(source);
         }
 
-        #endregion
-
-        #region IComposableWorkspace<Control,XtraTabSmartPartInfo> Members
-
         /// <summary>
         /// See <see cref="IComposableWorkspace{TSmartPart, TSmartPartInfo}.OnActivate"/> for more information.
         /// </summary>
@@ -478,10 +447,6 @@ namespace CABDevExpress.Workspaces
         {
             return SmartPartInfo.ConvertTo<XtraTabSmartPartInfo>(source);
         }
-
-        #endregion
-
-        #region IWorkspace Members
 
         /// <summary>
         /// See <see cref="IWorkspace.ActiveSmartPart"/> for more information.
@@ -559,10 +524,6 @@ namespace CABDevExpress.Workspaces
             composer.Close(smartPart);
         }
 
-        #endregion
-
-        #region Events
-
         /// <summary>
         /// See <see cref="IWorkspace.SmartPartClosing"/> for more information.
         /// </summary>
@@ -572,7 +533,5 @@ namespace CABDevExpress.Workspaces
         /// See <see cref="IWorkspace.SmartPartActivated"/> for more information.
         /// </summary>
         public event EventHandler<WorkspaceEventArgs> SmartPartActivated;
-
-        #endregion
     }
 }

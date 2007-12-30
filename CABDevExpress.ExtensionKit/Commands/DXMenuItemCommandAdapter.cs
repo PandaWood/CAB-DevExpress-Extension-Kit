@@ -10,25 +10,16 @@ namespace CABDevExpress.Commands
     /// </summary>
     public class DXMenuItemCommandAdapter : EventCommandAdapter<DXMenuItem>
     {
-        #region Constructors
-
         /// <summary>
         /// Initializes a new <see cref="DXMenuItemCommandAdapter"/>
         /// </summary>
-        public DXMenuItemCommandAdapter()
-        { }
+        public DXMenuItemCommandAdapter() { }
 
         /// <summary>
         /// Initializes  a new <see cref="DXMenuItemCommandAdapter"/> with the 
         /// given <see cref="DXMenuItem"/>.
         /// </summary>
-        public DXMenuItemCommandAdapter(DXMenuItem item, string eventName)
-            : base(item, eventName)
-        { }
-
-        #endregion
-
-        #region Overrides
+        public DXMenuItemCommandAdapter(DXMenuItem item, string eventName) : base(item, eventName) { }
 
         /// <summary>
         /// Handles the changes in the <see cref="Command"/> by refreshing 
@@ -44,7 +35,5 @@ namespace CABDevExpress.Commands
                 pair.Key.Visible = (command.Status != CommandStatus.Unavailable);
             }
         }
-
-        #endregion
     }
 }

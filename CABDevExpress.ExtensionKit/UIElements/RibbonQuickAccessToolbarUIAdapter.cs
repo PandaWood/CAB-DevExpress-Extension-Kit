@@ -19,6 +19,7 @@ namespace CABDevExpress.UIElements
         protected override BarItem Add(BarItem uiElement)
         {
             Guard.ArgumentNotNull(uiElement, "uiElement");
+
             if (ribbonQuickAccessToolbar == null)
                 throw new InvalidOperationException();
 
@@ -29,6 +30,7 @@ namespace CABDevExpress.UIElements
         protected override void Remove(BarItem uiElement)
         {
             Guard.ArgumentNotNull(uiElement, "uiElement");
+
             if (ribbonQuickAccessToolbar == null)
                 throw new InvalidOperationException();
 

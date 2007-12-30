@@ -56,8 +56,6 @@ namespace BankShell
             UIElementBuilder.LoadFromConfig(RootWorkItem);
         }
 
-        #region Unhandled Exception
-
         public override void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             Exception ex = e.ExceptionObject as Exception;
@@ -98,7 +96,5 @@ namespace BankShell
 
             return errMessage;
         }
-
-        #endregion
     }
 }

@@ -43,8 +43,6 @@ namespace CABDevExpress.Workspaces
             get { return new ReadOnlyDictionary<Control, XtraForm>(windowDictionary); }
         }
 
-        #region Protected
-
         /// <summary>
         /// Creates a form if it does not already exist and adds the given control.
         /// </summary>
@@ -101,10 +99,6 @@ namespace CABDevExpress.Workspaces
                 form.Location = info.Location;
         }
 
-        #endregion
-
-        #region Private
-
         private void ControlDisposed(object sender, EventArgs e)
         {
             Control control = sender as Control;
@@ -118,9 +112,9 @@ namespace CABDevExpress.Workspaces
 
         private void WireUpForm(XtraWindowForm form)
         {
-            form.WindowFormClosing += new EventHandler<WorkspaceCancelEventArgs>(WindowFormClosing);
-            form.WindowFormClosed += new EventHandler<WorkspaceEventArgs>(WindowFormClosed);
-            form.WindowFormActivated += new EventHandler<WorkspaceEventArgs>(WindowFormActivated);
+            form.WindowFormClosing += WindowFormClosing;
+            form.WindowFormClosed += WindowFormClosed;
+            form.WindowFormActivated += WindowFormActivated;
         }
 
         private void WindowFormActivated(object sender, WorkspaceEventArgs e)
@@ -178,10 +172,6 @@ namespace CABDevExpress.Workspaces
                 form.BringToFront();
             }
         }
-
-        #endregion
-
-        #region Private Form Class
 
         /// <summary>
         /// WindowForm class
@@ -266,10 +256,6 @@ namespace CABDevExpress.Workspaces
             }
         }
 
-        #endregion
-
-        #region Behavior overrides
-
         /// <summary>
         /// Shows the form for the smart part and brings it to the front.
         /// </summary>
@@ -312,8 +298,6 @@ namespace CABDevExpress.Workspaces
             form.Close();
             windowDictionary.Remove(smartPart);
         }
-
-        #endregion
 
         /// <summary>
         /// When overridden in a derived class, applies the smartPartInfo

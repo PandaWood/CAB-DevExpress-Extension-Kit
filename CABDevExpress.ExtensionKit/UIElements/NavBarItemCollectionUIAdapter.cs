@@ -20,7 +20,7 @@ namespace CABDevExpress.UIElements
 		public NavBarItemCollectionUIAdapter(NavBarGroup navBarGroup)
 			: this(navBarGroup.ItemLinks, navBarGroup.NavBar.Items)
 		{
-			// Do nothing.
+			// Do nothing (except call other constructor)
 		}
 
         /// <summary>
@@ -42,9 +42,7 @@ namespace CABDevExpress.UIElements
         /// </summary>
         protected override NavBarItem Add(NavBarItem uiElement)
         {
-            if (collection == null)
-                throw new InvalidOperationException();
-            if (linkCollection == null)
+            if (collection == null || linkCollection == null)
                 throw new InvalidOperationException();
 
             collection.Insert(GetInsertingIndex(uiElement), uiElement);
@@ -61,8 +59,6 @@ namespace CABDevExpress.UIElements
             {
                 collection.Remove(uiElement);
                 linkCollection.Remove(uiElement);
-                //uiElement.NavBar.Items.Remove(uiElement);
-                //uiElement.NavBar.GroItems.Remove(uiElement);
             }
         }
 

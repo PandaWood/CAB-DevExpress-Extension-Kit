@@ -6,25 +6,16 @@ namespace CABDevExpress.Commands
 {
 	public class RepositoryItemHyperLinkEditCommandAdapter: EventCommandAdapter<RepositoryItemHyperLinkEdit>
 	{
-		#region Constructors
-
 		/// <summary>
 		/// Initializes a new <see cref="RepositoryItemHyperLinkEditCommandAdapter"/>
 		/// </summary>
-		public RepositoryItemHyperLinkEditCommandAdapter()
-		{ }
+		public RepositoryItemHyperLinkEditCommandAdapter() { }
 
 		/// <summary>
 		/// Initializes  a new <see cref="RepositoryItemHyperLinkEditCommandAdapter"/> with the 
 		/// given <see cref="RepositoryItemHyperLinkEdit"/>.
 		/// </summary>
-		public RepositoryItemHyperLinkEditCommandAdapter(RepositoryItemHyperLinkEdit item, string eventName)
-			: base(item, eventName)
-		{ }
-
-		#endregion
-
-		#region Overrides
+		public RepositoryItemHyperLinkEditCommandAdapter(RepositoryItemHyperLinkEdit item, string eventName) : base(item, eventName) { }
 
 		/// <summary>
 		/// Handles the changes in the <see cref="Command"/> by refreshing 
@@ -40,7 +31,5 @@ namespace CABDevExpress.Commands
                 pair.Key.ReadOnly = (command.Status == CommandStatus.Unavailable);
 			}
 		}
-
-		#endregion
 	}
 }

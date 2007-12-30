@@ -15,20 +15,14 @@ namespace CABDevExpress.Workspaces
 		where TWorkspaceItem : class
 		where TSmartPartInfo : ISmartPartInfo, new()
 	{
-		#region Private Members
-
 		private readonly Dictionary<Control, TWorkspaceItem> smartParts = new Dictionary<Control, TWorkspaceItem>();
 		private readonly Dictionary<TWorkspaceItem, Control> items = new Dictionary<TWorkspaceItem, Control>();
 
 		private Control smartPartBeingActivated = null;
 		private readonly bool hookControlEnter = false;
 
-		#endregion
-
-		#region Constructor
-
 		/// <summary>
-		/// Initializes a new <see cref="XtraWorkspaceComposer"/>
+		/// Initializes a new XtraWorkspaceComposer
 		/// </summary>
 		/// <param name="composedWorkspace">ComposableWorkspace that will be delegated to.</param>
 		/// <param name="activateSmartPartOnControlEnter">Boolean indicating whether to automatically activate the smart part when the control's Enter event is invoked.</param>
@@ -38,10 +32,6 @@ namespace CABDevExpress.Workspaces
 		{
 			hookControlEnter = activateSmartPartOnControlEnter;
 		}
-
-		#endregion
-
-		#region Public Properties
 
 		public TWorkspaceItem this[Control smartPart]
 		{
@@ -63,10 +53,6 @@ namespace CABDevExpress.Workspaces
 			}
 		}
 
-		#endregion
-
-		#region Public Methods
-
 		public void Add(TWorkspaceItem item, Control smartPart)
 		{
 			Guard.ArgumentNotNull(item, "item");
@@ -78,10 +64,10 @@ namespace CABDevExpress.Workspaces
 			items.Add(item, smartPart);
 			smartParts.Add(smartPart, item);
 
-			smartPart.Disposed += new EventHandler(OnSmartPartControlDisposed);
+			smartPart.Disposed += OnSmartPartControlDisposed;
 
 			if (hookControlEnter)
-				smartPart.Enter += new EventHandler(OnSmartPartControlEnter);
+				smartPart.Enter += OnSmartPartControlEnter;
 		}
 
 		public bool ContainsItem(TWorkspaceItem item)
@@ -106,10 +92,10 @@ namespace CABDevExpress.Workspaces
 			items.Remove(item);
 			smartParts.Remove(smartPart);
 
-			smartPart.Disposed -= new EventHandler(OnSmartPartControlDisposed);
+			smartPart.Disposed -= OnSmartPartControlDisposed;
 
 			if (hookControlEnter)
-				smartPart.Enter -= new EventHandler(OnSmartPartControlEnter);
+				smartPart.Enter -= OnSmartPartControlEnter;
 		}
 
 		public bool TryGetItem(Control smartPart, out TWorkspaceItem item)
@@ -137,10 +123,6 @@ namespace CABDevExpress.Workspaces
 			}
 		}
 
-		#endregion
-
-		#region Private Methods
-
 		private void OnSmartPartControlDisposed(object sender, EventArgs e)
 		{
 			Control ctrl = sender as Control;
@@ -152,10 +134,6 @@ namespace CABDevExpress.Workspaces
 		{
 			VerifyActiveSmartPart(sender as Control);
 		}
-
-		#endregion
-
-		#region Overrides
 
 		/// <summary>
 		/// Calls <see cref="IComposableWorkspace{TSmartPart, TSmartPartInfo}.OnActivate"/> 
@@ -178,7 +156,5 @@ namespace CABDevExpress.Workspaces
 				smartPartBeingActivated = previousSmartPart;
 			}
 		}
-
-		#endregion
 	}
 }

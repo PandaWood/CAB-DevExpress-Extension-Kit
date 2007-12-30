@@ -36,18 +36,16 @@ namespace CABDevExpress.UIElements
             return uiElement;
         }
 
-        /// <summary>
-        /// See <see cref="UIElementAdapter{TUIElement}.Remove(TUIElement)"/> for more information.
-        /// </summary>
-        protected override void Remove(BarItem uiElement)
-        {
-            {
-                Guard.ArgumentNotNull(uiElement, "uiElement");
-                if (ribbonPageHeader == null)
-                    throw new InvalidOperationException();
+    	/// <summary>
+    	/// See <see cref="UIElementAdapter{TUIElement}.Remove(TUIElement)"/> for more information.
+    	/// </summary>
+    	protected override void Remove(BarItem uiElement)
+    	{
+    		Guard.ArgumentNotNull(uiElement, "uiElement");
+    		if (ribbonPageHeader == null)
+    			throw new InvalidOperationException();
 
-                ribbonPageHeader.Remove(uiElement);
-            }
-        }
+    		ribbonPageHeader.Remove(uiElement);
+    	}
     }
 }

@@ -61,14 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\XtraFormApplication.cs" />
+    <Compile Include="XtraFormApplication.cs" />
     <Compile Include="Commands\BarItemCommandAdapter.cs" />
     <Compile Include="Commands\DXMenuItemCommandAdapter.cs" />
     <Compile Include="Commands\NavBarItemCommandAdapter.cs" />
     <Compile Include="Commands\RepositoryItemHyperLinkEditCommandAdapter.cs" />
     <Compile Include="Commands\RibbonPageGroupCommandAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Application\XtraFormApplicationBase.cs" />
+    <Compile Include="XtraFormApplicationBase.cs" />
     <Compile Include="SmartPartInfos\DockManagerSmartPartInfo.cs">
     </Compile>
     <Compile Include="SmartPartInfos\XtraNavBarGroupSmartPartInfo.cs">
@@ -101,7 +101,7 @@
     <Compile Include="UIElements\XtraBarUIAdapterFactory.cs" />
     <Compile Include="UIElements\XtraNavBarUIAdapterFactory.cs" />
     <Compile Include="ExceptionFactory.cs" />
-    <Compile Include="UIElements\XtraRibbonBarUIAdapterFactory.cs" />
+    <Compile Include="UIElements\RibbonUIAdapterFactory.cs" />
     <Compile Include="Workspaces\DockManagerWorkspace.cs" />
     <Compile Include="Workspaces\XtraNavBarWorkspace.cs">
       <SubType>Component</SubType>
