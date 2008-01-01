@@ -3,7 +3,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.EventBroker;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	/// <summary>
 	/// Drag this component to your smartpart control and set the Page/group and button items

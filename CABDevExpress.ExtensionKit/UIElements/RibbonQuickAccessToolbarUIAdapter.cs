@@ -3,7 +3,7 @@ using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	public class RibbonQuickAccessToolbarUIAdapter : UIElementAdapter<BarItem>
 	{

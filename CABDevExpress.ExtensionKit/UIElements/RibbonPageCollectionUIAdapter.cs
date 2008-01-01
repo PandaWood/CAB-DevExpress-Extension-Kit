@@ -2,7 +2,7 @@ using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	/// <summary>
 	/// An adapter that wraps a <see cref="RibbonPageCollection"/> for use as an <see cref="IUIElementAdapter"/>.
@@ -17,7 +17,7 @@ namespace CABDevExpress.Adapters
 		/// <param name="ribbonPageCollection"></param>
 		public RibbonPageCollectionUIAdapter(RibbonPageCollection ribbonPageCollection)
 		{
-			Guard.ArgumentNotNull(ribbonPageCollection, "ribbonPageCollection");
+			Guard.ArgumentNotNull(ribbonPageCollection, "RibbonPageCollection");
 			this.ribbonPageCollection = ribbonPageCollection;
 		}
 

@@ -1,10 +1,10 @@
 using System;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
-using DevExpress.XtraBars.Ribbon;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	/// <summary>
 	/// An adapter that wraps an <see cref="ApplicationMenu"/> for use as an <see cref="IUIElementAdapter"/>.

@@ -11,11 +11,11 @@
 
 using System;
 using BankTellerCommon;
-using CABDevExpress;
-using CABDevExpress.Adapters;
+using CABDevExpress.UIElements;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.WinForms;
+using CABDevExpress;
 
 namespace BankShell
 {

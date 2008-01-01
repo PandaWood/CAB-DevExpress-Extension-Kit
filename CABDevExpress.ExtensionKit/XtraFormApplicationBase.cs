@@ -1,5 +1,6 @@
-using CABDevExpress.Adapters;
+using CABDevExpress.UIElements;
 using CABDevExpress.Commands;
+using CABDevExpress.UIElements;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors.Repository;

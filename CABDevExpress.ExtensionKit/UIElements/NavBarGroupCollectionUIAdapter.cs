@@ -2,7 +2,7 @@ using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	/// <summary>
 	/// An adapter that wraps a <see cref="NavGroupCollection"/> for use as an <see cref="IUIElementAdapter"/>.

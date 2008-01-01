@@ -76,30 +76,30 @@
     <Compile Include="SmartPartInfos\XtraTabSmartPartInfo.cs">
     </Compile>
     <Compile Include="SmartPartInfos\XtraWindowSmartPartInfo.cs" />
-    <Compile Include="Adapters\BarItemWrapper.cs" />
-    <Compile Include="Adapters\BarLinksCollectionUIAdapter.cs" />
-    <Compile Include="Adapters\BarsUIAdapter.cs" />
-    <Compile Include="Adapters\BarLinksOwnerCollectionUIAdapter.cs" />
-    <Compile Include="Adapters\EditorButtonCollectionUIAdapter.cs" />
-    <Compile Include="Adapters\NavigatorCustomButtonsUIAdapter.cs" />
-    <Compile Include="Adapters\NavigatorCustomButtonsUIAdapterFactory.cs" />
-    <Compile Include="Adapters\EditorButtonCollectionUIAdapterFactory.cs" />
-    <Compile Include="Adapters\NavBarGroupCollectionUIAdapter.cs" />
-    <Compile Include="Adapters\NavBarItemCollectionUIAdapter.cs" />
-    <Compile Include="Adapters\RibbonApplicationMenuUIAdapter.cs" />
-    <Compile Include="Adapters\RibbonGroupUI.cs">
+    <Compile Include="UIElements\BarItemWrapper.cs" />
+    <Compile Include="UIElements\BarLinksCollectionUIAdapter.cs" />
+    <Compile Include="UIElements\BarsUIAdapter.cs" />
+    <Compile Include="UIElements\BarLinksOwnerCollectionUIAdapter.cs" />
+    <Compile Include="UIElements\EditorButtonCollectionUIAdapter.cs" />
+    <Compile Include="UIElements\NavigatorCustomButtonsUIAdapter.cs" />
+    <Compile Include="UIElements\NavigatorCustomButtonsUIAdapterFactory.cs" />
+    <Compile Include="UIElements\EditorButtonCollectionUIAdapterFactory.cs" />
+    <Compile Include="UIElements\NavBarGroupCollectionUIAdapter.cs" />
+    <Compile Include="UIElements\NavBarItemCollectionUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonApplicationMenuUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonGroupUI.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Adapters\RibbonPageCollectionUIAdapter.cs" />
-    <Compile Include="Adapters\RibbonPageGroupCollectionUIAdapter.cs" />
-    <Compile Include="Adapters\RibbonPageHeaderUIAdapter.cs" />
-    <Compile Include="Adapters\RibbonQuickAccessToolbarUIAdapter.cs" />
-    <Compile Include="Adapters\RibbonStatusBarUIAdapter.cs" />
-    <Compile Include="Adapters\RibbonUIAdapter.cs" />
-    <Compile Include="Adapters\XtraBarUIAdapterFactory.cs" />
-    <Compile Include="Adapters\XtraNavBarUIAdapterFactory.cs" />
+    <Compile Include="UIElements\RibbonPageCollectionUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonPageGroupCollectionUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonPageHeaderUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonQuickAccessToolbarUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonStatusBarUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonUIAdapter.cs" />
+    <Compile Include="UIElements\XtraBarUIAdapterFactory.cs" />
+    <Compile Include="UIElements\XtraNavBarUIAdapterFactory.cs" />
     <Compile Include="ExceptionFactory.cs" />
-    <Compile Include="Adapters\RibbonUIAdapterFactory.cs" />
+    <Compile Include="UIElements\RibbonUIAdapterFactory.cs" />
     <Compile Include="Workspaces\DockManagerWorkspace.cs" />
     <Compile Include="Workspaces\XtraNavBarWorkspace.cs">
       <SubType>Component</SubType>

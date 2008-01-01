@@ -3,7 +3,7 @@ using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	/// <summary>
 	/// An adapter that wraps a <see cref="NavItemCollection"/> for use as an <see cref="IUIElementAdapter"/>.
@@ -18,7 +18,7 @@ namespace CABDevExpress.Adapters
 		/// <param name="collection"></param>
 		public EditorButtonCollectionUIAdapter(EditorButtonCollection collection)
 		{
-			Guard.ArgumentNotNull(collection, "buttonCollection");
+			Guard.ArgumentNotNull(collection, "EditorButtonCollection");
 			buttonCollection = collection;
 		}
 

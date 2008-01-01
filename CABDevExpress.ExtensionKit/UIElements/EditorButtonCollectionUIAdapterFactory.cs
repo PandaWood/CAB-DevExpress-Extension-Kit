@@ -1,13 +1,13 @@
-using DevExpress.XtraBars;
+using DevExpress.XtraEditors.Controls;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	/// <summary>
-	/// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraBar-related UI Elements.
+	/// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraNavBar-related UI Elements.
 	/// </summary>
-	public class XtraBarUIAdapterFactory : IUIElementAdapterFactory
+	public class EditorButtonCollectionUIAdapterFactory : IUIElementAdapterFactory
 	{
 		/// <summary>
 		/// Returns a <see cref="IUIElementAdapter"/> for the specified uielement.
@@ -18,18 +18,9 @@ namespace CABDevExpress.Adapters
 		{
 			Guard.ArgumentNotNull(uiElement, "uiElement");
 
-			if (uiElement is BarManager)
-				return new BarsUIAdapter(((BarManager) uiElement).Bars);
-
-			if (uiElement is Bar)
-				return new BarLinksCollectionUIAdapter(((Bar) uiElement).ItemLinks, ((Bar) uiElement).Manager.Items);
-
-			if (uiElement is BarSubItem)
-				return new BarLinksCollectionUIAdapter(((BarSubItem) uiElement).ItemLinks,
-				                                       ((BarSubItem) uiElement).Manager.Items);
-			if (uiElement is BarItemWrapper)
-				return new BarLinksOwnerCollectionUIAdapter(((BarItemWrapper) uiElement).Item, ((BarItemWrapper) uiElement).ItemLinks);
-
+			if (uiElement is EditorButtonCollection)
+				return new EditorButtonCollectionUIAdapter((EditorButtonCollection)uiElement);
+            
 			throw ExceptionFactory.CreateInvalidAdapterElementType(uiElement.GetType(), GetType());
 		}
 
@@ -40,10 +31,7 @@ namespace CABDevExpress.Adapters
 		/// <returns>Returns true for supported elements, otherwise returns false.</returns>
 		public bool Supports(object uiElement)
 		{
-			return uiElement is BarManager ||
-			       uiElement is Bar ||
-			       uiElement is BarSubItem ||
-			       uiElement is BarItemWrapper;
+			return uiElement is EditorButtonCollection;
 		}
 	}
 }

@@ -1,13 +1,13 @@
-using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	/// <summary>
 	/// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraNavBar-related UI Elements.
 	/// </summary>
-	public class EditorButtonCollectionUIAdapterFactory : IUIElementAdapterFactory
+	public class XtraNavBarUIAdapterFactory : IUIElementAdapterFactory
 	{
 		/// <summary>
 		/// Returns a <see cref="IUIElementAdapter"/> for the specified uielement.
@@ -18,9 +18,13 @@ namespace CABDevExpress.Adapters
 		{
 			Guard.ArgumentNotNull(uiElement, "uiElement");
 
-			if (uiElement is EditorButtonCollection)
-				return new EditorButtonCollectionUIAdapter((EditorButtonCollection)uiElement);
-            
+			if (uiElement is NavBarControl)
+				return new NavBarGroupCollectionUIAdapter(((NavBarControl) uiElement).Groups);
+
+			if (uiElement is NavBarGroup)
+				return new NavBarItemCollectionUIAdapter(((NavBarGroup) uiElement).ItemLinks,
+				                                         ((NavBarGroup) uiElement).NavBar.Items);
+
 			throw ExceptionFactory.CreateInvalidAdapterElementType(uiElement.GetType(), GetType());
 		}
 
@@ -31,7 +35,7 @@ namespace CABDevExpress.Adapters
 		/// <returns>Returns true for supported elements, otherwise returns false.</returns>
 		public bool Supports(object uiElement)
 		{
-			return uiElement is EditorButtonCollection;
+			return uiElement is NavBarControl || uiElement is NavBarGroup;
 		}
 	}
 }

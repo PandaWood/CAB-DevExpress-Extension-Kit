@@ -1,13 +1,13 @@
-using DevExpress.XtraNavBar;
+using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	/// <summary>
-	/// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraNavBar-related UI Elements.
+	/// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraBar-related UI Elements.
 	/// </summary>
-	public class XtraNavBarUIAdapterFactory : IUIElementAdapterFactory
+	public class XtraBarUIAdapterFactory : IUIElementAdapterFactory
 	{
 		/// <summary>
 		/// Returns a <see cref="IUIElementAdapter"/> for the specified uielement.
@@ -18,12 +18,17 @@ namespace CABDevExpress.Adapters
 		{
 			Guard.ArgumentNotNull(uiElement, "uiElement");
 
-			if (uiElement is NavBarControl)
-				return new NavBarGroupCollectionUIAdapter(((NavBarControl) uiElement).Groups);
+			if (uiElement is BarManager)
+				return new BarsUIAdapter(((BarManager) uiElement).Bars);
 
-			if (uiElement is NavBarGroup)
-				return new NavBarItemCollectionUIAdapter(((NavBarGroup) uiElement).ItemLinks,
-				                                         ((NavBarGroup) uiElement).NavBar.Items);
+			if (uiElement is Bar)
+				return new BarLinksCollectionUIAdapter(((Bar) uiElement).ItemLinks, ((Bar) uiElement).Manager.Items);
+
+			if (uiElement is BarSubItem)
+				return new BarLinksCollectionUIAdapter(((BarSubItem) uiElement).ItemLinks,
+				                                       ((BarSubItem) uiElement).Manager.Items);
+			if (uiElement is BarItemWrapper)
+				return new BarLinksOwnerCollectionUIAdapter(((BarItemWrapper) uiElement).Item, ((BarItemWrapper) uiElement).ItemLinks);
 
 			throw ExceptionFactory.CreateInvalidAdapterElementType(uiElement.GetType(), GetType());
 		}
@@ -35,7 +40,10 @@ namespace CABDevExpress.Adapters
 		/// <returns>Returns true for supported elements, otherwise returns false.</returns>
 		public bool Supports(object uiElement)
 		{
-			return uiElement is NavBarControl || uiElement is NavBarGroup;
+			return uiElement is BarManager ||
+			       uiElement is Bar ||
+			       uiElement is BarSubItem ||
+			       uiElement is BarItemWrapper;
 		}
 	}
 }

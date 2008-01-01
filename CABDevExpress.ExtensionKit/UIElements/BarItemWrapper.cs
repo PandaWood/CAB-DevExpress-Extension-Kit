@@ -1,6 +1,6 @@
 using DevExpress.XtraBars;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	public class BarItemWrapper
 	{

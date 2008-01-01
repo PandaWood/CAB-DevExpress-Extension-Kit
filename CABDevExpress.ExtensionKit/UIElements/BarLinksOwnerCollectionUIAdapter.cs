@@ -1,7 +1,6 @@
-using CABDevExpress.Adapters;
 using DevExpress.XtraBars;
 
-namespace CABDevExpress.Adapters
+namespace CABDevExpress.UIElements
 {
 	internal class BarLinksOwnerCollectionUIAdapter : BarLinksCollectionUIAdapter
 	{
