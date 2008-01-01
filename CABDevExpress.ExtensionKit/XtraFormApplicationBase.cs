@@ -1,4 +1,3 @@
-using CABDevExpress.UIElements;
 using CABDevExpress.Commands;
 using CABDevExpress.UIElements;
 using DevExpress.Utils.Menu;
