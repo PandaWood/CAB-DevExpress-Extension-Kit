@@ -1,10 +1,10 @@
-using CABDevExpress.Adapters;
+using CABDevExpress.UIElements;
 using DevExpress.XtraBars.Ribbon;
 using Xunit;
 
 namespace CABDevExpress.ExtensionKit.Tests
 {
-	public class AdapterTests
+	public class UIElementAdapterTests
 	{
 		[Fact]
 		public void RibbonUIAdapterCanAdd()
