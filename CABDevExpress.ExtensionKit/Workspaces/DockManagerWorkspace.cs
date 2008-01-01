@@ -147,7 +147,10 @@ namespace CABDevExpress.Workspaces
             try
             {
 				// Prevent double firing from composer Workspace class and from DockPanel.
-//				fireActivatedFromDockPanel = false;		//TODO the problem is, this variable is never read anywhere
+//				fireActivatedFromDockPanel = false;		TODO the problem is, this variable is never read anywhere
+
+				// see use of same variable in XtraWindowWorkspace
+				// in WindowFormActivated a similar variable is checked and it raises/activates smartpart if true
 
                 DockPanel dockPanel = dockPanelDictionary[smartPart];
                 dockPanel.BringToFront();

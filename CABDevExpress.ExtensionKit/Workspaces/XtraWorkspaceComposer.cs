@@ -85,8 +85,7 @@ namespace CABDevExpress.Workspaces
 			Guard.ArgumentNotNull(item, "item");
 			Guard.ArgumentNotNull(smartPart, "smartPart");
 
-			if (items[item] != smartPart ||
-			    smartParts[smartPart] != item)
+			if (items[item] != smartPart || smartParts[smartPart] != item)
 				throw new InvalidOperationException();
 
 			items.Remove(item);

@@ -12,7 +12,7 @@
 using System;
 using BankTellerCommon;
 using CABDevExpress;
-using CABDevExpress.UIElements;
+using CABDevExpress.Adapters;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.WinForms;

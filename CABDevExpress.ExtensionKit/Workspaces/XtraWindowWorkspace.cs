@@ -234,8 +234,7 @@ namespace CABDevExpress.Workspaces
             /// <param name="e"></param>
             protected override void OnClosed(EventArgs e)
             {
-                if ((WindowFormClosed != null) &&
-                    (Controls.Count > 0))
+                if (WindowFormClosed != null && Controls.Count > 0)
                 {
                     WindowFormClosed(this, new WorkspaceEventArgs(Controls[0]));
                 }

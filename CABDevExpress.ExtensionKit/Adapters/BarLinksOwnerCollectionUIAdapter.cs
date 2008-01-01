@@ -1,6 +1,7 @@
+using CABDevExpress.Adapters;
 using DevExpress.XtraBars;
 
-namespace CABDevExpress.UIElements
+namespace CABDevExpress.Adapters
 {
 	internal class BarLinksOwnerCollectionUIAdapter : BarLinksCollectionUIAdapter
 	{
@@ -30,8 +31,8 @@ namespace CABDevExpress.UIElements
 		/// <returns></returns>
 		protected override int GetInsertingIndex(object uiElement)
 		{
-			int index = 0;
-			foreach (BarItemLink barItemLink in linkCollection)
+			int index = 0;			//TODO I would like to test this
+			foreach (BarItemLink barItemLink in InternalCollection)
 			{
 				if (barItemLink.Item == item)
 					break;
@@ -41,4 +42,3 @@ namespace CABDevExpress.UIElements
 		}
 	}
 }
-

@@ -14,7 +14,11 @@ using Microsoft.Practices.CompositeUI.WinForms;
 namespace CABDevExpress.Workspaces
 {
     /// <summary>
-    /// A workspace that displays smart parts within a <see cref="XtraTabControl"/>.
+    /// A workspace that displays smart parts within a <see cref="XtraTabControl"/>
+    /// <remarks>
+	/// The code here was copied and adapted from CAB's plain-vanilla <see cref="TabWorkspace"/>
+	/// It couldn't be inherited because some property names and features of the XtraTab are different
+    /// </remarks>
     /// </summary>
     [Description("XtraTab Workspace")]
     public class XtraTabWorkspace : XtraTabControl, IComposableWorkspace<Control, XtraTabSmartPartInfo>

@@ -3,7 +3,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.EventBroker;
 
-namespace CABDevExpress.UIElements
+namespace CABDevExpress.Adapters
 {
 	/// <summary>
 	/// Drag this component to your smartpart control and set the Page/group and button items
@@ -48,11 +48,11 @@ namespace CABDevExpress.UIElements
 			set { _dxButtonItems = value; }
 		}
 
-		private DexCheckItem[] _barCheckItems;
+		private DXCheckItem[] _barCheckItems;
 
 		[Category("Ribbon Data")]
 		[Description("Check Items To appear in Ribbon Page Group")]
-		public DexCheckItem[] BarCheckItems
+		public DXCheckItem[] BarCheckItems
 		{
 			get { return _barCheckItems; }
 			set { _barCheckItems = value; }
@@ -60,7 +60,7 @@ namespace CABDevExpress.UIElements
 	}
 
 	[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
-	public class DexCheckItem : BarCheckItem
+	public class DXCheckItem : BarCheckItem
 	{
 		private UIEvent _uiEvent;
 
@@ -141,7 +141,6 @@ namespace CABDevExpress.UIElements
 		OnDoubleClick,
 		OnPress
 	}
-
 
 	/// <summary>
 	/// Class to define UI Events to attach to CAB Bar Items
