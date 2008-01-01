@@ -1,4 +1,3 @@
-using System;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.UIElements;
@@ -19,7 +18,8 @@ namespace CABDevExpress.UIElements
 		/// <param name="applicationMenu"></param>
 		public RibbonApplicationMenuUIAdapter(ApplicationMenu applicationMenu)
 		{
-			Guard.ArgumentNotNull(applicationMenu, "applicationMenu");
+			Guard.ArgumentNotNull(applicationMenu, "ApplicationMenu");
+			Guard.ArgumentNotNull(applicationMenu.Ribbon, "ApplicationMenu.Ribbon");
 			this.applicationMenu = applicationMenu;
 		}
 
@@ -29,9 +29,6 @@ namespace CABDevExpress.UIElements
 		protected override BarItem Add(BarItem uiElement)
 		{
 			Guard.ArgumentNotNull(uiElement, "uiElement");
-
-			if (applicationMenu == null)
-				throw new InvalidOperationException();
 
 			applicationMenu.AddItem(uiElement);
 			return uiElement;
@@ -43,9 +40,6 @@ namespace CABDevExpress.UIElements
 		protected override void Remove(BarItem uiElement)
 		{
 			Guard.ArgumentNotNull(uiElement, "uiElement");
-			if (applicationMenu == null || applicationMenu.Ribbon == null)
-				throw new InvalidOperationException();
-
 			applicationMenu.Ribbon.Items.Remove(uiElement);
 		}
 	}

@@ -38,7 +38,7 @@ namespace CABDevExpress.UIElements
 		{
 			if (uiElement.Page != null)
 				uiElement.Page.Groups.Remove(uiElement);		
-				//TODO I want to know why this doesn't use ribbonPageGroupCollection.Remove(uiElement);
+				//TODO I wonder why this doesn't use ribbonPageGroupCollection.Remove(uiElement);
 		}
 
 		/// <summary>
