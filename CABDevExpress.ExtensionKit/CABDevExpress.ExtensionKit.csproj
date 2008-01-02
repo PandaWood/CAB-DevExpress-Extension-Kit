@@ -95,7 +95,6 @@
     <Compile Include="UIElements\RibbonPageHeaderUIAdapter.cs" />
     <Compile Include="UIElements\RibbonQuickAccessToolbarUIAdapter.cs" />
     <Compile Include="UIElements\RibbonStatusBarUIAdapter.cs" />
-    <Compile Include="UIElements\RibbonUIAdapter.cs" />
     <Compile Include="UIElements\XtraBarUIAdapterFactory.cs" />
     <Compile Include="UIElements\XtraNavBarUIAdapterFactory.cs" />
     <Compile Include="ExceptionFactory.cs" />

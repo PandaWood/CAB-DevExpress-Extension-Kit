@@ -2,7 +2,7 @@ using DevExpress.XtraBars;
 
 namespace CABDevExpress.UIElements
 {
-	internal class BarLinksOwnerCollectionUIAdapter : BarLinksCollectionUIAdapter
+	public class BarLinksOwnerCollectionUIAdapter : BarLinksCollectionUIAdapter
 	{
 		/// <summary>
 		/// Provides an adapter for BarItems where new items will be added to the item's owner collection, 

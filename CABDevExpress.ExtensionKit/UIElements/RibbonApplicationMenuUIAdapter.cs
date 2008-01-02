@@ -28,7 +28,7 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override BarItem Add(BarItem uiElement)
 		{
-			Guard.ArgumentNotNull(uiElement, "uiElement");
+			Guard.ArgumentNotNull(uiElement, "BarItem");
 
 			applicationMenu.AddItem(uiElement);
 			return uiElement;
@@ -39,7 +39,7 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override void Remove(BarItem uiElement)
 		{
-			Guard.ArgumentNotNull(uiElement, "uiElement");
+			Guard.ArgumentNotNull(uiElement, "BarItem");
 			applicationMenu.Ribbon.Items.Remove(uiElement);
 		}
 	}

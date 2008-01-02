@@ -1,5 +1,5 @@
 using CABDevExpress.UIElements;
-using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraBars;
 using Xunit;
 
 namespace CABDevExpress.ExtensionKit.Tests
@@ -7,22 +7,13 @@ namespace CABDevExpress.ExtensionKit.Tests
 	public class UIElementAdapterTests
 	{
 		[Fact]
-		public void RibbonUIAdapterCanAdd()
+		public void XtraBarUIAdapterFactoryCanReturnCorrectType()
 		{
-			RibbonControl theRibbon = new RibbonControl();
+			Bar navBar = new Bar();
+			navBar.Manager = new BarManager();
 
-			RibbonUIAdapter adapter = new RibbonUIAdapter(theRibbon);
-			RibbonControl returnedRibbon = (RibbonControl) adapter.Add(theRibbon);
-			Assert.Equal(theRibbon, returnedRibbon);
-		}
-
-		[Fact]
-		public void RibbonUIAdapterCanRemove()
-		{
-			RibbonControl theRibbon = new RibbonControl();
-
-			RibbonUIAdapter adapter = new RibbonUIAdapter(theRibbon);
-			adapter.Remove(theRibbon);		// we would like this test to contain an assert
+			XtraBarUIAdapterFactory factory = new XtraBarUIAdapterFactory();
+			Assert.IsType(typeof(BarLinksCollectionUIAdapter), factory.GetAdapter(navBar));
 		}
 	}
 }

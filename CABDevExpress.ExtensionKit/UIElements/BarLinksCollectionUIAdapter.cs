@@ -1,4 +1,3 @@
-using System;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
@@ -10,20 +9,20 @@ namespace CABDevExpress.UIElements
 	/// </summary>
 	public class BarLinksCollectionUIAdapter : UIElementAdapter<BarItem>
 	{
-		private readonly BarItems collection;
+		private readonly BarItems itemCollection;
 		private readonly BarItemLinkCollection linkCollection;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="BarLinksCollectionUIAdapter"/> class.
 		/// </summary>
 		/// <param name="linkCollection"></param>
-		/// <param name="collection"></param>
-		public BarLinksCollectionUIAdapter(BarItemLinkCollection linkCollection, BarItems collection)
+		/// <param name="itemCollection"></param>
+		public BarLinksCollectionUIAdapter(BarItemLinkCollection linkCollection, BarItems itemCollection)
 		{
-			Guard.ArgumentNotNull(collection, "collection");
-			this.collection = collection;
+			Guard.ArgumentNotNull(itemCollection, "BarItems");
+			this.itemCollection = itemCollection;
 
-			Guard.ArgumentNotNull(linkCollection, "linkCollection");
+			Guard.ArgumentNotNull(linkCollection, "BarItemLinkCollection");
 			this.linkCollection = linkCollection;
 		}
 
@@ -32,12 +31,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override BarItem Add(BarItem uiElement)
 		{
-			if (collection == null || linkCollection == null)
-				throw new InvalidOperationException();
-
-			collection.Add(uiElement);
+			itemCollection.Add(uiElement);
 			linkCollection.Insert(GetInsertingIndex(uiElement), uiElement);
-
 			return uiElement;
 		}
 
@@ -46,12 +41,12 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override void Remove(BarItem uiElement)
 		{
-			collection.Remove(uiElement);
+			itemCollection.Remove(uiElement);
 		}
 
 		/// <summary>
 		/// When overridden in a derived class, returns the correct index for the item being added. By default,
-		/// it will return the length of the collection.
+		/// it will return the length of the itemCollection.
 		/// </summary>
 		/// <param name="uiElement"></param>
 		/// <returns></returns>
@@ -61,7 +56,7 @@ namespace CABDevExpress.UIElements
 		}
 
 		/// <summary>
-		/// Returns the internal collection managed by the <see cref="BarLinksCollectionUIAdapter"/>
+		/// Returns the internal itemCollection managed by the <see cref="BarLinksCollectionUIAdapter"/>
 		/// </summary>
 		protected BarItemLinkCollection InternalCollection
 		{

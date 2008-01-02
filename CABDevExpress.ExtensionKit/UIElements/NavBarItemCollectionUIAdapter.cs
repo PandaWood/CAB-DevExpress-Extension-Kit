@@ -51,11 +51,11 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override void Remove(NavBarItem uiElement)
 		{
-			if (uiElement.NavBar != null)
-			{
-				itemCollection.Remove(uiElement);
-				linkCollection.Remove(uiElement);
-			}
+			Guard.ArgumentNotNull(uiElement, "uiElement");
+			Guard.ArgumentNotNull(uiElement.NavBar, "uiElement.NavBar");
+
+			itemCollection.Remove(uiElement);
+			linkCollection.Remove(uiElement);
 		}
 
 		/// <summary>
