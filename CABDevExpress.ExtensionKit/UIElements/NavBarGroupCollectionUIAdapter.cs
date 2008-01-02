@@ -26,6 +26,7 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override NavBarGroup Add(NavBarGroup uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "NavBarGroup");
 			navGroupCollection.Insert(GetInsertingIndex(uiElement), uiElement);
 			return uiElement;
 		}
@@ -40,7 +41,7 @@ namespace CABDevExpress.UIElements
 			Guard.ArgumentNotNull(uiElement.NavBar.Groups, "NavBarGroup.NavBar.Groups");
 
 			uiElement.NavBar.Groups.Remove(uiElement);
-			//TODO I would like to know why this doesn't use navGroupCollection.Remove(uiElement);
+			//TODO I wonder why this doesn't use navGroupCollection.Remove(uiElement);
 		}
 
 		/// <summary>

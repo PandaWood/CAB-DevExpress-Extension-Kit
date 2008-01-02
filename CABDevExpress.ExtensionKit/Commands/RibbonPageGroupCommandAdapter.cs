@@ -6,7 +6,7 @@ namespace CABDevExpress.Commands
 {
     /// <summary>
     /// An <see cref="EventCommandAdapter{TInvoker}"/> that updates a 
-    /// <see cref="DXMenuItem"/> based on the changes to the <see cref="Command.Status"/> property value.
+	/// <see cref="RibbonPageGroup"/> based on the changes to the <see cref="Command.Status"/> property value.
     /// </summary>
     public class RibbonPageGroupCommandAdapter : EventCommandAdapter<RibbonPageGroup>
     {
@@ -21,19 +21,5 @@ namespace CABDevExpress.Commands
         /// </summary>
         public RibbonPageGroupCommandAdapter(RibbonPageGroup item, string eventName): base(item, eventName)
         { }
-
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        //protected override void OnCommandChanged(Command command)
-        //{
-        //    base.OnCommandChanged(command);
-
-        //    //foreach (KeyValuePair<RibbonPageGroup, List<string>> pair in Invokers)
-        //    //{
-        //    //    pair.Key.Enabled = (command.Status == CommandStatus.Enabled);
-        //    //    pair.Key.Visible = (command.Status != CommandStatus.Unavailable);
-        //    //}
-        //}
     }
 }

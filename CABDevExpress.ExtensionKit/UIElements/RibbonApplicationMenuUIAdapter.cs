@@ -20,6 +20,7 @@ namespace CABDevExpress.UIElements
 		{
 			Guard.ArgumentNotNull(applicationMenu, "ApplicationMenu");
 			Guard.ArgumentNotNull(applicationMenu.Ribbon, "ApplicationMenu.Ribbon");
+
 			this.applicationMenu = applicationMenu;
 		}
 
@@ -40,6 +41,7 @@ namespace CABDevExpress.UIElements
 		protected override void Remove(BarItem uiElement)
 		{
 			Guard.ArgumentNotNull(uiElement, "BarItem");
+
 			applicationMenu.Ribbon.Items.Remove(uiElement);
 		}
 	}

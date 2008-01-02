@@ -105,8 +105,6 @@ namespace CABDevExpress.Workspaces
             if (control != null && SmartParts.Contains(sender))
             {
                 CloseInternal(control);
-                //this.windowDictionary[control].Close();
-                //this.windowDictionary.Remove(control);
             }
         }
 
@@ -260,10 +258,9 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnActivate(Control smartPart)
         {
-            // Prevent double firing from composer Workspace class and from form.
             try
             {
-                fireActivatedFromForm = false;
+				fireActivatedFromForm = false;	// Prevent double firing from composer Workspace class and form
                 Form form = windowDictionary[smartPart];
                 form.BringToFront();
                 form.Show();
@@ -291,8 +288,7 @@ namespace CABDevExpress.Workspaces
             XtraForm form = windowDictionary[smartPart];
             smartPart.Disposed -= ControlDisposed;
 
-            // Remove the smartPart from the form to avoid disposing it.
-            form.Controls.Remove(smartPart);
+			form.Controls.Remove(smartPart);	// Remove the smartPart from the form to avoid disposing it.
 
             form.Close();
             windowDictionary.Remove(smartPart);

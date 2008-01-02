@@ -26,6 +26,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override RibbonPage Add(RibbonPage uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "RibbonPage");
+
 			ribbonPageCollection.Insert(GetInsertingIndex(uiElement), uiElement);
 			return uiElement;
 		}
@@ -38,7 +40,8 @@ namespace CABDevExpress.UIElements
 			Guard.ArgumentNotNull(uiElement, "RibbonPage");
 			Guard.ArgumentNotNull(uiElement.Ribbon, "RibbonPage.Ribbon");
 
-			uiElement.Ribbon.Pages.Remove(uiElement);		//TODO I wonder why not remove from the ribbonPageCollection?
+			uiElement.Ribbon.Pages.Remove(uiElement);		
+			//TODO I wonder why this doesn't use ribbonPageCollection.Remove()?
 		}
 
 		/// <summary>

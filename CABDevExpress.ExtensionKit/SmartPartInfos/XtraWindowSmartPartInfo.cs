@@ -16,7 +16,7 @@ namespace CABDevExpress.SmartPartInfos
         private FormStartPosition startPosition = default(FormStartPosition);
 
         ///
-        /// Start position of the Modal form
+        /// The start position of the Modal form
         ///
         [DefaultValue(false)]
         [Category("Layout")]
@@ -25,10 +25,9 @@ namespace CABDevExpress.SmartPartInfos
             get { return startPosition; }
             set { startPosition = value; }
         }
-        //-----
 
         ///
-        /// Whether or not the form shows in the Window taskbar
+        /// Whether the form shows in the Windows taskbar
         ///
         [DefaultValue(false)]
         [Category("Layout")]
@@ -37,6 +36,5 @@ namespace CABDevExpress.SmartPartInfos
             get { return showInTaskbar; }
             set { showInTaskbar = value; }
         }
-        //-----
     }
 }

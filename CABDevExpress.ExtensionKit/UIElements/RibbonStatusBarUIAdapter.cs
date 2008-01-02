@@ -6,7 +6,7 @@ using Microsoft.Practices.CompositeUI.Utility;
 namespace CABDevExpress.UIElements
 {
 	/// <summary>
-	/// An adapter that wraps a <see cref="RibbonStatusBarUIAdapter"/> for use as an <see cref="IUIElementAdapter"/>.
+	/// An adapter that wraps a <see cref="RibbonStatusBar"/> for use as an <see cref="IUIElementAdapter"/>.
 	/// </summary>
 	public class RibbonStatusBarUIAdapter : UIElementAdapter<BarItem>
 	{

@@ -4,6 +4,10 @@ using Microsoft.Practices.CompositeUI.Commands;
 
 namespace CABDevExpress.Commands
 {
+	/// <summary>
+	/// An <see cref="EventCommandAdapter{TInvoker}"/> that updates a <see cref="RepositoryItemHyperLinkEdit"/> based on the changes to 
+	/// the <see cref="Command.Status"/> property value.
+	/// </summary>
 	public class RepositoryItemHyperLinkEditCommandAdapter: EventCommandAdapter<RepositoryItemHyperLinkEdit>
 	{
 		/// <summary>

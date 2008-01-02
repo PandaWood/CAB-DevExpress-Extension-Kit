@@ -5,8 +5,8 @@ using Microsoft.Practices.CompositeUI.Utility;
 namespace CABDevExpress.UIElements
 {
 	/// <summary>
-	/// An adapter that wraps a <see cref="RibbonPageGroup"/> for use as an <see cref="IUIElementAdapter"/>.
-	/// Class it is used to Manage groups added and removed from a ribbon Page
+	/// An adapter that wraps a <see cref="RibbonPageGroupCollection"/> for use as an <see cref="IUIElementAdapter"/>.
+	/// It is used to Manage groups added and removed from a ribbon Page
 	/// </summary>
 	public class RibbonPageGroupCollectionUIAdapter : UIElementAdapter<RibbonPageGroup>
 	{
@@ -27,6 +27,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override RibbonPageGroup Add(RibbonPageGroup uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "RibbonPageGroup");
+
 			ribbonPageGroupCollection.Insert(GetInsertingIndex(uiElement), uiElement);
 			return uiElement;
 		}
@@ -36,6 +38,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override void Remove(RibbonPageGroup uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "RibbonPageGroup");
+
 			if (uiElement.Page != null)
 				uiElement.Page.Groups.Remove(uiElement);		
 				//TODO I wonder why this doesn't use ribbonPageGroupCollection.Remove(uiElement);

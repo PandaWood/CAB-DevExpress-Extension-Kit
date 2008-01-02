@@ -28,6 +28,7 @@ namespace CABDevExpress.UIElements
 		protected override BarItem Add(BarItem uiElement)
 		{
 			Guard.ArgumentNotNull(uiElement, "BarItem");
+
 			ribbonPageHeader.Add(uiElement);
 			return uiElement;
 		}

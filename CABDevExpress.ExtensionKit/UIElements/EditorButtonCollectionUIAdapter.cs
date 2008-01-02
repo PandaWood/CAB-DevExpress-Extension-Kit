@@ -1,19 +1,18 @@
 using DevExpress.XtraEditors.Controls;
-using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
 namespace CABDevExpress.UIElements
 {
 	/// <summary>
-	/// An adapter that wraps a <see cref="NavItemCollection"/> for use as an <see cref="IUIElementAdapter"/>.
+	/// An adapter that wraps a <see cref="EditorButtonCollection"/> for use as an <see cref="IUIElementAdapter"/>.
 	/// </summary>
 	public class EditorButtonCollectionUIAdapter : UIElementAdapter<EditorButton>
 	{
 		private readonly EditorButtonCollection buttonCollection;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="NavBarItemCollectionUIAdapter"/> class.
+		/// Initializes a new instance of the <see cref="EditorButtonCollectionUIAdapter"/> class.
 		/// </summary>
 		/// <param name="collection"></param>
 		public EditorButtonCollectionUIAdapter(EditorButtonCollection collection)
@@ -27,6 +26,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override EditorButton Add(EditorButton uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "EditorButton");
+
 			buttonCollection.Add(uiElement);
 			return uiElement;
 		}
@@ -36,10 +37,11 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override void Remove(EditorButton uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "EditorButton");
+
 			int index = buttonCollection.IndexOf(uiElement);
 			if (index > -1) 
 				buttonCollection.RemoveAt(index);
-                          
 		}
 
 		/// <summary>

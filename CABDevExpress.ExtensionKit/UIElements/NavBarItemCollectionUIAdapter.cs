@@ -41,6 +41,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override NavBarItem Add(NavBarItem uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "NavBarItem");
+
 			itemCollection.Insert(GetInsertingIndex(uiElement), uiElement);
 			linkCollection.Add(uiElement);
 			return uiElement;
@@ -51,8 +53,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override void Remove(NavBarItem uiElement)
 		{
-			Guard.ArgumentNotNull(uiElement, "uiElement");
-			Guard.ArgumentNotNull(uiElement.NavBar, "uiElement.NavBar");
+			Guard.ArgumentNotNull(uiElement, "NavBarItem");
+			Guard.ArgumentNotNull(uiElement.NavBar, "NavBarItem.NavBar");
 
 			itemCollection.Remove(uiElement);
 			linkCollection.Remove(uiElement);

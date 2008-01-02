@@ -75,7 +75,7 @@ namespace CABDevExpress.UIElements
 			{
 				if (DesignMode)
 					_uiEvent = _uiEvent ?? new UIEvent();
-				return _uiEvent; //new UIEvent();//_UIEvent;
+				return _uiEvent;
 			}
 			set { _uiEvent = value; }
 		}

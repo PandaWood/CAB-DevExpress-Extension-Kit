@@ -5,7 +5,7 @@ using Microsoft.Practices.CompositeUI.Utility;
 namespace CABDevExpress.UIElements
 {
 	/// <summary>
-	/// A <see cref="IUIElementAdapterFactory"/> that produces adapters for XtraNavBar-related UI Elements.
+	/// A <see cref="IUIElementAdapterFactory"/> that produces adapters for EditorButtonCollection-related UI Elements.
 	/// </summary>
 	public class EditorButtonCollectionUIAdapterFactory : IUIElementAdapterFactory
 	{

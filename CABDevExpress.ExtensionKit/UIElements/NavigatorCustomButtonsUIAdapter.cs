@@ -1,20 +1,19 @@
 using System;
 using DevExpress.XtraEditors;
-using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
 
 namespace CABDevExpress.UIElements
 {
 	/// <summary>
-	/// An adapter that wraps a <see cref="NavItemCollection"/> for use as an <see cref="IUIElementAdapter"/>.
+	/// An adapter that wraps a <see cref="NavigatorCustomButtons"/> for use as an <see cref="IUIElementAdapter"/>.
 	/// </summary>
 	public class NavigatorCustomButtonUIAdapter : UIElementAdapter<NavigatorCustomButton>
 	{
 		private readonly NavigatorCustomButtons buttonCollection;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="NavBarItemCollectionUIAdapter"/> class.
+		/// Initializes a new instance of the <see cref="NavigatorCustomButtonUIAdapter"/> class.
 		/// </summary>
 		/// <param name="buttonCollection"></param>
 		public NavigatorCustomButtonUIAdapter(NavigatorCustomButtons buttonCollection)
@@ -28,6 +27,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override NavigatorCustomButton Add(NavigatorCustomButton uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "NavigatorCustomButton");
+
 			buttonCollection.AddRange(new NavigatorCustomButton[] { uiElement });
 			return uiElement;
 		}
@@ -37,7 +38,9 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override void Remove(NavigatorCustomButton uiElement)
 		{
-			int index = -1;			//TODO I would like to test this
+			Guard.ArgumentNotNull(uiElement, "NavigatorCustomButton");
+
+			int index = -1;			//TODO I would like to test this method
 			foreach (object obj in buttonCollection)
 			{
 				index++;
