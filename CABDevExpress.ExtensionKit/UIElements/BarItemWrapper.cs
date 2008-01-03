@@ -4,23 +4,23 @@ namespace CABDevExpress.UIElements
 {
 	public class BarItemWrapper
 	{
-		private readonly BarItem _item;
-		private readonly BarItemLinkCollection _itemLinks;
+		private readonly BarItem barItem;
+		private readonly BarItemLinkCollection barItemLinks;
 
-		public BarItemWrapper(BarItemLinkCollection itemLinkCollection, BarItem item)
+		public BarItemWrapper(BarItemLinkCollection itemLinkCollection, BarItem barItem)
 		{
-			_item = item;
-			_itemLinks = itemLinkCollection;
+			this.barItem = barItem;
+			barItemLinks = itemLinkCollection;
 		}
 
 		public BarItem Item
 		{
-			get { return _item; }
+			get { return barItem; }
 		}
 
 		public BarItemLinkCollection ItemLinks
 		{
-			get { return _itemLinks; }
+			get { return barItemLinks; }
 		}
 	}
 }

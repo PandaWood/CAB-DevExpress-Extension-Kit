@@ -37,11 +37,9 @@ namespace CABDevExpress.UIElements
 		protected override void Remove(NavBarGroup uiElement)
 		{
 			Guard.ArgumentNotNull(uiElement, "NavBarGroup");
-			Guard.ArgumentNotNull(uiElement.NavBar, "NavBarGroup.NavBar");
-			Guard.ArgumentNotNull(uiElement.NavBar.Groups, "NavBarGroup.NavBar.Groups");
 
-			uiElement.NavBar.Groups.Remove(uiElement);
-			//TODO I wonder why this doesn't use navGroupCollection.Remove(uiElement);
+			if (uiElement.NavBar != null)
+				navGroupCollection.Remove(uiElement);
 		}
 
 		/// <summary>

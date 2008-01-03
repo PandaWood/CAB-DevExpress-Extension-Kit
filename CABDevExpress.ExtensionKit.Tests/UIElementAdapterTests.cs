@@ -1,5 +1,7 @@
 using CABDevExpress.UIElements;
 using DevExpress.XtraBars;
+using DevExpress.XtraNavBar;
+using Microsoft.Practices.CompositeUI.UIElements;
 using Xunit;
 
 namespace CABDevExpress.ExtensionKit.Tests
@@ -9,11 +11,33 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void XtraBarUIAdapterFactoryCanReturnCorrectType()
 		{
-			Bar navBar = new Bar();
-			navBar.Manager = new BarManager();
+			Bar bar = new Bar();
+			bar.Manager = new BarManager();
 
 			XtraBarUIAdapterFactory factory = new XtraBarUIAdapterFactory();
-			Assert.IsType(typeof(BarLinksCollectionUIAdapter), factory.GetAdapter(navBar));
+			Assert.IsType(typeof(BarLinksCollectionUIAdapter), factory.GetAdapter(bar));
+		}
+
+		[Fact]
+		public void XtraNavBarUIAdapterFactoryCanReturnCorrectType()
+		{
+			NavBarControl navBarControl = new NavBarControl();
+
+			XtraNavBarUIAdapterFactory factory = new XtraNavBarUIAdapterFactory();
+			IUIElementAdapter adapter = factory.GetAdapter(navBarControl);
+			Assert.IsType(typeof(NavBarGroupCollectionUIAdapter), adapter);
+		}
+
+		[Fact]
+		public void CanAddAndRemoveFromNavBarGroupCollectionUIAdapter()
+		{
+			NavBarControl navBarControl = new NavBarControl();
+			IUIElementAdapter adapter = new XtraNavBarUIAdapterFactory().GetAdapter(navBarControl);
+
+			NavBarGroup navBarGroup = new NavBarGroup();
+			object addedGroup = adapter.Add(navBarGroup);
+			Assert.Equal(navBarGroup, addedGroup as NavBarGroup);
+			adapter.Remove(addedGroup);
 		}
 	}
 }

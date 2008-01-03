@@ -38,10 +38,10 @@ namespace CABDevExpress.UIElements
 		protected override void Remove(RibbonPage uiElement)
 		{
 			Guard.ArgumentNotNull(uiElement, "RibbonPage");
-			Guard.ArgumentNotNull(uiElement.Ribbon, "RibbonPage.Ribbon");
 
-			uiElement.Ribbon.Pages.Remove(uiElement);		
-			//TODO I wonder why this doesn't use ribbonPageCollection.Remove()?
+			if (uiElement.Ribbon != null)
+				uiElement.Ribbon.Pages.Remove(uiElement);		
+				//TODO I wonder why this doesn't use ribbonPageCollection.Remove()?
 		}
 
 		/// <summary>

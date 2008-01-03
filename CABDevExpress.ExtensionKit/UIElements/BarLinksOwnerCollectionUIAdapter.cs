@@ -30,7 +30,7 @@ namespace CABDevExpress.UIElements
 		/// <returns></returns>
 		protected override int GetInsertingIndex(object uiElement)
 		{
-			int index = 0;			//TODO I would like to test this
+			int index = 0;			//TODO we would like to test this
 			foreach (BarItemLink barItemLink in InternalCollection)
 			{
 				if (barItemLink.Item == item)

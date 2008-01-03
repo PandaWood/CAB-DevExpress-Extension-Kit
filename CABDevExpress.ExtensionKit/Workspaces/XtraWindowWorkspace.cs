@@ -151,14 +151,12 @@ namespace CABDevExpress.Workspaces
 
             if (smartPartInfo.Modal)
             {
-                SetWindowLocation(form, smartPartInfo);
-                // Argument can be null. It's the default for the other overload.
+				SetWindowLocation(form, smartPartInfo);	// Argument can be null. It's the default for the other overload.
                 form.ShowDialog(ownerForm);
             }
             else
             {
-                // Call changes if no owner is specified.
-                if (ownerForm != null)
+				if (ownerForm != null)	// Call changes if no owner is specified.
                 {
                     form.Show(ownerForm);
                 }
