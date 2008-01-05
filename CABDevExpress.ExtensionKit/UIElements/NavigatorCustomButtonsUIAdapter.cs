@@ -1,4 +1,3 @@
-using System;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
@@ -48,10 +47,8 @@ namespace CABDevExpress.UIElements
 					break;
 			}
 
-			if (index == -1)
-				throw new InvalidOperationException("Cannot find NavigatorCustomButton to remove");
-
-			buttonCollection.RemoveAt(index);
+			if (index > -1)
+				buttonCollection.RemoveAt(index);
 		}
 
 		/// <summary>

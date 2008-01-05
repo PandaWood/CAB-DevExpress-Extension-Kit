@@ -26,6 +26,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override Bar Add(Bar uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "Bar");
+
 			bars.Add(uiElement);
 			return uiElement;
 		}
@@ -35,6 +37,8 @@ namespace CABDevExpress.UIElements
 		/// </summary>
 		protected override void Remove(Bar uiElement)
 		{
+			Guard.ArgumentNotNull(uiElement, "Bar");
+
 			int index = bars.IndexOf(uiElement); 
 			if (index > -1)
 				bars.RemoveAt(index);
