@@ -39,7 +39,7 @@ namespace CABDevExpress.UIElements
 		{
 			Guard.ArgumentNotNull(uiElement, "NavigatorCustomButton");
 
-			int index = -1;			//TODO we would like to test this method
+			int index = -1;
 			foreach (object obj in buttonCollection)
 			{
 				index++;

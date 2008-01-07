@@ -34,8 +34,8 @@ namespace CABDevExpress
 			ICommandAdapterMapService mapService = RootWorkItem.Services.Get<ICommandAdapterMapService>();
 			mapService.Register(typeof (BarItem), typeof (BarItemCommandAdapter));
 			mapService.Register(typeof (NavBarItem), typeof (NavBarItemCommandAdapter));
-			mapService.Register(typeof(DXMenuItem), typeof(DXMenuItemCommandAdapter));
-			mapService.Register(typeof(RepositoryItemHyperLinkEdit), typeof(RepositoryItemHyperLinkEditCommandAdapter));
+			mapService.Register(typeof (DXMenuItem), typeof (DXMenuItemCommandAdapter));
+			mapService.Register(typeof (RepositoryItemHyperLinkEdit), typeof (RepositoryItemHyperLinkEditCommandAdapter));
 		}
 
 		private void RegisterUIElementAdapterFactories()

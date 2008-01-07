@@ -2,6 +2,8 @@ using DevExpress.XtraBars;
 
 namespace CABDevExpress.UIElements
 {
+	///<summary>
+	///</summary>
 	public class BarLinksOwnerCollectionUIAdapter : BarLinksCollectionUIAdapter
 	{
 		/// <summary>

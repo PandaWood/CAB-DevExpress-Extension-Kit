@@ -1,5 +1,8 @@
+using System;
 using CABDevExpress.UIElements;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid;
 using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Xunit;
@@ -45,7 +48,10 @@ namespace CABDevExpress.ExtensionKit.Tests
 			NavBarGroup navBarGroup = new NavBarGroup();
 			object addedGroup = adapter.Add(navBarGroup);
 			Assert.Equal(navBarGroup, addedGroup as NavBarGroup);
+			Assert.Equal(1, navBarControl.Groups.Count);
+
 			adapter.Remove(addedGroup);
+			Assert.Equal(0, navBarControl.Groups.Count);
 		}
 
 		[Fact]
@@ -59,7 +65,42 @@ namespace CABDevExpress.ExtensionKit.Tests
 			Bar bar = new Bar(barManager);
 			object addedBar = adapter.Add(bar);
 			Assert.Equal(bar, addedBar as Bar);
-			adapter.Remove(bar);		// TODO we would like to confirm it was actually removed from the underlying collection
+			Assert.Equal(1, barManager.Bars.Count);
+
+			adapter.Remove(bar);
+			Assert.Equal(0, barManager.Bars.Count);
+
+			adapter.Remove(new Bar(barManager));
+			Assert.Equal(0, barManager.Bars.Count);
+		}
+
+		[Fact]
+		public void NavigatorCustomButtonUIAdapterWorks()
+		{
+			
+			GridControl grid = new GridControl();
+			NavigatorCustomButtons buttons = grid .EmbeddedNavigator.Buttons.CustomButtons;
+			IUIElementAdapter adapter = new NavigatorCustomButtonUIAdapterFactory().GetAdapter(buttons);
+
+			Assert.IsType(typeof(NavigatorCustomButtonUIAdapter), adapter);
+
+			NavigatorCustomButton button = new NavigatorCustomButton(0);
+
+			object addedButton = adapter.Add(button);
+			Assert.Equal(button, addedButton as NavigatorCustomButton);
+			Assert.Equal(1, grid.EmbeddedNavigator.Buttons.CustomButtons.Count);
+
+			adapter.Remove(button);
+			Assert.Equal(0, grid.EmbeddedNavigator.Buttons.CustomButtons.Count);
+		}
+
+		[Fact]
+		public void XtraNavBarUIAdapterFactoryThrowsExceptionWithUnsupported()
+		{
+			Assert.Throws<ArgumentException>(delegate
+			                                 	{
+			                                 		new XtraNavBarUIAdapterFactory().GetAdapter(new NavigatorCustomButton(0));
+			                                 	});
 		}
 	}
 }
