@@ -14,7 +14,7 @@ namespace CABDevExpress.UIElements
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="BarLinksOwnerCollectionUIAdapter"/> using the
-		/// specified item.
+		/// specified item and linkCollection
 		/// </summary>
 		/// <param name="item"></param>
 		/// <param name="linkCollection"></param>
@@ -32,13 +32,14 @@ namespace CABDevExpress.UIElements
 		/// <returns></returns>
 		protected override int GetInsertingIndex(object uiElement)
 		{
-			int index = 0;			//TODO we would like to test this
+			int index = 0;
 			foreach (BarItemLink barItemLink in InternalCollection)
 			{
 				if (barItemLink.Item == item)
 					break;
 				index++;
 			}
+
 			return ++index;
 		}
 	}
