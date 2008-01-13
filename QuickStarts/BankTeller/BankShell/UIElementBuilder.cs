@@ -1,5 +1,6 @@
 using System;
 using System.Configuration;
+using BankShell.Config;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
 

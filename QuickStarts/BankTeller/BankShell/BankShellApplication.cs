@@ -43,20 +43,31 @@ namespace BankShell
         {
             base.AfterShellCreated();
 
-            RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspacesConstants.SHELL_CONTENT);
+            RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspacesConstants.SHELL_CONTENTWORKSPACE);
+            RootWorkItem.Items.Add(Shell.NavBarWorkspace, WorkspacesConstants.SHELL_NAVBARWORKSPACE);
 
-            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionConstants.MAINMENU, Shell.bar1);
-            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionConstants.MAINSTATUS, Shell.bar2);
-            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionConstants.FILEDROPDOWN, Shell.barSubItemFile);
-            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionConstants.FILE, new BarItemWrapper(Shell.bar1.ItemLinks, Shell.barSubItemFile));
-            RootWorkItem.UIExtensionSites[UIExtensionConstants.MAINMENU].Add(new SkinMenu(Shell.bar1));
-            RootWorkItem.UIExtensionSites[UIExtensionConstants.MAINMENU].Add(new WindowMenu(Shell.bar1, Shell.xtraTabbedMdiManager, Shell));
+            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.MAINMENU, Shell.mainMenuBar);
+            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.MAINSTATUS, Shell.mainStatusBar);
+            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.FILEDROPDOWN, Shell.barSubItemFile);
+
+            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.FILE, 
+				new BarItemWrapper(Shell.mainMenuBar.ItemLinks, Shell.barSubItemFile));
+
+            RootWorkItem.UIExtensionSites[UIExtensionSites.MAINMENU].Add(new SkinMenu(Shell.mainMenuBar));
+
+            RootWorkItem.UIExtensionSites[UIExtensionSites.MAINMENU].Add(
+				new WindowMenu(Shell.mainMenuBar, Shell.xtraTabbedMdiManager, Shell));
+
+//			RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.NavBar,
+//													   new NavBarGroupCollectionUIAdapter(Shell.NavBarWorkspace.Groups));
 
             // Load the menu structure from App.config
             UIElementBuilder.LoadFromConfig(RootWorkItem);
         }
 
-        public override void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+    	#region HandleException
+
+    	public override void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             Exception ex = e.ExceptionObject as Exception;
 
@@ -96,5 +107,7 @@ namespace BankShell
 
             return errMessage;
         }
+
+    	#endregion
     }
 }

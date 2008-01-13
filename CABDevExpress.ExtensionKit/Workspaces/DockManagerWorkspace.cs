@@ -18,14 +18,12 @@ namespace CABDevExpress.Workspaces
         private readonly DockManager dockManager;
 
         /// <summary>
-        /// Initializes the workspace with no DockManager
-        /// windows.
+        /// Initializes the workspace with no DockManager windows.
         /// </summary>
         public DockManagerWorkspace() { }
 
         /// <summary>
         /// Initializes the workspace with the DockManager which a all new DockPanels are added to. 
-        /// DockPanels.
         /// </summary>
         /// <param name="dockManager">The DockManager that new DockPanels are added to</param>
         public DockManagerWorkspace(DockManager dockManager)

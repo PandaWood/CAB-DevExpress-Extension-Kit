@@ -4,9 +4,9 @@ using Microsoft.Practices.CompositeUI.SmartParts;
 namespace BankTellerModule.WorkItems.BankTeller
 {
 	[SmartPart]
-	public partial class SideBarView : XtraUserControl, ISmartPartInfoProvider
+	public partial class CustomerView : XtraUserControl, ISmartPartInfoProvider
 	{
-		public SideBarView()
+		public CustomerView()
 		{
 			InitializeComponent();
 		}

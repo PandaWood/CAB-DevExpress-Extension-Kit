@@ -118,7 +118,6 @@ namespace CABDevExpress.Workspaces
         /// <param name="smartPartInfo">The associated smart part info for the smart part being shown.</param>
         protected virtual void OnShow(Control smartPart, XtraNavBarGroupSmartPartInfo smartPartInfo)
         {
-            // Group
             NavBarGroup group = new NavBarGroup();
             group.GroupStyle = NavBarGroupStyle.ControlContainer;
             group.GroupClientHeight = smartPart.Height;
@@ -127,10 +126,7 @@ namespace CABDevExpress.Workspaces
             // SmartPartInfo
             ApplySmartPartInfoHelper(group, smartPartInfo);
 
-            // Keep associations between the smart part and group that represents it
             composer.Add(group, smartPart);
-
-            // Store the new group
             Groups.Add(group);
 
             // Controlcontainer
@@ -285,7 +281,6 @@ namespace CABDevExpress.Workspaces
         /// <param name="smartPartInfo">Smart part info to applied to the smart part</param>
         public void Show(object smartPart, ISmartPartInfo smartPartInfo)
         {
-            // Ensure DockStyle.fill for the ControlContainer smartPart
             ((Control) smartPart).Dock = DockStyle.Fill;
             composer.Show(smartPart, smartPartInfo);
         }

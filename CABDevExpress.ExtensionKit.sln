@@ -13,6 +13,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CABDevExpress.ExtensionKit.
 		Release.AspNetCompiler.Debug = "False"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BankTellerSampleApp", "BankTellerSampleApp", "{8870A924-F9EF-4FE7-B82E-809E391480C8}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankShell", "QuickStarts\BankTeller\BankShell\BankShell.csproj", "{62B89443-7C08-4753-9C43-F53DABF7549D}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTellerCommon", "QuickStarts\BankTeller\BankTellerCommon\BankTellerCommon.csproj", "{5461523C-4DCE-4672-BC72-7F0C99501F43}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTellerModule", "QuickStarts\BankTeller\BankTellerModule\BankTellerModule.csproj", "{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMapExtensionModule", "QuickStarts\BankTeller\BankTellerModuleExtension\CustomerMapExtensionModule.csproj", "{A7848178-09E6-4FC7-A21E-9CB9418984A5}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +57,31 @@ Global
 		{EEED0AF9-C263-4ACC-923B-8F5CFDF247C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEED0AF9-C263-4ACC-923B-8F5CFDF247C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEED0AF9-C263-4ACC-923B-8F5CFDF247C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B89443-7C08-4753-9C43-F53DABF7549D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B89443-7C08-4753-9C43-F53DABF7549D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B89443-7C08-4753-9C43-F53DABF7549D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B89443-7C08-4753-9C43-F53DABF7549D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{62B89443-7C08-4753-9C43-F53DABF7549D} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
+		{5461523C-4DCE-4672-BC72-7F0C99501F43} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
+		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
+		{A7848178-09E6-4FC7-A21E-9CB9418984A5} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
 	EndGlobalSection
 	GlobalSection(TeamFoundationVersionControl) = preSolution
 		SccNumberOfProjects = 2

@@ -44,7 +44,7 @@ namespace BankShell
         {
             InitializeComponent();
             barStaticItem1.Caption = String.Empty;
-            barManager1.ForceInitialize();
+            barManager.ForceInitialize();
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace BankShell
 			XtraWindowSmartPartInfo smartPartInfo = new XtraWindowSmartPartInfo();
 			smartPartInfo.Modal = true;
 
-			// the two properties added by CAB DevExpress Extension Kit's XtraWindowSmartPartInfo
+			// the two properties added by CABDevExpress.ExtensionKit's XtraWindowSmartPartInfo
 			smartPartInfo.StartPosition = FormStartPosition.CenterParent;
 			smartPartInfo.ShowInTaskbar = false;
 
@@ -94,5 +94,10 @@ namespace BankShell
         {
             barStaticItem1.Caption = e.Data;
         }
+
+		public XtraNavBarWorkspace NavBarWorkspace
+		{
+			get { return navBarWorkspace; }
+		}
     }
 }

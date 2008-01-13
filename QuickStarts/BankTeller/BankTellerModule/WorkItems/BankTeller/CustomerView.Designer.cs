@@ -3,7 +3,7 @@ using CustomerQueueView=BankTellerModule.WorkItems.BankTeller.CustomerQueueView;
 
 namespace BankTellerModule.WorkItems.BankTeller
 {
-	partial class SideBarView
+	partial class CustomerView
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -33,8 +33,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 		{
 			this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
 			this.smartPartPlaceholder1 = new Microsoft.Practices.CompositeUI.WinForms.SmartPartPlaceholder();
-			this.customerQueueView1 = new CustomerQueueView();
-			this.xtraNavBarGroupSmartPartInfo1 = new CABDevExpress.SmartPartInfos.XtraNavBarGroupSmartPartInfo();
+			this.customerQueueView1 = new BankTellerModule.WorkItems.BankTeller.CustomerQueueView();
 			this.infoProvider = new Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfoProvider();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
 			this.splitContainerControl1.SuspendLayout();
@@ -50,7 +49,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 			this.splitContainerControl1.Panel1.Text = "splitContainerControl1_Panel1";
 			this.splitContainerControl1.Panel2.Controls.Add(this.customerQueueView1);
 			this.splitContainerControl1.Panel2.Text = "splitContainerControl1_Panel2";
-			this.splitContainerControl1.Size = new System.Drawing.Size(200, 222);
+			this.splitContainerControl1.Size = new System.Drawing.Size(200, 263);
 			this.splitContainerControl1.SplitterPosition = 47;
 			this.splitContainerControl1.TabIndex = 1;
 			this.splitContainerControl1.Text = "splitContainerControl1";
@@ -71,24 +70,16 @@ namespace BankTellerModule.WorkItems.BankTeller
 			this.customerQueueView1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.customerQueueView1.Location = new System.Drawing.Point(0, 0);
 			this.customerQueueView1.Name = "customerQueueView1";
-			this.customerQueueView1.Size = new System.Drawing.Size(196, 165);
+			this.customerQueueView1.Size = new System.Drawing.Size(196, 206);
 			this.customerQueueView1.TabIndex = 0;
 			// 
-			// xtraNavBarGroupSmartPartInfo1
-			// 
-			this.xtraNavBarGroupSmartPartInfo1.Description = "";
-			this.xtraNavBarGroupSmartPartInfo1.LargeImage = global::BankTellerModule.Properties.Resources.customersLarge;
-			this.xtraNavBarGroupSmartPartInfo1.SmallImage = global::BankTellerModule.Properties.Resources.customersSmall;
-			this.xtraNavBarGroupSmartPartInfo1.Title = "Customers";
-			this.infoProvider.Items.Add(this.xtraNavBarGroupSmartPartInfo1);
-			// 
-			// SideBarView
+			// CustomerView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.splitContainerControl1);
-			this.Name = "SideBarView";
-			this.Size = new System.Drawing.Size(200, 222);
+			this.Name = "CustomerView";
+			this.Size = new System.Drawing.Size(200, 263);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
 			this.splitContainerControl1.ResumeLayout(false);
 			this.ResumeLayout(false);
@@ -100,7 +91,6 @@ namespace BankTellerModule.WorkItems.BankTeller
 		private Microsoft.Practices.CompositeUI.WinForms.SmartPartPlaceholder smartPartPlaceholder1;
 		private CustomerQueueView customerQueueView1;
 		private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-		private CABDevExpress.SmartPartInfos.XtraNavBarGroupSmartPartInfo xtraNavBarGroupSmartPartInfo1;
 		private SmartPartInfoProvider infoProvider;
 	}
 }

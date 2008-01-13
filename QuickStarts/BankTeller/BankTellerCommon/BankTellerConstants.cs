@@ -1,19 +1,14 @@
 namespace BankTellerCommon
 {
-	public class UIExtensionConstants
+	public class UIExtensionSites
 	{
 		public static readonly string CUSTOMERCONTEXT = "CustomerContext";
-
 		public static readonly string FILE = "File";
-
 		public static readonly string MAINMENU = "MainMenu";
-
 		public static readonly string FILEDROPDOWN = "FileDropDown";
-
 		public static readonly string MAINSTATUS = "MainStatus";
-
+		public static readonly string NavBar = "NavBar";
 		public static readonly string QUEUE = "Queue";
-
 		public static readonly string CUSTOMER = "Customer";
 	}
 
@@ -26,7 +21,6 @@ namespace BankTellerCommon
 		public const string ACCEPT_CUSTOMER = "QueueAcceptCustomer";
 		public const string EDIT_CUSTOMER = "EditCustomer";
 		public const string CUSTOMER_MOUSEOVER = "CustomerMouseOver";
-
 		public const string HELLOFROMDXMENU = "RespondToPopup";
 	}
 
@@ -41,7 +35,7 @@ namespace BankTellerCommon
 
 	public class WorkspacesConstants
 	{
-		public static readonly string SHELL_SIDEBAR = "sideBarWorkspace";
-		public static readonly string SHELL_CONTENT = "contentWorkspace";
+		public static readonly string SHELL_NAVBARWORKSPACE = "navbarWorkspace";
+		public static readonly string SHELL_CONTENTWORKSPACE = "contentWorkspace";
 	}
 }

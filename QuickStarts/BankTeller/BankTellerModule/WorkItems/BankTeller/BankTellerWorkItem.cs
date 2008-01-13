@@ -11,8 +11,8 @@
 
 using System.Windows.Forms;
 using BankTellerCommon;
-using BankTellerModule.WorkItems.BankTeller;
 using BankTellerModule.WorkItems.Customer;
+using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Services;
@@ -43,20 +43,33 @@ namespace BankTellerModule.WorkItems.BankTeller
 		// it is going to assume that the smart parts that it needs already exist
 		// in the work item. Therefore, we create the smart parts first, and then
 		// create the main view that contains them.
-		public void Show(IWorkspace sideBar, IWorkspace content)
+		public void Show(IWorkspace navbarWorkspace, IWorkspace content)
 		{
 			contentWorkspace = content;
 
-			//Needs to be named because it will be used in a placeholder
-			this.Items.AddNew<UserInfoView>("UserInfo");
-			SideBarView sideBarView = this.Items.AddNew<SideBarView>();
-			StatsBarView statsBarView = this.Items.AddNew<StatsBarView>();
-
 			AddMenuItems();
+			AddShowNavBarGroups(navbarWorkspace);
+			Activate();
+		}
 
-			sideBar.Show(sideBarView);
-			sideBar.Show(statsBarView);
-			this.Activate();
+		private void AddShowNavBarGroups(IWorkspace navbarWorkspace)
+		{
+			SmartParts.AddNew<UserInfoView>("UserInfo");	//named because it will be used in a placeholder
+			CustomerView customerView = SmartParts.AddNew<CustomerView>();
+			StatsBarView statsBarView = SmartParts.AddNew<StatsBarView>();
+
+			XtraNavBarGroupSmartPartInfo customerInfo = new XtraNavBarGroupSmartPartInfo();
+			customerInfo.Title = "Customers";
+			customerInfo.LargeImage = global::BankTellerModule.Properties.Resources.customersLarge;
+			customerInfo.SmallImage = global::BankTellerModule.Properties.Resources.customersSmall;
+
+			XtraNavBarGroupSmartPartInfo statsInfo = new XtraNavBarGroupSmartPartInfo();
+			statsInfo.Title = "Statistics";
+			statsInfo.LargeImage = global::BankTellerModule.Properties.Resources.statsLarge;
+			statsInfo.SmallImage = global::BankTellerModule.Properties.Resources.statsSmall;
+
+			navbarWorkspace.Show(customerView, customerInfo);
+			navbarWorkspace.Show(statsBarView, statsInfo);
 		}
 
 		private void AddMenuItems()
@@ -66,13 +79,13 @@ namespace BankTellerModule.WorkItems.BankTeller
 				queueItem = new BarSubItem();
 				queueItem.Caption = "Queue";
 
-				UIExtensionSites[UIExtensionConstants.FILE].Add(queueItem);
-				UIExtensionSites.RegisterSite(UIExtensionConstants.QUEUE, queueItem);
+				UIExtensionSites[BankTellerCommon.UIExtensionSites.FILE].Add(queueItem);
+				UIExtensionSites.RegisterSite(BankTellerCommon.UIExtensionSites.QUEUE, queueItem);
 
 				BarButtonItem acceptCustomer = new BarButtonItem();
 				acceptCustomer.Caption = "Accept Customer";
 				acceptCustomer.ItemShortcut =  new BarShortcut(Keys.Control | Keys.A);
-				UIExtensionSites[UIExtensionConstants.QUEUE].Add(acceptCustomer);
+				UIExtensionSites[BankTellerCommon.UIExtensionSites.QUEUE].Add(acceptCustomer);
 
 				Commands[CommandConstants.ACCEPT_CUSTOMER].AddInvoker(acceptCustomer, "ItemClick");
 			}
@@ -111,7 +124,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 
 			// Have we already made the work item for this customer?
 			// If so, return the existing one.
-			CustomerWorkItem workItem = this.Items.Get<CustomerWorkItem>(key);
+			CustomerWorkItem workItem = WorkItems.Get<CustomerWorkItem>(key);
 
 			if (workItem == null)
 			{
@@ -128,6 +141,5 @@ namespace BankTellerModule.WorkItems.BankTeller
 
 			workItem.Show(contentWorkspace);
 		}
-
 	}
 }

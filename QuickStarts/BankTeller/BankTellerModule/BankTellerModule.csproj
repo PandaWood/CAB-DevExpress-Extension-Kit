@@ -39,9 +39,12 @@
     <Reference Include="DevExpress.Data.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" />
+    <Reference Include="DevExpress.XtraCharts.v7.3.UI, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" />
+    <Reference Include="DevExpress.XtraNavBar.v7.3, Version=7.3.5.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.CompositeUI, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\CAB\Microsoft.Practices.CompositeUI.dll</HintPath>
@@ -69,11 +72,11 @@
     </Compile>
     <Compile Include="Services\CustomerQueueService.cs" />
     <Compile Include="WorkItems\BankTeller\BankTellerWorkItem.cs" />
-    <Compile Include="WorkItems\BankTeller\SideBarView.cs">
+    <Compile Include="WorkItems\BankTeller\CustomerView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WorkItems\BankTeller\SideBarView.Designer.cs">
-      <DependentUpon>SideBarView.cs</DependentUpon>
+    <Compile Include="WorkItems\BankTeller\CustomerView.Designer.cs">
+      <DependentUpon>CustomerView.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkItems\BankTeller\StatsBarView.cs">
       <SubType>UserControl</SubType>
@@ -149,9 +152,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\BankTeller\SideBarView.resx">
+    <EmbeddedResource Include="WorkItems\BankTeller\CustomerView.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>SideBarView.cs</DependentUpon>
+      <DependentUpon>CustomerView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkItems\BankTeller\StatsBarView.resx">
       <SubType>Designer</SubType>

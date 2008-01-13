@@ -4,6 +4,7 @@ using Microsoft.Practices.CompositeUI.SmartParts;
 
 namespace BankTellerModule.WorkItems.BankTeller
 {
+	[SmartPart]
     public partial class StatsBarView : XtraUserControl, ISmartPartInfoProvider
     {
         /// <summary> 
@@ -13,11 +14,9 @@ namespace BankTellerModule.WorkItems.BankTeller
         {
             // This call is required by the Windows.Forms Form Designer.
             InitializeComponent();
-
-            // TODO: Add any initialization after the InitForm call
         }
 
-        public Microsoft.Practices.CompositeUI.SmartParts.ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
+        public ISmartPartInfo GetSmartPartInfo(Type smartPartInfoType)
         {
             return infoProvider.GetSmartPartInfo(smartPartInfoType);
         }

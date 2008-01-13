@@ -71,7 +71,7 @@ namespace BankTellerModule.WorkItems.Customer
 			if (addressLabel == null)
 			{
 				addressLabel = new BarStaticItem();
-				UIExtensionSites[UIExtensionConstants.MAINSTATUS].Add(addressLabel);
+				UIExtensionSites[BankTellerCommon.UIExtensionSites.MAINSTATUS].Add(addressLabel);
 				addressLabel.Caption = customer.Address1;
 			}
 		}

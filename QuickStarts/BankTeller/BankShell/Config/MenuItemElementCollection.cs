@@ -10,6 +10,7 @@
 //===============================================================================
 
 using System.Configuration;
+using BankShell.Config;
 
 namespace BankShell
 {

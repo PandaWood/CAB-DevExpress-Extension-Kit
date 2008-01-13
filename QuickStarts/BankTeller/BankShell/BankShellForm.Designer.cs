@@ -42,51 +42,51 @@ namespace BankShell
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-			this.bar1 = new DevExpress.XtraBars.Bar();
+			this.barManager = new DevExpress.XtraBars.BarManager(this.components);
+			this.mainMenuBar = new DevExpress.XtraBars.Bar();
 			this.barSubItemFile = new DevExpress.XtraBars.BarSubItem();
-			this.bar2 = new DevExpress.XtraBars.Bar();
+			this.mainStatusBar = new DevExpress.XtraBars.Bar();
 			this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
 			this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-			this.sideBarWorkspace = new CABDevExpress.Workspaces.XtraNavBarWorkspace();
+			this.navBarWorkspace = new CABDevExpress.Workspaces.XtraNavBarWorkspace();
 			this.xtraTabbedMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
 			this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
-			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.sideBarWorkspace)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.navBarWorkspace)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// barManager1
+			// barManager
 			// 
-			this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
-            this.bar2});
-			this.barManager1.DockControls.Add(this.barDockControlTop);
-			this.barManager1.DockControls.Add(this.barDockControlBottom);
-			this.barManager1.DockControls.Add(this.barDockControlLeft);
-			this.barManager1.DockControls.Add(this.barDockControlRight);
-			this.barManager1.Form = this;
-			this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+			this.barManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.mainMenuBar,
+            this.mainStatusBar});
+			this.barManager.DockControls.Add(this.barDockControlTop);
+			this.barManager.DockControls.Add(this.barDockControlBottom);
+			this.barManager.DockControls.Add(this.barDockControlLeft);
+			this.barManager.DockControls.Add(this.barDockControlRight);
+			this.barManager.Form = this;
+			this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barSubItemFile,
             this.barStaticItem1});
-			this.barManager1.MainMenu = this.bar1;
-			this.barManager1.MaxItemId = 3;
-			this.barManager1.StatusBar = this.bar2;
+			this.barManager.MainMenu = this.mainMenuBar;
+			this.barManager.MaxItemId = 3;
+			this.barManager.StatusBar = this.mainStatusBar;
 			// 
-			// bar1
+			// mainMenuBar
 			// 
-			this.bar1.BarName = "Custom 1";
-			this.bar1.DockCol = 0;
-			this.bar1.DockRow = 0;
-			this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-			this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+			this.mainMenuBar.BarName = "Custom 1";
+			this.mainMenuBar.DockCol = 0;
+			this.mainMenuBar.DockRow = 0;
+			this.mainMenuBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+			this.mainMenuBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemFile)});
-			this.bar1.OptionsBar.MultiLine = true;
-			this.bar1.OptionsBar.UseWholeRow = true;
-			this.bar1.Text = "Custom 1";
+			this.mainMenuBar.OptionsBar.MultiLine = true;
+			this.mainMenuBar.OptionsBar.UseWholeRow = true;
+			this.mainMenuBar.Text = "Custom 1";
 			// 
 			// barSubItemFile
 			// 
@@ -94,19 +94,19 @@ namespace BankShell
 			this.barSubItemFile.Id = 0;
 			this.barSubItemFile.Name = "barSubItemFile";
 			// 
-			// bar2
+			// mainStatusBar
 			// 
-			this.bar2.BarName = "Custom 2";
-			this.bar2.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-			this.bar2.DockCol = 0;
-			this.bar2.DockRow = 0;
-			this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-			this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+			this.mainStatusBar.BarName = "Custom 2";
+			this.mainStatusBar.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+			this.mainStatusBar.DockCol = 0;
+			this.mainStatusBar.DockRow = 0;
+			this.mainStatusBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+			this.mainStatusBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1)});
-			this.bar2.OptionsBar.AllowQuickCustomization = false;
-			this.bar2.OptionsBar.DrawDragBorder = false;
-			this.bar2.OptionsBar.UseWholeRow = true;
-			this.bar2.Text = "Custom 2";
+			this.mainStatusBar.OptionsBar.AllowQuickCustomization = false;
+			this.mainStatusBar.OptionsBar.DrawDragBorder = false;
+			this.mainStatusBar.OptionsBar.UseWholeRow = true;
+			this.mainStatusBar.Text = "Custom 2";
 			// 
 			// barStaticItem1
 			// 
@@ -117,17 +117,17 @@ namespace BankShell
 			this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
 			this.barStaticItem1.Width = 150;
 			// 
-			// sideBarWorkspace
+			// navBarWorkspace
 			// 
-			this.sideBarWorkspace.ActiveGroup = null;
-			this.sideBarWorkspace.Dock = System.Windows.Forms.DockStyle.Left;
-			this.sideBarWorkspace.Location = new System.Drawing.Point(0, 25);
-			this.sideBarWorkspace.Name = "sideBarWorkspace";
-			this.sideBarWorkspace.OptionsNavPane.ExpandedWidth = 196;
-			this.sideBarWorkspace.Size = new System.Drawing.Size(196, 485);
-			this.sideBarWorkspace.TabIndex = 1;
-			this.sideBarWorkspace.Text = "xtraNavBarWorkspace1";
-			this.sideBarWorkspace.View = new DevExpress.XtraNavBar.ViewInfo.SkinNavigationPaneViewInfoRegistrator();
+			this.navBarWorkspace.ActiveGroup = null;
+			this.navBarWorkspace.ContentButtonHint = null;
+			this.navBarWorkspace.Dock = System.Windows.Forms.DockStyle.Left;
+			this.navBarWorkspace.Location = new System.Drawing.Point(0, 25);
+			this.navBarWorkspace.Name = "navBarWorkspace";
+			this.navBarWorkspace.OptionsNavPane.ExpandedWidth = 196;
+			this.navBarWorkspace.Size = new System.Drawing.Size(196, 459);
+			this.navBarWorkspace.TabIndex = 1;
+			this.navBarWorkspace.View = new DevExpress.XtraNavBar.ViewInfo.SkinNavigationPaneViewInfoRegistrator();
 			// 
 			// xtraTabbedMdiManager
 			// 
@@ -137,7 +137,7 @@ namespace BankShell
 			// 
 			this.splitterControl1.Location = new System.Drawing.Point(196, 25);
 			this.splitterControl1.Name = "splitterControl1";
-			this.splitterControl1.Size = new System.Drawing.Size(6, 485);
+			this.splitterControl1.Size = new System.Drawing.Size(6, 459);
 			this.splitterControl1.TabIndex = 2;
 			this.splitterControl1.TabStop = false;
 			// 
@@ -145,9 +145,9 @@ namespace BankShell
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(739, 535);
+			this.ClientSize = new System.Drawing.Size(657, 510);
 			this.Controls.Add(this.splitterControl1);
-			this.Controls.Add(this.sideBarWorkspace);
+			this.Controls.Add(this.navBarWorkspace);
 			this.Controls.Add(this.barDockControlLeft);
 			this.Controls.Add(this.barDockControlRight);
 			this.Controls.Add(this.barDockControlBottom);
@@ -157,8 +157,8 @@ namespace BankShell
 			this.Name = "BankShellForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Bank Shell";
-			((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.sideBarWorkspace)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.navBarWorkspace)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).EndInit();
 			this.ResumeLayout(false);
 
@@ -170,14 +170,14 @@ namespace BankShell
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        public DevExpress.XtraBars.BarManager barManager1;
-        public DevExpress.XtraBars.Bar bar1;
+        public DevExpress.XtraBars.BarManager barManager;
+        public DevExpress.XtraBars.Bar mainMenuBar;
         public DevExpress.XtraBars.BarSubItem barSubItemFile;
-        public DevExpress.XtraBars.Bar bar2;
+        public DevExpress.XtraBars.Bar mainStatusBar;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
-        private CABDevExpress.Workspaces.XtraNavBarWorkspace sideBarWorkspace;
+        private CABDevExpress.Workspaces.XtraNavBarWorkspace navBarWorkspace;
         public DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager;
-        private DevExpress.XtraEditors.SplitterControl splitterControl1;
+        private SplitterControl splitterControl1;
 	}
 }
 

@@ -12,7 +12,7 @@ namespace BankShell
 		{
 			this.bar = bar;
 			Manager = bar.Manager;
-			Caption = "&Skins";
+			Caption = "Skins";
 			AddItems();
 		}
 
@@ -22,7 +22,6 @@ namespace BankShell
 			{
 				BarCheckItem barButtonItem = new BarCheckItem(bar.Manager, SkinManager.DefaultSkinName == cnt.SkinName ? true : false);
 				barButtonItem.Caption = cnt.SkinName;
-				//SkinManager.DefaultSkinName
 				barButtonItem.ItemClick += OnSwitchSkin;
 				AddItem(barButtonItem);
 			}

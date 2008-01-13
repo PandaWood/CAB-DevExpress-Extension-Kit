@@ -41,11 +41,13 @@ namespace BankTellerModule.WorkItems.BankTeller
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.panel1 = new DevExpress.XtraEditors.PanelControl();
 			this.btnNextCustomer = new DevExpress.XtraEditors.SimpleButton();
-			this.listCustomers = new ListBoxControl();
-			this.label1 = new LabelControl();
+			this.listCustomers = new DevExpress.XtraEditors.ListBoxControl();
+			this.label1 = new DevExpress.XtraEditors.LabelControl();
+			((System.ComponentModel.ISupportInitialize)(this.panel1)).BeginInit();
 			this.panel1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.listCustomers)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -57,13 +59,13 @@ namespace BankTellerModule.WorkItems.BankTeller
 			this.panel1.Location = new System.Drawing.Point(0, 0);
 			this.panel1.Name = "panel1";
 			this.panel1.Padding = new System.Windows.Forms.Padding(5);
-			this.panel1.Size = new System.Drawing.Size(189, 401);
+			this.panel1.Size = new System.Drawing.Size(189, 177);
 			this.panel1.TabIndex = 0;
 			// 
 			// btnNextCustomer
 			// 
 			this.btnNextCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			                                                                    | System.Windows.Forms.AnchorStyles.Right)));
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.btnNextCustomer.Location = new System.Drawing.Point(8, 28);
 			this.btnNextCustomer.Name = "btnNextCustomer";
 			this.btnNextCustomer.Size = new System.Drawing.Size(173, 26);
@@ -74,23 +76,23 @@ namespace BankTellerModule.WorkItems.BankTeller
 			// listCustomers
 			// 
 			this.listCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-			                                                                   | System.Windows.Forms.AnchorStyles.Left)
-			                                                                  | System.Windows.Forms.AnchorStyles.Right)));
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.listCustomers.DisplayMember = "Count";
 			this.listCustomers.Location = new System.Drawing.Point(8, 61);
 			this.listCustomers.Name = "listCustomers";
-			this.listCustomers.Size = new System.Drawing.Size(173, 328);
+			this.listCustomers.Size = new System.Drawing.Size(173, 104);
 			this.listCustomers.TabIndex = 4;
 			this.listCustomers.ValueMember = "Count";
 			this.listCustomers.SelectedIndexChanged += new System.EventHandler(this.OnCustomerSelectionChanged);
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label1.Appearance.Options.UseFont = true;
 			this.label1.Location = new System.Drawing.Point(8, 5);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(122, 20);
+			this.label1.Size = new System.Drawing.Size(113, 20);
 			this.label1.TabIndex = 3;
 			this.label1.Text = "My Customers";
 			// 
@@ -100,16 +102,18 @@ namespace BankTellerModule.WorkItems.BankTeller
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.panel1);
 			this.Name = "CustomerQueueView";
-			this.Size = new System.Drawing.Size(189, 401);
+			this.Size = new System.Drawing.Size(189, 177);
+			((System.ComponentModel.ISupportInitialize)(this.panel1)).EndInit();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.listCustomers)).EndInit();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.Panel panel1;
+		private PanelControl panel1;
 		private SimpleButton btnNextCustomer;
 		private ListBoxControl listCustomers;
 		private LabelControl label1;

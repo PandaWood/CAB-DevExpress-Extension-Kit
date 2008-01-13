@@ -14,7 +14,7 @@ using System.Configuration;
 using DevExpress.XtraBars;
 using System.Windows.Forms;
 
-namespace BankShell
+namespace BankShell.Config
 {
 	class MenuItemElement : ConfigurationElement
 	{

@@ -4,6 +4,9 @@ using Microsoft.Practices.CompositeUI.SmartParts;
 
 namespace CABDevExpress.SmartPartInfos
 {
+    ///<summary>
+    /// 
+    ///</summary>
     public class XtraImageSmartPartInfo : SmartPartInfo
     {
         private Image smallImage;

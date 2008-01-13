@@ -43,7 +43,7 @@ namespace BankTellerModule.WorkItems.Customer
 		{
 			base.OnLoad(e);
 
-			controller.WorkItem.UIExtensionSites.RegisterSite(UIExtensionConstants.CUSTOMERCONTEXT, this.customerContextMenu);
+			controller.WorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.CUSTOMERCONTEXT, this.customerContextMenu);
 		}
 
 		internal void FocusFirstTab()

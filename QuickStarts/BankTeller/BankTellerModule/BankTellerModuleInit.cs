@@ -37,18 +37,18 @@ namespace BankTellerModule
 			AddCustomerMenuItem();
 
 			//Retrieve well known workspaces
-			IWorkspace sideBarWorkspace = workItem.Workspaces[WorkspacesConstants.SHELL_SIDEBAR];
-			IWorkspace contentWorkspace = workItem.Workspaces[WorkspacesConstants.SHELL_CONTENT];
+			IWorkspace navbarWorkspace = workItem.Workspaces[WorkspacesConstants.SHELL_NAVBARWORKSPACE];
+			IWorkspace contentWorkspace = workItem.Workspaces[WorkspacesConstants.SHELL_CONTENTWORKSPACE];
 
             BankTellerWorkItem bankTellerWorkItem = workItem.WorkItems.AddNew<BankTellerWorkItem>();
-            bankTellerWorkItem.Show(sideBarWorkspace, contentWorkspace);
+            bankTellerWorkItem.Show(navbarWorkspace, contentWorkspace);
 		}
 
 		private void AddCustomerMenuItem()
 		{
 			BarItem customerItem = new BarSubItem();
             customerItem.Caption = "Customer";
-			workItem.UIExtensionSites[UIExtensionConstants.FILE].Add(customerItem);
+			workItem.UIExtensionSites[UIExtensionSites.FILE].Add(customerItem);
 			workItem.UIExtensionSites.RegisterSite(Properties.Resources.CustomerMenuExtensionSite, customerItem);
 		}
 	}

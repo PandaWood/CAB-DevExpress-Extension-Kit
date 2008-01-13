@@ -7,19 +7,13 @@ namespace BankShell
 {
     public class WindowMenu : BarSubItem
     {
-        #region Private Members
-
-        private Bar bar;
+    	private Bar bar;
         private readonly XtraTabbedMdiManager mdiManager;
         private readonly Form shell;
 
         private MdiMode mdiMode = MdiMode.Tabbed;
 
-        #endregion
-
-        #region Constructor
-
-        public WindowMenu(Bar bar, XtraTabbedMdiManager mdiManager, Form shell)
+    	public WindowMenu(Bar bar, XtraTabbedMdiManager mdiManager, Form shell)
         {
             this.bar = bar;
             this.mdiManager = mdiManager;
@@ -30,11 +24,7 @@ namespace BankShell
             AddItems();
         }
 
-        #endregion
-
-        #region Build Menu
-
-        private void AddItems()
+    	private void AddItems()
         {
             BarButtonItem bbiTabbed = AddBarItem("&Use Tabbed MDI", new ItemClickEventHandler(MdiChangeMode));
             bbiTabbed.ButtonStyle = BarButtonStyle.Check;
@@ -57,11 +47,7 @@ namespace BankShell
             return item;
         }
 
-        #endregion
-
-        #region Mdi Commands
-
-        public enum MdiMode
+    	public enum MdiMode
         {
             Tabbed,
             Windowed
@@ -99,7 +85,5 @@ namespace BankShell
             mdiManager.MdiParent = null;
             shell.LayoutMdi(layout);
         }
-
-        #endregion
     }
 }
