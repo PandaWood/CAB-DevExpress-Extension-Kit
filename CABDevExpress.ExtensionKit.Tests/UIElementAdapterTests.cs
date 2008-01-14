@@ -126,11 +126,13 @@ namespace CABDevExpress.ExtensionKit.Tests
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(wrapper);
 			Assert.IsType(typeof(BarLinksOwnerCollectionUIAdapter), adapter);
 
+			//add
 			BarItem buttonItem = new BarButtonItem(bar.Manager, "test2");
 			object objectAdded = adapter.Add(buttonItem);
 			Assert.Equal<BarItem>(buttonItem, objectAdded as BarButtonItem);
 			Assert.Equal(2, wrapper.ItemLinks.Count);
 
+			//remove
 			adapter.Remove(buttonItem);
 			Assert.Equal(1, wrapper.ItemLinks.Count);
 

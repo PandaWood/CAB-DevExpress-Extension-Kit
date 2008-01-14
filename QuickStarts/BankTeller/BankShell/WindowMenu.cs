@@ -18,28 +18,29 @@ namespace BankShell
             this.bar = bar;
             this.mdiManager = mdiManager;
             this.shell = shell;
-
             Manager = bar.Manager;
-            Caption = "&Window";
-            AddItems();
+
+            AddAllMenuItems();
         }
 
-    	private void AddItems()
+    	private void AddAllMenuItems()
         {
-            BarButtonItem bbiTabbed = AddBarItem("&Use Tabbed MDI", new ItemClickEventHandler(MdiChangeMode));
+			Caption = "Window";
+
+            BarButtonItem bbiTabbed = AddBarItem("&Use Tabbed MDI", MdiChangeMode);
             bbiTabbed.ButtonStyle = BarButtonStyle.Check;
             bbiTabbed.Down = true;
 
-            AddBarItem("&Cascade", new ItemClickEventHandler(MdiLayoutCascade));
-            AddBarItem("Tile &Horizontally", new ItemClickEventHandler(MdiLayoutTileHorizontal));
-            AddBarItem("Tile &Vertically", new ItemClickEventHandler(MdiLayoutTileVertical));
+            AddBarItem("&Cascade", MdiLayoutCascade);
+            AddBarItem("Tile &Horizontally", MdiLayoutTileHorizontal);
+            AddBarItem("Tile &Vertically", MdiLayoutTileVertical);
 
             BarSubItem bsiWindows = new BarSubItem(Manager, "&Windows");
             AddItem(bsiWindows);
             bsiWindows.AddItem(new BarMdiChildrenListItem());
         }
 
-        private BarButtonItem AddBarItem(string caption, ItemClickEventHandler itemClickEventHandler)
+		private BarButtonItem AddBarItem(string caption, ItemClickEventHandler itemClickEventHandler)
         {
             BarButtonItem item = new BarButtonItem(Manager, caption);
             item.ItemClick += itemClickEventHandler;

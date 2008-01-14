@@ -40,6 +40,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\CAB\Microsoft.Practices.CompositeUI.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\CAB\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -50,8 +54,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestableSmartPart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestableWorkItem.cs" />
     <Compile Include="UIElementAdapterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkspaceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj">

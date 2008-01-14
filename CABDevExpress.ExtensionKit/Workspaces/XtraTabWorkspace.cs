@@ -230,11 +230,11 @@ namespace CABDevExpress.Workspaces
         {
             if (SelectedTabPageIndex > 0)
             {
-                SelectedTabPageIndex = SelectedTabPageIndex - 1;
+                SelectedTabPageIndex -= 1;
             }
             else if (SelectedTabPageIndex < TabPages.Count - 1)
             {
-                SelectedTabPageIndex = SelectedTabPageIndex + 1;
+                SelectedTabPageIndex += 1;
             }
             else
             {

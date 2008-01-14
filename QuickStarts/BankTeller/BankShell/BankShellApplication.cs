@@ -58,10 +58,6 @@ namespace BankShell
             RootWorkItem.UIExtensionSites[UIExtensionSites.MAINMENU].Add(
 				new WindowMenu(Shell.mainMenuBar, Shell.xtraTabbedMdiManager, Shell));
 
-//			RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.NavBar,
-//													   new NavBarGroupCollectionUIAdapter(Shell.NavBarWorkspace.Groups));
-
-            // Load the menu structure from App.config
             UIElementBuilder.LoadFromConfig(RootWorkItem);
         }
 

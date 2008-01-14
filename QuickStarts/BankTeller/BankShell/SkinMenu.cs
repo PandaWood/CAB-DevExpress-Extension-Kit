@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars;
@@ -8,23 +9,40 @@ namespace BankShell
 	{
 		private readonly Bar bar;
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="bar"></param>
 		public SkinMenu(Bar bar)
 		{
 			this.bar = bar;
 			Manager = bar.Manager;
-			Caption = "Skins";
-			AddItems();
+			AddAllMenuItems();
 		}
 
-		private void AddItems()
+		private void AddAllMenuItems()
 		{
-			foreach (SkinContainer cnt in SkinManager.Default.Skins)
+			Caption = "Skins";
+
+			foreach (string skinName in GetSortedSkinNames())
 			{
-				BarCheckItem barButtonItem = new BarCheckItem(bar.Manager, SkinManager.DefaultSkinName == cnt.SkinName ? true : false);
-				barButtonItem.Caption = cnt.SkinName;
-				barButtonItem.ItemClick += OnSwitchSkin;
-				AddItem(barButtonItem);
+				BarItem menuItem = new BarCheckItem(bar.Manager, SkinManager.DefaultSkinName == skinName ? true : false);
+				menuItem.Caption = skinName;
+				menuItem.ItemClick += OnSwitchSkin;
+				AddItem(menuItem);
 			}
+		}
+
+		private static List<string> GetSortedSkinNames()
+		{
+			List<string> skinNames = new List<string>(SkinManager.Default.Skins.Count);
+			foreach (SkinContainer skinContainer in SkinManager.Default.Skins)
+			{
+				skinNames.Add(skinContainer.SkinName);
+			}
+
+			skinNames.Sort(delegate(string name1, string name2) { return name1.CompareTo(name2); });
+			return skinNames;
 		}
 
 		private static void OnSwitchSkin(object sender, ItemClickEventArgs e)
@@ -38,8 +56,10 @@ namespace BankShell
 		{
 			base.OnPopup();
 			foreach (BarItemLink item in ItemLinks)
+			{
 				if (item.Item is BarCheckItem)
 					((BarCheckItem) item.Item).Checked = UserLookAndFeel.Default.ActiveSkinName == item.Caption;
+			}
 		}
 	}
 }
