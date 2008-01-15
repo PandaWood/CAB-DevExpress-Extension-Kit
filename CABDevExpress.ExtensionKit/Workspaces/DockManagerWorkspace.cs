@@ -54,8 +54,7 @@ namespace CABDevExpress.Workspaces
                 dockPanel = dockPanelDictionary[control];
             }
             else
-            {
-                //Create a new DocPanel
+            {	//Create a new DockPanel
                 if (smartPartInfo.ParentPanelName != String.Empty)
                 {
                     foreach (DockPanel dockRootPanel in dockManager.RootPanels)
