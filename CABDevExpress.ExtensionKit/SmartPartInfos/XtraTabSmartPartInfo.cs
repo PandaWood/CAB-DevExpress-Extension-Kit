@@ -5,6 +5,9 @@ using Microsoft.Practices.CompositeUI.WinForms;
 
 namespace CABDevExpress.SmartPartInfos
 {
+	///<summary>
+	/// 
+	///</summary>
 	public class XtraTabSmartPartInfo : TabSmartPartInfo
 	{
 		private Color backColor;
@@ -70,6 +73,8 @@ namespace CABDevExpress.SmartPartInfos
 		//     Gets or sets whether a tab page can be selected.
 		private bool pageEnabled = true;
 
+		///<summary>
+		///</summary>
 		public bool PageEnabled
 		{
 			get { return pageEnabled; }
@@ -167,6 +172,8 @@ namespace CABDevExpress.SmartPartInfos
 		/// </summary>
 		private Font pageHeaderFont;
 
+		///<summary>
+		///</summary>
 		public Font PageHeaderFont
 		{
 			get { return pageHeaderFont; }

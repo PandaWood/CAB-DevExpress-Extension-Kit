@@ -14,6 +14,8 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void CanShowAndCloseDockManagerWorkspace()
 		{
+			// the DockManager must be passed a ContainerControl or the Workspace won't handle it
+			// not sure whether I should add something to the workspace to guard this....
 			DockManagerWorkspace dockManager = new DockManagerWorkspace(new DockManager(new ContainerControl()));
 			dockManager.Show(_smartPart);
 
@@ -44,6 +46,21 @@ namespace CABDevExpress.ExtensionKit.Tests
 			xtrab.Close(_smartPart);
 			Assert.Equal(0, xtrab.TabPages.Count);
 			Assert.Equal(0, xtrab.SmartParts.Count);
+		}
+
+		/// <summary>
+		/// Item # 8506 - this passes, I've probably misunderstood the issue
+		/// </summary>
+		[Fact]
+		public void CanShowAndMaintainActivateTabStatusAsFalse()
+		{
+			XtraTabSmartPartInfo info = new XtraTabSmartPartInfo();
+			info.ActivateTab = false;
+
+			XtraTabWorkspace xtrab = new XtraTabWorkspace();
+			xtrab.Show(_smartPart, info);
+
+			Assert.False(info.ActivateTab);
 		}
 	}
 }
