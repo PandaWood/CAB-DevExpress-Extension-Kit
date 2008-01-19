@@ -83,18 +83,16 @@ namespace CABDevExpress.Workspaces
             // clean up the group<=>smartpart references
             composer.Remove(group, smartPart);
 
-            // at design time, we won't remove the group 
-            // if you remove the first control
+            // at design time, we won't remove the group if you remove the first control
             if (DesignMode == false)
             {
                 // reparent the control
                 if (smartPart.Disposing == false && smartPart.IsDisposed == false)
                     smartPart.Parent = null;
 
-                // TODO : Check why group not removeable
-                if (Groups.IndexOf(group) > 0)
-                {
-                    // get rid of the navbar group
+				// remove the BavBarGroup
+				if (Groups.IndexOf(group) > -1)	
+                {	
                     Groups.Remove(group);
                     group.Dispose();
                 }

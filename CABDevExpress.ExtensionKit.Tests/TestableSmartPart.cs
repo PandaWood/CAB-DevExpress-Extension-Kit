@@ -6,6 +6,6 @@ namespace CABDevExpress.ExtensionKit.Tests
 	[SmartPart]
 	public class TestableSmartPart : XtraUserControl
 	{
-
+		
 	}
 }

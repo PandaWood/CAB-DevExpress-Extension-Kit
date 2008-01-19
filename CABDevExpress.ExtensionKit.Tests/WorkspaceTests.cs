@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using CABDevExpress.SmartPartInfos;
 using CABDevExpress.Workspaces;
 using DevExpress.XtraBars.Docking;
+using DevExpress.XtraNavBar;
 using Xunit;
 
 namespace CABDevExpress.ExtensionKit.Tests
@@ -46,6 +47,29 @@ namespace CABDevExpress.ExtensionKit.Tests
 			xtrab.Close(_smartPart);
 			Assert.Equal(0, xtrab.TabPages.Count);
 			Assert.Equal(0, xtrab.SmartParts.Count);
+		}
+
+		[Fact]
+		public void CanShowAndCloseAndHideXtraNavBarWorkspace()
+		{
+			XtraNavBarWorkspace navbarWorkspace= new XtraNavBarWorkspace();
+			XtraNavBarGroupSmartPartInfo smartPartInfo = new XtraNavBarGroupSmartPartInfo();
+			smartPartInfo.Title = "Test Title";
+			Assert.Equal(0, navbarWorkspace.Groups.Count);
+
+			// show the workspace
+			navbarWorkspace.Show(_smartPart, smartPartInfo);
+			Assert.Equal(1, navbarWorkspace.Groups.Count);
+			Assert.Equal(NavBarGroupStyle.ControlContainer, navbarWorkspace.Groups[0].GroupStyle);
+
+			// hide and the group still exists, but not visible
+			navbarWorkspace.Hide(_smartPart);
+			Assert.Equal(1, navbarWorkspace.Groups.Count);
+			Assert.False(navbarWorkspace.Groups[0].Visible);
+
+			// close removes
+			navbarWorkspace.Close(_smartPart);
+			Assert.Equal(0, navbarWorkspace.Groups.Count);
 		}
 
 		/// <summary>

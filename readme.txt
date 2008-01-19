@@ -15,6 +15,8 @@ it's unnecessary, or doing if it is; wrong class name used in XML comments etc)
 
 * Removed the InternalCollection property for most UIElementAdapters (most of them weren't used, nor should be)
 
+* Fixed XtraNavBarWorkspace.Close() bug where NavBarGroups were not removed
+
 
 Things Added
 ------------
