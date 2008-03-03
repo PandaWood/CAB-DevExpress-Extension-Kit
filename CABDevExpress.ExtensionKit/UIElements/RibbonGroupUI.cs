@@ -24,6 +24,8 @@ namespace CABDevExpress.UIElements
 
 		private string ribbonPageName;
 
+		///<summary>
+		///</summary>
 		[Description("Name of the Ribbon Page to Place this Ribbon Group")]
 		[Category("Ribbon Data")]
 		public string RibbonPageName
@@ -32,6 +34,8 @@ namespace CABDevExpress.UIElements
 			set { ribbonPageName = value; }
 		}
 
+		///<summary>
+		///</summary>
 		[Description("Used to identify Unique Page Group where BarItems will be located")]
 		public string UniqueRibbonGroupName
 		{
@@ -40,6 +44,8 @@ namespace CABDevExpress.UIElements
 
 		private DXButtonItem[] dxButtonItems;
 
+		///<summary>
+		///</summary>
 		[Category("Ribbon Data")]
 		[Description("Button Items To appear in Ribbon Page Group")]
 		public DXButtonItem[] BarButtonItems
@@ -50,6 +56,8 @@ namespace CABDevExpress.UIElements
 
 		private DXCheckItem[] barCheckItems;
 
+		///<summary>
+		///</summary>
 		[Category("Ribbon Data")]
 		[Description("Check Items To appear in Ribbon Page Group")]
 		public DXCheckItem[] BarCheckItems
@@ -59,11 +67,15 @@ namespace CABDevExpress.UIElements
 		}
 	}
 
+	///<summary>
+	///</summary>
 	[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
 	public class DXCheckItem : BarCheckItem
 	{
 		private UIEvent uiEvent;
 
+		///<summary>
+		///</summary>
 		[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
 		[Category("CAB")]
 		[NotifyParentProperty(true)]
@@ -90,9 +102,13 @@ namespace CABDevExpress.UIElements
 		}
 	}
 
+	///<summary>
+	///</summary>
 	[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
 	public class DXButtonItem : BarButtonItem
 	{
+		///<summary>
+		///</summary>
 		public DXButtonItem()
 		{
 			if (DesignMode)
@@ -101,6 +117,8 @@ namespace CABDevExpress.UIElements
 
 		private UIEvent uiEvent;
 
+		///<summary>
+		///</summary>
 		[TypeConverterAttribute(typeof(ExpandableObjectConverter))]
 		[Category("CAB")]
 		[NotifyParentProperty(true)]
@@ -165,9 +183,9 @@ namespace CABDevExpress.UIElements
 
 		private string commandName;
 
-		[Description(
-			"Command Name Associated with this event to pass to CAB event handler to the decorated method  [CommandHandler(''MyCommandName'')]"
-			)]
+		///<summary>
+		///</summary>
+		[Description("Command Name Associated with this event to pass to CAB event handler to the decorated method  [CommandHandler(''MyCommandName'')]")]
 		public string CommandName
 		{
 			get { return commandName; }
@@ -176,6 +194,8 @@ namespace CABDevExpress.UIElements
 
 		private PublicationScope publicationScope;
 
+		///<summary>
+		///</summary>
 		[Description("Publication Scope of Event -- To Do: Not wired up yet but can be in the CAB infrastructure")]
 		public PublicationScope PublicationScope
 		{

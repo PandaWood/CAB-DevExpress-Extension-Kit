@@ -52,7 +52,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void CanShowAndCloseAndHideXtraNavBarWorkspace()
 		{
-			XtraNavBarWorkspace navbarWorkspace= new XtraNavBarWorkspace();
+			XtraNavBarWorkspace navbarWorkspace = new XtraNavBarWorkspace();
 			XtraNavBarGroupSmartPartInfo smartPartInfo = new XtraNavBarGroupSmartPartInfo();
 			smartPartInfo.Title = "Test Title";
 			Assert.Equal(0, navbarWorkspace.Groups.Count);

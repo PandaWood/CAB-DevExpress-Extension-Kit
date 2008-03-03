@@ -83,7 +83,6 @@ namespace CABDevExpress.Workspaces
             // clean up the group<=>smartpart references
             composer.Remove(group, smartPart);
 
-            // at design time, we won't remove the group if you remove the first control
             if (DesignMode == false)
             {
                 // reparent the control

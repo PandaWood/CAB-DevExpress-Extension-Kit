@@ -60,13 +60,13 @@ namespace BankTellerModule.WorkItems.BankTeller
 
 			XtraNavBarGroupSmartPartInfo customerInfo = new XtraNavBarGroupSmartPartInfo();
 			customerInfo.Title = "Customers";
-			customerInfo.LargeImage = global::BankTellerModule.Properties.Resources.customersLarge;
-			customerInfo.SmallImage = global::BankTellerModule.Properties.Resources.customersSmall;
+			customerInfo.LargeImage = BankTellerModule.Properties.Resources.customersLarge;
+			customerInfo.SmallImage = BankTellerModule.Properties.Resources.customersSmall;
 
 			XtraNavBarGroupSmartPartInfo statsInfo = new XtraNavBarGroupSmartPartInfo();
 			statsInfo.Title = "Statistics";
-			statsInfo.LargeImage = global::BankTellerModule.Properties.Resources.statsLarge;
-			statsInfo.SmallImage = global::BankTellerModule.Properties.Resources.statsSmall;
+			statsInfo.LargeImage = BankTellerModule.Properties.Resources.statsLarge;
+			statsInfo.SmallImage = BankTellerModule.Properties.Resources.statsSmall;
 
 			navbarWorkspace.Show(customerView, customerInfo);
 			navbarWorkspace.Show(statsBarView, statsInfo);
