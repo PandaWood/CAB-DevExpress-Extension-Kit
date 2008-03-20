@@ -12,6 +12,7 @@ namespace CABDevExpress.Workspaces
 {
     /// <summary>
     /// Implements a Workspace that shows smartparts in windows.
+    /// <remarks>Uses DevExpress XtraForm to enable form-skinning</remarks>
     /// </summary>
     public class XtraWindowWorkspace : Workspace<Control, XtraWindowSmartPartInfo>
     {
@@ -71,7 +72,7 @@ namespace CABDevExpress.Workspaces
         /// <summary>
         /// Sets specific properties for the given form.
         /// </summary>
-        protected static void SetWindowProperties(XtraForm form, XtraWindowSmartPartInfo info)
+        protected static void SetWindowProperties(Form form, XtraWindowSmartPartInfo info)
         {
             form.Text = info.Title;
             form.Width = info.Width != 0 ? info.Width : form.Width;
@@ -89,7 +90,7 @@ namespace CABDevExpress.Workspaces
         /// Sets the location information for the given form, providing that CenterParent
         /// is not the StartPosition
         /// </summary>
-        protected static void SetWindowLocation(XtraForm form, XtraWindowSmartPartInfo info)
+        protected static void SetWindowLocation(Form form, XtraWindowSmartPartInfo info)
         {
             // Without this guard condition, if a centered form has ApplySmartPartInfo()
             // called on it, it will suddenly go to the top-left of the screen (Location 0,0)
@@ -145,7 +146,7 @@ namespace CABDevExpress.Workspaces
             windowDictionary.Remove(spcontrol);
         }
 
-        private void ShowForm(XtraForm form, XtraWindowSmartPartInfo smartPartInfo)
+        private void ShowForm(Form form, XtraWindowSmartPartInfo smartPartInfo)
         {
             SetWindowProperties(form, smartPartInfo);
 
@@ -202,7 +203,6 @@ namespace CABDevExpress.Workspaces
 
                 base.OnActivated(e);
             }
-
 
             /// <summary>
             /// Handles the Closing Event
@@ -274,7 +274,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnHide(Control smartPart)
         {
-            XtraForm form = windowDictionary[smartPart];
+            Form form = windowDictionary[smartPart];
             form.Hide();
         }
 
@@ -283,7 +283,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnClose(Control smartPart)
         {
-            XtraForm form = windowDictionary[smartPart];
+            Form form = windowDictionary[smartPart];
             smartPart.Disposed -= ControlDisposed;
 
 			form.Controls.Remove(smartPart);	// Remove the smartPart from the form to avoid disposing it.
@@ -298,7 +298,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnApplySmartPartInfo(Control smartPart, XtraWindowSmartPartInfo smartPartInfo)
         {
-            XtraForm form = windowDictionary[smartPart];
+            Form form = windowDictionary[smartPart];
             SetWindowProperties(form, smartPartInfo);
             SetWindowLocation(form, smartPartInfo);
         }
@@ -310,7 +310,7 @@ namespace CABDevExpress.Workspaces
         /// <param name="smartPartInfo">The information to apply to the smart part.</param>
         protected override void OnShow(Control smartPart, XtraWindowSmartPartInfo smartPartInfo)
         {
-            XtraForm form = GetOrCreateForm(smartPart);
+            Form form = GetOrCreateForm(smartPart);
             smartPart.Show();
             ShowForm(form, smartPartInfo);
         }

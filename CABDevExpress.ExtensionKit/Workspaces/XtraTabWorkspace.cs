@@ -331,7 +331,6 @@ namespace CABDevExpress.Workspaces
             {
                 PopulatePages();
                 string key = pages[smartPart].Name;
-                //TabPages[key].Hide();
                 GetTabPageFromName(key).Hide();
                 ActivateSiblingTab();
             }

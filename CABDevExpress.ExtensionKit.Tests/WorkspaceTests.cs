@@ -17,15 +17,40 @@ namespace CABDevExpress.ExtensionKit.Tests
 		{
 			// the DockManager must be passed a ContainerControl or the Workspace won't handle it
 			// not sure whether I should add something to the workspace to guard this....
-			DockManagerWorkspace dockManager = new DockManagerWorkspace(new DockManager(new ContainerControl()));
-			dockManager.Show(_smartPart);
+			DockManagerWorkspace dockManagerWorkspace = new DockManagerWorkspace(new DockManager(new ContainerControl()));
+			dockManagerWorkspace.Show(_smartPart);
 
-			Assert.Equal(1, dockManager.DockPanels.Count);
+			Assert.Equal(1, dockManagerWorkspace.DockPanels.Count);
 
-			dockManager.Close(_smartPart);
+			dockManagerWorkspace.Close(_smartPart);
 
-			Assert.Equal(0, dockManager.DockPanels.Count);
+			Assert.Equal(0, dockManagerWorkspace.DockPanels.Count);
 		}
+
+		[Fact]
+		public void CanShowDockManagerWorkspaceIfPanelNameIsNotNull()
+		{
+			DockManager dockManagerControl = new DockManager(new ContainerControl());
+			DockManagerWorkspace dockManagerWorkspace = new DockManagerWorkspace(dockManagerControl);
+			DockManagerSmartPartInfo info = new DockManagerSmartPartInfo();
+
+			// for better or worse, the DockManagerWorkspace assumes that if the ParentPanelName is not null, there must be a PanelParent
+			info.ParentPanelName = "PanelBob";		
+			info.Name = "Bob";
+			info.Dock = DockingStyle.Bottom;
+			dockManagerWorkspace.Show(_smartPart, info);
+
+			Assert.Equal(1, dockManagerWorkspace.DockPanels.Count);
+			Assert.Equal("Bob", dockManagerControl.Panels[0].Name);
+
+			// because of the dilemma mentioned above, the DockingStyle is not set to the DockingStyle specified in the SmartPartInfo
+			Assert.Equal(DockingStyle.Float, dockManagerControl.Panels[0].Dock);
+
+			dockManagerWorkspace.Close(_smartPart);
+
+			Assert.Equal(0, dockManagerWorkspace.DockPanels.Count);
+		}
+
 
 		[Fact]
 		public void CanShowAndCloseXtraTabWorkspace()

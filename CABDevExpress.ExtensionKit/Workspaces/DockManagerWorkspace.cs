@@ -17,7 +17,7 @@ namespace CABDevExpress.Workspaces
         private readonly Dictionary<Control, DockPanel> dockPanelDictionary = new Dictionary<Control, DockPanel>();
         private readonly DockManager dockManager;
 
-        /// <summary>
+    	/// <summary>
         /// Initializes the workspace with no DockManager windows.
         /// </summary>
         public DockManagerWorkspace() { }
@@ -43,9 +43,6 @@ namespace CABDevExpress.Workspaces
         /// <summary>
         /// Creates a DockPanel if it does not already exist and adds the given control.
         /// </summary>
-        /// <param name="control"></param>
-        /// <returns></returns>
-        /// <param name="smartPartInfo"></param>
         protected DockPanel GetOrCreateDockPanel(Control control, DockManagerSmartPartInfo smartPartInfo)
         {
             DockPanel dockPanel = null;
@@ -53,51 +50,49 @@ namespace CABDevExpress.Workspaces
             {
                 dockPanel = dockPanelDictionary[control];
             }
-            else
-            {	//Create a new DockPanel
-                if (smartPartInfo.ParentPanelName != String.Empty)
-                {
-                    foreach (DockPanel dockRootPanel in dockManager.RootPanels)
-                    {
-                        if (dockRootPanel.Name == smartPartInfo.ParentPanelName)
-                            //We should probably use the Parents ID instead of the Name. 
-                        {
-                            //dockPanel = dockRootPanel.AddPanel();
-                            //why doesn't the line above work?? I suspect a bug in the DockManager library
-                            //The lines below do work, but makes the screen flicker since the panel
-                            //is first created outside it's parent container. 
-
-                            dockPanel = dockManager.AddPanel(DockingStyle.Left);
-                            //The name and ID will be set later. 
-                            dockPanel.DockAsTab(dockRootPanel);
-                            break;
-                        }
-                    }
-                    //If the panel is not found should we raise an exception or just create it as a DockingStyle.Float panel?
-                    if (dockPanel == null)
-                        dockPanel = dockManager.AddPanel(DockingStyle.Float);
-                }
-                else
-                {
-                    dockPanel = dockManager.AddPanel(DockingStyle.Float);
-                }
-                dockPanelDictionary.Add(control, dockPanel);
-                dockPanel.Controls.Add(control);
+			else
+            {	
+                dockPanel = CreateDockPanel(control, smartPartInfo, dockPanel);
             }
             return dockPanel;
         }
 
-        /// <summary>
-        /// Sets specific properties for the given dockpanel. 
+    	private DockPanel CreateDockPanel(Control control, DockManagerSmartPartInfo smartPartInfo, DockPanel dockPanel)
+    	{
+    		if (!string.IsNullOrEmpty(smartPartInfo.ParentPanelName))
+    		{
+    			foreach (DockPanel dockRootPanel in dockManager.RootPanels)
+    			{
+    				if (dockRootPanel.Name == smartPartInfo.ParentPanelName)	// could we use Parents ID instead of Name?
+    				{
+    					//dockPanel = dockRootPanel.AddPanel(); //why doesn't this work? - a bug in the DockManager library?
+    					//The lines below do work, but make the screen flicker because the panel
+    					//is created outside it's parent container
+
+    					dockPanel = dockManager.AddPanel(DockingStyle.Left);	//The name and ID will be set later. 
+    					dockPanel.DockAsTab(dockRootPanel);
+    					break;
+    				}
+    			}
+
+    			if (dockPanel == null)
+					dockPanel = dockManager.AddPanel(DockingStyle.Float);	//If the panel is not found, just create one
+    		}
+    		else
+    		{
+    			dockPanel = dockManager.AddPanel(DockingStyle.Float);
+    		}
+    		dockPanelDictionary.Add(control, dockPanel);
+    		dockPanel.Controls.Add(control);
+    		return dockPanel;
+    	}
+
+    	/// <summary>
+		/// Sets  <see cref="DockManagerSmartPartInfo"/> specific properties for the given dockpanel. 
         /// </summary>
         protected static void SetDockPanelProperties(DockPanel dockPanel, DockManagerSmartPartInfo info)
         {
-            //TODO this code needs serious cleanup
-
-            //dockPanel.ActiveChild = info.ActiveChild;
-            //dockPanel.ActiveChildIndex = info.ActiveChildIndex;
-
-            if (info.ParentPanelName == String.Empty)
+            if (string.IsNullOrEmpty(info.ParentPanelName))
                 dockPanel.Dock = info.Dock;
 
             dockPanel.FloatLocation = info.FloatLocation;
@@ -116,8 +111,6 @@ namespace CABDevExpress.Workspaces
             dockPanel.TabText = info.TabText;
             dockPanel.Text = info.Title;
             dockPanel.Name = info.Name;
-
-            //////dockPanel.Visibility = info.Visibility;
         }
 
         private void ControlDisposed(object sender, EventArgs e)
@@ -141,22 +134,9 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnActivate(Control smartPart)
         {
-            try
-            {
-				// Prevent double firing from composer Workspace class and from DockPanel.
-//				fireActivatedFromDockPanel = false;		TODO the problem is, this variable is never read anywhere
-
-				// see use of same variable in XtraWindowWorkspace
-				// in WindowFormActivated a similar variable is checked and it raises/activates smartpart if true
-
-                DockPanel dockPanel = dockPanelDictionary[smartPart];
-                dockPanel.BringToFront();
-                dockPanel.Show();
-            }
-            finally
-            {
-//                fireActivatedFromDockPanel = true;
-            }
+        	DockPanel dockPanel = dockPanelDictionary[smartPart];
+        	dockPanel.BringToFront();
+        	dockPanel.Show();
         }
 
         /// <summary>

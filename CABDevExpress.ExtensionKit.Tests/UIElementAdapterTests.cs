@@ -106,7 +106,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		public void XtraNavBarUIAdapterFactoryThrowsExceptionWithUnsupported()
 		{
 			Assert.Throws<ArgumentException>(delegate
-			                                 	{	// use the wrong factory and wait for an exception
+			                                 	{	// use the wrong factory and expect an exception
 			                                 		new XtraNavBarUIAdapterFactory().GetAdapter(new NavigatorCustomButton(0));
 			                                 	});
 		}
