@@ -40,9 +40,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		/// <summary>
-		/// We're testing both add() and remove() within each test
-		/// Normally we might stick to one test per method/item, but it seems like a lot more 
-		/// effort for very little (or questionable) gain
+		/// We're testing both add() and remove() within each test, it's not worth the effort to separate them
 		/// </summary>
 		[Fact]
 		public void CanAddAndRemoveFromNavBarGroupCollectionUIAdapter()
