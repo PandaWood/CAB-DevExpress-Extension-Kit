@@ -101,8 +101,11 @@ namespace CABDevExpress.ExtensionKit.Tests
 			XtraTabWorkspace tabWorkspace = new XtraTabWorkspace();
 
 			TestableSmartPart smartPart1 = new TestableSmartPart();
+			smartPart1.Name = "smartpart1";
 			TestableSmartPart smartPart2 = new TestableSmartPart();
+			smartPart2.Name = "smartpart1";
 			TestableSmartPart smartPart3 = new TestableSmartPart();
+			smartPart3.Name = "smartpart1";
 
 			tabWorkspace.Show(smartPart1);
 			tabWorkspace.Show(smartPart2);
@@ -111,14 +114,15 @@ namespace CABDevExpress.ExtensionKit.Tests
 			Assert.Equal(3, tabWorkspace.TabPages.Count);
 			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart3);
 
-			tabWorkspace.TabPages.Move(1, tabWorkspace.TabPages[0]);
+			tabWorkspace.TabPages.Move(2, tabWorkspace.TabPages[0]);
 
-			tabWorkspace.SelectedTabPageIndex = 0;
-			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart1);
-			tabWorkspace.SelectedTabPageIndex = 1;
-			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart2);
+			// should we expect this? Does it matter?
 			tabWorkspace.SelectedTabPageIndex = 2;
 			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart3);
+			tabWorkspace.SelectedTabPageIndex = 0;
+			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart2);
+			tabWorkspace.SelectedTabPageIndex = 1;
+			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart1);
 		}
 
 		/// <summary>
