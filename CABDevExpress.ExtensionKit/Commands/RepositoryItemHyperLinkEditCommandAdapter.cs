@@ -23,7 +23,7 @@ namespace CABDevExpress.Commands
 
 		/// <summary>
 		/// Handles the changes in the <see cref="Command"/> by refreshing 
-		/// the <see cref="RepositoryItemHyperLinkEdit.Enabled"/> property.
+		/// the <see cref="RepositoryItem.Enabled"/> property.
 		/// </summary>
 		protected override void OnCommandChanged(Command command)
 		{

@@ -40,7 +40,7 @@
     <Reference Include="DevExpress.Utils.v8.1, Version=8.1.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v8.1, Version=8.1.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v8.1.Core, Version=8.1.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" />
-<Reference Include="DevExpress.XtraCharts.v8.1, Version=8.1.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" />
+    <Reference Include="DevExpress.XtraCharts.v8.1, Version=8.1.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1" />
     <Reference Include="DevExpress.XtraCharts.v8.1.UI, Version=8.1.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v8.1, Version=8.1.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v8.1, Version=8.1.1.0, Culture=neutral, PublicKeyToken=9b171c9fd64da1d1, processorArchitecture=MSIL" />
@@ -66,12 +66,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\CommandNames.cs" />
+    <Compile Include="Constants\EventNames.cs" />
+    <Compile Include="Constants\ExtensionSiteNames.cs" />
+    <Compile Include="Constants\SmartPartNames.cs" />
+    <Compile Include="Constants\WorkItemStates.cs" />
+    <Compile Include="Constants\WorkspaceNames.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\CustomerQueueService.cs" />
+    <Compile Include="WorkItems\BankTeller\AboutBankTellerView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WorkItems\BankTeller\AboutBankTellerView.Designer.cs">
+      <DependentUpon>AboutBankTellerView.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkItems\BankTeller\BankTellerWorkItem.cs" />
     <Compile Include="WorkItems\BankTeller\CustomerView.cs">
       <SubType>UserControl</SubType>
@@ -79,11 +91,11 @@
     <Compile Include="WorkItems\BankTeller\CustomerView.Designer.cs">
       <DependentUpon>CustomerView.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkItems\BankTeller\StatsBarView.cs">
+    <Compile Include="WorkItems\BankTeller\StatisticsBarView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="WorkItems\BankTeller\StatsBarView.Designer.cs">
-      <DependentUpon>StatsBarView.cs</DependentUpon>
+    <Compile Include="WorkItems\BankTeller\StatisticsBarView.Designer.cs">
+      <DependentUpon>StatisticsBarView.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkItems\Customer\CustomerDetailController.cs" />
     <Compile Include="Services\CustomerAccountService.cs" />
@@ -153,13 +165,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="WorkItems\BankTeller\AboutBankTellerView.resx">
+      <DependentUpon>AboutBankTellerView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="WorkItems\BankTeller\CustomerView.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CustomerView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\BankTeller\StatsBarView.resx">
+    <EmbeddedResource Include="WorkItems\BankTeller\StatisticsBarView.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>StatsBarView.cs</DependentUpon>
+      <DependentUpon>StatisticsBarView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkItems\Customer\CustomerAccountsView.resx">
       <DependentUpon>CustomerAccountsView.cs</DependentUpon>

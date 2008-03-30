@@ -11,6 +11,7 @@
 
 using System;
 using BankTellerCommon;
+using BankTellerModule.Constants;
 using BankTellerModule.WorkItems.Customer;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.SmartParts;
@@ -43,7 +44,7 @@ namespace BankTellerModule.WorkItems.Customer
 		{
 			base.OnLoad(e);
 
-			controller.WorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.CUSTOMERCONTEXT, this.customerContextMenu);
+			controller.WorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.CustomerContext, this.customerContextMenu);
 		}
 
 		internal void FocusFirstTab()

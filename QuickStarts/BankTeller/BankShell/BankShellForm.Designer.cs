@@ -54,9 +54,11 @@ namespace BankShell
 			this.navBarWorkspace = new CABDevExpress.Workspaces.XtraNavBarWorkspace();
 			this.xtraTabbedMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
 			this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
+			this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.navBarWorkspace)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// barManager
@@ -68,6 +70,7 @@ namespace BankShell
 			this.barManager.DockControls.Add(this.barDockControlBottom);
 			this.barManager.DockControls.Add(this.barDockControlLeft);
 			this.barManager.DockControls.Add(this.barDockControlRight);
+			this.barManager.DockManager = this.dockManager;
 			this.barManager.Form = this;
 			this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barSubItemFile,
@@ -141,6 +144,15 @@ namespace BankShell
 			this.splitterControl1.TabIndex = 2;
 			this.splitterControl1.TabStop = false;
 			// 
+			// dockManager
+			// 
+			this.dockManager.Form = this;
+			this.dockManager.TopZIndexControls.AddRange(new string[] {
+            "DevExpress.XtraBars.BarDockControl",
+            "System.Windows.Forms.StatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonControl"});
+			// 
 			// BankShellForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +172,7 @@ namespace BankShell
 			((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.navBarWorkspace)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -178,6 +191,7 @@ namespace BankShell
         private CABDevExpress.Workspaces.XtraNavBarWorkspace navBarWorkspace;
         public DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager;
         private SplitterControl splitterControl1;
+		private DevExpress.XtraBars.Docking.DockManager dockManager;
 	}
 }
 

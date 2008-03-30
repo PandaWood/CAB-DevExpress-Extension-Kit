@@ -12,6 +12,7 @@
 using System;
 using System.Windows.Forms;
 using BankTellerCommon;
+using BankTellerModule.Constants;
 using BankTellerModule.WorkItems.BankTeller;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.Commands;
@@ -43,7 +44,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 		// the signature for both methods (button click handle, command handler)
 		// we use this single method to do both.
 
-		[CommandHandler(CommandConstants.ACCEPT_CUSTOMER)]
+		[CommandHandler(CommandNames.AcceptCustomer)]
 		public void OnAcceptCustomer(object sender, EventArgs e)
 		{
 			BankTellerCommon.Customer customer = myController.GetNextCustomerInQueue();
@@ -58,7 +59,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 			listCustomers.Items.Add(customer);
 		}
 
-		[CommandHandler(CommandConstants.HELLOFROMDXMENU)]
+		[CommandHandler(CommandNames.DxMenuSamplePopup)]
 		public void OnSayHello(object sender, EventArgs e)
 		{
 			XtraMessageBox.Show("Hello from DxMenuItemCommandAdapter");

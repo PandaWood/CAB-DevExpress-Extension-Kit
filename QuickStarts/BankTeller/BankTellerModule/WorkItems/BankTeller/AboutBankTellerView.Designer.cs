@@ -1,6 +1,6 @@
-namespace BankShell
+namespace BankTellerModule.WorkItems.BankTeller
 {
-	partial class AboutDialog
+	partial class AboutBankTellerView
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -58,7 +58,7 @@ namespace BankShell
 			// lblBankTeller
 			// 
 			this.lblBankTeller.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			                                                                  | System.Windows.Forms.AnchorStyles.Right)));
 			this.lblBankTeller.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblBankTeller.Appearance.Options.UseFont = true;
 			this.lblBankTeller.Location = new System.Drawing.Point(88, 64);
@@ -70,7 +70,7 @@ namespace BankShell
 			// urlCABDevExpress
 			// 
 			this.urlCABDevExpress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-						| System.Windows.Forms.AnchorStyles.Right)));
+			                                                                     | System.Windows.Forms.AnchorStyles.Right)));
 			this.urlCABDevExpress.EditValue = "http://www.codeplex.com/CABDevExpress";
 			this.urlCABDevExpress.Location = new System.Drawing.Point(12, 31);
 			this.urlCABDevExpress.Name = "urlCABDevExpress";

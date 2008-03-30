@@ -10,7 +10,7 @@
 //===============================================================================
 
 using System;
-using BankTellerCommon;
+using BankTellerModule.Constants;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.WinForms;
@@ -34,10 +34,10 @@ namespace BankTellerModule.WorkItems.Customer
 			WorkItem.Save();
 		}
 
-		[CommandHandler(CommandConstants.EDIT_CUSTOMER)]
+		[CommandHandler(CommandNames.EditCustomer)]
 		public void OnCustomerEdit(object sender, EventArgs args)
 		{
-			if (this.WorkItem.Status == WorkItemStatus.Active)
+			if (WorkItem.Status == WorkItemStatus.Active)
 			{
 				TabWorkspace tabWS = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as TabWorkspace;
 

@@ -9,12 +9,17 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
+using System;
 using System.Windows.Forms;
 using BankTellerCommon;
+using BankTellerModule.Constants;
 using BankTellerModule.WorkItems.Customer;
 using CABDevExpress.SmartPartInfos;
+using CABDevExpress.Workspaces;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.Docking;
 using Microsoft.Practices.CompositeUI;
+using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.Services;
 using Microsoft.Practices.CompositeUI.SmartParts;
 
@@ -56,7 +61,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 		{
 			SmartParts.AddNew<UserInfoView>("UserInfo");	//named because it will be used in a placeholder
 			CustomerView customerView = SmartParts.AddNew<CustomerView>();
-			StatsBarView statsBarView = SmartParts.AddNew<StatsBarView>();
+			StatisticsBarView statisticsBarView = SmartParts.AddNew<StatisticsBarView>(SmartPartNames.Statistics);
 
 			XtraNavBarGroupSmartPartInfo customerInfo = new XtraNavBarGroupSmartPartInfo();
 			customerInfo.Title = "Customers";
@@ -69,7 +74,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 			statsInfo.SmallImage = BankTellerModule.Properties.Resources.statsSmall;
 
 			navbarWorkspace.Show(customerView, customerInfo);
-			navbarWorkspace.Show(statsBarView, statsInfo);
+			navbarWorkspace.Show(statisticsBarView, statsInfo);
 		}
 
 		private void AddMenuItems()
@@ -79,15 +84,15 @@ namespace BankTellerModule.WorkItems.BankTeller
 				queueItem = new BarSubItem();
 				queueItem.Caption = "Queue";
 
-				UIExtensionSites[BankTellerCommon.UIExtensionSites.FILE].Add(queueItem);
-				UIExtensionSites.RegisterSite(BankTellerCommon.UIExtensionSites.QUEUE, queueItem);
+				UIExtensionSites[ExtensionSiteNames.File].Add(queueItem);
+				UIExtensionSites.RegisterSite(ExtensionSiteNames.Queue, queueItem);
 
 				BarButtonItem acceptCustomer = new BarButtonItem();
 				acceptCustomer.Caption = "Accept Customer";
 				acceptCustomer.ItemShortcut =  new BarShortcut(Keys.Control | Keys.A);
-				UIExtensionSites[BankTellerCommon.UIExtensionSites.QUEUE].Add(acceptCustomer);
+				UIExtensionSites[ExtensionSiteNames.Queue].Add(acceptCustomer);
 
-				Commands[CommandConstants.ACCEPT_CUSTOMER].AddInvoker(acceptCustomer, "ItemClick");
+				Commands[CommandNames.AcceptCustomer].AddInvoker(acceptCustomer, "ItemClick");
 			}
 		}
 
@@ -131,7 +136,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 				workItem = WorkItems.AddNew<CustomerWorkItem>(key);
 				//Set ID before setting state.  State will be cleared if a new id is set.
 				workItem.ID = key;
-				workItem.State[StateConstants.CUSTOMER] = customer;
+				workItem.State[WorkItemStates.Customer] = customer;
 				
 				// Ask the persistence service if we have a saved version of
 				// this work item. If so, load it from persistence.
@@ -140,6 +145,49 @@ namespace BankTellerModule.WorkItems.BankTeller
 			}
 
 			workItem.Show(contentWorkspace);
+		}
+
+		/// <summary>
+		/// Usage sample for the CABDevExpress.Extension Kit XtraWindowWorkspace and XtraWindowSmartPartInfo
+		/// the example shows an 'About Dialog'
+		/// </summary>
+		[CommandHandler(CommandNames.HelpAbout)]
+		public void OnHelpAbout(object sender, EventArgs e)
+		{
+			if (!SmartParts.Contains(SmartPartNames.HelpAbout))
+				SmartParts.AddNew<AboutBankTellerView>(SmartPartNames.HelpAbout);
+
+			XtraWindowSmartPartInfo smartPartInfo = new XtraWindowSmartPartInfo();
+			smartPartInfo.Modal = true;
+
+			// the two properties added by CABDevExpress.ExtensionKit's XtraWindowSmartPartInfo
+			smartPartInfo.StartPosition = FormStartPosition.CenterParent;
+			smartPartInfo.ShowInTaskbar = false;
+
+			smartPartInfo.Height = 150;
+			smartPartInfo.Width = 350;
+			smartPartInfo.Title = "About";
+
+			XtraWindowWorkspace xtraWindow = new XtraWindowWorkspace();
+			xtraWindow.Show(SmartParts[SmartPartNames.HelpAbout], smartPartInfo);
+		}
+
+		const string DockableStatisticsView = "DockableStatisticsView";
+
+		/// <summary>
+		/// Usage sample for the CABDevExpress.Extension Kit DockManagerWorkspace
+		/// </summary>
+		/// <param name="dockWorkspace"></param>
+		public void Show(IWorkspace dockWorkspace)
+		{
+			DockManagerSmartPartInfo info = new DockManagerSmartPartInfo();
+			info.Name = "Statistics";
+			info.Dock = DockingStyle.Right;
+
+			StatisticsBarView statisticsBarView = SmartParts.AddNew<StatisticsBarView>(DockableStatisticsView);
+			statisticsBarView.Dock = DockStyle.Fill;
+
+			dockWorkspace.Show(SmartParts[DockableStatisticsView], info);
 		}
 	}
 }

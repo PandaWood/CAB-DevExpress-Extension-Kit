@@ -1,5 +1,6 @@
 using System;
 using BankTellerCommon;
+using BankTellerModule.Constants;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;
@@ -14,7 +15,7 @@ namespace CustomerMapExtensionModule
 
 		const string mapUrlFormat = "http://maps.msn.com/home.aspx?strt1={0}&city1={2}&stnm1={3}&zipc1={4}";
 
-		[State(StateConstants.CUSTOMER)]
+		[State(WorkItemStates.Customer)]
 		public Customer Customer
 		{
 			set { customer = value; }

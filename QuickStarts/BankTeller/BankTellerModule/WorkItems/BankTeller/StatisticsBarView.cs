@@ -5,12 +5,12 @@ using Microsoft.Practices.CompositeUI.SmartParts;
 namespace BankTellerModule.WorkItems.BankTeller
 {
 	[SmartPart]
-    public partial class StatsBarView : XtraUserControl, ISmartPartInfoProvider
+    public partial class StatisticsBarView : XtraUserControl, ISmartPartInfoProvider
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        public StatsBarView()
+        public StatisticsBarView()
         {
             // This call is required by the Windows.Forms Form Designer.
             InitializeComponent();

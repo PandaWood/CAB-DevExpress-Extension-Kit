@@ -11,7 +11,7 @@
 
 using System;
 using System.Windows.Forms;
-using CABDevExpress.SmartPartInfos;
+using BankTellerModule.Constants;
 using CABDevExpress.Workspaces;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
@@ -38,13 +38,15 @@ namespace BankShell
     {
         private readonly WorkItem workItem;
         private IWorkItemTypeCatalogService workItemTypeCatalog;
-		private const string AboutDialog = "AboutDialog";
+    	private readonly DockManagerWorkspace dockManagerWorkspace;
 
         public BankShellForm()
         {
             InitializeComponent();
             barStaticItem1.Caption = String.Empty;
             barManager.ForceInitialize();
+
+			dockManagerWorkspace = new DockManagerWorkspace(dockManager);
         }
 
         /// <summary>
@@ -58,38 +60,13 @@ namespace BankShell
             this.workItemTypeCatalog = workItemTypeCatalog;
         }
 
-        [CommandHandler("FileExit")]
+        [CommandHandler(CommandNames.Exit)]
         public void OnFileExit(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-		/// <summary>
-		/// CAB DevExpress Extension Kit XtraWindowWorkspace and XtraWindowSmartPartInfo sample
-		/// demonstrated by showing an About Box
-		/// </summary>
-        [CommandHandler("HelpAbout")]
-        public void OnHelpAbout(object sender, EventArgs e)
-        {
-        	if (!workItem.SmartParts.Contains(AboutDialog))
-				workItem.SmartParts.AddNew<AboutDialog>(AboutDialog);
-
-			XtraWindowSmartPartInfo smartPartInfo = new XtraWindowSmartPartInfo();
-			smartPartInfo.Modal = true;
-
-			// the two properties added by CABDevExpress.ExtensionKit's XtraWindowSmartPartInfo
-			smartPartInfo.StartPosition = FormStartPosition.CenterParent;
-			smartPartInfo.ShowInTaskbar = false;
-
-			smartPartInfo.Height = 150;
-			smartPartInfo.Width = 350;
-			smartPartInfo.Title = "About";
-
-			XtraWindowWorkspace xtraWindow = new XtraWindowWorkspace();
-			xtraWindow.Show(workItem.SmartParts[AboutDialog], smartPartInfo);
-        }
-
-        [EventSubscription("topic://BankShell/statusupdate", Thread = ThreadOption.UserInterface)]
+        [EventSubscription(EventNames.StatusUpdate, Thread = ThreadOption.UserInterface)]
         public void OnStatusUpdate(object sender, DataEventArgs<string> e)
         {
             barStaticItem1.Caption = e.Data;
@@ -99,5 +76,10 @@ namespace BankShell
 		{
 			get { return navBarWorkspace; }
 		}
+
+		public DockManagerWorkspace DockManagerWorkspace
+    	{
+			get { return dockManagerWorkspace; }
+    	}
     }
 }

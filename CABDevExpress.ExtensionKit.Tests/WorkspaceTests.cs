@@ -34,7 +34,6 @@ namespace CABDevExpress.ExtensionKit.Tests
 			DockManagerWorkspace dockManagerWorkspace = new DockManagerWorkspace(dockManagerControl);
 			DockManagerSmartPartInfo info = new DockManagerSmartPartInfo();
 
-			// for better or worse, the DockManagerWorkspace assumes that if the ParentPanelName is not null, there must be a PanelParent
 			info.ParentPanelName = "PanelBob";		
 			info.Name = "Bob";
 			info.Dock = DockingStyle.Bottom;
@@ -43,8 +42,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 			Assert.Equal(1, dockManagerWorkspace.DockPanels.Count);
 			Assert.Equal("Bob", dockManagerControl.Panels[0].Name);
 
-			// because of the dilemma mentioned above, the DockingStyle is not set to the DockingStyle specified in the SmartPartInfo
-			Assert.Equal(DockingStyle.Float, dockManagerControl.Panels[0].Dock);
+			Assert.Equal(DockingStyle.Bottom, dockManagerControl.Panels[0].Dock);
 
 			dockManagerWorkspace.Close(_smartPart);
 

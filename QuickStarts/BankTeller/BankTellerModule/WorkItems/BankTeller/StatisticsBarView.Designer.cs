@@ -1,6 +1,6 @@
 namespace BankTellerModule.WorkItems.BankTeller
 {
-    partial class StatsBarView
+    partial class StatisticsBarView
     {
         /// <summary> 
         /// Required designer variable.

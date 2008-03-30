@@ -99,7 +99,7 @@ namespace CABDevExpress.SmartPartInfos
         [DefaultValue(-1)]
         [Category("Appearance")]
         [ImageList("Images")]
-        [Editor("DevExpress.Utils.Design.ImageIndexesEditor, DevExpress.Utils.v6.1", typeof(UITypeEditor))]
+        [Editor("DevExpress.Utils.Design.ImageIndexesEditor, DevExpress.Utils.v8.1", typeof(UITypeEditor))]
         public int ImageIndex
         {
             get { return imageIndex; }
@@ -110,11 +110,12 @@ namespace CABDevExpress.SmartPartInfos
 
         ///<summary>
 		/// Gets or sets the index of an image associated with the dock panel
+		/// //TODO is it really necessary to hard-code the dll version?
         ///</summary>
         [DefaultValue(-1)]
         [Category("Appearance")]
         [ImageList("Images")]
-        [Editor("DevExpress.Utils.Design.ImageIndexesEditor, DevExpress.Utils.v6.1", typeof(UITypeEditor))]
+        [Editor("DevExpress.Utils.Design.ImageIndexesEditor, DevExpress.Utils.v8.1", typeof(UITypeEditor))]
         public int Index
         {
             get { return index; }
@@ -268,7 +269,7 @@ namespace CABDevExpress.SmartPartInfos
         private string parentPanelName = string.Empty;
 
         ///<summary>
-		/// Gets or sets the Panel which the current panel will be coked in.
+		/// Gets or sets the Panel which the current panel will be docked in.
 		/// Leave blank if no ParentPanel is needed
         ///</summary>
         public string ParentPanelName

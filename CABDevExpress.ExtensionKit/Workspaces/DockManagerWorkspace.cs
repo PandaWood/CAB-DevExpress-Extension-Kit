@@ -23,7 +23,7 @@ namespace CABDevExpress.Workspaces
         public DockManagerWorkspace() { }
 
         /// <summary>
-        /// Initializes the workspace with the DockManager which a all new DockPanels are added to. 
+        /// Initializes the workspace with the DockManager which all new DockPanels are added to. 
         /// </summary>
         /// <param name="dockManager">The DockManager that new DockPanels are added to</param>
         public DockManagerWorkspace(DockManager dockManager)
@@ -69,19 +69,20 @@ namespace CABDevExpress.Workspaces
     					//The lines below do work, but make the screen flicker because the panel
     					//is created outside it's parent container
 
-    					dockPanel = dockManager.AddPanel(DockingStyle.Left);	//The name and ID will be set later. 
+						dockPanel = dockManager.AddPanel(smartPartInfo.Dock);	//The name and ID will be set later. 
     					dockPanel.DockAsTab(dockRootPanel);
     					break;
     				}
     			}
 
     			if (dockPanel == null)
-					dockPanel = dockManager.AddPanel(DockingStyle.Float);	//If the panel is not found, just create one
+					dockPanel = dockManager.AddPanel(smartPartInfo.Dock);	//If the panel is not found, just create one
     		}
     		else
     		{
-    			dockPanel = dockManager.AddPanel(DockingStyle.Float);
+				dockPanel = dockManager.AddPanel(smartPartInfo.Dock);
     		}
+
     		dockPanelDictionary.Add(control, dockPanel);
     		dockPanel.Controls.Add(control);
     		return dockPanel;

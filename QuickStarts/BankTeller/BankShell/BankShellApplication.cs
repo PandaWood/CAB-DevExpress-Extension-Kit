@@ -10,7 +10,7 @@
 //===============================================================================
 
 using System;
-using BankTellerCommon;
+using BankTellerModule.Constants;
 using CABDevExpress;
 using CABDevExpress.UIElements;
 using DevExpress.XtraEditors;
@@ -28,8 +28,7 @@ namespace BankShell
         	DevExpress.UserSkins.OfficeSkins.Register();
         	DevExpress.Skins.SkinManager.EnableFormSkins();
 
-        	BankShellApplication app = new BankShellApplication();
-			app.Run();
+        	new BankShellApplication().Run();
         }
 
 
@@ -42,19 +41,20 @@ namespace BankShell
         {
             base.AfterShellCreated();
 
-            RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspacesConstants.SHELL_CONTENTWORKSPACE);
-            RootWorkItem.Items.Add(Shell.NavBarWorkspace, WorkspacesConstants.SHELL_NAVBARWORKSPACE);
+			RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspaceNames.ShellContentWorkspace);
+			RootWorkItem.Items.Add(Shell.NavBarWorkspace, WorkspaceNames.ShellNavBarWorkspace);
+			RootWorkItem.Items.Add(Shell.DockManagerWorkspace, WorkspaceNames.DockManagerWorkspace);
 
-            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.MAINMENU, Shell.mainMenuBar);
-            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.MAINSTATUS, Shell.mainStatusBar);
-            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.FILEDROPDOWN, Shell.barSubItemFile);
+			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainMenu, Shell.mainMenuBar);
+			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainStatus, Shell.mainStatusBar);
+			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.FileDropDown, Shell.barSubItemFile);
 
-            RootWorkItem.UIExtensionSites.RegisterSite(UIExtensionSites.FILE, 
+			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.File, 
 				new BarItemWrapper(Shell.mainMenuBar.ItemLinks, Shell.barSubItemFile));
 
-            RootWorkItem.UIExtensionSites[UIExtensionSites.MAINMENU].Add(new SkinMenu(Shell.mainMenuBar));
+			RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new SkinMenu(Shell.mainMenuBar));
 
-            RootWorkItem.UIExtensionSites[UIExtensionSites.MAINMENU].Add(
+			RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(
 				new WindowMenu(Shell.mainMenuBar, Shell.xtraTabbedMdiManager, Shell));
 
             UIElementBuilder.LoadFromConfig(RootWorkItem);

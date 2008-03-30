@@ -13,6 +13,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using BankTellerCommon;
+using BankTellerModule.Constants;
 using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
@@ -40,7 +41,7 @@ namespace BankTellerModule.WorkItems.Customer
 		// EventBroker. In reality, you can have any number of publishers and
 		// any number of subscribers; in fact, other modules will undoubtedly
 		// also publish status update events.
-		[EventPublication("topic://BankShell/statusupdate", PublicationScope.Global)]
+		[EventPublication(EventNames.StatusUpdate, PublicationScope.Global)]
 		public event EventHandler<DataEventArgs<string>> UpdateStatusTextEvent;
 
 		public void Show(IWorkspace parentWorkspace)
@@ -49,7 +50,7 @@ namespace BankTellerModule.WorkItems.Customer
 
 			AddMenuItems();
 
-			BankTellerCommon.Customer customer = (BankTellerCommon.Customer)State[StateConstants.CUSTOMER];
+			BankTellerCommon.Customer customer = (BankTellerCommon.Customer)State[WorkItemStates.Customer];
 
 			OnStatusTextUpdate(string.Format("Editing {0}, {1}", customer.LastName, customer.FirstName));
 			WindowSmartPartInfo smartPartInfo = new WindowSmartPartInfo();
@@ -71,7 +72,7 @@ namespace BankTellerModule.WorkItems.Customer
 			if (addressLabel == null)
 			{
 				addressLabel = new BarStaticItem();
-				UIExtensionSites[BankTellerCommon.UIExtensionSites.MAINSTATUS].Add(addressLabel);
+				UIExtensionSites[ExtensionSiteNames.MainStatus].Add(addressLabel);
 				addressLabel.Caption = customer.Address1;
 			}
 		}
@@ -144,7 +145,8 @@ namespace BankTellerModule.WorkItems.Customer
 			RegisterSmartPartInfo(commentsView, info);
 		}
 
-		[CommandHandler(CommandConstants.CUSTOMER_MOUSEOVER)]
+		//note let this string constant server to inform that it's not defined anywhere else in code
+		[CommandHandler("CustomerMouseOver")]
 		public void OnCustomerEdit(object sender, EventArgs args)
 		{
 			if (Status == WorkItemStatus.Active)

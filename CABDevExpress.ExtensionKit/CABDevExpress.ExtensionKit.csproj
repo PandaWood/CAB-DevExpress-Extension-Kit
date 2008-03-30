@@ -101,7 +101,8 @@
     <Compile Include="UIElements\XtraNavBarUIAdapterFactory.cs" />
     <Compile Include="ExceptionFactory.cs" />
     <Compile Include="UIElements\RibbonUIAdapterFactory.cs" />
-    <Compile Include="Workspaces\DockManagerWorkspace.cs" />
+    <Compile Include="Workspaces\DockManagerWorkspace.cs">
+    </Compile>
     <Compile Include="Workspaces\XtraNavBarWorkspace.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -12,6 +12,7 @@
 using System;
 using System.Windows.Forms;
 using BankTellerCommon;
+using BankTellerModule.Constants;
 using BankTellerModule.Services;
 using DevExpress.Utils;
 using DevExpress.Utils.Menu;
@@ -98,7 +99,7 @@ namespace BankTellerModule.WorkItems.Customer
 
 		private void HookupCabEvents()
 		{
-			ParentWorkItem.Commands[CommandConstants.HELLOFROMDXMENU].AddInvoker(popupMenuItem, "Click");
+			ParentWorkItem.Commands[CommandNames.DxMenuSamplePopup].AddInvoker(popupMenuItem, "Click");
 		}
 	}
 }

@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BankTellerConstants.cs" />
     <Compile Include="BusinessEntities\Customer.cs" />
     <Compile Include="BusinessEntities\CustomerAccount.cs" />
     <Compile Include="IShowInShell.cs" />

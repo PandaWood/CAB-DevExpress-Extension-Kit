@@ -36,12 +36,11 @@ namespace BankShell
 		private static List<string> GetSortedSkinNames()
 		{
 			List<string> skinNames = new List<string>(SkinManager.Default.Skins.Count);
-			foreach (SkinContainer skinContainer in SkinManager.Default.Skins)
-			{
-				skinNames.Add(skinContainer.SkinName);
-			}
 
-			skinNames.Sort(delegate(string name1, string name2) { return name1.CompareTo(name2); });
+			foreach (SkinContainer skinContainer in SkinManager.Default.Skins)
+				skinNames.Add(skinContainer.SkinName);
+
+			skinNames.Sort();
 			return skinNames;
 		}
 

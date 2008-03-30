@@ -9,7 +9,7 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using BankTellerCommon;
+using BankTellerModule.Constants;
 using BankTellerModule.WorkItems.BankTeller;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
@@ -37,18 +37,21 @@ namespace BankTellerModule
 			AddCustomerMenuItem();
 
 			//Retrieve well known workspaces
-			IWorkspace navbarWorkspace = workItem.Workspaces[WorkspacesConstants.SHELL_NAVBARWORKSPACE];
-			IWorkspace contentWorkspace = workItem.Workspaces[WorkspacesConstants.SHELL_CONTENTWORKSPACE];
+			IWorkspace navbarWorkspace = workItem.Workspaces[WorkspaceNames.ShellNavBarWorkspace];
+			IWorkspace contentWorkspace = workItem.Workspaces[WorkspaceNames.ShellContentWorkspace];
 
             BankTellerWorkItem bankTellerWorkItem = workItem.WorkItems.AddNew<BankTellerWorkItem>();
             bankTellerWorkItem.Show(navbarWorkspace, contentWorkspace);
+
+			IWorkspace dockWorkspace = workItem.Workspaces[WorkspaceNames.DockManagerWorkspace];
+			bankTellerWorkItem.Show(dockWorkspace);
 		}
 
 		private void AddCustomerMenuItem()
 		{
 			BarItem customerItem = new BarSubItem();
             customerItem.Caption = "Customer";
-			workItem.UIExtensionSites[UIExtensionSites.FILE].Add(customerItem);
+			workItem.UIExtensionSites[ExtensionSiteNames.File].Add(customerItem);
 			workItem.UIExtensionSites.RegisterSite(Properties.Resources.CustomerMenuExtensionSite, customerItem);
 		}
 	}
