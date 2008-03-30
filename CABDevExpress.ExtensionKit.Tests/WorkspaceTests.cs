@@ -95,6 +95,32 @@ namespace CABDevExpress.ExtensionKit.Tests
 			Assert.Equal(0, navbarWorkspace.Groups.Count);
 		}
 
+		[Fact]
+		public void CanCallTabPageCollection_Move_AndShowCorrectSmartParts()
+		{
+			XtraTabWorkspace tabWorkspace = new XtraTabWorkspace();
+
+			TestableSmartPart smartPart1 = new TestableSmartPart();
+			TestableSmartPart smartPart2 = new TestableSmartPart();
+			TestableSmartPart smartPart3 = new TestableSmartPart();
+
+			tabWorkspace.Show(smartPart1);
+			tabWorkspace.Show(smartPart2);
+			tabWorkspace.Show(smartPart3);
+
+			Assert.Equal(3, tabWorkspace.TabPages.Count);
+			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart3);
+
+			tabWorkspace.TabPages.Move(1, tabWorkspace.TabPages[0]);
+
+			tabWorkspace.SelectedTabPageIndex = 0;
+			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart1);
+			tabWorkspace.SelectedTabPageIndex = 1;
+			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart2);
+			tabWorkspace.SelectedTabPageIndex = 2;
+			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart3);
+		}
+
 		/// <summary>
 		/// Item # 8506 - this passes, I've probably misunderstood the issue
 		/// </summary>
