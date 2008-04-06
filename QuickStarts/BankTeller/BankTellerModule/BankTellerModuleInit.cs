@@ -10,6 +10,7 @@
 //===============================================================================
 
 using BankTellerModule.Constants;
+using BankTellerModule.Properties;
 using BankTellerModule.WorkItems.BankTeller;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
@@ -52,7 +53,7 @@ namespace BankTellerModule
 			BarItem customerItem = new BarSubItem();
             customerItem.Caption = "Customer";
 			workItem.UIExtensionSites[ExtensionSiteNames.File].Add(customerItem);
-			workItem.UIExtensionSites.RegisterSite(Properties.Resources.CustomerMenuExtensionSite, customerItem);
+			workItem.UIExtensionSites.RegisterSite(Resources.CustomerMenuExtensionSite, customerItem);
 		}
 	}
 }

@@ -13,6 +13,7 @@ using System;
 using System.Windows.Forms;
 using BankTellerCommon;
 using BankTellerModule.Constants;
+using BankTellerModule.Properties;
 using BankTellerModule.WorkItems.Customer;
 using CABDevExpress.SmartPartInfos;
 using CABDevExpress.Workspaces;
@@ -65,13 +66,13 @@ namespace BankTellerModule.WorkItems.BankTeller
 
 			XtraNavBarGroupSmartPartInfo customerInfo = new XtraNavBarGroupSmartPartInfo();
 			customerInfo.Title = "Customers";
-			customerInfo.LargeImage = BankTellerModule.Properties.Resources.customersLarge;
-			customerInfo.SmallImage = BankTellerModule.Properties.Resources.customersSmall;
+			customerInfo.LargeImage = Resources.customersLarge;
+			customerInfo.SmallImage = Resources.customersSmall;
 
 			XtraNavBarGroupSmartPartInfo statsInfo = new XtraNavBarGroupSmartPartInfo();
 			statsInfo.Title = "Statistics";
-			statsInfo.LargeImage = BankTellerModule.Properties.Resources.statsLarge;
-			statsInfo.SmallImage = BankTellerModule.Properties.Resources.statsSmall;
+			statsInfo.LargeImage = Resources.statsLarge;
+			statsInfo.SmallImage = Resources.statsSmall;
 
 			navbarWorkspace.Show(customerView, customerInfo);
 			navbarWorkspace.Show(statisticsBarView, statsInfo);
@@ -162,7 +163,9 @@ namespace BankTellerModule.WorkItems.BankTeller
 
 			// the two properties added by CABDevExpress.ExtensionKit's XtraWindowSmartPartInfo
 			smartPartInfo.StartPosition = FormStartPosition.CenterParent;
-			smartPartInfo.ShowInTaskbar = false;
+			smartPartInfo.FormBorderStyle = FormBorderStyle.FixedDialog;
+			smartPartInfo.MinimizeBox = false;
+			smartPartInfo.MaximizeBox = false;
 
 			smartPartInfo.Height = 150;
 			smartPartInfo.Width = 350;
@@ -184,9 +187,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 			info.Name = "Statistics";
 			info.Dock = DockingStyle.Right;
 
-			StatisticsBarView statisticsBarView = SmartParts.AddNew<StatisticsBarView>(DockableStatisticsView);
-			statisticsBarView.Dock = DockStyle.Fill;
-
+			SmartParts.AddNew<StatisticsBarView>(DockableStatisticsView);
 			dockWorkspace.Show(SmartParts[DockableStatisticsView], info);
 		}
 	}

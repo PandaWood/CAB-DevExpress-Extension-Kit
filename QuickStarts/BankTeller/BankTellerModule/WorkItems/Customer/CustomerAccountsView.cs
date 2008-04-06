@@ -11,7 +11,6 @@
 
 using System;
 using System.Windows.Forms;
-using BankTellerCommon;
 using BankTellerModule.Constants;
 using BankTellerModule.Services;
 using DevExpress.Utils;
@@ -92,9 +91,7 @@ namespace BankTellerModule.WorkItems.Customer
 			HookupCabEvents();
 
 			if (customer != null)
-			{
 				gridAccounts.DataSource = accountService.GetByCustomerID(customer.ID);
-			}
 		}
 
 		private void HookupCabEvents()

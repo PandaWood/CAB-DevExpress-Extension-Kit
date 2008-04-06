@@ -11,9 +11,7 @@
 
 using System;
 using System.Windows.Forms;
-using BankTellerCommon;
 using BankTellerModule.Constants;
-using BankTellerModule.WorkItems.BankTeller;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.SmartParts;

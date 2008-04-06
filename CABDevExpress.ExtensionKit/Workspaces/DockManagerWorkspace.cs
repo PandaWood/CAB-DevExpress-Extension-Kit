@@ -83,13 +83,14 @@ namespace CABDevExpress.Workspaces
 				dockPanel = dockManager.AddPanel(smartPartInfo.Dock);
     		}
 
+			control.Dock = DockStyle.Fill;
     		dockPanelDictionary.Add(control, dockPanel);
     		dockPanel.Controls.Add(control);
     		return dockPanel;
     	}
 
     	/// <summary>
-		/// Sets  <see cref="DockManagerSmartPartInfo"/> specific properties for the given dockpanel. 
+		/// Sets  <see cref="DockManagerSmartPartInfo"/> specific properties for the given DockPanel 
         /// </summary>
         protected static void SetDockPanelProperties(DockPanel dockPanel, DockManagerSmartPartInfo info)
         {

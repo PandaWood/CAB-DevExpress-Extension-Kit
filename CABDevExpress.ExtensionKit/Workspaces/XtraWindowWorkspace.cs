@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Windows.Forms;
 using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraEditors;
@@ -18,7 +17,7 @@ namespace CABDevExpress.Workspaces
     {
         private readonly Dictionary<Control, XtraForm> windowDictionary = new Dictionary<Control, XtraForm>();
         private bool fireActivatedFromForm = true;
-    	readonly IWin32Window ownerForm;
+        readonly IWin32Window ownerForm;
 
         /// <summary>
         /// Initializes the workspace with a no-owner form to use to show a new windows
@@ -62,6 +61,7 @@ namespace CABDevExpress.Workspaces
                 windowDictionary.Add(control, form);
                 form.Controls.Add(control);
                 CalculateSize(control, form);
+                control.Dock = DockStyle.Fill;
                 control.Disposed += ControlDisposed;
                 WireUpForm(form);
             }
@@ -74,6 +74,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected static void SetWindowProperties(Form form, XtraWindowSmartPartInfo info)
         {
+            form.WindowState = info.WindowState;
             form.Text = info.Title;
             form.Width = info.Width != 0 ? info.Width : form.Width;
             form.Height = info.Height != 0 ? info.Height : form.Height;
@@ -81,9 +82,11 @@ namespace CABDevExpress.Workspaces
             form.MaximizeBox = info.MaximizeBox;
             form.MinimizeBox = info.MinimizeBox;
             form.Icon = info.Icon;
-
-            form.ShowInTaskbar = info.ShowInTaskbar;
+            form.AcceptButton = info.AcceptButton;
+            form.CancelButton = info.CancelButton;
+            form.FormBorderStyle = info.FormBorderStyle;
             form.StartPosition = info.StartPosition;
+            form.ShowInTaskbar = info.ShowInTaskbar;
         }
 
         /// <summary>
@@ -138,7 +141,7 @@ namespace CABDevExpress.Workspaces
 
         private static void CalculateSize(Control smartPart, Form form)
         {
-            form.Size = new Size(smartPart.Size.Width, smartPart.Size.Height + 20);
+            form.ClientSize = smartPart.Size;
         }
 
         private void RemoveEntry(Control spcontrol)
@@ -146,29 +149,29 @@ namespace CABDevExpress.Workspaces
             windowDictionary.Remove(spcontrol);
         }
 
-        private void ShowForm(Form form, XtraWindowSmartPartInfo smartPartInfo)
-        {
-            SetWindowProperties(form, smartPartInfo);
+    	private void ShowForm(Form form, XtraWindowSmartPartInfo smartPartInfo)
+    	{
+    		SetWindowProperties(form, smartPartInfo);
 
-            if (smartPartInfo.Modal)
-            {
-				SetWindowLocation(form, smartPartInfo);	// Argument can be null. It's the default for the other overload.
-                form.ShowDialog(ownerForm);
-            }
-            else
-            {
-				if (ownerForm != null)	// Call changes if no owner is specified.
-                {
-                    form.Show(ownerForm);
-                }
-                else
-                {
-                    form.Show();
-                }
-                SetWindowLocation(form, smartPartInfo);
-                form.BringToFront();
-            }
-        }
+    		if (smartPartInfo.Modal)
+    		{
+    			SetWindowLocation(form, smartPartInfo); // Argument can be null. It's the default for the other overload.
+    			form.ShowDialog(ownerForm);
+    		}
+    		else
+    		{
+    			if (ownerForm != null) // Call changes if no owner is specified.
+    			{
+    				form.Show(ownerForm);
+    			}
+    			else
+    			{
+    				form.Show();
+    			}
+    			SetWindowLocation(form, smartPartInfo);
+    			form.BringToFront();
+    		}
+    	}
 
         /// <summary>
         /// WindowForm class
@@ -258,7 +261,7 @@ namespace CABDevExpress.Workspaces
         {
             try
             {
-				fireActivatedFromForm = false;	// Prevent double firing from composer Workspace class and form
+                fireActivatedFromForm = false;	// Prevent double firing from composer Workspace class and form
                 Form form = windowDictionary[smartPart];
                 form.BringToFront();
                 form.Show();
@@ -286,7 +289,7 @@ namespace CABDevExpress.Workspaces
             Form form = windowDictionary[smartPart];
             smartPart.Disposed -= ControlDisposed;
 
-			form.Controls.Remove(smartPart);	// Remove the smartPart from the form to avoid disposing it.
+            form.Controls.Remove(smartPart);	// Remove the smartPart from the form to avoid disposing it.
 
             form.Close();
             windowDictionary.Remove(smartPart);
@@ -314,5 +317,6 @@ namespace CABDevExpress.Workspaces
             smartPart.Show();
             ShowForm(form, smartPartInfo);
         }
+
     }
 }

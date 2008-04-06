@@ -12,8 +12,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using BankTellerCommon;
 using BankTellerModule.Constants;
+using BankTellerModule.Properties;
 using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
@@ -83,7 +83,7 @@ namespace BankTellerModule.WorkItems.Customer
 			{
 				editCustomerMenuItem1 = new BarButtonItem();
 				editCustomerMenuItem1.Caption = "Edit";
-				UIExtensionSites[Properties.Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
+				UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
 			}
 		}
 

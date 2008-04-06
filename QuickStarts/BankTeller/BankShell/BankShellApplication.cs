@@ -13,6 +13,8 @@ using System;
 using BankTellerModule.Constants;
 using CABDevExpress;
 using CABDevExpress.UIElements;
+using DevExpress.Skins;
+using DevExpress.UserSkins;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.WinForms;
@@ -24,9 +26,9 @@ namespace BankShell
         [STAThread]
         public static void Main()
         {
-            DevExpress.UserSkins.BonusSkins.Register();
-        	DevExpress.UserSkins.OfficeSkins.Register();
-        	DevExpress.Skins.SkinManager.EnableFormSkins();
+            BonusSkins.Register();
+        	OfficeSkins.Register();
+        	SkinManager.EnableFormSkins();
 
         	new BankShellApplication().Run();
         }

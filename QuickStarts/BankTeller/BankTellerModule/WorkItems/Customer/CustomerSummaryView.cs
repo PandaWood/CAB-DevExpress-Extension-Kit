@@ -10,9 +10,7 @@
 //===============================================================================
 
 using System;
-using BankTellerCommon;
 using BankTellerModule.Constants;
-using BankTellerModule.WorkItems.Customer;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;

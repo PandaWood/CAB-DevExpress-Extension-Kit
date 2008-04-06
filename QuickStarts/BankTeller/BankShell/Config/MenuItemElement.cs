@@ -11,8 +11,8 @@
 
 using System;
 using System.Configuration;
-using DevExpress.XtraBars;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 
 namespace BankShell.Config
 {
@@ -21,92 +21,50 @@ namespace BankShell.Config
 		[ConfigurationProperty("commandname", IsRequired = false)]
 		public string CommandName
 		{
-			get
-			{
-				return (string)this["commandname"];
-			}
-			set
-			{
-				this["commandname"] = value;
-			}
+			get { return (string) this["commandname"]; }
+			set { this["commandname"] = value; }
 		}
 
 		[ConfigurationProperty("key", IsRequired = false)]
 		public string Key
 		{
-			get
-			{
-				return (string)this["key"];
-			}
-			set
-			{
-				this["key"] = value;
-			}
+			get { return (string) this["key"]; }
+			set { this["key"] = value; }
 		}
 
 		[ConfigurationProperty("id", IsRequired = false, IsKey = true)]
 		public int ID
 		{
-			get
-			{
-				return (int)this["id"];
-			}
-			set
-			{
-				this["id"] = value;
-			}
+			get { return (int) this["id"]; }
+			set { this["id"] = value; }
 		}
 
 		[ConfigurationProperty("label", IsRequired = true)]
 		public string Label
 		{
-			get
-			{
-				return (string)this["label"];
-			}
-			set
-			{
-				this["label"] = value;
-			}
+			get { return (string) this["label"]; }
+			set { this["label"] = value; }
 		}
 
 		[ConfigurationProperty("site", IsRequired = true)]
 		public string Site
 		{
-			get
-			{
-				return (string)this["site"];
-			}
-			set
-			{
-				this["site"] = value;
-			}
+			get { return (string) this["site"]; }
+			set { this["site"] = value; }
 		}
 
 		[ConfigurationProperty("register", IsRequired = false)]
 		public bool Register
 		{
-			get
-			{
-				return (bool)this["register"];
-			}
-			set
-			{
-				this["register"] = value;
-			}
+			get { return (bool) this["register"]; }
+			set { this["register"] = value; }
 		}
 
 		[ConfigurationProperty("registrationsite", IsRequired = false)]
 		public string RegistrationSite
 		{
-			get
-			{
-				return (string)this["registrationsite"];
-			}
-			set
-			{
-				this["registrationsite"] = value;
-			}
+			get { return (string) this["registrationsite"]; }
+			set { this["registrationsite"] = value; }
 		}
 
 		public BarItem ToMenuItem()
@@ -116,10 +74,11 @@ namespace BankShell.Config
 				barItem = new BarSubItem();
 			else
 				barItem = new BarButtonItem();
+
 			barItem.Caption = Label;
 
 			if (!String.IsNullOrEmpty(Key))
-				barItem.ItemShortcut = new BarShortcut((Keys)Enum.Parse(typeof(Keys), Key));
+				barItem.ItemShortcut = new BarShortcut((Keys) Enum.Parse(typeof (Keys), Key));
 
 			return barItem;
 		}
