@@ -48,7 +48,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        protected XtraForm GetOrCreateForm(Control control)
+        protected Form GetOrCreateForm(Control control)
         {
             XtraWindowForm form;
             if (windowDictionary.ContainsKey(control))
@@ -200,9 +200,7 @@ namespace CABDevExpress.Workspaces
             protected override void OnActivated(EventArgs e)
             {
                 if (Controls.Count > 0)
-                {
                     WindowFormActivated(this, new WorkspaceEventArgs(Controls[0]));
-                }
 
                 base.OnActivated(e);
             }
@@ -219,9 +217,7 @@ namespace CABDevExpress.Workspaces
                     e.Cancel = cancelArgs.Cancel;
 
                     if (cancelArgs.Cancel == false)
-                    {
                         Controls[0].Hide();
-                    }
                 }
 
                 base.OnClosing(e);
@@ -234,9 +230,7 @@ namespace CABDevExpress.Workspaces
             protected override void OnClosed(EventArgs e)
             {
                 if (WindowFormClosed != null && Controls.Count > 0)
-                {
                     WindowFormClosed(this, new WorkspaceEventArgs(Controls[0]));
-                }
 
                 base.OnClosed(e);
             }
@@ -246,9 +240,7 @@ namespace CABDevExpress.Workspaces
                 WorkspaceCancelEventArgs cancelArgs = new WorkspaceCancelEventArgs(smartPart);
 
                 if (WindowFormClosing != null)
-                {
                     WindowFormClosing(this, cancelArgs);
-                }
 
                 return cancelArgs;
             }
@@ -317,6 +309,5 @@ namespace CABDevExpress.Workspaces
             smartPart.Show();
             ShowForm(form, smartPartInfo);
         }
-
     }
 }
