@@ -6,4 +6,6 @@ bin
 *.user
 *.aps
 *.eto
+</Value></Property><Property><Name>svn:ignore</Name><Value>bin
+obj
 </Value></Property></Properties></ItemProperties>

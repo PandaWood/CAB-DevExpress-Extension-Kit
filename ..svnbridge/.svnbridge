@@ -2,4 +2,8 @@
 *.user
 *.suo
 bin
+</Value></Property><Property><Name>svn:ignore</Name><Value>bin
+*.resharper
+*.user
+*.suo
 </Value></Property></Properties></ItemProperties>
