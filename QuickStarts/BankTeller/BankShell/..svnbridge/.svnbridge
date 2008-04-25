@@ -8,4 +8,5 @@ obj
 *.eto
 </Value></Property><Property><Name>svn:ignore</Name><Value>bin
 obj
+*.user
 </Value></Property></Properties></ItemProperties>

@@ -13,7 +13,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		readonly TestableSmartPart _smartPart = new TestableSmartPart();
 
 		[Fact]
-		public void CanShowAndCloseDockManagerWorkspace()
+		public void Can_ShowAndClose_DockManagerWorkspace()
 		{
 			// the DockManager must be passed a ContainerControl or the Workspace won't handle it
 			// not sure whether I should add something to the workspace to guard this....
@@ -28,7 +28,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void CanShowDockManagerWorkspaceIfPanelNameIsNotNull()
+		public void Can_Show_DockManagerWorkspace_If_PanelName_Is_NotNull()
 		{
 			DockManager dockManagerControl = new DockManager(new ContainerControl());
 			DockManagerWorkspace dockManagerWorkspace = new DockManagerWorkspace(dockManagerControl);
@@ -49,9 +49,8 @@ namespace CABDevExpress.ExtensionKit.Tests
 			Assert.Equal(0, dockManagerWorkspace.DockPanels.Count);
 		}
 
-
 		[Fact]
-		public void CanShowAndCloseXtraTabWorkspace()
+		public void Can_ShowAndClose_XtraTabWorkspace()
 		{
 			Font tahoma9pt = new Font("Tahoma", 9.75f);
 
@@ -73,7 +72,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void CanShowAndCloseAndHideXtraNavBarWorkspace()
+		public void Can_ShowAndCloseAndHide_XtraNavBarWorkspace()
 		{
 			XtraNavBarWorkspace navbarWorkspace = new XtraNavBarWorkspace();
 			XtraNavBarGroupSmartPartInfo smartPartInfo = new XtraNavBarGroupSmartPartInfo();
@@ -96,7 +95,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void CanCallTabPageCollection_Move_AndShowCorrectSmartParts()
+		public void Can_Move_AndThen_Activate_Correct_SmartParts()
 		{
 			XtraTabWorkspace tabWorkspace = new XtraTabWorkspace();
 
@@ -115,29 +114,6 @@ namespace CABDevExpress.ExtensionKit.Tests
 			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart3);
 
 			tabWorkspace.TabPages.Move(2, tabWorkspace.TabPages[0]);
-
-			// should we expect this? Does it matter?
-			tabWorkspace.SelectedTabPageIndex = 2;
-			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart3);
-			tabWorkspace.SelectedTabPageIndex = 0;
-			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart2);
-			tabWorkspace.SelectedTabPageIndex = 1;
-			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart1);
-		}
-
-		/// <summary>
-		/// Item # 8506 - this passes, I've probably misunderstood the issue
-		/// </summary>
-		[Fact]
-		public void CanShowAndMaintainActivateTabStatusAsFalse()
-		{
-			XtraTabSmartPartInfo info = new XtraTabSmartPartInfo();
-			info.ActivateTab = false;
-
-			XtraTabWorkspace xtrab = new XtraTabWorkspace();
-			xtrab.Show(_smartPart, info);
-
-			Assert.False(info.ActivateTab);
 		}
 	}
 }
