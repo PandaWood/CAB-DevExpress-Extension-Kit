@@ -12,7 +12,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 	public class UIElementAdapterTests
 	{
 		[Fact]
-		public void XtraBarUIAdapterFactoryCanReturnCorrectTypeForBar()
+		public void XtraBarUIAdapterFactory_CanReturn_CorrectType_For_Bar()
 		{
 			Bar bar = new Bar();
 			bar.Manager = new BarManager();
@@ -22,7 +22,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void XtraBarUIAdapterFactoryCanReturnCorrectTypeForBarManager()
+		public void XtraBarUIAdapterFactory_CanReturn_CorrectType_For_BarManager()
 		{
 			BarManager barManager = new BarManager();
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barManager);
@@ -31,7 +31,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void XtraNavBarUIAdapterFactoryCanReturnCorrectTypeForNavBarControl()
+		public void XtraNavBarUIAdapterFactory_CanReturn_CorrectType_For_NavBarControl()
 		{
 			NavBarControl navBarControl = new NavBarControl();
 
@@ -43,7 +43,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		/// We're testing both add() and remove() within each test, it's not worth the effort to separate them
 		/// </summary>
 		[Fact]
-		public void CanAddAndRemoveFromNavBarGroupCollectionUIAdapter()
+		public void CanAddAndRemove_From_NavBarGroupCollectionUIAdapter()
 		{
 			NavBarControl navBarControl = new NavBarControl();
 			IUIElementAdapter adapter = new XtraNavBarUIAdapterFactory().GetAdapter(navBarControl);
@@ -60,7 +60,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void CanAddAndRemoveFromBarsUIAdapter()
+		public void CanAddAndRemove_From_BarsUIAdapter()
 		{
 			BarManager barManager = new BarManager();
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barManager);
@@ -82,7 +82,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void CanAddAndRemoveFromNavigatorCustomButtonUIAdapter()
+		public void CanAddAndRemove_From_NavigatorCustomButtonUIAdapter()
 		{
 			GridControl grid = new GridControl();
 			NavigatorCustomButtons buttons = grid .EmbeddedNavigator.Buttons.CustomButtons;
@@ -101,7 +101,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void XtraNavBarUIAdapterFactoryThrowsExceptionWithUnsupported()
+		public void XtraNavBarUIAdapterFactory_Throws_Exception_WhenGiven_IncorrectType()
 		{
 			Assert.Throws<ArgumentException>(delegate
 			                                 	{	// use the wrong factory and expect an exception
@@ -110,7 +110,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void CanAddAndRemoveFromBarLinksOwnerCollectionUIAdapter()
+		public void CanAddAndRemove_From_BarLinksOwnerCollectionUIAdapter()
 		{	
 			// Looking at the Adapter, the prerequisite setup is that the BarItem passed to the 
 			// BarItemWrapper constructor, must have already been added to the BarManager

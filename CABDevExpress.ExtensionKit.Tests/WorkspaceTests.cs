@@ -13,7 +13,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		readonly TestableSmartPart _smartPart = new TestableSmartPart();
 
 		[Fact]
-		public void Can_ShowAndClose_DockManagerWorkspace()
+		public void CanShowAndClose_DockManagerWorkspace()
 		{
 			// the DockManager must be passed a ContainerControl or the Workspace won't handle it
 			// not sure whether I should add something to the workspace to guard this....
@@ -28,7 +28,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void Can_Show_DockManagerWorkspace_If_PanelName_Is_NotNull()
+		public void CanShow_DockManagerWorkspace_If_PanelName_Is_NotNull()
 		{
 			DockManager dockManagerControl = new DockManager(new ContainerControl());
 			DockManagerWorkspace dockManagerWorkspace = new DockManagerWorkspace(dockManagerControl);
@@ -50,7 +50,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void Can_ShowAndClose_XtraTabWorkspace()
+		public void CanShowAndClose_XtraTabWorkspace()
 		{
 			Font tahoma9pt = new Font("Tahoma", 9.75f);
 
@@ -72,7 +72,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void Can_ShowAndCloseAndHide_XtraNavBarWorkspace()
+		public void CanShowAndCloseAndHide_XtraNavBarWorkspace()
 		{
 			XtraNavBarWorkspace navbarWorkspace = new XtraNavBarWorkspace();
 			XtraNavBarGroupSmartPartInfo smartPartInfo = new XtraNavBarGroupSmartPartInfo();
@@ -95,7 +95,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		}
 
 		[Fact]
-		public void Can_Move_AndThen_Activate_Correct_SmartParts()
+		public void CanMove_AndThen_Activate_Correct_SmartParts()
 		{
 			XtraTabWorkspace tabWorkspace = new XtraTabWorkspace();
 

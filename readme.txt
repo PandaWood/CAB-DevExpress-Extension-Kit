@@ -37,4 +37,4 @@ Contributors:
 
 Espen Schaathun (espen_schaathun@hotmail.com)
 Vincent Guerci (puy0@hotmail.com)
-Peter van der Woude (spurrymoses@gmail.com)
+Peter van der Woude (PandaWood) (spurrymoses@gmail.com)

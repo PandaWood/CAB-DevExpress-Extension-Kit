@@ -63,6 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UIElements\RibbonGalleryGroupUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonGalleryUIAdapter.cs" />
     <Compile Include="XtraFormApplication.cs" />
     <Compile Include="Commands\BarItemCommandAdapter.cs" />
     <Compile Include="Commands\DXMenuItemCommandAdapter.cs" />
