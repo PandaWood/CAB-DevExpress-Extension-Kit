@@ -69,22 +69,20 @@ namespace BankTellerModule.WorkItems.Customer
 
 		private void UpdateUserAddressLabel(BankTellerCommon.Customer customer)
 		{
-			if (addressLabel == null)
-			{
-				addressLabel = new BarStaticItem();
-				UIExtensionSites[ExtensionSiteNames.MainStatus].Add(addressLabel);
-				addressLabel.Caption = customer.Address1;
-			}
+			if (addressLabel != null) return;
+
+			addressLabel = new BarStaticItem();
+			UIExtensionSites[ExtensionSiteNames.MainStatus].Add(addressLabel);
+			addressLabel.Caption = customer.Address1;
 		}
 
 		private void AddMenuItems()
 		{
-			if (editCustomerMenuItem1 == null)
-			{
-				editCustomerMenuItem1 = new BarButtonItem();
-				editCustomerMenuItem1.Caption = "Edit";
-				UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
-			}
+			if (editCustomerMenuItem1 != null) return;
+
+			editCustomerMenuItem1 = new BarButtonItem();
+			editCustomerMenuItem1.Caption = "Edit";
+			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
 		}
 
 		private void SetUIElementVisibility(bool visible)
@@ -149,15 +147,13 @@ namespace BankTellerModule.WorkItems.Customer
 		[CommandHandler("CustomerMouseOver")]
 		public void OnCustomerEdit(object sender, EventArgs args)
 		{
-			if (Status == WorkItemStatus.Active)
-			{
-				Form form = customerSummaryView.ParentForm;
+			if (Status != WorkItemStatus.Active) return;
 
-				string tooltipText = "This is customer work item " + this.ID;
-				ToolTip toolTip = new ToolTip();
-				toolTip.IsBalloon = true;
-				toolTip.Show(tooltipText, form, form.Size.Width - 30, 30, 3000);
-			}
+			Form form = customerSummaryView.ParentForm;
+			string tooltipText = "This is customer work item " + this.ID;
+			ToolTip toolTip = new ToolTip();
+			toolTip.IsBalloon = true;
+			toolTip.Show(tooltipText, form, form.Size.Width - 30, 30, 3000);
 		}
 	}
 }

@@ -51,7 +51,7 @@ namespace CABDevExpress.SmartPartInfos
             set { floatSize = value; }
         }
 
-        private bool floatVertical = false;
+        private bool floatVertical;
 
         ///<summary>
 		/// Gets or sets whether the current panel's children should be arranged vertically

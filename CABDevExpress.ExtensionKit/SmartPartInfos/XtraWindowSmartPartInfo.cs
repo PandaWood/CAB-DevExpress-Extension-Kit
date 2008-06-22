@@ -12,10 +12,10 @@ namespace CABDevExpress.SmartPartInfos
     [ToolboxBitmap(typeof(XtraWindowSmartPartInfo), "XtraWindowSmartPartInfo")]
     public class XtraWindowSmartPartInfo : WindowSmartPartInfo
     {
-        private bool showInTaskbar = false;
+        private bool showInTaskbar;
         private FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation;
-        private IButtonControl acceptButton = null;
-        private IButtonControl cancelButton = null;
+        private IButtonControl acceptButton;
+        private IButtonControl cancelButton;
         private FormBorderStyle formBorderStyle = FormBorderStyle.Sizable;
         private FormWindowState windowState = default(FormWindowState);
 

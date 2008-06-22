@@ -18,7 +18,7 @@ namespace BankTellerModule.Services
 	public class CustomerQueueService
 	{
 		private readonly Customer[] customers;
-		private int idx = 0;
+		private int idx;
 
 		public CustomerQueueService()
 		{

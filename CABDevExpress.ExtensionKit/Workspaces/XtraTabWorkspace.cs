@@ -26,7 +26,7 @@ namespace CABDevExpress.Workspaces
         private readonly Dictionary<Control, XtraTabPage> pages = new Dictionary<Control, XtraTabPage>();
         private readonly WorkspaceComposer<Control, XtraTabSmartPartInfo> composer;
         private bool callComposerActivateOnIndexChange = true;
-        private bool populatingPages = false;
+        private bool populatingPages;
 
         /// <summary>
         /// Initializes a new <see cref="XtraTabWorkspace"/>
