@@ -32,8 +32,8 @@ namespace CABDevExpress.ExtensionKit.Tests
 		{
 			DockManager dockManagerControl = new DockManager(new ContainerControl());
 			DockManagerWorkspace dockManagerWorkspace = new DockManagerWorkspace(dockManagerControl);
-			DockManagerSmartPartInfo info = new DockManagerSmartPartInfo();
 
+			DockManagerSmartPartInfo info = new DockManagerSmartPartInfo();
 			info.ParentPanelName = "PanelBob";		
 			info.Name = "Bob";
 			info.Dock = DockingStyle.Bottom;

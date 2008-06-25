@@ -59,31 +59,26 @@ namespace CABDevExpress.Workspaces
 
     	private DockPanel CreateDockPanel(Control control, DockManagerSmartPartInfo smartPartInfo, DockPanel dockPanel)
     	{
-    		if (!string.IsNullOrEmpty(smartPartInfo.ParentPanelName))
+    		if (string.IsNullOrEmpty(smartPartInfo.ParentPanelName))
     		{
-    			foreach (DockPanel dockRootPanel in dockManager.RootPanels)
-    			{
-    				if (dockRootPanel.Name == smartPartInfo.ParentPanelName)	// could we use Parents ID instead of Name?
-    				{
-    					//dockPanel = dockRootPanel.AddPanel(); //why doesn't this work? - a bug in the DockManager library?
-    					//The lines below do work, but make the screen flicker because the panel
-    					//is created outside it's parent container
-
-						dockPanel = dockManager.AddPanel(smartPartInfo.Dock);	//The name and ID will be set later. 
-    					dockPanel.DockAsTab(dockRootPanel);
-    					break;
-    				}
-    			}
-
-    			if (dockPanel == null)
-					dockPanel = dockManager.AddPanel(smartPartInfo.Dock);	//If the panel is not found, just create one
+    			dockPanel = dockManager.AddPanel(smartPartInfo.Dock);
     		}
     		else
     		{
-				dockPanel = dockManager.AddPanel(smartPartInfo.Dock);
+    			foreach (DockPanel dockRootPanel in dockManager.RootPanels)
+    			{
+    				if (dockRootPanel.Name != smartPartInfo.ParentPanelName) continue;
+
+    				dockPanel = dockManager.AddPanel(smartPartInfo.Dock);
+    				dockPanel.DockAsTab(dockRootPanel);
+    				break;
+    			}
+
+    			if (dockPanel == null)
+    				dockPanel = dockManager.AddPanel(smartPartInfo.Dock); //If the panel is not found, just create one
     		}
 
-			control.Dock = DockStyle.Fill;
+    		control.Dock = DockStyle.Fill;
     		dockPanelDictionary.Add(control, dockPanel);
     		dockPanel.Controls.Add(control);
     		return dockPanel;
@@ -177,8 +172,7 @@ namespace CABDevExpress.Workspaces
             smartPart.Disposed -= ControlDisposed;
 
 			dockPanel.Controls.Remove(smartPart);	// Remove the smartPart from the DockPanel to avoid disposing it
-
-            dockPanel.Close();
+			dockManager.RemovePanel(dockPanel);		// changed from dockPanel.Close() but not unit tested
             dockPanelDictionary.Remove(smartPart);
         }
     }
