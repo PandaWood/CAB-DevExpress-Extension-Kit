@@ -21,9 +21,9 @@ using System.Security.Permissions;
 #endif
 
 [assembly: AssemblyTitle("BankTellerModule")]
-[assembly: AssemblyDescription("Microsoft Composite UI Bank Teller Quickstart: Bank Teller Module")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyCopyright("Copyright© Microsoft Corporation.  All rights reserved.")]
+[assembly: AssemblyDescription("CABDevExpress Composite UI Bank Teller Quickstart: Bank Teller Module")]
+[assembly: AssemblyCompany("CABDevExpress")]
+[assembly: AssemblyCopyright("Copyright© 2007-2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,3 +33,6 @@ using System.Security.Permissions;
 
 [assembly: ReflectionPermission(SecurityAction.RequestMinimum, Flags = ReflectionPermissionFlag.MemberAccess)]
 
+[assembly: AssemblyProductAttribute("www.codeplex.com/CABDevExpress")]
+[assembly: AssemblyVersionAttribute("0.5.0.0")]
+[assembly: AssemblyFileVersionAttribute("0.5.0.0")]

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BankTellerModuleExtension")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("BankTellerModuleExtension")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ClariuS Consulting SA")]
-[assembly: AssemblyProduct("BankTellerModuleExtension")]
-[assembly: AssemblyCopyright("Copyright © ClariuS Consulting SA 2005")]
+[assembly: AssemblyCompany("CABDevExpress")]
+[assembly: AssemblyProduct("www.codeplex.com/CABDevExpress")]
+[assembly: AssemblyCopyright("Copyright © 2007-2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

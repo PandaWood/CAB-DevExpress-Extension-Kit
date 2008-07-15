@@ -41,7 +41,7 @@ namespace CABDevExpress.UIElements
 
 			if (uiElement.Ribbon != null)
 				uiElement.Ribbon.Pages.Remove(uiElement);		
-				//TODO I wonder why this doesn't use ribbonPageCollection.Remove()?
+				// not sure why this doesn't use ribbonPageCollection.Remove()
 		}
 
 		/// <summary>

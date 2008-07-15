@@ -30,8 +30,8 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void CanShow_DockManagerWorkspace_If_PanelName_Is_NotNull()
 		{
-			var dockManagerControl = new DockManager(new ContainerControl());
-			var dockManagerWorkspace = new DockManagerWorkspace(dockManagerControl);
+			var dockManager = new DockManager(new ContainerControl());
+			var dockManagerWorkspace = new DockManagerWorkspace(dockManager);
 			var smartPartInfo = new DockManagerSmartPartInfo
 			                    	{
 			                    		ParentPanelName = "PanelBob",
@@ -41,9 +41,9 @@ namespace CABDevExpress.ExtensionKit.Tests
 			dockManagerWorkspace.Show(_smartPart, smartPartInfo);
 
 			Assert.Equal(1, dockManagerWorkspace.DockPanels.Count);
-			Assert.Equal("Bob", dockManagerControl.Panels[0].Name);
+			Assert.Equal("Bob", dockManager.Panels[0].Name);
 
-			Assert.Equal(DockingStyle.Bottom, dockManagerControl.Panels[0].Dock);
+			Assert.Equal(DockingStyle.Bottom, dockManager.Panels[0].Dock);
 
 			dockManagerWorkspace.Close(_smartPart);
 
@@ -53,19 +53,19 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void CanShowAndClose_XtraTabWorkspace()
 		{
-			Font tahoma9pt = new Font("Tahoma", 9.75f);
-			var smartPartInfo = new XtraTabSmartPartInfo {Text = "text", PageHeaderFont = tahoma9pt};
-			var xtrab = new XtraTabWorkspace();
-			xtrab.Show(_smartPart, smartPartInfo);
+			Font tahoma9ptFont = new Font("Tahoma", 9.75f);
+			var smartPartInfo = new XtraTabSmartPartInfo {Text = "text", PageHeaderFont = tahoma9ptFont};
+			var xtraTabWorkspace = new XtraTabWorkspace();
+			xtraTabWorkspace.Show(_smartPart, smartPartInfo);
 
-			Assert.Equal(1, xtrab.TabPages.Count);
-			Assert.Equal(1, xtrab.SmartParts.Count);
-			Assert.Equal("text", xtrab.SelectedTabPage.Text);
-			Assert.Equal(tahoma9pt, xtrab.SelectedTabPage.Appearance.Header.Font);
+			Assert.Equal(1, xtraTabWorkspace.TabPages.Count);
+			Assert.Equal(1, xtraTabWorkspace.SmartParts.Count);
+			Assert.Equal("text", xtraTabWorkspace.SelectedTabPage.Text);
+			Assert.Equal(tahoma9ptFont, xtraTabWorkspace.SelectedTabPage.Appearance.Header.Font);
 
-			xtrab.Close(_smartPart);
-			Assert.Equal(0, xtrab.TabPages.Count);
-			Assert.Equal(0, xtrab.SmartParts.Count);
+			xtraTabWorkspace.Close(_smartPart);
+			Assert.Equal(0, xtraTabWorkspace.TabPages.Count);
+			Assert.Equal(0, xtraTabWorkspace.SmartParts.Count);
 		}
 
 		[Fact]

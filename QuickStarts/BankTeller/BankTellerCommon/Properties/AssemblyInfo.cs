@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("BankTellerCommon")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("CABDevExpress")]
 [assembly: AssemblyProduct("BankTellerCommon")]
 [assembly: AssemblyCopyright("Copyright ©  2005")]
 [assembly: AssemblyTrademark("")]
