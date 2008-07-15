@@ -27,7 +27,7 @@ namespace BankTellerModule.WorkItems.Customer
 			set { customer = value; }
 		}
 
-		private BankTellerCommon.Customer customer = null;
+		private BankTellerCommon.Customer customer;
 
 		public CustomerHeaderView()
 		{

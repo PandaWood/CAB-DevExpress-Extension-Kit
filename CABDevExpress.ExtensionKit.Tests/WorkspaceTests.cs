@@ -17,7 +17,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		{
 			// the DockManager must be passed a ContainerControl or the Workspace won't handle it
 			// not sure whether I should add something to the workspace to guard this....
-			DockManagerWorkspace dockManagerWorkspace = new DockManagerWorkspace(new DockManager(new ContainerControl()));
+			var dockManagerWorkspace = new DockManagerWorkspace(new DockManager(new ContainerControl()));
 			dockManagerWorkspace.Show(_smartPart);
 
 			Assert.Equal(1, dockManagerWorkspace.DockPanels.Count);
@@ -30,14 +30,15 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void CanShow_DockManagerWorkspace_If_PanelName_Is_NotNull()
 		{
-			DockManager dockManagerControl = new DockManager(new ContainerControl());
-			DockManagerWorkspace dockManagerWorkspace = new DockManagerWorkspace(dockManagerControl);
-
-			DockManagerSmartPartInfo info = new DockManagerSmartPartInfo();
-			info.ParentPanelName = "PanelBob";		
-			info.Name = "Bob";
-			info.Dock = DockingStyle.Bottom;
-			dockManagerWorkspace.Show(_smartPart, info);
+			var dockManagerControl = new DockManager(new ContainerControl());
+			var dockManagerWorkspace = new DockManagerWorkspace(dockManagerControl);
+			var smartPartInfo = new DockManagerSmartPartInfo
+			                    	{
+			                    		ParentPanelName = "PanelBob",
+			                    		Name = "Bob",
+			                    		Dock = DockingStyle.Bottom
+			                    	};
+			dockManagerWorkspace.Show(_smartPart, smartPartInfo);
 
 			Assert.Equal(1, dockManagerWorkspace.DockPanels.Count);
 			Assert.Equal("Bob", dockManagerControl.Panels[0].Name);
@@ -53,13 +54,9 @@ namespace CABDevExpress.ExtensionKit.Tests
 		public void CanShowAndClose_XtraTabWorkspace()
 		{
 			Font tahoma9pt = new Font("Tahoma", 9.75f);
-
-			XtraTabSmartPartInfo info = new XtraTabSmartPartInfo();
-			info.Text = "text";
-			info.PageHeaderFont = tahoma9pt;
-
-			XtraTabWorkspace xtrab = new XtraTabWorkspace();
-			xtrab.Show(_smartPart, info);
+			var smartPartInfo = new XtraTabSmartPartInfo {Text = "text", PageHeaderFont = tahoma9pt};
+			var xtrab = new XtraTabWorkspace();
+			xtrab.Show(_smartPart, smartPartInfo);
 
 			Assert.Equal(1, xtrab.TabPages.Count);
 			Assert.Equal(1, xtrab.SmartParts.Count);
@@ -74,9 +71,8 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void CanShowAndCloseAndHide_XtraNavBarWorkspace()
 		{
-			XtraNavBarWorkspace navbarWorkspace = new XtraNavBarWorkspace();
-			XtraNavBarGroupSmartPartInfo smartPartInfo = new XtraNavBarGroupSmartPartInfo();
-			smartPartInfo.Title = "Test Title";
+			var navbarWorkspace = new XtraNavBarWorkspace();
+			var smartPartInfo = new XtraNavBarGroupSmartPartInfo {Title = "Test Title"};
 			Assert.Equal(0, navbarWorkspace.Groups.Count);
 
 			// show the workspace
@@ -97,21 +93,17 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void CanMove_AndThen_Activate_Correct_SmartParts()
 		{
-			XtraTabWorkspace tabWorkspace = new XtraTabWorkspace();
-
-			TestableSmartPart smartPart1 = new TestableSmartPart();
-			smartPart1.Name = "smartpart1";
-			TestableSmartPart smartPart2 = new TestableSmartPart();
-			smartPart2.Name = "smartpart1";
-			TestableSmartPart smartPart3 = new TestableSmartPart();
-			smartPart3.Name = "smartpart1";
+			var tabWorkspace = new XtraTabWorkspace();
+			var smartPart1 = new TestableSmartPart {Name = "smartpart1"};
+			var smartPart2 = new TestableSmartPart {Name = "smartpart1"};
+			var smartPart3 = new TestableSmartPart {Name = "smartpart1"};
 
 			tabWorkspace.Show(smartPart1);
 			tabWorkspace.Show(smartPart2);
 			tabWorkspace.Show(smartPart3);
 
 			Assert.Equal(3, tabWorkspace.TabPages.Count);
-			Assert.Equal<object>(tabWorkspace.ActiveSmartPart, smartPart3);
+			Assert.Equal(tabWorkspace.ActiveSmartPart, smartPart3);
 
 			tabWorkspace.TabPages.Move(2, tabWorkspace.TabPages[0]);
 		}

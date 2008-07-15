@@ -9,10 +9,7 @@ namespace CABDevExpress.SmartPartInfos
     ///</summary>
     public class XtraImageSmartPartInfo : SmartPartInfo
     {
-        private Image smallImage;
-        private Image largeImage;
-
-        /// <summary>
+    	/// <summary>
         /// Initializes the smart part info without any values.
         /// </summary>
         public XtraImageSmartPartInfo() { }
@@ -34,7 +31,7 @@ namespace CABDevExpress.SmartPartInfos
         public XtraImageSmartPartInfo(string title, string description, Image largeImage)
             : base(title, description)
         {
-            this.largeImage = largeImage;
+            LargeImage = largeImage;
         }
 
         /// <summary>
@@ -47,30 +44,22 @@ namespace CABDevExpress.SmartPartInfos
         public XtraImageSmartPartInfo(string title, string description, Image largeImage, Image smallImage)
             : base(title, description)
         {
-            this.largeImage = largeImage;
-            this.smallImage = smallImage;
+            LargeImage = largeImage;
+            SmallImage = smallImage;
         }
 
-        /// <summary>
-        /// Returns or sets the LargeImage that is displayed in associated with the smart part.
-        /// </summary>
-        [Category("Appearance"), Localizable(true), DefaultValue(null)]
-        [Description("Specifies the LargeImage displayed within the element.")]
-        public Image LargeImage
-        {
-            get { return largeImage; }
-            set { largeImage = value; }
-        }
+    	/// <summary>
+    	/// Returns or sets the LargeImage that is displayed in associated with the smart part.
+    	/// </summary>
+    	[Category("Appearance"), Localizable(true), DefaultValue(null)]
+    	[Description("Specifies the LargeImage displayed within the element.")]
+    	public Image LargeImage { get; set; }
 
-        /// <summary>
-        /// Returns or sets the SmallImage that is displayed in associated with the smart part.
-        /// </summary>
-        [Category("Appearance"), Localizable(true), DefaultValue(null)]
-        [Description("Specifies the SmallImage displayed within the element.")]
-        public Image SmallImage
-        {
-            get { return smallImage; }
-            set { smallImage = value; }
-        }
+    	/// <summary>
+    	/// Returns or sets the SmallImage that is displayed in associated with the smart part.
+    	/// </summary>
+    	[Category("Appearance"), Localizable(true), DefaultValue(null)]
+    	[Description("Specifies the SmallImage displayed within the element.")]
+    	public Image SmallImage { get; set; }
     }
 }

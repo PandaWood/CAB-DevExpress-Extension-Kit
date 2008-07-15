@@ -31,7 +31,7 @@ namespace CABDevExpress
 
 		private void RegisterCommandAdapters()
 		{
-			ICommandAdapterMapService mapService = RootWorkItem.Services.Get<ICommandAdapterMapService>();
+			var mapService = RootWorkItem.Services.Get<ICommandAdapterMapService>();
 			mapService.Register(typeof (BarItem), typeof (BarItemCommandAdapter));
 			mapService.Register(typeof (NavBarItem), typeof (NavBarItemCommandAdapter));
 			mapService.Register(typeof (DXMenuItem), typeof (DXMenuItemCommandAdapter));
@@ -40,12 +40,12 @@ namespace CABDevExpress
 
 		private void RegisterUIElementAdapterFactories()
 		{
-			IUIElementAdapterFactoryCatalog catalog = RootWorkItem.Services.Get<IUIElementAdapterFactoryCatalog>();
-			catalog.RegisterFactory(new XtraNavBarUIAdapterFactory());
-			catalog.RegisterFactory(new XtraBarUIAdapterFactory());
-			catalog.RegisterFactory(new RibbonUIAdapterFactory());
-			catalog.RegisterFactory(new NavigatorCustomButtonUIAdapterFactory());
-			catalog.RegisterFactory(new EditorButtonCollectionUIAdapterFactory());
+			var factoryCatalog = RootWorkItem.Services.Get<IUIElementAdapterFactoryCatalog>();
+			factoryCatalog.RegisterFactory(new XtraNavBarUIAdapterFactory());
+			factoryCatalog.RegisterFactory(new XtraBarUIAdapterFactory());
+			factoryCatalog.RegisterFactory(new RibbonUIAdapterFactory());
+			factoryCatalog.RegisterFactory(new NavigatorCustomButtonUIAdapterFactory());
+			factoryCatalog.RegisterFactory(new EditorButtonCollectionUIAdapterFactory());
 		}
 	}
 }

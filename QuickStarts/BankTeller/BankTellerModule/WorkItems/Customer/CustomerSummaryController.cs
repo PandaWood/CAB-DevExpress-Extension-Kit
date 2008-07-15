@@ -37,15 +37,11 @@ namespace BankTellerModule.WorkItems.Customer
 		[CommandHandler(CommandNames.EditCustomer)]
 		public void OnCustomerEdit(object sender, EventArgs args)
 		{
-			if (WorkItem.Status == WorkItemStatus.Active)
-			{
-				TabWorkspace tabWS = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as TabWorkspace;
+			if (WorkItem.Status != WorkItemStatus.Active) return;
 
-				if (tabWS != null)
-				{
-					tabWS.SelectedIndex = 0;
-				}
-			}
+			var tabWorkspace = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as TabWorkspace;
+			if (tabWorkspace != null)
+				tabWorkspace.SelectedIndex = 0;
 		}
 		
 	}

@@ -21,7 +21,7 @@ namespace BankTellerModule.WorkItems.Customer
 	{
 		// The Customer state is stored in our parent work item
 
-		private BankTellerCommon.Customer customer = null;
+		private BankTellerCommon.Customer customer;
 
 		[State]
 		public BankTellerCommon.Customer Customer

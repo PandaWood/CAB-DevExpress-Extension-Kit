@@ -42,29 +42,17 @@ namespace CABDevExpress.UIElements
 			get { return ribbonPageName + "_" + Name; }
 		}
 
-		private DXButtonItem[] dxButtonItems;
-
 		///<summary>
 		///</summary>
 		[Category("Ribbon Data")]
 		[Description("Button Items To appear in Ribbon Page Group")]
-		public DXButtonItem[] BarButtonItems
-		{
-			get { return dxButtonItems; }
-			set { dxButtonItems = value; }
-		}
-
-		private DXCheckItem[] barCheckItems;
+		public DXButtonItem[] BarButtonItems { get; set; }
 
 		///<summary>
 		///</summary>
 		[Category("Ribbon Data")]
 		[Description("Check Items To appear in Ribbon Page Group")]
-		public DXCheckItem[] BarCheckItems
-		{
-			get { return barCheckItems; }
-			set { barCheckItems = value; }
-		}
+		public DXCheckItem[] BarCheckItems { get; set; }
 	}
 
 	///<summary>
@@ -181,26 +169,11 @@ namespace CABDevExpress.UIElements
 			set { itemEvent = value; }
 		}
 
-		private string commandName;
+		[Description("Command Name Associated with this event to pass to CAB event handler to the decorated method  [CommandHandler(''MyCommandName'')]"
+			)]
+		public string CommandName { get; set; }
 
-		///<summary>
-		///</summary>
-		[Description("Command Name Associated with this event to pass to CAB event handler to the decorated method  [CommandHandler(''MyCommandName'')]")]
-		public string CommandName
-		{
-			get { return commandName; }
-			set { commandName = value; }
-		}
-
-		private PublicationScope publicationScope;
-
-		///<summary>
-		///</summary>
 		[Description("Publication Scope of Event -- To Do: Not wired up yet but can be in the CAB infrastructure")]
-		public PublicationScope PublicationScope
-		{
-			get { return publicationScope; }
-			set { publicationScope = value; }
-		}
+		public PublicationScope PublicationScope { get; set; }
 	}
 }

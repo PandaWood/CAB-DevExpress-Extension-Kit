@@ -65,8 +65,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 
 		private void OnCustomerSelectionChanged(object sender, EventArgs e)
 		{
-			BankTellerCommon.Customer customer = 
-				listCustomers.SelectedItem as BankTellerCommon.Customer;
+			var customer = listCustomers.SelectedItem as BankTellerCommon.Customer;
 
 			if (customer != null)
 			{

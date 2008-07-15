@@ -10,49 +10,25 @@ namespace CABDevExpress.SmartPartInfos
 	///</summary>
 	public class XtraTabSmartPartInfo : TabSmartPartInfo
 	{
-		private Color backColor;
-
 		/// <summary>
 		/// Gets or sets the background color of the tab page's client region.
 		/// </summary>
-		public Color BackColor
-		{
-			get { return backColor; }
-			set { backColor = value; }
-		}
-
-		private bool enabled;
+		public Color BackColor { get; set; }
 
 		/// <summary>
 		/// Gets or sets whether a tab page can be selected.
 		/// </summary>
-		public bool Enabled
-		{
-			get { return enabled; }
-			set { enabled = value; }
-		}
-
-		private Color foreColor;
+		public bool Enabled { get; set; }
 
 		/// <summary>
 		/// Gets or sets the foreground color of the tab page's client region.
 		/// </summary>
-		public Color ForeColor
-		{
-			get { return foreColor; }
-			set { foreColor = value; }
-		}
-
-		private Image image;
+		public Color ForeColor { get; set; }
 
 		/// <summary>
 		/// Gets or sets the image displayed within the tab page's header
 		/// </summary>
-		public Image Image
-		{
-			get { return image; }
-			set { image = value; }
-		}
+		public Image Image { get; set; }
 
 		[DefaultValue(-1)] 
 		[Category("Appearance")] 
@@ -95,49 +71,25 @@ namespace CABDevExpress.SmartPartInfos
 			set { pageVisible = value; }
 		}
 
-		private Size size;
-
 		/// <summary>
 		/// Gets or sets the control's height and width.
 		/// </summary>
-		public Size Size
-		{
-			get { return size; }
-			set { size = value; }
-		}
-
-		private int tabIndex;
+		public Size Size { get; set; }
 
 		/// <summary>
 		/// Gets or sets the tab order of the control within its container.
 		/// </summary>
-		public int TabIndex
-		{
-			get { return tabIndex; }
-			set { tabIndex = value; }
-		}
-
-		private bool tabStop;
+		public int TabIndex { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether an end user can focus this page using the TAB key.
 		/// </summary>
-		public bool TabStop
-		{
-			get { return tabStop; }
-			set { tabStop = value; }
-		}
-
-		private string text;
+		public bool TabStop { get; set; }
 
 		/// <summary>
 		/// Gets or sets the tab page's caption.
 		/// </summary>
-		public string Text
-		{
-			get { return text; }
-			set { text = value; }
-		}
+		public string Text { get; set; }
 
 		[DefaultValue("")] 
 		[Description("Gets or sets a tooltip for the tab page.")] 
@@ -167,17 +119,6 @@ namespace CABDevExpress.SmartPartInfos
 			set { visible = value; }
 		}
 
-		/// <summary>
-		/// Gets or sets the page header font (CABDevExpress added property)
-		/// </summary>
-		private Font pageHeaderFont;
-
-		///<summary>
-		///</summary>
-		public Font PageHeaderFont
-		{
-			get { return pageHeaderFont; }
-			set { pageHeaderFont = value; }
-		}
+		public Font PageHeaderFont { get; set; }
 	}
 }

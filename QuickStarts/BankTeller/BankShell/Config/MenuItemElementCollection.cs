@@ -23,8 +23,7 @@ namespace BankShell
 
 		protected override object GetElementKey(ConfigurationElement element)
 		{
-			MenuItemElement e = (MenuItemElement)element;
-			
+			var e = (MenuItemElement)element;
 			return e.ID;
 		}
 	}

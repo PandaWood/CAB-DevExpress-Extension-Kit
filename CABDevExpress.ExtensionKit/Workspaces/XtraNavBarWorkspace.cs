@@ -115,21 +115,20 @@ namespace CABDevExpress.Workspaces
         /// <param name="smartPartInfo">The associated smart part info for the smart part being shown.</param>
         protected virtual void OnShow(Control smartPart, XtraNavBarGroupSmartPartInfo smartPartInfo)
         {
-            NavBarGroup group = new NavBarGroup();
-            group.GroupStyle = NavBarGroupStyle.ControlContainer;
-            group.GroupClientHeight = smartPart.Height;
-            group.Expanded = true;
+            NavBarGroup group = new NavBarGroup
+                                	{
+                                		GroupStyle = NavBarGroupStyle.ControlContainer,
+                                		GroupClientHeight = smartPart.Height,
+                                		Expanded = true
+                                	};
 
-            // SmartPartInfo
             ApplySmartPartInfoHelper(group, smartPartInfo);
 
             composer.Add(group, smartPart);
             Groups.Add(group);
 
-            // Controlcontainer
-            NavBarGroupControlContainer controlContainer = new NavBarGroupControlContainer();
-            controlContainer.Size = smartPart.Size;
-            group.ControlContainer = controlContainer;
+            var controlContainer = new NavBarGroupControlContainer {Size = smartPart.Size};
+        	group.ControlContainer = controlContainer;
 
             // Add the smart part control
             smartPart.Dock = DockStyle.Fill;
@@ -157,10 +156,10 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected virtual XtraNavBarGroupSmartPartInfo OnConvertFrom(ISmartPartInfo source)
         {
-            XtraNavBarGroupSmartPartInfo spi = SmartPartInfo.ConvertTo<XtraNavBarGroupSmartPartInfo>(source);
+            var spi = SmartPartInfo.ConvertTo<XtraNavBarGroupSmartPartInfo>(source);
             if (source is XtraImageSmartPartInfo)
             {
-                XtraImageSmartPartInfo imageSmartPartInfo = (XtraImageSmartPartInfo) source;
+                var imageSmartPartInfo = (XtraImageSmartPartInfo) source;
                 spi.SmallImage = imageSmartPartInfo.SmallImage;
                 spi.LargeImage = imageSmartPartInfo.LargeImage;
             }

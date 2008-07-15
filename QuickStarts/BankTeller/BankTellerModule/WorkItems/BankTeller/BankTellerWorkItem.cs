@@ -61,18 +61,22 @@ namespace BankTellerModule.WorkItems.BankTeller
 		private void AddShowNavBarGroups(IWorkspace navbarWorkspace)
 		{
 			SmartParts.AddNew<UserInfoView>("UserInfo");	//named because it will be used in a placeholder
-			CustomerView customerView = SmartParts.AddNew<CustomerView>();
-			StatisticsBarView statisticsBarView = SmartParts.AddNew<StatisticsBarView>(SmartPartNames.Statistics);
+			var customerView = SmartParts.AddNew<CustomerView>();
+			var statisticsBarView = SmartParts.AddNew<StatisticsBarView>(SmartPartNames.Statistics);
 
-			XtraNavBarGroupSmartPartInfo customerInfo = new XtraNavBarGroupSmartPartInfo();
-			customerInfo.Title = "Customers";
-			customerInfo.LargeImage = Resources.customersLarge;
-			customerInfo.SmallImage = Resources.customersSmall;
+			var customerInfo = new XtraNavBarGroupSmartPartInfo
+			                   	{
+			                   		Title = "Customers",
+			                   		LargeImage = Resources.customersLarge,
+			                   		SmallImage = Resources.customersSmall
+			                   	};
 
-			XtraNavBarGroupSmartPartInfo statsInfo = new XtraNavBarGroupSmartPartInfo();
-			statsInfo.Title = "Statistics";
-			statsInfo.LargeImage = Resources.statsLarge;
-			statsInfo.SmallImage = Resources.statsSmall;
+			var statsInfo = new XtraNavBarGroupSmartPartInfo
+			                	{
+			                		Title = "Statistics",
+			                		LargeImage = Resources.statsLarge,
+			                		SmallImage = Resources.statsSmall
+			                	};
 
 			navbarWorkspace.Show(customerView, customerInfo);
 			navbarWorkspace.Show(statisticsBarView, statsInfo);
@@ -80,21 +84,20 @@ namespace BankTellerModule.WorkItems.BankTeller
 
 		private void AddMenuItems()
 		{
-			if (queueItem == null)
-			{
-				queueItem = new BarSubItem();
-				queueItem.Caption = "Queue";
+			if (queueItem != null) return;
 
-				UIExtensionSites[ExtensionSiteNames.File].Add(queueItem);
-				UIExtensionSites.RegisterSite(ExtensionSiteNames.Queue, queueItem);
+			queueItem = new BarSubItem {Caption = "Queue"};
 
-				BarButtonItem acceptCustomer = new BarButtonItem();
-				acceptCustomer.Caption = "Accept Customer";
-				acceptCustomer.ItemShortcut =  new BarShortcut(Keys.Control | Keys.A);
-				UIExtensionSites[ExtensionSiteNames.Queue].Add(acceptCustomer);
+			UIExtensionSites[ExtensionSiteNames.File].Add(queueItem);
+			UIExtensionSites.RegisterSite(ExtensionSiteNames.Queue, queueItem);
 
-				Commands[CommandNames.AcceptCustomer].AddInvoker(acceptCustomer, "ItemClick");
-			}
+			var acceptCustomer = new BarButtonItem
+			                     	{
+			                     		Caption = "Accept Customer",
+			                     		ItemShortcut = new BarShortcut(Keys.Control | Keys.A)
+			                     	};
+			UIExtensionSites[ExtensionSiteNames.Queue].Add(acceptCustomer);
+			Commands[CommandNames.AcceptCustomer].AddInvoker(acceptCustomer, "ItemClick");
 		}
 
 		private bool ShowQueueMenu
@@ -130,7 +133,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 
 			// Have we already made the work item for this customer?
 			// If so, return the existing one.
-			CustomerWorkItem workItem = WorkItems.Get<CustomerWorkItem>(key);
+			var workItem = WorkItems.Get<CustomerWorkItem>(key);
 
 			if (workItem == null)
 			{
@@ -158,20 +161,20 @@ namespace BankTellerModule.WorkItems.BankTeller
 			if (!SmartParts.Contains(SmartPartNames.HelpAbout))
 				SmartParts.AddNew<AboutBankTellerView>(SmartPartNames.HelpAbout);
 
-			XtraWindowSmartPartInfo smartPartInfo = new XtraWindowSmartPartInfo();
-			smartPartInfo.Modal = true;
+			var smartPartInfo = new XtraWindowSmartPartInfo
+			                    	{
+			                    		Modal = true,
+			                    		StartPosition = FormStartPosition.CenterParent,
+			                    		FormBorderStyle = FormBorderStyle.FixedDialog,
+			                    		MinimizeBox = false,
+			                    		MaximizeBox = false,
+			                    		Height = 150,
+			                    		Width = 350,
+			                    		Title = "About"
+			                    	};
 
 			// the two properties added by CABDevExpress.ExtensionKit's XtraWindowSmartPartInfo
-			smartPartInfo.StartPosition = FormStartPosition.CenterParent;
-			smartPartInfo.FormBorderStyle = FormBorderStyle.FixedDialog;
-			smartPartInfo.MinimizeBox = false;
-			smartPartInfo.MaximizeBox = false;
-
-			smartPartInfo.Height = 150;
-			smartPartInfo.Width = 350;
-			smartPartInfo.Title = "About";
-
-			XtraWindowWorkspace xtraWindow = new XtraWindowWorkspace();
+			var xtraWindow = new XtraWindowWorkspace();
 			xtraWindow.Show(SmartParts[SmartPartNames.HelpAbout], smartPartInfo);
 		}
 
@@ -183,9 +186,7 @@ namespace BankTellerModule.WorkItems.BankTeller
 		/// <param name="dockWorkspace"></param>
 		public void Show(IWorkspace dockWorkspace)
 		{
-			DockManagerSmartPartInfo info = new DockManagerSmartPartInfo();
-			info.Name = "Statistics";
-			info.Dock = DockingStyle.Right;
+			var info = new DockManagerSmartPartInfo {Name = "Statistics", Dock = DockingStyle.Right};
 
 			SmartParts.AddNew<StatisticsBarView>(DockableStatisticsView);
 			dockWorkspace.Show(SmartParts[DockableStatisticsView], info);

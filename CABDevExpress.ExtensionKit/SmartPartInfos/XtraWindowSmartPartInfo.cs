@@ -12,11 +12,8 @@ namespace CABDevExpress.SmartPartInfos
     [ToolboxBitmap(typeof(XtraWindowSmartPartInfo), "XtraWindowSmartPartInfo")]
     public class XtraWindowSmartPartInfo : WindowSmartPartInfo
     {
-        private bool showInTaskbar;
-        private FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation;
-        private IButtonControl acceptButton;
-        private IButtonControl cancelButton;
-        private FormBorderStyle formBorderStyle = FormBorderStyle.Sizable;
+    	private FormStartPosition startPosition = FormStartPosition.WindowsDefaultLocation;
+    	private FormBorderStyle formBorderStyle = FormBorderStyle.Sizable;
         private FormWindowState windowState = default(FormWindowState);
 
         ///
@@ -30,40 +27,28 @@ namespace CABDevExpress.SmartPartInfos
             set { startPosition = value; }
         }
 
-        ///
-        /// Whether the form shows in the Windows taskbar
-        ///
-        [DefaultValue(false)]
-        [Category("Layout")]
-        public bool ShowInTaskbar
-        {
-            get { return showInTaskbar; }
-            set { showInTaskbar = value; }
-        }
+    	///
+    	/// Whether the form shows in the Windows taskbar
+    	///
+    	[DefaultValue(false)]
+    	[Category("Layout")]
+    	public bool ShowInTaskbar { get; set; }
 
-        ///
-        /// Form's Accept Button
-        ///
-        [DefaultValue(null)]
-        [Category("Layout")]
-        public IButtonControl AcceptButton
-        {
-            get { return acceptButton; }
-            set { acceptButton = value; }
-        }
+    	///
+    	/// Form's Accept Button
+    	///
+    	[DefaultValue(null)]
+    	[Category("Layout")]
+    	public IButtonControl AcceptButton { get; set; }
 
     	///
     	/// Form's Cancel Button
     	///
     	[DefaultValue(null)]
     	[Category("Layout")]
-    	public IButtonControl CancelButton
-    	{
-    		get { return cancelButton; }
-    		set { cancelButton = value; }
-    	}
+    	public IButtonControl CancelButton { get; set; }
 
-        ///
+    	///
         /// Form's Border Style
         ///
         [DefaultValue(FormBorderStyle.Sizable)]

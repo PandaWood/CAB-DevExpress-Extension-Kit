@@ -26,8 +26,8 @@ namespace BankShell
 
 			foreach (string skinName in GetSortedSkinNames())
 			{
-				BarItem menuItem = new BarCheckItem(bar.Manager, SkinManager.DefaultSkinName == skinName ? true : false);
-				menuItem.Caption = skinName;
+				BarItem menuItem = new BarCheckItem(bar.Manager, SkinManager.DefaultSkinName == skinName ? true : false)
+				                   	{Caption = skinName};
 				menuItem.ItemClick += OnSwitchSkin;
 				AddItem(menuItem);
 			}
@@ -35,7 +35,7 @@ namespace BankShell
 
 		private static List<string> GetSortedSkinNames()
 		{
-			List<string> skinNames = new List<string>(SkinManager.Default.Skins.Count);
+			var skinNames = new List<string>(SkinManager.Default.Skins.Count);
 
 			foreach (SkinContainer skinContainer in SkinManager.Default.Skins)
 				skinNames.Add(skinContainer.SkinName);
@@ -46,7 +46,7 @@ namespace BankShell
 
 		private static void OnSwitchSkin(object sender, ItemClickEventArgs e)
 		{
-			BarCheckItem item = e.Item as BarCheckItem;
+			var item = e.Item as BarCheckItem;
 			if (item == null) return;
 			UserLookAndFeel.Default.SetSkinStyle(item.Caption);
 		}

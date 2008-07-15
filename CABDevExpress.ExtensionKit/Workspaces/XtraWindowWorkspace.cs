@@ -237,7 +237,7 @@ namespace CABDevExpress.Workspaces
 
             private WorkspaceCancelEventArgs FireWindowFormClosing(object smartPart)
             {
-                WorkspaceCancelEventArgs cancelArgs = new WorkspaceCancelEventArgs(smartPart);
+                var cancelArgs = new WorkspaceCancelEventArgs(smartPart);
 
                 if (WindowFormClosing != null)
                     WindowFormClosing(this, cancelArgs);

@@ -22,7 +22,7 @@ namespace BankTellerModule.Services
 
 		public CustomerQueueService()
 		{
-			customers = new Customer[]
+			customers = new[]
 				{
 					new Customer(1, "Panda", "Wood", "16074 NE 36th Way", "", "Sydney", "NSW", "2000", "spurrymoses@gmail.com",
 					             "425-555-0100", "", "August 25, 2007 - Updated the CAB DevExpress Extension Kit BankTeller app"),

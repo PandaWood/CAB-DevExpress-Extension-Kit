@@ -6,4 +6,5 @@
 *.aps
 *.eto
 </Value></Property><Property><Name>svn:ignore</Name><Value>obj
+*.user
 </Value></Property></Properties></ItemProperties>

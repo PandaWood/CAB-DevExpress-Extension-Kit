@@ -50,17 +50,19 @@ namespace BankTellerModule.WorkItems.Customer
 
 			AddMenuItems();
 
-			BankTellerCommon.Customer customer = (BankTellerCommon.Customer)State[WorkItemStates.Customer];
+			var customer = (BankTellerCommon.Customer)State[WorkItemStates.Customer];
 
 			OnStatusTextUpdate(string.Format("Editing {0}, {1}", customer.LastName, customer.FirstName));
-			WindowSmartPartInfo smartPartInfo = new WindowSmartPartInfo();
-			smartPartInfo.Title = customer.LastName + " " + customer.FirstName;
+			var smartPartInfo = new WindowSmartPartInfo
+			                    	{
+			                    		Title = (customer.LastName + " " + customer.FirstName)
+			                    	};
 			customerSummaryView.Dock = DockStyle.Fill;
 			parentWorkspace.Show(customerSummaryView, smartPartInfo);
 
 			UpdateUserAddressLabel(customer);
 
-			this.Activate();
+			Activate();
 
 			// When activating, force focus on the first tab in the view.
 			// Extensions may have added stuff at the end of the tab.
@@ -80,8 +82,7 @@ namespace BankTellerModule.WorkItems.Customer
 		{
 			if (editCustomerMenuItem1 != null) return;
 
-			editCustomerMenuItem1 = new BarButtonItem();
-			editCustomerMenuItem1.Caption = "Edit";
+			editCustomerMenuItem1 = new BarButtonItem {Caption = "Edit"};
 			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
 		}
 
@@ -136,10 +137,12 @@ namespace BankTellerModule.WorkItems.Customer
 		private void CreateCommentsView()
 		{
 			commentsView = commentsView ?? Items.AddNew<CustomerCommentsView>();
-			XtraTabSmartPartInfo info = new XtraTabSmartPartInfo();
-			info.Title = "Title";
-			info.Text = "Comments";
-			info.PageHeaderFont = new Font("Comic Sans MS", 11.25F, FontStyle.Regular); //CABDevExpress added property
+			var info = new XtraTabSmartPartInfo
+			           	{
+			           		Title = "Title",
+			           		Text = "Comments",
+			           		PageHeaderFont = new Font("Comic Sans MS", 11.25F, FontStyle.Regular)
+			           	};
 			RegisterSmartPartInfo(commentsView, info);
 		}
 
@@ -150,10 +153,10 @@ namespace BankTellerModule.WorkItems.Customer
 			if (Status != WorkItemStatus.Active) return;
 
 			Form form = customerSummaryView.ParentForm;
-			string tooltipText = "This is customer work item " + this.ID;
-			ToolTip toolTip = new ToolTip();
-			toolTip.IsBalloon = true;
-			toolTip.Show(tooltipText, form, form.Size.Width - 30, 30, 3000);
+			string tooltipText = "This is customer work item " + ID;
+			var toolTip = new ToolTip {IsBalloon = true};
+			if (form != null) 
+				toolTip.Show(tooltipText, form, form.Size.Width - 30, 30, 3000);
 		}
 	}
 }

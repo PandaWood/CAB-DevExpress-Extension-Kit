@@ -11,15 +11,15 @@ namespace CustomerMapExtensionModule
 
 		protected override void OnActivated()
 		{
-			if (mapView == null)
-			{
-				mapView = WorkItem.Items.AddNew<CustomerMap>();
+			if (mapView != null) return;
 
-				TabSmartPartInfo info = new TabSmartPartInfo();
-				info.Title = "Customer Map";
-				info.Description = "Map of the customer location";
-				WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE].Show(mapView, info);
-			}
+			mapView = WorkItem.Items.AddNew<CustomerMap>();
+			var info = new TabSmartPartInfo
+			           	{
+			           		Title = "Customer Map",
+			           		Description = "Map of the customer location"
+			           	};
+			WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE].Show(mapView, info);
 		}
 	}
 }

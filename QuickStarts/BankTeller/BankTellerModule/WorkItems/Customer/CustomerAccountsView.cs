@@ -29,7 +29,6 @@ namespace BankTellerModule.WorkItems.Customer
 	{
 		private BankTellerCommon.Customer customer;
 		private CustomerAccountService accountService;
-		private WorkItem workItem;
 
 		private readonly DXMenuItem popupMenuItem = new DXMenuItem("Say Hello...");
 
@@ -49,11 +48,7 @@ namespace BankTellerModule.WorkItems.Customer
 		}
 
 		[ServiceDependency]
-		public WorkItem ParentWorkItem
-		{
-			protected get { return workItem; }
-			set { workItem = value; }
-		}
+		public WorkItem ParentWorkItem { protected get; set; }
 
 		public CustomerAccountsView()
 		{
@@ -67,8 +62,8 @@ namespace BankTellerModule.WorkItems.Customer
 			bool RightMouseClicked = (e.Button & MouseButtons.Right) != 0;
 			if (RightMouseClicked)
 			{
-				GridView view = sender as GridView;
-				DXMouseEventArgs mouseEventArgs = e as DXMouseEventArgs;
+				var view = sender as GridView;
+				var mouseEventArgs = e as DXMouseEventArgs;
 				if (view == null || mouseEventArgs == null)
 					return;
 
@@ -81,7 +76,7 @@ namespace BankTellerModule.WorkItems.Customer
 
 		protected void CreateAndShowPopupMenu(GridHitInfo hitInfo, GridView view)
 		{
-			ViewMenu menu = new ViewMenu(view);
+			var menu = new ViewMenu(view);
 			menu.Items.Add(popupMenuItem);
 			menu.Show(hitInfo.HitPoint);
 		}

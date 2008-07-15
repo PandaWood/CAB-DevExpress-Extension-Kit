@@ -6,4 +6,6 @@ bin
 *.resharper
 *.user
 *.suo
+*.gpState
+UpgradeLog.XML
 </Value></Property></Properties></ItemProperties>

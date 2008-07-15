@@ -103,10 +103,8 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void XtraNavBarUIAdapterFactory_Throws_Exception_WhenGiven_IncorrectType()
 		{
-			Assert.Throws<ArgumentException>(delegate
-			                                 	{	// use the wrong factory and expect an exception
-			                                 		new XtraNavBarUIAdapterFactory().GetAdapter(new NavigatorCustomButton(0));
-			                                 	});
+			// use the wrong factory and expect an exception
+			Assert.Throws<ArgumentException>(() => new XtraNavBarUIAdapterFactory().GetAdapter(new NavigatorCustomButton(0)));
 		}
 
 		[Fact]
@@ -115,8 +113,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 			// Looking at the Adapter, the prerequisite setup is that the BarItem passed to the 
 			// BarItemWrapper constructor, must have already been added to the BarManager
 
-			Bar bar = new Bar();
-			bar.Manager = new BarManager();
+			Bar bar = new Bar {Manager = new BarManager()};
 			BarItem editItem = new BarEditItem(bar.Manager);
 			bar.ItemLinks.Add(editItem);	// add before passing to BarItemWrapper
 
@@ -127,7 +124,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 			//add
 			BarItem buttonItem = new BarButtonItem(bar.Manager, "test2");
 			object objectAdded = adapter.Add(buttonItem);
-			Assert.Equal<BarItem>(buttonItem, objectAdded as BarButtonItem);
+			Assert.Equal(buttonItem, objectAdded as BarButtonItem);
 			Assert.Equal(2, wrapper.ItemLinks.Count);
 
 			//remove

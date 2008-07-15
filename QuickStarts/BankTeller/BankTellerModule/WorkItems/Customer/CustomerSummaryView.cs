@@ -42,12 +42,12 @@ namespace BankTellerModule.WorkItems.Customer
 		{
 			base.OnLoad(e);
 
-			controller.WorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.CustomerContext, this.customerContextMenu);
+			controller.WorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.CustomerContext, customerContextMenu);
 		}
 
 		internal void FocusFirstTab()
 		{
-			this.tabbedWorkspace1.SelectedTabPage = this.tabbedWorkspace1.TabPages[0];
+			tabbedWorkspace1.SelectedTabPage = tabbedWorkspace1.TabPages[0];
 		}
 	}
 }

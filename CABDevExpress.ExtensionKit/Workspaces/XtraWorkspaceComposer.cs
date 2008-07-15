@@ -18,8 +18,8 @@ namespace CABDevExpress.Workspaces
 		private readonly Dictionary<Control, TWorkspaceItem> smartParts = new Dictionary<Control, TWorkspaceItem>();
 		private readonly Dictionary<TWorkspaceItem, Control> items = new Dictionary<TWorkspaceItem, Control>();
 
-		private Control smartPartBeingActivated = null;
-		private readonly bool hookControlEnter = false;
+		private Control smartPartBeingActivated;
+		private readonly bool hookControlEnter;
 
 		/// <summary>
 		/// Initializes a new XtraWorkspaceComposer
