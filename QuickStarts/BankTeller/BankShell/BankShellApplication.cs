@@ -51,13 +51,10 @@ namespace BankShell
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainStatus, Shell.mainStatusBar);
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.FileDropDown, Shell.barSubItemFile);
 
-			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.File, 
-				new BarItemWrapper(Shell.mainMenuBar.ItemLinks, Shell.barSubItemFile));
+			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.File, new BarItemWrapper(Shell.mainMenuBar.ItemLinks, Shell.barSubItemFile));
 
 			RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new SkinMenu(Shell.mainMenuBar));
-
-			RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(
-				new WindowMenu(Shell.mainMenuBar, Shell.xtraTabbedMdiManager, Shell));
+			RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new WindowMenu(Shell.mainMenuBar, Shell.xtraTabbedMdiManager, Shell));
 
             UIElementBuilder.LoadFromConfig(RootWorkItem);
         }

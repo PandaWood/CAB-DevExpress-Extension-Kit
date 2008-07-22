@@ -23,7 +23,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void XtraBarUIAdapterFactory_CanReturn_CorrectType_For_BarManager()
 		{
-			BarManager barManager = new BarManager();
+			var barManager = new BarManager();
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barManager);
 
 			Assert.IsType(typeof(BarsUIAdapter), adapter);
@@ -32,7 +32,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void XtraNavBarUIAdapterFactory_CanReturn_CorrectType_For_NavBarControl()
 		{
-			NavBarControl navBarControl = new NavBarControl();
+			var navBarControl = new NavBarControl();
 			IUIElementAdapter adapter = new XtraNavBarUIAdapterFactory().GetAdapter(navBarControl);
 
 			Assert.IsType(typeof(NavBarGroupCollectionUIAdapter), adapter);
@@ -61,7 +61,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		[Fact]
 		public void CanAddAndRemove_From_BarsUIAdapter()
 		{
-			BarManager barManager = new BarManager();
+			var barManager = new BarManager();
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barManager);
 
 			Assert.IsType(typeof(BarsUIAdapter), adapter);
@@ -90,7 +90,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 
 			//add
 			var button = new NavigatorCustomButton(0);
-			object addedButton = adapter.Add(button);
+			var addedButton = adapter.Add(button);
 			Assert.Equal(button, addedButton as NavigatorCustomButton);
 			Assert.Equal(1, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count);
 

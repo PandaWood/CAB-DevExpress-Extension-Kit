@@ -5,6 +5,7 @@ using CABDevExpress.Workspaces;
 using DevExpress.XtraBars.Docking;
 using DevExpress.XtraNavBar;
 using Xunit;
+using XunitExt;
 
 namespace CABDevExpress.ExtensionKit.Tests
 {
@@ -16,15 +17,13 @@ namespace CABDevExpress.ExtensionKit.Tests
 		public void CanShowAndClose_DockManagerWorkspace()
 		{
 			// the DockManager must be passed a ContainerControl or the Workspace won't handle it
-			// not sure whether I should add something to the workspace to guard this....
+			// perhaps we should add something to the workspace to guard this....
 			var dockManagerWorkspace = new DockManagerWorkspace(new DockManager(new ContainerControl()));
 			dockManagerWorkspace.Show(_smartPart);
 
-			Assert.Equal(1, dockManagerWorkspace.DockPanels.Count);
-
+			dockManagerWorkspace.DockPanels.Count.ShouldEqual(1);
 			dockManagerWorkspace.Close(_smartPart);
-
-			Assert.Equal(0, dockManagerWorkspace.DockPanels.Count);
+			dockManagerWorkspace.DockPanels.Count.ShouldEqual(0);
 		}
 
 		[Fact]
@@ -40,14 +39,13 @@ namespace CABDevExpress.ExtensionKit.Tests
 			                    	};
 			dockManagerWorkspace.Show(_smartPart, smartPartInfo);
 
-			Assert.Equal(1, dockManagerWorkspace.DockPanels.Count);
-			Assert.Equal("Bob", dockManager.Panels[0].Name);
-
-			Assert.Equal(DockingStyle.Bottom, dockManager.Panels[0].Dock);
+			dockManagerWorkspace.DockPanels.Count.ShouldEqual(1);
+			dockManager.Panels[0].Name.ShouldEqual("Bob");
+			dockManager.Panels[0].Dock.ShouldEqual(DockingStyle.Bottom);
 
 			dockManagerWorkspace.Close(_smartPart);
 
-			Assert.Equal(0, dockManagerWorkspace.DockPanels.Count);
+			dockManagerWorkspace.DockPanels.Count.ShouldEqual(0);
 		}
 
 		[Fact]
@@ -58,14 +56,14 @@ namespace CABDevExpress.ExtensionKit.Tests
 			var xtraTabWorkspace = new XtraTabWorkspace();
 			xtraTabWorkspace.Show(_smartPart, smartPartInfo);
 
-			Assert.Equal(1, xtraTabWorkspace.TabPages.Count);
-			Assert.Equal(1, xtraTabWorkspace.SmartParts.Count);
-			Assert.Equal("text", xtraTabWorkspace.SelectedTabPage.Text);
-			Assert.Equal(tahoma9ptFont, xtraTabWorkspace.SelectedTabPage.Appearance.Header.Font);
+			xtraTabWorkspace.TabPages.Count.ShouldEqual(1);
+			xtraTabWorkspace.SmartParts.Count.ShouldEqual(1);
+			xtraTabWorkspace.SelectedTabPage.Text.ShouldEqual("text");
+			xtraTabWorkspace.SelectedTabPage.Appearance.Header.Font.ShouldEqual(tahoma9ptFont);
 
 			xtraTabWorkspace.Close(_smartPart);
-			Assert.Equal(0, xtraTabWorkspace.TabPages.Count);
-			Assert.Equal(0, xtraTabWorkspace.SmartParts.Count);
+			xtraTabWorkspace.TabPages.Count.ShouldEqual(0);
+			xtraTabWorkspace.SmartParts.Count.ShouldEqual(0);
 		}
 
 		[Fact]
@@ -73,39 +71,39 @@ namespace CABDevExpress.ExtensionKit.Tests
 		{
 			var navbarWorkspace = new XtraNavBarWorkspace();
 			var smartPartInfo = new XtraNavBarGroupSmartPartInfo {Title = "Test Title"};
-			Assert.Equal(0, navbarWorkspace.Groups.Count);
+
+			navbarWorkspace.Groups.Count.ShouldEqual(0);
 
 			// show the workspace
 			navbarWorkspace.Show(_smartPart, smartPartInfo);
-			Assert.Equal(1, navbarWorkspace.Groups.Count);
-			Assert.Equal(NavBarGroupStyle.ControlContainer, navbarWorkspace.Groups[0].GroupStyle);
+			navbarWorkspace.Groups.Count.ShouldEqual(1);
+			navbarWorkspace.Groups[0].GroupStyle.ShouldEqual(NavBarGroupStyle.ControlContainer);
 
 			// hide and the group still exists, but not visible
 			navbarWorkspace.Hide(_smartPart);
-			Assert.Equal(1, navbarWorkspace.Groups.Count);
-			Assert.False(navbarWorkspace.Groups[0].Visible);
+
+			navbarWorkspace.Groups.Count.ShouldEqual(1);
+			navbarWorkspace.Groups[0].Visible.ShouldBeFalse();
 
 			// close removes
 			navbarWorkspace.Close(_smartPart);
-			Assert.Equal(0, navbarWorkspace.Groups.Count);
+			navbarWorkspace.Groups.Count.ShouldEqual(0);
 		}
 
 		[Fact]
-		public void CanMove_AndThen_Activate_Correct_SmartParts()
+		public void CanMove_AndThen_Activate_Correct_SmartPart()
 		{
 			var tabWorkspace = new XtraTabWorkspace();
 			var smartPart1 = new TestableSmartPart {Name = "smartpart1"};
-			var smartPart2 = new TestableSmartPart {Name = "smartpart1"};
-			var smartPart3 = new TestableSmartPart {Name = "smartpart1"};
+			var smartPart2 = new TestableSmartPart {Name = "smartpart2"};
+			var smartPart3 = new TestableSmartPart {Name = "smartpart3"};
 
 			tabWorkspace.Show(smartPart1);
 			tabWorkspace.Show(smartPart2);
 			tabWorkspace.Show(smartPart3);
 
-			Assert.Equal(3, tabWorkspace.TabPages.Count);
-			Assert.Equal(tabWorkspace.ActiveSmartPart, smartPart3);
-
-			tabWorkspace.TabPages.Move(2, tabWorkspace.TabPages[0]);
+			tabWorkspace.TabPages.Count.ShouldEqual(3);
+			tabWorkspace.ActiveSmartPart.ShouldBeSameAs(smartPart3);
 		}
 	}
 }

@@ -80,6 +80,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\XUnit\xunit.dll</HintPath>
     </Reference>
+    <Reference Include="xunitext35, Version=1.0.2.1283, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\XUnit\xunitext35.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestableSmartPart.cs">
