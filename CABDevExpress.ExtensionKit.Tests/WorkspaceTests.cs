@@ -9,6 +9,10 @@ using XunitExt;
 
 namespace CABDevExpress.ExtensionKit.Tests
 {
+	/// <summary>
+	/// These are pretty basic/fundamental tests at this stage (the project started with no tests)
+	/// Would like to grow this suite of tests to give us enough coverage to make changes with confidence
+	/// </summary>
 	public class WorkspaceTests
 	{
 		readonly TestableSmartPart _smartPart = new TestableSmartPart();
@@ -26,9 +30,17 @@ namespace CABDevExpress.ExtensionKit.Tests
 			dockManagerWorkspace.DockPanels.Count.ShouldEqual(0);
 		}
 
+		
+		/// <summary>
+		/// I've taken the DockManagerWorkspace (as already written) and tried to 
+		/// understand certain things it does. I found this condition where the ParentPanelName being null
+		/// took a different course of action, hence wrote this test to confirm that this code-path works.
+		/// This test shouldn't be taken as a good reason for this condition to exist
+		/// </summary>
 		[Fact]
 		public void CanShow_DockManagerWorkspace_If_PanelName_Is_NotNull()
 		{
+			
 			var dockManager = new DockManager(new ContainerControl());
 			var dockManagerWorkspace = new DockManagerWorkspace(dockManager);
 			var smartPartInfo = new DockManagerSmartPartInfo
