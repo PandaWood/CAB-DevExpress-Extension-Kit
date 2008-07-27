@@ -7,5 +7,10 @@ namespace BankTellerModule.Constants
 		public const string AcceptCustomer = "QueueAcceptCustomer";
 		public const string EditCustomer = "EditCustomer";
 		public const string DxMenuSamplePopup = "DxMenuSamplePopup";
-	}
+
+        // UseRibbonForm
+        public const string RibbonCascadeWindows = "RibbonCascadeWindows";
+        public const string RibbonTileWindowsHoriz = "RibbonTileWindowsHoriz";
+        public const string RibbontileWindowsVert = "RibbontileWindowsVert";
+    }
 }

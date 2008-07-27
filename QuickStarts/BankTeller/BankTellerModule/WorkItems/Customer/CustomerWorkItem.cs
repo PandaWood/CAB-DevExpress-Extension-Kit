@@ -82,8 +82,19 @@ namespace BankTellerModule.WorkItems.Customer
 		{
 			if (editCustomerMenuItem1 != null) return;
 
-			editCustomerMenuItem1 = new BarButtonItem {Caption = "Edit"};
+            const string editCaption = "Edit";
+            editCustomerMenuItem1 = new BarButtonItem 
+                                        {
+                                            Caption = editCaption,
+                                            Hint = editCaption,
+                                            Glyph = Resources.Edit16,
+                                            LargeGlyph = Resources.Edit32
+                                        };
+#if UseRibbonForm
+            UIExtensionSites[ExtensionSiteNames.File].Add(editCustomerMenuItem1);
+#else
 			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
+#endif
 		}
 
 		private void SetUIElementVisibility(bool visible)

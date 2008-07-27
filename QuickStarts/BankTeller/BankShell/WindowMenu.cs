@@ -1,5 +1,6 @@
-using System;
+using System.Drawing;
 using System.Windows.Forms;
+using BankShell.Properties;
 using DevExpress.XtraBars;
 using DevExpress.XtraTabbedMdi;
 
@@ -10,8 +11,7 @@ namespace BankShell
     	private Bar bar;
         private readonly XtraTabbedMdiManager mdiManager;
         private readonly Form shell;
-
-        private MdiMode mdiMode = MdiMode.Tabbed;
+        private WindowMenuHelper menuHelper;
 
     	public WindowMenu(Bar bar, XtraTabbedMdiManager mdiManager, Form shell)
         {
@@ -19,72 +19,36 @@ namespace BankShell
             this.mdiManager = mdiManager;
             this.shell = shell;
             Manager = bar.Manager;
+            menuHelper = new WindowMenuHelper(mdiManager, shell);
 
+            Caption = "Window";
             AddAllMenuItems();
         }
 
-    	private void AddAllMenuItems()
+        private void AddAllMenuItems()
         {
-			Caption = "Window";
-
-            BarButtonItem bbiTabbed = AddBarItem("&Use Tabbed MDI", MdiChangeMode);
+            BarButtonItem bbiTabbed = AddBarItem("&Use Tabbed MDI", null, null, menuHelper.MdiChangeMode);
             bbiTabbed.ButtonStyle = BarButtonStyle.Check;
             bbiTabbed.Down = true;
 
-            AddBarItem("&Cascade", MdiLayoutCascade);
-            AddBarItem("Tile &Horizontally", MdiLayoutTileHorizontal);
-            AddBarItem("Tile &Vertically", MdiLayoutTileVertical);
+            AddBarItem("&Cascade", Resources.WindowCascade16, Resources.WindowCascade32, menuHelper.MdiLayoutCascade);
+            AddBarItem("Tile &Horizontally", Resources.WindowsTileHoriz16, Resources.WindowsTileHoriz32, menuHelper.MdiLayoutTileHorizontal);
+            AddBarItem("Tile &Vertically", Resources.WindowsTileVert16, Resources.WindowsTileVert32, menuHelper.MdiLayoutTileVertical);
 
             BarSubItem bsiWindows = new BarSubItem(Manager, "&Windows");
             AddItem(bsiWindows);
             bsiWindows.AddItem(new BarMdiChildrenListItem());
         }
 
-		private BarButtonItem AddBarItem(string caption, ItemClickEventHandler itemClickEventHandler)
+        private BarButtonItem AddBarItem(string caption, Image glyph, Image largeGlyph,
+            ItemClickEventHandler itemClickEventHandler)
         {
             BarButtonItem item = new BarButtonItem(Manager, caption);
+            item.Glyph = glyph;
+            item.LargeGlyph = largeGlyph;
             item.ItemClick += itemClickEventHandler;
             AddItem(item);
             return item;
-        }
-
-    	public enum MdiMode
-        {
-            Tabbed,
-            Windowed
-        }
-
-        public void MdiChangeMode(object sender, EventArgs e)
-        {
-            mdiMode = mdiMode == MdiMode.Tabbed ? MdiMode.Windowed : MdiMode.Tabbed; // Toggle
-            SetMdiMode(mdiMode);
-        }
-
-        private void SetMdiMode(MdiMode mode)
-        {
-            mdiManager.MdiParent = mode == MdiMode.Tabbed ? shell : null;
-        }
-
-        public void MdiLayoutCascade(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.Cascade);
-        }
-
-        public void MdiLayoutTileHorizontal(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileHorizontal);
-        }
-
-        public void MdiLayoutTileVertical(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.TileVertical);
-        }
-
-        private void LayoutMdi(MdiLayout layout)
-        {
-            SetMdiMode(MdiMode.Windowed);
-            mdiManager.MdiParent = null;
-            shell.LayoutMdi(layout);
         }
     }
 }

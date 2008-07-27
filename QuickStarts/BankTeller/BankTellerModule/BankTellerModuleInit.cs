@@ -12,8 +12,11 @@
 using BankTellerModule.Constants;
 using BankTellerModule.Properties;
 using BankTellerModule.WorkItems.BankTeller;
+using CABDevExpress.UIElements;
+using DevExpress.LookAndFeel;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
+using Microsoft.Practices.CompositeUI.EventBroker;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
 
@@ -50,10 +53,20 @@ namespace BankTellerModule
 
 		private void AddCustomerMenuItem()
 		{
+#if !UseRibbonForm
 			BarItem customerItem = new BarSubItem();
             customerItem.Caption = "Customer";
 			workItem.UIExtensionSites[ExtensionSiteNames.File].Add(customerItem);
 			workItem.UIExtensionSites.RegisterSite(Resources.CustomerMenuExtensionSite, customerItem);
+#endif
 		}
+
+#if UseRibbonForm
+        [EventSubscription(EventNames.RibbonSkinChange, ThreadOption.UserInterface)]
+        public void ModifyLookAndFeel(object sender, DynamicEventArgs<DynamicCommandEventLink> e)
+        {
+            UserLookAndFeel.Default.SetSkinStyle((string)e.Data.Data);
+        }
+#endif
 	}
 }

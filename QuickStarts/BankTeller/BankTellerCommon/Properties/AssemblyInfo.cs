@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CABDevExpress")]
 [assembly: AssemblyProduct("BankTellerCommon")]
-[assembly: AssemblyCopyright("Copyright ©  2005")]
+[assembly: AssemblyCopyright("Copyright ©  2007-2008")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

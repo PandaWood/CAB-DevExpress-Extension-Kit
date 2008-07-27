@@ -40,8 +40,8 @@ namespace CABDevExpress.UIElements
 		protected override void Remove(BarItem uiElement)
 		{
 			Guard.ArgumentNotNull(uiElement, "BarItem");
-
-			ribbonStatusBar.Ribbon.Items.Remove(uiElement);
+            if (ribbonStatusBar.Ribbon != null)
+                ribbonStatusBar.Ribbon.Items.Remove(uiElement);
 		}
 
 		/// <summary>

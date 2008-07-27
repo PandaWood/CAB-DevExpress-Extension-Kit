@@ -11,7 +11,11 @@
 
 using System;
 using System.Configuration;
+using System.Drawing;
+using System.Resources;
+using System.Threading;
 using System.Windows.Forms;
+using BankShell.Properties;
 using DevExpress.XtraBars;
 
 namespace BankShell.Config
@@ -67,7 +71,21 @@ namespace BankShell.Config
 			set { this["registrationsite"] = value; }
 		}
 
-		public BarItem ToMenuItem()
+        [ConfigurationProperty("glyph", IsRequired = false)]
+        public string Glyph
+        {
+            get { return (string)this["glyph"]; }
+            set { this["glyph"] = value; }
+        }
+
+        [ConfigurationProperty("largeglyph", IsRequired = false)]
+        public string LargeGlyph
+        {
+            get { return (string)this["largeglyph"]; }
+            set { this["largeglyph"] = value; }
+        }
+
+        public BarItem ToMenuItem()
 		{
 			BarItem barItem;
 			if (Register)
@@ -76,11 +94,28 @@ namespace BankShell.Config
 				barItem = new BarButtonItem();
 
 			barItem.Caption = Label;
+            barItem.Hint = Label;
+
+            if (!String.IsNullOrEmpty(Glyph))
+                barItem.Glyph = GetGlyph(Glyph);
+            if (!String.IsNullOrEmpty(LargeGlyph))
+                barItem.LargeGlyph = GetGlyph(LargeGlyph);
 
 			if (!String.IsNullOrEmpty(Key))
 				barItem.ItemShortcut = new BarShortcut((Keys) Enum.Parse(typeof (Keys), Key));
 
 			return barItem;
 		}
+
+        private System.Drawing.Image GetGlyph(string glyphName)
+        {
+            // Since we are reading which resource to use from a config file, we
+            // need to access the type-safe Properties.Resources in a non 
+            // type-safe way. So create a resource manager pointing to 
+            // Properties.Resources. Then grab the image from the glyphName.
+            ResourceManager resourceMan = new ResourceManager(typeof(Properties.Resources));
+            object obj = resourceMan.GetObject(glyphName);
+            return (Bitmap)obj;
+        }
 	}
 }

@@ -15,24 +15,28 @@ using CABDevExpress;
 using CABDevExpress.UIElements;
 using DevExpress.Skins;
 using DevExpress.UserSkins;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.WinForms;
 
 namespace BankShell
 {
+#if UseRibbonForm
+    public class BankShellApplication : XtraFormApplication<WorkItem, BankShellRibbonForm>
+#else
     public class BankShellApplication : XtraFormApplication<WorkItem, BankShellForm>
+#endif
     {
         [STAThread]
         public static void Main()
         {
             BonusSkins.Register();
-        	OfficeSkins.Register();
-        	SkinManager.EnableFormSkins();
+            OfficeSkins.Register();
+            SkinManager.EnableFormSkins();
 
-        	new BankShellApplication().Run();
+            new BankShellApplication().Run();
         }
-
 
         // This method is called just after your shell has been created (the root work item
         // also exists). Here, you might want to:
@@ -43,25 +47,61 @@ namespace BankShell
         {
             base.AfterShellCreated();
 
-			RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspaceNames.ShellContentWorkspace);
-			RootWorkItem.Items.Add(Shell.NavBarWorkspace, WorkspaceNames.ShellNavBarWorkspace);
-			RootWorkItem.Items.Add(Shell.DockManagerWorkspace, WorkspaceNames.DockManagerWorkspace);
+            RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspaceNames.ShellContentWorkspace);
+            RootWorkItem.Items.Add(Shell.NavBarWorkspace, WorkspaceNames.ShellNavBarWorkspace);
+            RootWorkItem.Items.Add(Shell.DockManagerWorkspace, WorkspaceNames.DockManagerWorkspace);
 
+#if UseRibbonForm
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.Ribbon, Shell.Ribbon);
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainMenu, Shell.homePage);
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainStatus, Shell.mainStatusBar);
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.FileDropDown, new
+                RibbonApplicationMenuUIAdapter(Shell.applicationMenu));
+
+            RibbonPageGroup ribbonGroup = new RibbonPageGroup(ExtensionSiteNames.File);
+            RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add<RibbonPageGroup>(ribbonGroup);
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.File, ribbonGroup);
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.RibbonPageHeader, new
+                RibbonPageHeaderUIAdapter(Shell.Ribbon.PageHeaderItemLinks));
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.RibbonQuickAccessToolbar, new
+                RibbonQuickAccessToolbarUIAdapter(Shell.Ribbon.Toolbar));
+
+            BankTellerRibbonSkins.Add(RootWorkItem);
+            BankTellerRibbonWindows.Add(RootWorkItem, Shell.xtraTabbedMdiManager, Shell);
+#else
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainMenu, Shell.mainMenuBar);
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainStatus, Shell.mainStatusBar);
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.FileDropDown, Shell.barSubItemFile);
 
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.File, new BarItemWrapper(Shell.mainMenuBar.ItemLinks, Shell.barSubItemFile));
 
-			RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new SkinMenu(Shell.mainMenuBar));
+            // There are two ways to add skins to the BankTeller demo.
+            // 1) SkinMenu: Bypasses the CAB framework and directly adds and
+            //    manipulates the menu items. The SkinMenu is standard .NET 
+            //    functionality and is more efficient and easier to understand.
+            // 2) BankTellerDynamicSkins: Uses the event broker to handle both the
+            //    menu Popup event and the handling of the menu item click. This
+            //    allows both dynamic menu item creation as well as more adherence
+            //    to the CAB decoupled philosophy. It does not provide any
+            //    additional functionality.
+            //
+            // SkinMenu and BankTellerDynamicSkins are functionally equivalent.
+            // The two methods give the developer a choice on how closely to
+            // follow the CAB philosophy.
+            //
+            // To change between the two swap the comments on the following two
+            // lines of code. The two lines can also both be uncommented and two
+            // working skin menus will appear.
+            RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new SkinMenu(Shell.mainMenuBar));
+            //BankTellerDynamicSkins.Skins.AddSkins(RootWorkItem);
 			RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new WindowMenu(Shell.mainMenuBar, Shell.xtraTabbedMdiManager, Shell));
-
+#endif
             UIElementBuilder.LoadFromConfig(RootWorkItem);
         }
 
-    	#region HandleException
+        #region HandleException
 
-    	public override void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        public override void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             Exception ex = e.ExceptionObject as Exception;
 
@@ -71,7 +111,7 @@ namespace BankShell
             }
             else
             {
-				XtraMessageBox.Show("An Exception has occured, unable to get details");
+                XtraMessageBox.Show("An Exception has occured, unable to get details");
             }
 
             Environment.Exit(0);
@@ -102,6 +142,6 @@ namespace BankShell
             return errMessage;
         }
 
-    	#endregion
+        #endregion
     }
 }

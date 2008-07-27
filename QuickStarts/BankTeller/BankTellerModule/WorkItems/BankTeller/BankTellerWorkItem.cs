@@ -86,17 +86,30 @@ namespace BankTellerModule.WorkItems.BankTeller
 		{
 			if (queueItem != null) return;
 
-			queueItem = new BarSubItem {Caption = "Queue"};
+            const string acceptCustomerCaption = "Accept Customer";
+            var acceptCustomer = new BarButtonItem
+            {
+                Caption = acceptCustomerCaption,
+                Hint = acceptCustomerCaption,
+                Glyph = Resources.AcceptCustomer16,
+                LargeGlyph = Resources.AcceptCustomer32,
+                ItemShortcut = new BarShortcut(Keys.Control | Keys.A)
+            };
 
-			UIExtensionSites[ExtensionSiteNames.File].Add(queueItem);
-			UIExtensionSites.RegisterSite(ExtensionSiteNames.Queue, queueItem);
+            string extensionSite;
+#if UseRibbonForm
+            extensionSite = ExtensionSiteNames.File;
+            // add also the the Quick Access Toolbar and to the ApplicationMenu
+            UIExtensionSites[ExtensionSiteNames.RibbonQuickAccessToolbar].Add(acceptCustomer);
+            UIExtensionSites[ExtensionSiteNames.FileDropDown].Add(acceptCustomer);
+#else
+            queueItem = new BarSubItem { Caption = "Queue" };
 
-			var acceptCustomer = new BarButtonItem
-			                     	{
-			                     		Caption = "Accept Customer",
-			                     		ItemShortcut = new BarShortcut(Keys.Control | Keys.A)
-			                     	};
-			UIExtensionSites[ExtensionSiteNames.Queue].Add(acceptCustomer);
+            UIExtensionSites[ExtensionSiteNames.File].Add(queueItem);
+            UIExtensionSites.RegisterSite(ExtensionSiteNames.Queue, queueItem);
+            extensionSite = ExtensionSiteNames.Queue;
+#endif
+            UIExtensionSites[extensionSite].Add(acceptCustomer);
 			Commands[CommandNames.AcceptCustomer].AddInvoker(acceptCustomer, "ItemClick");
 		}
 
