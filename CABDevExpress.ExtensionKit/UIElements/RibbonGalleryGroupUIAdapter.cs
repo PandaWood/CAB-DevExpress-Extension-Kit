@@ -43,10 +43,11 @@ namespace CABDevExpress.UIElements
 		/// <param name="uiElement">The UIElement to be validated.</param>
 		protected virtual void ValidateUiElement(GalleryItem uiElement)
 		{
-			// not using Guard here so that we can supply the additional
-			// information in the message.
+            Guard.ArgumentNotNull(uiElement, "uiElement");
 
-			if (uiElement == null)
+            // not using Guard here so that we can supply the additional
+			// information in the message.
+			if (uiElement.Tag == null)
 				throw new ArgumentNullException("uiElement.Tag cannot null."
 				                                + " It must contain the CommandName to be fired.");
 

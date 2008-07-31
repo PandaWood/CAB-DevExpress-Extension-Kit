@@ -21,6 +21,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.Docking;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
+using Microsoft.Practices.CompositeUI.EventBroker;
 using Microsoft.Practices.CompositeUI.Services;
 using Microsoft.Practices.CompositeUI.SmartParts;
 
@@ -101,7 +102,7 @@ namespace BankTellerModule.WorkItems.BankTeller
             extensionSite = ExtensionSiteNames.File;
             // add also the the Quick Access Toolbar and to the ApplicationMenu
             UIExtensionSites[ExtensionSiteNames.RibbonQuickAccessToolbar].Add(acceptCustomer);
-            UIExtensionSites[ExtensionSiteNames.FileDropDown].Add(acceptCustomer);
+            UIExtensionSites[ExtensionSiteNames.RibbonApplicationMenu].Add(acceptCustomer);
 #else
             queueItem = new BarSubItem { Caption = "Queue" };
 
@@ -164,32 +165,43 @@ namespace BankTellerModule.WorkItems.BankTeller
 			workItem.Show(contentWorkspace);
 		}
 
-		/// <summary>
-		/// Usage sample for the CABDevExpress.Extension Kit XtraWindowWorkspace and XtraWindowSmartPartInfo
-		/// the example shows an 'About Dialog'
-		/// </summary>
+        /// <summary>
+        /// Usage sample for the CABDevExpress.Extension Kit XtraWindowWorkspace and XtraWindowSmartPartInfo
+        /// the example shows an 'About Dialog'
+        /// </summary>
+        private void ShowHelpAbout()
+        {
+            if (!SmartParts.Contains(SmartPartNames.HelpAbout))
+                SmartParts.AddNew<AboutBankTellerView>(SmartPartNames.HelpAbout);
+
+            var smartPartInfo = new XtraWindowSmartPartInfo
+                                    {
+                                        Modal = true,
+                                        StartPosition = FormStartPosition.CenterParent,
+                                        FormBorderStyle = FormBorderStyle.FixedDialog,
+                                        MinimizeBox = false,
+                                        MaximizeBox = false,
+                                        Height = 150,
+                                        Width = 350,
+                                        Title = "About"
+                                    };
+
+            // the two properties added by CABDevExpress.ExtensionKit's XtraWindowSmartPartInfo
+            var xtraWindow = new XtraWindowWorkspace();
+            xtraWindow.Show(SmartParts[SmartPartNames.HelpAbout], smartPartInfo);
+        }
+
 		[CommandHandler(CommandNames.HelpAbout)]
 		public void OnHelpAbout(object sender, EventArgs e)
 		{
-			if (!SmartParts.Contains(SmartPartNames.HelpAbout))
-				SmartParts.AddNew<AboutBankTellerView>(SmartPartNames.HelpAbout);
+            ShowHelpAbout();
+        }
 
-			var smartPartInfo = new XtraWindowSmartPartInfo
-			                    	{
-			                    		Modal = true,
-			                    		StartPosition = FormStartPosition.CenterParent,
-			                    		FormBorderStyle = FormBorderStyle.FixedDialog,
-			                    		MinimizeBox = false,
-			                    		MaximizeBox = false,
-			                    		Height = 150,
-			                    		Width = 350,
-			                    		Title = "About"
-			                    	};
-
-			// the two properties added by CABDevExpress.ExtensionKit's XtraWindowSmartPartInfo
-			var xtraWindow = new XtraWindowWorkspace();
-			xtraWindow.Show(SmartParts[SmartPartNames.HelpAbout], smartPartInfo);
-		}
+        [EventSubscription(EventNames.HelpAbout, ThreadOption.UserInterface)]
+        public void OnHelpAboutEvent(object sender, EventArgs e)
+        {
+            ShowHelpAbout();
+        }
 
 		const string DockableStatisticsView = "DockableStatisticsView";
 

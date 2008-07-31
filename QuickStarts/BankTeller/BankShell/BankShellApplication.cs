@@ -55,7 +55,7 @@ namespace BankShell
             RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.Ribbon, Shell.Ribbon);
             RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainMenu, Shell.homePage);
             RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainStatus, Shell.mainStatusBar);
-            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.FileDropDown, new
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.RibbonApplicationMenu, new
                 RibbonApplicationMenuUIAdapter(Shell.applicationMenu));
 
             RibbonPageGroup ribbonGroup = new RibbonPageGroup(ExtensionSiteNames.File);
@@ -65,6 +65,8 @@ namespace BankShell
                 RibbonPageHeaderUIAdapter(Shell.Ribbon.PageHeaderItemLinks));
             RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.RibbonQuickAccessToolbar, new
                 RibbonQuickAccessToolbarUIAdapter(Shell.Ribbon.Toolbar));
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.RibbonAppMenuBottomPane, new
+                RibbonAppMenuBottomPaneSimpleButtonUIAdapter(RootWorkItem, Shell.applicationMenu));
 
             BankTellerRibbonSkins.Add(RootWorkItem);
             BankTellerRibbonWindows.Add(RootWorkItem, Shell.xtraTabbedMdiManager, Shell);

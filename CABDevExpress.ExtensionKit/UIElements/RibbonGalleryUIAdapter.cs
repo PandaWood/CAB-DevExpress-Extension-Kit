@@ -68,7 +68,6 @@ namespace CABDevExpress.UIElements
 			}
 		}
 
-
 		/// <summary>
 		/// See <see cref="UIElementAdapter{TUIElement}.Add(TUIElement)"/>
 		/// for more information.
@@ -79,7 +78,6 @@ namespace CABDevExpress.UIElements
 			ribbonGallery.Gallery.Groups.Add(uiElement);
 			return uiElement;
 		}
-
 
 		/// <summary>
 		/// See <see cref="UIElementAdapter{TUIElement}.Remove(TUIElement)"/>

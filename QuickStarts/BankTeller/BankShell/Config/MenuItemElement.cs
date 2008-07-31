@@ -107,7 +107,7 @@ namespace BankShell.Config
 			return barItem;
 		}
 
-        private System.Drawing.Image GetGlyph(string glyphName)
+        public static System.Drawing.Image GetGlyph(string glyphName)
         {
             // Since we are reading which resource to use from a config file, we
             // need to access the type-safe Properties.Resources in a non 

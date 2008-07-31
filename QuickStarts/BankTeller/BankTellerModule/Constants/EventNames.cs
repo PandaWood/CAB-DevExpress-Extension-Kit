@@ -8,5 +8,8 @@ namespace BankTellerModule.Constants
 
         // UseRibbonForm
         public const string RibbonSkinChange = "topic://BankShell/RibbonSkinChange";
-	}
+    
+        public const string Exit = "ExitCommandEvent";				// string is repeated in config
+        public const string HelpAbout = "HelpAboutCommandEvent";		// string is repeated in config
+    }
 }

@@ -4,6 +4,7 @@ using BankShell.Config;
 using BankTellerModule.Constants;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
+using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 
 namespace BankShell
@@ -27,9 +28,44 @@ namespace BankShell
         }
 
 #if UseRibbonForm
+        private static string InstantiateNonBarItemUiElement(WorkItem workItem, 
+            MenuItemElement menuItem, string siteAndType, ref SimpleButton uiButton)
+        {
+            string site;
+            site = siteAndType.Substring(0, siteAndType.IndexOf('='));
+            if (workItem.UIExtensionSites.Contains(site))
+            {
+                string type = siteAndType.Substring(siteAndType.IndexOf('=') + 1);
+                if (type != "SimpleButton")
+                    throw new Exception("Unknown UI element type in configuration file.");
+                if (uiButton == null)
+                {
+                    uiButton = new SimpleButton();
+                    // OK. I'm abusing the system here to change a command into
+                    // an event. I would not do this in anything other than a demo.
+                    uiButton.Tag = menuItem.CommandName + "Event";
+                    uiButton.Text = menuItem.Label;
+                    uiButton.Image = MenuItemElement.GetGlyph(menuItem.Glyph);
+                }
+                workItem.UIExtensionSites[site].Add(uiButton);
+            }
+            return site;
+        }
+
+        private static void InstantiateBarItemUiElement(WorkItem workItem, 
+            MenuItemElement menuItem, ref BarItem uiMenuItem, string site)
+        {
+            if (uiMenuItem == null)
+            {
+                uiMenuItem = menuItem.ToMenuItem();
+                if (!String.IsNullOrEmpty(menuItem.CommandName))
+                    workItem.Commands[menuItem.CommandName].AddInvoker(uiMenuItem, "ItemClick");
+            }
+            workItem.UIExtensionSites[site].Add(uiMenuItem);
+        }
+
         private static void ProcessConfigItem(WorkItem workItem, MenuItemElement menuItem)
         {
-            BarItem uiMenuItem;
             if (menuItem.Register)
             {
                 RibbonPageGroup ribbonGroup = new RibbonPageGroup(menuItem.Label);
@@ -38,14 +74,15 @@ namespace BankShell
             }
             else
             {
-                uiMenuItem = menuItem.ToMenuItem();
-                if (!String.IsNullOrEmpty(menuItem.CommandName))
-                    workItem.Commands[menuItem.CommandName].AddInvoker(uiMenuItem, "ItemClick");
-
-                foreach (string site in menuItem.Site.Split(new char[] { ';' }))
+                foreach (string siteAndType in menuItem.Site.Split(new char[] { ';' }))
                 {
-                    if (workItem.UIExtensionSites.Contains(site))
-                        workItem.UIExtensionSites[site].Add(uiMenuItem);
+                    BarItem uiMenuItem = null;
+                    SimpleButton uiButton = null;
+                    string site = siteAndType;
+                    if (siteAndType.Contains("="))
+                        site = InstantiateNonBarItemUiElement(workItem, menuItem, siteAndType, ref uiButton);
+                    else if (workItem.UIExtensionSites.Contains(site))
+                        InstantiateBarItemUiElement(workItem, menuItem, ref uiMenuItem, site);
                 }
             }
         }
@@ -56,6 +93,9 @@ namespace BankShell
 
             foreach (string site in menuItem.Site.Split(new char[] { ';' }))
             {
+                // this has not been modified to handle different uiElement types
+                // if a siteType contains a different uiElement type the conditional
+                // will fail and the uiElement item won't be added to the system.
                 if (workItem.UIExtensionSites.Contains(site))
                     workItem.UIExtensionSites[site].Add(uiMenuItem);
             }

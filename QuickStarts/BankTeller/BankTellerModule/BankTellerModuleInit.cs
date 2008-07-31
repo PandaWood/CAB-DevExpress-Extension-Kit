@@ -60,13 +60,5 @@ namespace BankTellerModule
 			workItem.UIExtensionSites.RegisterSite(Resources.CustomerMenuExtensionSite, customerItem);
 #endif
 		}
-
-#if UseRibbonForm
-        [EventSubscription(EventNames.RibbonSkinChange, ThreadOption.UserInterface)]
-        public void ModifyLookAndFeel(object sender, DynamicEventArgs<DynamicCommandEventLink> e)
-        {
-            UserLookAndFeel.Default.SetSkinStyle((string)e.Data.Data);
-        }
-#endif
 	}
 }

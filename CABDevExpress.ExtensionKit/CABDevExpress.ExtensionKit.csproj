@@ -91,6 +91,7 @@
     <Compile Include="UIElementsDynamic\DynamicEventArgs.cs" />
     <Compile Include="UIElementsDynamic\RibbonGalleryDynamicUIAdapter.cs" />
     <Compile Include="UIElementsDynamic\RibbonGalleryGroupDynamicUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonAppMenuBottomPaneSimpleButtonUIAdapter.cs" />
     <Compile Include="UIElements\RibbonGalleryGroupUIAdapter.cs" />
     <Compile Include="UIElements\RibbonGalleryUIAdapter.cs" />
     <Compile Include="XtraFormApplication.cs" />

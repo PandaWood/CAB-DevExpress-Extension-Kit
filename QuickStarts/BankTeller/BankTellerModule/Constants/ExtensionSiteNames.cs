@@ -21,5 +21,7 @@ namespace BankTellerModule.Constants
         public const string RibbonWindows = "Windows";
         public const string RibbonPageHeader = "RibbonPageHeader";
         public const string RibbonQuickAccessToolbar = "RibbonQuickAccessToolbar";
+        public const string RibbonApplicationMenu = "RibbonApplicationMenu";
+        public const string RibbonAppMenuBottomPane = "RibbonAppMenuBottomPane";
     }
 }
