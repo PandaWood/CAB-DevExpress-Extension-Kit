@@ -5,6 +5,7 @@ namespace BankTellerModule.Constants
 		public const string StatusUpdate = "topic://BankShell/StatusUpdate";
         public const string SkinPopup = "topic://BankShell/SkinPopup";
         public const string SwitchSkin = "topic://BankShell/SwitchSkin";
+        public const string CustomerClosed = "topic://BankShell/CustomerClosed";
 
         // UseRibbonForm
         public const string RibbonSkinChange = "topic://BankShell/RibbonSkinChange";

@@ -109,6 +109,7 @@ namespace BankTellerModule.WorkItems.BankTeller
             UIExtensionSites[ExtensionSiteNames.File].Add(queueItem);
             UIExtensionSites.RegisterSite(ExtensionSiteNames.Queue, queueItem);
             extensionSite = ExtensionSiteNames.Queue;
+            UIExtensionSites[ExtensionSiteNames.ToolBar].Add(acceptCustomer);
 #endif
             UIExtensionSites[extensionSite].Add(acceptCustomer);
 			Commands[CommandNames.AcceptCustomer].AddInvoker(acceptCustomer, "ItemClick");

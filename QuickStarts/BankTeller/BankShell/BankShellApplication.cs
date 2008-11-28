@@ -74,9 +74,11 @@ namespace BankShell
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainMenu, Shell.mainMenuBar);
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainStatus, Shell.mainStatusBar);
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.FileDropDown, Shell.barSubItemFile);
-
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.File, new BarItemWrapper(Shell.mainMenuBar.ItemLinks, Shell.barSubItemFile));
-
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.SkinsToolBar, Shell.skinsBar);
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.ToolBar, Shell.mainBar);
+            RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.WindowToolBar, Shell.windowToolBar);
+            
             // There are two ways to add skins to the BankTeller demo.
             // 1) SkinMenu: Bypasses the CAB framework and directly adds and
             //    manipulates the menu items. The SkinMenu is standard .NET 

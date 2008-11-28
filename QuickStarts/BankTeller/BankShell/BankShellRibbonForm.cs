@@ -41,13 +41,13 @@ namespace BankShell
     {
         private readonly WorkItem workItem;
         private IWorkItemTypeCatalogService workItemTypeCatalog;
-    	private readonly DockManagerWorkspace dockManagerWorkspace;
+        private readonly DockManagerWorkspace dockManagerWorkspace;
 
         public BankShellRibbonForm()
         {
             InitializeComponent();
             barStaticItem1.Caption = String.Empty;
-			dockManagerWorkspace = new DockManagerWorkspace(dockManager);
+            dockManagerWorkspace = new DockManagerWorkspace(dockManager);
             AllowFormGlass = DefaultBoolean.False;
         }
 
@@ -56,7 +56,8 @@ namespace BankShell
         /// by calling WorkItem.Items.AddNew.
         /// </summary>
         [InjectionConstructor]
-        public BankShellRibbonForm(WorkItem workItem, IWorkItemTypeCatalogService workItemTypeCatalog) : this()
+        public BankShellRibbonForm(WorkItem workItem, IWorkItemTypeCatalogService workItemTypeCatalog)
+            : this()
         {
             this.workItem = workItem;
             this.workItemTypeCatalog = workItemTypeCatalog;
@@ -85,15 +86,15 @@ namespace BankShell
         {
             UserLookAndFeel.Default.SetSkinStyle((string)e.Data.Data);
         }
-        
-        public XtraNavBarWorkspace NavBarWorkspace
-		{
-			get { return navBarWorkspace; }
-		}
 
-		public DockManagerWorkspace DockManagerWorkspace
-    	{
-			get { return dockManagerWorkspace; }
-    	}
+        public XtraNavBarWorkspace NavBarWorkspace
+        {
+            get { return navBarWorkspace; }
+        }
+
+        public DockManagerWorkspace DockManagerWorkspace
+        {
+            get { return dockManagerWorkspace; }
+        }
     }
 }

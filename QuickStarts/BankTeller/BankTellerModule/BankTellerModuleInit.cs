@@ -10,13 +10,8 @@
 //===============================================================================
 
 using BankTellerModule.Constants;
-using BankTellerModule.Properties;
 using BankTellerModule.WorkItems.BankTeller;
-using CABDevExpress.UIElements;
-using DevExpress.LookAndFeel;
-using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
-using Microsoft.Practices.CompositeUI.EventBroker;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
 

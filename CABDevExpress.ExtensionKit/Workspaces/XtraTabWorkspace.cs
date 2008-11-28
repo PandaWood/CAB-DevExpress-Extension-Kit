@@ -127,6 +127,8 @@ namespace CABDevExpress.Workspaces
             if (page == null)
             {
                 page = new XtraTabPage();
+                // added the following line for issue #11167
+                page.ClientSize = this.ClientSize;
                 page.Controls.Add(smartPart);
                 smartPart.Dock = DockStyle.Fill;
                 page.Name = Guid.NewGuid().ToString();

@@ -13,9 +13,7 @@ using System;
 using System.Configuration;
 using System.Drawing;
 using System.Resources;
-using System.Threading;
 using System.Windows.Forms;
-using BankShell.Properties;
 using DevExpress.XtraBars;
 
 namespace BankShell.Config

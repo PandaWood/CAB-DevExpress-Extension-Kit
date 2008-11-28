@@ -9,9 +9,6 @@
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using CustomerAccountsView=BankTellerModule.WorkItems.Customer.CustomerAccountsView;
-using CustomerDetailView=BankTellerModule.WorkItems.Customer.CustomerDetailView;
-using CustomerHeaderView=BankTellerModule.WorkItems.Customer.CustomerHeaderView;
 
 namespace BankTellerModule.WorkItems.Customer
 {

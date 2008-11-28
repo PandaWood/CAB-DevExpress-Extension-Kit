@@ -1,3 +1,4 @@
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.UIElements;
 using Microsoft.Practices.CompositeUI.Utility;
@@ -40,6 +41,11 @@ namespace CABDevExpress.UIElements
 
 			if (uiElement is RibbonStatusBar)
 				return new RibbonStatusBarUIAdapter((RibbonStatusBar) uiElement);
+
+            // added lines below for issue 10296
+            if (uiElement is PopupMenu)
+                return new BarLinksCollectionUIAdapter(((PopupMenu)uiElement).ItemLinks, 
+                                                       ((PopupMenu)uiElement).Ribbon.Items);
 
 			throw ExceptionFactory.CreateInvalidAdapterElementType(uiElement.GetType(), GetType());
 		}

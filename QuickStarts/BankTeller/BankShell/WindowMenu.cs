@@ -1,8 +1,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 using BankShell.Properties;
+using BankTellerModule.Constants;
 using DevExpress.XtraBars;
 using DevExpress.XtraTabbedMdi;
+using Microsoft.Practices.CompositeUI;
 
 namespace BankShell
 {
@@ -12,12 +14,14 @@ namespace BankShell
         private readonly XtraTabbedMdiManager mdiManager;
         private readonly Form shell;
         private WindowMenuHelper menuHelper;
+        private WorkItem rootWorkItem;
 
-    	public WindowMenu(Bar bar, XtraTabbedMdiManager mdiManager, Form shell)
+    	public WindowMenu(Bar bar, XtraTabbedMdiManager mdiManager, Form shell, WorkItem rootWorkItem)
         {
             this.bar = bar;
             this.mdiManager = mdiManager;
             this.shell = shell;
+            this.rootWorkItem = rootWorkItem;
             Manager = bar.Manager;
             menuHelper = new WindowMenuHelper(mdiManager, shell);
 
@@ -48,6 +52,7 @@ namespace BankShell
             item.LargeGlyph = largeGlyph;
             item.ItemClick += itemClickEventHandler;
             AddItem(item);
+            rootWorkItem.UIExtensionSites[ExtensionSiteNames.WindowToolBar].Add<BarButtonItem>(item);
             return item;
         }
     }

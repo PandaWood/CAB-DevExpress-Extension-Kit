@@ -1,5 +1,4 @@
 using Microsoft.Practices.CompositeUI.SmartParts;
-using CustomerQueueView=BankTellerModule.WorkItems.BankTeller.CustomerQueueView;
 
 namespace BankTellerModule.WorkItems.BankTeller
 {

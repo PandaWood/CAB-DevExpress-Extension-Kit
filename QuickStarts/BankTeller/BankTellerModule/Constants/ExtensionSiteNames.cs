@@ -11,6 +11,9 @@ namespace BankTellerModule.Constants
 		public const string Queue = "Queue";
 		public const string Customer = "Customer";
         public const string SkinsDropDown = "SkinsDropDown";
+        public const string SkinsToolBar = "SkinsToolBar";
+        public const string ToolBar = "ToolBar";
+        public const string WindowToolBar = "WindowToolBar";
 
         // UseRibbonForm
         public const string Ribbon = "Ribbon";

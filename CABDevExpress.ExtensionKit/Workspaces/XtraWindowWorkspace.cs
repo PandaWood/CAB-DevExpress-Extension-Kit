@@ -59,8 +59,9 @@ namespace CABDevExpress.Workspaces
             {
                 form = new XtraWindowForm();
                 windowDictionary.Add(control, form);
-                form.Controls.Add(control);
+                // reversed the order of these following two lines for issue 11166
                 CalculateSize(control, form);
+                form.Controls.Add(control);
                 control.Dock = DockStyle.Fill;
                 control.Disposed += ControlDisposed;
                 WireUpForm(form);

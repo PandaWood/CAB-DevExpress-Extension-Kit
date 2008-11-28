@@ -97,7 +97,9 @@ namespace BankShell
                 // if a siteType contains a different uiElement type the conditional
                 // will fail and the uiElement item won't be added to the system.
                 if (workItem.UIExtensionSites.Contains(site))
+                {
                     workItem.UIExtensionSites[site].Add(uiMenuItem);
+                }
             }
 
             if (menuItem.Register)
