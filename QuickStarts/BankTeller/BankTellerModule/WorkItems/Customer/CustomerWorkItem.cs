@@ -94,6 +94,7 @@ namespace BankTellerModule.WorkItems.Customer
             UIExtensionSites[ExtensionSiteNames.File].Add(editCustomerMenuItem1);
 #else
 			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
+            UIExtensionSites[ExtensionSiteNames.ToolBar].Add(editCustomerMenuItem1);
 #endif
 		}
 

@@ -82,7 +82,7 @@ namespace BankShell
         }
 
         [EventSubscription(EventNames.RibbonSkinChange, ThreadOption.UserInterface)]
-        public void ModifyLookAndFeel(object sender, DynamicEventArgs<DynamicCommandEventLink> e)
+        public void ModifyLookAndFeel(object sender, DataEventArgs<DynamicCommandEventLink> e)
         {
             UserLookAndFeel.Default.SetSkinStyle((string)e.Data.Data);
         }

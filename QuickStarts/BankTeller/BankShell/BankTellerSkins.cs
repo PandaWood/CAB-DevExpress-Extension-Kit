@@ -10,6 +10,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.EventBroker;
+using Microsoft.Practices.CompositeUI.Utility;
 
 namespace BankShell
 {
@@ -96,7 +97,7 @@ namespace BankShell
 		}
 
         // The subscriber to the EventNames.SwitchSkin event
-        public void ModifyLookAndFeel(Object sender, DynamicEventArgs<DynamicCommandEventLink> e)
+        public void ModifyLookAndFeel(Object sender, DataEventArgs<DynamicCommandEventLink> e)
         {
             UserLookAndFeel.Default.SetSkinStyle((e.Data as DynamicCommandEventLink).Data.ToString());
             SetSkinsChecked();

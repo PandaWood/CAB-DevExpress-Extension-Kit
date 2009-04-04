@@ -17,37 +17,38 @@ using Microsoft.Practices.ObjectBuilder;
 
 namespace BankTellerModule.WorkItems.Customer
 {
-	[SmartPart]
-	public partial class CustomerSummaryView : XtraUserControl
-	{
-		private CustomerSummaryController controller;
+    [SmartPart]
+    public partial class CustomerSummaryView : XtraUserControl
+    {
+        private CustomerSummaryController controller;
 
-		public CustomerSummaryView()
-		{
-			InitializeComponent();
-		}
+        public CustomerSummaryView()
+        {
+            InitializeComponent();
+        }
 
-		[CreateNew]
-		public CustomerSummaryController Controller
-		{
-			set { controller = value; }
-		}
+        [CreateNew]
+        public CustomerSummaryController Controller
+        {
+            set { controller = value; }
+        }
 
-		private void OnSave(object sender, EventArgs e)
-		{
-			controller.Save();
-		}
+        private void OnSave(object sender, EventArgs e)
+        {
+            controller.Save();
+        }
 
-		protected override void OnLoad(EventArgs e)
-		{
-			base.OnLoad(e);
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
 
-			controller.WorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.CustomerContext, customerContextMenu);
-		}
+            controller.WorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.CustomerContext, customerContextMenu);
+        }
 
-		internal void FocusFirstTab()
-		{
-			tabbedWorkspace1.SelectedTabPage = tabbedWorkspace1.TabPages[0];
-		}
-	}
+        internal void FocusFirstTab()
+        {
+            if (tabbedWorkspace1.TabPages.Count > 0)
+                tabbedWorkspace1.SelectedTabPage = tabbedWorkspace1.TabPages[0];
+        }
+    }
 }

@@ -2,6 +2,7 @@ using System;
 using DevExpress.XtraBars;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.EventBroker;
+using Microsoft.Practices.CompositeUI.Utility;
 
 namespace CABDevExpress.UIElements
 {
@@ -50,7 +51,7 @@ namespace CABDevExpress.UIElements
                 DynamicCommandEventLink eventLink = e.Item.Tag as DynamicCommandEventLink;
                 EventTopic eventTopic = rootWorkItem.EventTopics[eventLink.EventTopicName];
                 if (eventTopic != null)
-                    eventTopic.Fire(sender, new DynamicEventArgs<DynamicCommandEventLink>(eventLink), 
+                    eventTopic.Fire(sender, new DataEventArgs<DynamicCommandEventLink>(eventLink), 
                         null, PublicationScope.Global);
             }
         }
