@@ -2,6 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BankShell.Properties;
 using BankTellerModule.Constants;
+using CABDevExpress.Workspaces;
 using DevExpress.XtraBars;
 using DevExpress.XtraTabbedMdi;
 using Microsoft.Practices.CompositeUI;
@@ -11,19 +12,19 @@ namespace BankShell
     public class WindowMenu : BarSubItem
     {
     	private Bar bar;
-        private readonly XtraTabbedMdiManager mdiManager;
-        private readonly Form shell;
+        private readonly XtraTabbedMdiWorkspace mdiManager;
+        //private readonly Form shell;
         private WindowMenuHelper menuHelper;
         private WorkItem rootWorkItem;
 
-    	public WindowMenu(Bar bar, XtraTabbedMdiManager mdiManager, Form shell, WorkItem rootWorkItem)
+        public WindowMenu(Bar bar, XtraTabbedMdiWorkspace mdiManager, WorkItem rootWorkItem)
         {
             this.bar = bar;
             this.mdiManager = mdiManager;
-            this.shell = shell;
+            //this.shell = shell;
             this.rootWorkItem = rootWorkItem;
             Manager = bar.Manager;
-            menuHelper = new WindowMenuHelper(mdiManager, shell);
+            menuHelper = new WindowMenuHelper(mdiManager);
 
             Caption = "Window";
             AddAllMenuItems();

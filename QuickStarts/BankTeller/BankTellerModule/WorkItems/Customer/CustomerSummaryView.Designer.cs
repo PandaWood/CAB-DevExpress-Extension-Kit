@@ -10,6 +10,7 @@
 //===============================================================================
 
 
+using Microsoft.Practices.CompositeUI;
 namespace BankTellerModule.WorkItems.Customer
 {
 	partial class CustomerSummaryView
@@ -25,11 +26,13 @@ namespace BankTellerModule.WorkItems.Customer
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
+            if (controller.WorkItem.Status != WorkItemStatus.Terminated)
+                controller.WorkItem.Terminate();
 			if (disposing && (components != null))
 			{
-				components.Dispose();
+                components.Dispose();               
 			}
-			base.Dispose(disposing);
+			base.Dispose(disposing);        
 		}
 
 		#region Component Designer generated code

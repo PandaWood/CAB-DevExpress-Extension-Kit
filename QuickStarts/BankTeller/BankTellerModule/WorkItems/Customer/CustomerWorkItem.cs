@@ -53,21 +53,30 @@ namespace BankTellerModule.WorkItems.Customer
 			var customer = (BankTellerCommon.Customer)State[WorkItemStates.Customer];
 
 			OnStatusTextUpdate(string.Format("Editing {0}, {1}", customer.LastName, customer.FirstName));
-			var smartPartInfo = new WindowSmartPartInfo
+			var smartPartInfo = new XtraWindowSmartPartInfo
 			                    	{
 			                    		Title = (customer.LastName + " " + customer.FirstName)
 			                    	};
-			customerSummaryView.Dock = DockStyle.Fill;
+			//customerSummaryView.Dock = DockStyle.Fill;
 			parentWorkspace.Show(customerSummaryView, smartPartInfo);
 
 			UpdateUserAddressLabel(customer);
 
 			Activate();
+            parentWorkspace.SmartPartActivated += new EventHandler<WorkspaceEventArgs>(parentWorkspace_SmartPartActivated);
 
 			// When activating, force focus on the first tab in the view.
 			// Extensions may have added stuff at the end of the tab.
 			customerSummaryView.FocusFirstTab();
 		}
+
+        void parentWorkspace_SmartPartActivated(object sender, WorkspaceEventArgs e)
+        {
+        if ((e.SmartPart==customerSummaryView)&& (this.Status==WorkItemStatus.Inactive))
+            this.Activate();
+        }
+
+        
 
 		private void UpdateUserAddressLabel(BankTellerCommon.Customer customer)
 		{

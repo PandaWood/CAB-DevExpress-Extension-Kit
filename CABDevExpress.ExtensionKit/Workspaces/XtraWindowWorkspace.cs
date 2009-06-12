@@ -17,7 +17,7 @@ namespace CABDevExpress.Workspaces
     {
         private readonly Dictionary<Control, XtraForm> windowDictionary = new Dictionary<Control, XtraForm>();
         private bool fireActivatedFromForm = true;
-        readonly IWin32Window ownerForm;
+        protected readonly IWin32Window ownerForm;
 
         /// <summary>
         /// Initializes the workspace with a no-owner form to use to show a new windows

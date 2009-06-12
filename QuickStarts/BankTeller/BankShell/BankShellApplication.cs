@@ -13,6 +13,7 @@ using System;
 using BankTellerModule.Constants;
 using CABDevExpress;
 using CABDevExpress.UIElements;
+using CABDevExpress.Workspaces;
 using DevExpress.Skins;
 using DevExpress.UserSkins;
 using DevExpress.XtraBars.Ribbon;
@@ -47,7 +48,10 @@ namespace BankShell
         {
             base.AfterShellCreated();
 
-            RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspaceNames.ShellContentWorkspace);
+            XtraTabbedMdiWorkspace ContentWorkspace = new XtraTabbedMdiWorkspace(Shell);
+            RootWorkItem.Items.Add(ContentWorkspace, WorkspaceNames.ShellContentWorkspace);
+         
+            //RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspaceNames.ShellContentWorkspace);
             RootWorkItem.Items.Add(Shell.NavBarWorkspace, WorkspaceNames.ShellNavBarWorkspace);
             RootWorkItem.Items.Add(Shell.DockManagerWorkspace, WorkspaceNames.DockManagerWorkspace);
 
@@ -69,7 +73,8 @@ namespace BankShell
                 RibbonAppMenuBottomPaneSimpleButtonUIAdapter(RootWorkItem, Shell.applicationMenu));
 
             BankTellerRibbonSkins.Add(RootWorkItem);
-            BankTellerRibbonWindows.Add(RootWorkItem, Shell.xtraTabbedMdiManager, Shell);
+            //BankTellerRibbonWindows.Add(RootWorkItem, Shell.xtraTabbedMdiManager, Shell);
+            BankTellerRibbonWindows.Add(RootWorkItem, ContentWorkspace);
 #else
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainMenu, Shell.mainMenuBar);
 			RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainStatus, Shell.mainStatusBar);
@@ -98,7 +103,7 @@ namespace BankShell
             // working skin menus will appear.
             RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new SkinMenu(Shell.mainMenuBar));
             //BankTellerDynamicSkins.Skins.AddSkins(RootWorkItem);
-			RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new WindowMenu(Shell.mainMenuBar, Shell.xtraTabbedMdiManager, Shell));
+            RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new WindowMenu(Shell.mainMenuBar, ContentWorkspace,  RootWorkItem));
 #endif
             UIElementBuilder.LoadFromConfig(RootWorkItem);
         }

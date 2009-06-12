@@ -2,6 +2,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BankShell.Properties;
 using BankTellerModule.Constants;
+using CABDevExpress.Workspaces;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraTabbedMdi;
@@ -13,14 +14,14 @@ namespace BankShell
     {
         private static WindowMenuHelper windowMenuHelper = new WindowMenuHelper();
 
-        internal static void Add(WorkItem workItem, XtraTabbedMdiManager mdiManager, Form shell)
+        internal static void Add(WorkItem workItem, XtraTabbedMdiWorkspace mdiManager)
         {
             RibbonPageGroup ribbonGroup = new RibbonPageGroup(ExtensionSiteNames.RibbonWindows);
             workItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add<RibbonPageGroup>(ribbonGroup);
             workItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.RibbonWindows, ribbonGroup);
 
-            windowMenuHelper.MdiManager = mdiManager;
-            windowMenuHelper.Shell = shell;
+            windowMenuHelper.MdiWorkSpace = mdiManager;
+            //windowMenuHelper.Shell = shell;
 
             AddAllRibbonItems(workItem); 
         }

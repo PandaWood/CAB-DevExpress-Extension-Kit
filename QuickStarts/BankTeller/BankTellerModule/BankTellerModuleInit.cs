@@ -14,6 +14,8 @@ using BankTellerModule.WorkItems.BankTeller;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
+using DevExpress.XtraBars;
+using BankTellerModule.Properties;
 
 namespace BankTellerModule
 {

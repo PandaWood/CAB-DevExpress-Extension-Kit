@@ -27,6 +27,7 @@ namespace BankTellerModule.WorkItems.Customer
             InitializeComponent();
         }
 
+       
         [CreateNew]
         public CustomerSummaryController Controller
         {
@@ -41,7 +42,7 @@ namespace BankTellerModule.WorkItems.Customer
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
+            if (!controller.WorkItem.UIExtensionSites.Contains("CustomerContext"))
             controller.WorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.CustomerContext, customerContextMenu);
         }
 

@@ -45,7 +45,6 @@ namespace BankShell
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.navBarWorkspace = new CABDevExpress.Workspaces.XtraNavBarWorkspace();
-            this.xtraTabbedMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
@@ -53,7 +52,6 @@ namespace BankShell
             this.mainStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarWorkspace)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,10 +83,6 @@ namespace BankShell
             this.navBarWorkspace.TabIndex = 1;
             this.navBarWorkspace.View = new DevExpress.XtraNavBar.ViewInfo.SkinNavigationPaneViewInfoRegistrator();
             // 
-            // xtraTabbedMdiManager
-            // 
-            this.xtraTabbedMdiManager.MdiParent = this;
-            // 
             // splitterControl1
             // 
             this.splitterControl1.Location = new System.Drawing.Point(196, 143);
@@ -100,7 +94,6 @@ namespace BankShell
             // ribbonControl1
             // 
             this.ribbonControl1.ApplicationButtonDropDownControl = this.applicationMenu;
-            this.ribbonControl1.ApplicationButtonKeyTip = "";
             this.ribbonControl1.ApplicationIcon = null;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barStaticItem1});
@@ -119,11 +112,9 @@ namespace BankShell
             this.applicationMenu.Name = "applicationMenu";
             this.applicationMenu.Ribbon = this.ribbonControl1;
             this.applicationMenu.RightPaneControlContainer = null;
-            this.applicationMenu.RightPaneWidth = 240;
             // 
             // homePage
             // 
-            this.homePage.KeyTip = "";
             this.homePage.Name = "homePage";
             this.homePage.Text = "Home";
             // 
@@ -152,7 +143,6 @@ namespace BankShell
             this.Text = "Bank Shell";
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navBarWorkspace)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
             this.ResumeLayout(false);
 
@@ -162,7 +152,6 @@ namespace BankShell
 
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private CABDevExpress.Workspaces.XtraNavBarWorkspace navBarWorkspace;
-        public DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager;
         private SplitterControl splitterControl1;
 		private DevExpress.XtraBars.Docking.DockManager dockManager;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
