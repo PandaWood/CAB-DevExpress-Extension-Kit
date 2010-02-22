@@ -22,7 +22,7 @@ namespace CABDevExpress.Workspaces
     [Description("XtraTabbedMdi Workspace")]
     public class XtraTabbedMdiWorkspace : XtraWindowWorkspace
     {
-        private readonly XtraTabbedMdiManager tabbedMdiManager = new XtraTabbedMdiManager();
+        private readonly XtraTabbedMdiManager tabbedMdiManager ;
         private MdiMode mdiMode = MdiMode.Tabbed;
         private readonly Form parentMdiForm;
 
@@ -38,6 +38,7 @@ namespace CABDevExpress.Workspaces
         public XtraTabbedMdiWorkspace()
             : base()
         {
+            tabbedMdiManager = new XtraTabbedMdiManager();
             Initialize();
         }
 
@@ -45,8 +46,18 @@ namespace CABDevExpress.Workspaces
         /// Initializes a new <see cref="XtraTabWorkspace"/>
         /// </summary>
         public XtraTabbedMdiWorkspace(Form parentForm)
+            : this(parentForm, new XtraTabbedMdiManager())
+        {
+         }
+
+
+        /// <summary>
+        /// Initializes a new <see cref="XtraTabWorkspace"/>
+        /// </summary>
+        public XtraTabbedMdiWorkspace(Form parentForm, XtraTabbedMdiManager pTabbedMdiManager)
             : base(parentForm)
         {
+            tabbedMdiManager = pTabbedMdiManager;
             tabbedMdiManager.MdiParent = parentForm;
             parentMdiForm = parentForm;
             parentMdiForm.IsMdiContainer = true;

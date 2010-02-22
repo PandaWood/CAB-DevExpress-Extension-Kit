@@ -15,6 +15,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTellerModule", "QuickSt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMapExtensionModule", "QuickStarts\BankTeller\BankTellerModuleExtension\CustomerMapExtensionModule.csproj", "{A7848178-09E6-4FC7-A21E-9CB9418984A5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AABDA9CE-96FF-4B45-A1A6-0F29A41F36F0}"
+	ProjectSection(SolutionItems) = preProject
+		Build.bat = Build.bat
+		release.bat = release.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,13 +58,5 @@ Global
 		{5461523C-4DCE-4672-BC72-7F0C99501F43} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
 		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
 		{A7848178-09E6-4FC7-A21E-9CB9418984A5} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs03.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CABDevExpress.ExtensionKit.csproj
-		SccLocalPath1 = .
 	EndGlobalSection
 EndGlobal

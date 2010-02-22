@@ -17,7 +17,7 @@ namespace CABDevExpress
 		/// </summary>
 		protected override void Start()
 		{
-			Application.Run(Shell);
+            Application.Run(Shell);
 		}
 	}
 }
