@@ -1,3 +1,4 @@
+﻿using System.Windows.Forms;
 using CABDevExpress.Commands;
 using CABDevExpress.UIElements;
 using DevExpress.Utils.Menu;
@@ -7,7 +8,7 @@ using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.UIElements;
-using Microsoft.Practices.CompositeUI.WinForms;
+using Microsoft.Practices.CompositeUI.WPF;
 
 namespace CABDevExpress
 {
@@ -16,8 +17,9 @@ namespace CABDevExpress
     /// </summary>
     /// <typeparam name="TWorkItem">The type of the root application work item.</typeparam>
     /// <typeparam name="TShell">The type of the form for the shell to use. Should be an XtraForm for skin support.</typeparam>
-    public abstract class XtraFormApplicationBase<TWorkItem, TShell> : WindowsFormsApplication<TWorkItem, TShell>
+    public abstract class XtraWPFFormApplicationBase<TWorkItem, TShell> : WPFFormShellApplication<TWorkItem, TShell>
         where TWorkItem : WorkItem, new()
+        where TShell : Form
     {
         /// <summary>
         /// See <see cref="CabShellApplication{T,S}.AfterShellCreated"/>
@@ -50,5 +52,8 @@ namespace CABDevExpress
             factoryCatalog.RegisterFactory(new NavigatorCustomButtonUIAdapterFactory());
             factoryCatalog.RegisterFactory(new EditorButtonCollectionUIAdapterFactory());
         }
+        /// <summary>
+        /// Used to start a message pump using the specified shell form.
+        /// </summary>
     }
 }
