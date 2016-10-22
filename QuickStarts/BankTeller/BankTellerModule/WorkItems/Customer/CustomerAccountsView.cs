@@ -91,7 +91,8 @@ namespace BankTellerModule.WorkItems.Customer
 
 		private void HookupCabEvents()
 		{
-			ParentWorkItem.Commands[CommandNames.DxMenuSamplePopup].AddInvoker(popupMenuItem, "Click");
+            if (ParentWorkItem != null)
+                ParentWorkItem.Commands[CommandNames.DxMenuSamplePopup].AddInvoker(popupMenuItem, "Click");
 		}
 	}
 }

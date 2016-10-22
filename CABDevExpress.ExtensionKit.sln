@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BankTellerSampleApp", "BankTellerSampleApp", "{8870A924-F9EF-4FE7-B82E-809E391480C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CABDevExpress.ExtensionKit", "CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj", "{811DD8C8-6696-4566-A142-8ED28759D7A5}"
@@ -58,5 +60,44 @@ Global
 		{5461523C-4DCE-4672-BC72-7F0C99501F43} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
 		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
 		{A7848178-09E6-4FC7-A21E-9CB9418984A5} = {8870A924-F9EF-4FE7-B82E-809E391480C8}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs03
+		SccProjectUniqueName0 = CABDevExpress.ExtensionKit.Tests\\CABDevExpress.ExtensionKit.Tests.csproj
+		SccProjectName0 = CABDevExpress.ExtensionKit.Tests
+		SccAuxPath0 = https://tfs.codeplex.com/tfs/tfs03
+		SccLocalPath0 = CABDevExpress.ExtensionKit.Tests
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = CABDevExpress.ExtensionKit\\CABDevExpress.ExtensionKit.csproj
+		SccProjectName1 = CABDevExpress.ExtensionKit
+		SccAuxPath1 = https://tfs.codeplex.com/tfs/tfs03
+		SccLocalPath1 = CABDevExpress.ExtensionKit
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = QuickStarts\\BankTeller\\BankShell\\BankShell.csproj
+		SccProjectTopLevelParentUniqueName2 = CABDevExpress.ExtensionKit.sln
+		SccProjectName2 = QuickStarts/BankTeller/BankShell
+		SccAuxPath2 = https://tfs.codeplex.com/tfs/tfs03
+		SccLocalPath2 = QuickStarts\\BankTeller\\BankShell
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = QuickStarts\\BankTeller\\BankTellerCommon\\BankTellerCommon.csproj
+		SccProjectTopLevelParentUniqueName3 = CABDevExpress.ExtensionKit.sln
+		SccProjectName3 = QuickStarts/BankTeller/BankTellerCommon
+		SccAuxPath3 = https://tfs.codeplex.com/tfs/tfs03
+		SccLocalPath3 = QuickStarts\\BankTeller\\BankTellerCommon
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = QuickStarts\\BankTeller\\BankTellerModule\\BankTellerModule.csproj
+		SccProjectTopLevelParentUniqueName4 = CABDevExpress.ExtensionKit.sln
+		SccProjectName4 = QuickStarts/BankTeller/BankTellerModule
+		SccAuxPath4 = https://tfs.codeplex.com/tfs/tfs03
+		SccLocalPath4 = QuickStarts\\BankTeller\\BankTellerModule
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = QuickStarts\\BankTeller\\BankTellerModuleExtension\\CustomerMapExtensionModule.csproj
+		SccProjectTopLevelParentUniqueName5 = CABDevExpress.ExtensionKit.sln
+		SccProjectName5 = QuickStarts/BankTeller/BankTellerModuleExtension
+		SccAuxPath5 = https://tfs.codeplex.com/tfs/tfs03
+		SccLocalPath5 = QuickStarts\\BankTeller\\BankTellerModuleExtension
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 	EndGlobalSection
 EndGlobal
