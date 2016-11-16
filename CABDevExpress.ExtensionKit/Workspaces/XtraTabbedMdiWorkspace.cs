@@ -11,9 +11,8 @@ using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.CompositeUI.Utility;
 using Microsoft.Practices.CompositeUI.WinForms;
 using DevExpress.XtraTabbedMdi;
-//TODO:2016.10.14
 using DevExpress.XtraBars.Ribbon;
-//TODO:2016.10.14
+
 namespace CABDevExpress.Workspaces
 {
     /// <summary>
@@ -104,7 +103,10 @@ namespace CABDevExpress.Workspaces
             Form mdiChild = this.GetOrCreateForm(smartPart);
             SetWindowProperties(mdiChild, smartPartInfo);
             mdiChild.MdiParent = parentMdiForm;
-
+            mdiChild.Activated -= MdiChild_Activated;
+            mdiChild.Activated += MdiChild_Activated;
+            mdiChild.Deactivate -= MdiChild_Deactivate;
+            mdiChild.Deactivate += MdiChild_Deactivate;
             mdiChild.Show();
             if (mdiMode != MdiMode.Tabbed)
                 SetWindowLocation(mdiChild, smartPartInfo);
@@ -116,6 +118,8 @@ namespace CABDevExpress.Workspaces
         {
             if (mdiMode != MdiMode.Tabbed)
                 base.OnApplySmartPartInfo(smartPart, smartPartInfo);
+            if (smartPart.Parent != null)
+                DoMergeRibbon(smartPart.Parent);
         }
 
         /// <summary>
@@ -138,14 +142,6 @@ namespace CABDevExpress.Workspaces
         void tabbedMdiManager_PageAdded(object sender, MdiTabPageEventArgs e)
         {
             e.Page.Image = e.Page.MdiChild.Icon.ToBitmap();
-            //TODO:2016.10.14
-            e.Page.MdiChild.Activated -= MdiChild_Activated;
-            e.Page.MdiChild.Deactivate -= MdiChild_Deactivate;
-            //e.Page.MdiChild.SizeChanged -= MdiChild_SizeChanged;
-            e.Page.MdiChild.Activated += MdiChild_Activated;
-            e.Page.MdiChild.Deactivate += MdiChild_Deactivate;
-            //e.Page.MdiChild.SizeChanged += MdiChild_SizeChanged;
-            //TODO:2016.10.14
         }
 
         private void MdiChild_Deactivate(object sender, EventArgs e)
@@ -158,40 +154,32 @@ namespace CABDevExpress.Workspaces
             DoMergeRibbon(sender);
         }
 
-        //private void MdiChild_SizeChanged(object sender, EventArgs e)
-        //{
-        //    DoMergeRibbon(sender);
-        //}
-
-        //TODO:2016.10.14
         private void MdiChild_Activated(object sender, EventArgs e)
         {
-            DoMergeRibbon(sender);
             (sender as Form).Resize -= MdiChild_Resize;
             (sender as Form).Resize += MdiChild_Resize;
+            DoMergeRibbon(sender);
         }
 
-
-        //TODO:2016.10.14
-
-        //TODO:2016.10.14
         private void DoMergeRibbon(object sender)
         {
             (sender as Form).BeginInvoke(new Action(() =>
             {
-                RibbonControl childRibbon = FindRibbon(sender);
-                if (this.parentMdiForm is RibbonForm && childRibbon != null)
+                if (this.parentMdiForm is RibbonForm)
                 {
-                    if (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.Always
-                        || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
-                        || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form).WindowState == FormWindowState.Maximized))
-                        (this.parentMdiForm as RibbonForm).Ribbon.MergeRibbon(childRibbon);
+                    (this.parentMdiForm as RibbonForm).Ribbon.UnMergeRibbon();
+                    RibbonControl childRibbon = FindRibbon(sender);
+                    if (this.parentMdiForm is RibbonForm && childRibbon != null)
+                    {
+                        if (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.Always
+                            || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
+                            || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form).WindowState == FormWindowState.Maximized))
+                            (this.parentMdiForm as RibbonForm).Ribbon.MergeRibbon(childRibbon);
+                    }
                 }
             }));
         }
-        //TODO:2016.10.14
 
-        //TODO:2016.10.14
         static RibbonControl FindRibbon(object sender)
         {
             Control ctrlMaster = sender as Control;
@@ -211,7 +199,6 @@ namespace CABDevExpress.Workspaces
             }
             return null;
         }
-        //TODO:2016.10.14
 
         /// <summary>
         /// 
@@ -242,7 +229,5 @@ namespace CABDevExpress.Workspaces
             TabbedMdiManager.MdiParent = null;
             parentMdiForm.LayoutMdi(layout);
         }
-
-
     }
 }

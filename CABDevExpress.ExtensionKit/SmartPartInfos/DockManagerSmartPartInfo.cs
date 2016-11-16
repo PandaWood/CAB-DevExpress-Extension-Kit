@@ -9,25 +9,25 @@ using Microsoft.Practices.CompositeUI.SmartParts;
 
 namespace CABDevExpress.SmartPartInfos
 {
-	/// <summary>
-	/// Provides information to show smartparts in the <see cref="DockManagerWorkspace"/>
-	/// </summary>
+    /// <summary>
+    /// Provides information to show smartparts in the <see cref="DockManagerWorkspace"/>
+    /// </summary>
     public class DockManagerSmartPartInfo : SmartPartInfo
     {
-		///<summary>
-		/// Gets or sets a value specifying how the dock panel is aligned within its
-		///  parent control
-		///</summary>
-		[Category("Appearance")]
-		public DockingStyle Dock { get; set; }
+        ///<summary>
+        /// Gets or sets a value specifying how the dock panel is aligned within its
+        ///  parent control
+        ///</summary>
+        [Category("Appearance")]
+        public DockingStyle Dock { get; set; }
 
-		///<summary>
-		/// Gets or sets the floating panel's location
-		///</summary>
-		[Category("Appearance")]
-		public Point FloatLocation { get; set; }
+        ///<summary>
+        /// Gets or sets the floating panel's location
+        ///</summary>
+        [Category("Appearance")]
+        public Point FloatLocation { get; set; }
 
-		private Size floatSize = new Size(200, 200);
+        private Size floatSize = new Size(200, 200);
 
         ///<summary>
 		/// Gets or sets the size of the panel when it is floating
@@ -39,15 +39,15 @@ namespace CABDevExpress.SmartPartInfos
             set { floatSize = value; }
         }
 
-		///<summary>
-		/// Gets or sets whether the current panel's children should be arranged vertically
-		///     or horizontally when the panel is floated
-		///</summary>
-		[Category("Appearance")]
-		[DefaultValue(false)]
-		public bool FloatVertical { get; set; }
+        ///<summary>
+        /// Gets or sets whether the current panel's children should be arranged vertically
+        ///     or horizontally when the panel is floated
+        ///</summary>
+        [Category("Appearance")]
+        [DefaultValue(false)]
+        public bool FloatVertical { get; set; }
 
-		private string hint = "";
+        private string hint = "";
 
         ///<summary>
 		/// Gets or sets the dock panel's hint text
@@ -61,21 +61,22 @@ namespace CABDevExpress.SmartPartInfos
             set { hint = value; }
         }
 
-		///<summary>
-		/// Gets or sets the dock panel's unique identifier
-		///</summary>
-		[Browsable(false)]
-		public Guid ID { get; set; }
+        ///<summary>
+        /// Gets or sets the dock panel's unique identifier
+        ///</summary>
+        [Browsable(false)]
+        public Guid ID { get; set; }
 
-		private int imageIndex = -1;
+        private int imageIndex = -1;
 
         ///<summary>
 		/// Gets or sets the index of an image associated with the dock panel
+		/// //TODO is it really necessary to hard-code the dll version?
         ///</summary>
         [DefaultValue(-1)]
         [Category("Appearance")]
         [ImageList("Images")]
-        [Editor("DevExpress.Utils.Design.ImageIndexesEditor, DevExpress.Utils.v8.1", typeof(UITypeEditor))]
+        [Editor("DevExpress.Utils.Design.ImageIndexesEditor, DevExpress.Utils.v16.1", typeof(UITypeEditor))]
         public int ImageIndex
         {
             get { return imageIndex; }
@@ -91,21 +92,21 @@ namespace CABDevExpress.SmartPartInfos
         [DefaultValue(-1)]
         [Category("Appearance")]
         [ImageList("Images")]
-        [Editor("DevExpress.Utils.Design.ImageIndexesEditor, DevExpress.Utils.v8.1", typeof(UITypeEditor))]
+        [Editor("DevExpress.Utils.Design.ImageIndexesEditor, DevExpress.Utils.v16.1", typeof(UITypeEditor))]
         public int Index
         {
             get { return index; }
             set { index = value; }
         }
 
-		///<summary>
-		/// Gets or sets the docking style applied to a panel before it's made to float
-		/// or is hidden
-		///</summary>
-		[Browsable(false)]
-		public DockingStyle SavedDock { get; set; }
+        ///<summary>
+        /// Gets or sets the docking style applied to a panel before it's made to float
+        /// or is hidden
+        ///</summary>
+        [Browsable(false)]
+        public DockingStyle SavedDock { get; set; }
 
-		private int savedIndex = -1;
+        private int savedIndex = -1;
 
         ///<summary>
 		/// Gets or sets the panel's index before it's made to float or is hidden
@@ -118,29 +119,29 @@ namespace CABDevExpress.SmartPartInfos
             set { savedIndex = value; }
         }
 
-		///<summary>
-		/// Gets or sets the panel's parent before it's made to float or is hidden.
-		///</summary>
-		[Browsable(false)]
-		[DefaultValue("")]
-		public DockPanel SavedParent { get; set; }
+        ///<summary>
+        /// Gets or sets the panel's parent before it's made to float or is hidden.
+        ///</summary>
+        [Browsable(false)]
+        [DefaultValue("")]
+        public DockPanel SavedParent { get; set; }
 
-		///<summary>
-		/// Gets or sets a value indicating whether the panel was a tab container, before
-		/// it was made to float or was hidden.
-		///</summary>
-		[Browsable(false)]
-		[DefaultValue(false)]
-		public bool SavedTabbed { get; set; }
+        ///<summary>
+        /// Gets or sets a value indicating whether the panel was a tab container, before
+        /// it was made to float or was hidden.
+        ///</summary>
+        [Browsable(false)]
+        [DefaultValue(false)]
+        public bool SavedTabbed { get; set; }
 
-		///<summary>
-		/// Gets or sets whether the current panel represents a tab container
-		///</summary>
-		[DefaultValue(false)]
-		[Category("Appearance")]
-		public bool Tabbed { get; set; }
+        ///<summary>
+        /// Gets or sets whether the current panel represents a tab container
+        ///</summary>
+        [DefaultValue(false)]
+        [Category("Appearance")]
+        public bool Tabbed { get; set; }
 
-		private TabsPosition tabsPosition = TabsPosition.Bottom;
+        private TabsPosition tabsPosition = TabsPosition.Bottom;
 
         ///<summary>
 		/// Gets or sets the position of tabs
@@ -152,15 +153,15 @@ namespace CABDevExpress.SmartPartInfos
             set { tabsPosition = value; }
         }
 
-		///<summary>
-		/// Specifies whether tab navigation buttons are displayed when tabs don't fit
-		/// into the tab container's width/height.
-		///</summary>
-		[Category("Appearance")]
-		[DefaultValue(false)]
-		public bool TabsScroll { get; set; }
+        ///<summary>
+        /// Specifies whether tab navigation buttons are displayed when tabs don't fit
+        /// into the tab container's width/height.
+        ///</summary>
+        [Category("Appearance")]
+        [DefaultValue(false)]
+        public bool TabsScroll { get; set; }
 
-		private string tabText = "";
+        private string tabText = "";
 
         ///<summary>
 		/// Gets or sets the panel's short caption
@@ -174,27 +175,27 @@ namespace CABDevExpress.SmartPartInfos
             set { tabText = value; }
         }
 
-		///<summary>
-		/// Gets or sets the panel's visible state
-		///</summary>
-		[Category("Appearance")]
-		public DockVisibility Visibility { get; set; }
+        ///<summary>
+        /// Gets or sets the panel's visible state
+        ///</summary>
+        [Category("Appearance")]
+        public DockVisibility Visibility { get; set; }
 
-		///<summary>
-		/// Gets or sets whether the dock panel is visible.
-		///</summary>
-		[DesignerSerializationVisibility(0)]
-		[Browsable(false)]
-		public bool Visible { get; set; }
+        ///<summary>
+        /// Gets or sets whether the dock panel is visible.
+        ///</summary>
+        [DesignerSerializationVisibility(0)]
+        [Browsable(false)]
+        public bool Visible { get; set; }
 
-		///<summary>
-		/// Gets or sets the dock panel's bounds.
-		///</summary>
-		[Browsable(false)]
-		[DesignerSerializationVisibility(0)]
-		public Rectangle XtraBounds { get; set; }
+        ///<summary>
+        /// Gets or sets the dock panel's bounds.
+        ///</summary>
+        [Browsable(false)]
+        [DesignerSerializationVisibility(0)]
+        public Rectangle XtraBounds { get; set; }
 
-		private string parentPanelName = string.Empty;
+        private string parentPanelName = string.Empty;
 
         ///<summary>
 		/// Gets or sets the Panel which the current panel will be docked in.
@@ -206,9 +207,9 @@ namespace CABDevExpress.SmartPartInfos
             set { parentPanelName = value; }
         }
 
-		///<summary>
-		/// Gets or sets the DockPanel's name.
-		///</summary>
-		public string Name { get; set; }
+        ///<summary>
+        /// Gets or sets the DockPanel's name.
+        ///</summary>
+        public string Name { get; set; }
     }
 }
