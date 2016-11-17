@@ -217,7 +217,7 @@ namespace CABDevExpress.Workspaces
                     WorkspaceCancelEventArgs cancelArgs = FireWindowFormClosing(Controls[0]);
                     e.Cancel = cancelArgs.Cancel;
 
-                    if (cancelArgs.Cancel == false)
+                    if (cancelArgs.Cancel == false && Controls.Count > 0)
                         Controls[0].Hide();
                 }
 
