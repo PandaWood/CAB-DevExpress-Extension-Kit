@@ -6,6 +6,7 @@ using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraBars.Docking;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.CompositeUI.Utility;
+using System.Reflection;
 
 namespace CABDevExpress.Workspaces
 {
@@ -209,12 +210,17 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnShow(Control smartPart, DockManagerSmartPartInfo smartPartInfo)
         {
+            dockManager.BeginUpdate();
+            MethodInfo mi = dockManager.GetType().GetMethod("SetRedraw", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (mi != null) mi.Invoke(dockManager, new object[] { dockManager.Form, false });
             DockPanel dockPanel = GetOrCreateDockPanel(smartPart, smartPartInfo);
             //TODO:2016.11.17 new features to be tested
             EvaluateOpenOnTab(dockPanel);
             //TODO:2016.11.17 new features to be tested
             smartPart.Show();
             ShowDockPanel(dockPanel, smartPartInfo);
+            if (mi != null) mi.Invoke(dockManager, new object[] { dockManager.Form, true });
+            dockManager.EndUpdate();
             smartPart.Disposed += ControlDisposed;
         }
 
