@@ -88,7 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AccordionControlElementCommandAdapter.cs" />
-    <Compile Include="RegisterUIElementAdapterFactories.cs" />
     <Compile Include="UIElementsDynamic\BarLinksCollectionDynamicUIAdapter.cs" />
     <Compile Include="UIElementsDynamic\DynamicCommandEventLink.cs" />
     <Compile Include="UIElementsDynamic\RibbonGalleryDynamicUIAdapter.cs" />
@@ -151,6 +150,8 @@
     </Compile>
     <Compile Include="Workspaces\XtraWindowWorkspace.cs" />
     <Compile Include="Workspaces\XtraWorkspaceComposer.cs" />
+    <Compile Include="XtraWPFFormApplication.cs" />
+    <Compile Include="XtraWPFFormApplicationBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
@@ -176,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

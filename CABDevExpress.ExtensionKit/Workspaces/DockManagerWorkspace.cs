@@ -54,10 +54,36 @@ namespace CABDevExpress.Workspaces
             {	
                 dockPanel = CreateDockPanel(control, smartPartInfo, dockPanel);
             }
+            dockPanel.ClosingPanel += DockPanel_ClosingPanel;
+            dockPanel.ClosedPanel += DockPanel_ClosedPanel;
             return dockPanel;
         }
 
-    	private DockPanel CreateDockPanel(Control control, DockManagerSmartPartInfo smartPartInfo, DockPanel dockPanel)
+        private void DockPanel_ClosedPanel(object sender, DockPanelEventArgs e)
+        {
+            if (sender != null && sender is DockPanel)
+                foreach (KeyValuePair<Control, DockPanel> kvp in DockPanels)
+                    if (kvp.Value == sender)
+                    {
+                        kvp.Key.Dispose();
+                        break;
+                    }
+        }
+
+        private void DockPanel_ClosingPanel(object sender, DockPanelCancelEventArgs e)
+        {
+            if (sender!=null && sender is DockPanel)
+                foreach(KeyValuePair<Control, DockPanel> kvp in DockPanels)
+                    if (kvp.Value == sender)
+                    {
+                        WorkspaceCancelEventArgs canc = RaiseSmartPartClosing(kvp.Key);
+                        e.Cancel = canc.Cancel;
+                        break;
+                    }
+            RaiseSmartPartClosing(e);
+        }
+
+        private DockPanel CreateDockPanel(Control control, DockManagerSmartPartInfo smartPartInfo, DockPanel dockPanel)
     	{
     		if (string.IsNullOrEmpty(smartPartInfo.ParentPanelName))
     		{
@@ -116,7 +142,8 @@ namespace CABDevExpress.Workspaces
             if (control != null && SmartParts.Contains(sender))
             {
                 CloseInternal(control);
-                dockPanelDictionary[control].Close();
+                if (dockPanelDictionary.ContainsKey(control))
+                    dockPanelDictionary[control].Close();
                 dockPanelDictionary.Remove(control);
             }
         }
@@ -132,8 +159,40 @@ namespace CABDevExpress.Workspaces
         protected override void OnActivate(Control smartPart)
         {
         	DockPanel dockPanel = dockPanelDictionary[smartPart];
-        	dockPanel.BringToFront();
+            dockPanel.BringToFront();
         	dockPanel.Show();
+        }
+
+        /// <summary>
+        /// If DockPanel already exist in the same position, doc new dockPanel on new tabbed panel
+        /// </summary>
+        //TODO:2016.11.17 new features to be tested
+        protected void EvaluateOpenOnTab(DockPanel dockPanel)
+        {
+            if (dockPanel.Dock != DockingStyle.Fill && dockPanel.Dock != DockingStyle.Float)
+            {
+                foreach (DockPanel currPanel in dockPanelDictionary.Values)
+                {
+                    DockPanel currTabbedToDocAsTab = GetTabbedPanel(currPanel, dockPanel);
+                    if (currTabbedToDocAsTab != null)
+                        currTabbedToDocAsTab.DockAsTab(dockPanel);
+                }
+            }
+        }
+        //TODO:2016.11.17 new features to be tested
+
+
+        /// <summary>
+        /// Get existing DockPanel to anchor new panel
+        /// </summary>
+        protected DockPanel GetTabbedPanel(DockPanel currPanel, DockPanel dockPanel)
+        {
+            DockPanel destPanel = null;
+            if (currPanel.ParentPanel != null && currPanel.ParentPanel.Tabbed)
+                destPanel = GetTabbedPanel(currPanel.ParentPanel, dockPanel);
+            else if (currPanel.Visible == true && currPanel.Dock == dockPanel.Dock && currPanel != dockPanel)
+                destPanel = currPanel;
+            return destPanel;
         }
 
         /// <summary>
@@ -151,8 +210,12 @@ namespace CABDevExpress.Workspaces
         protected override void OnShow(Control smartPart, DockManagerSmartPartInfo smartPartInfo)
         {
             DockPanel dockPanel = GetOrCreateDockPanel(smartPart, smartPartInfo);
+            //TODO:2016.11.17 new features to be tested
+            EvaluateOpenOnTab(dockPanel);
+            //TODO:2016.11.17 new features to be tested
             smartPart.Show();
             ShowDockPanel(dockPanel, smartPartInfo);
+            smartPart.Disposed += ControlDisposed;
         }
 
         /// <summary>
@@ -171,9 +234,10 @@ namespace CABDevExpress.Workspaces
             DockPanel dockPanel = dockPanelDictionary[smartPart];
             smartPart.Disposed -= ControlDisposed;
 
-			dockPanel.Controls.Remove(smartPart);	// Remove the smartPart from the DockPanel to avoid disposing it
+            dockPanel.Controls.Remove(smartPart);	// Remove the smartPart from the DockPanel to avoid disposing it
 			dockManager.RemovePanel(dockPanel);		// changed from dockPanel.Close() but not unit tested
-            dockPanelDictionary.Remove(smartPart);
+            if (dockPanelDictionary.ContainsKey(smartPart))
+                dockPanelDictionary.Remove(smartPart);
         }
     }
 }
