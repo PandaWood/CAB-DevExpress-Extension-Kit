@@ -135,6 +135,7 @@ namespace CABDevExpress.Workspaces
             dockPanel.TabText = info.TabText;
             dockPanel.Text = info.Title;
             dockPanel.Name = info.Name;
+            dockPanel.Visibility = info.Visibility;
         }
 
         private void ControlDisposed(object sender, EventArgs e)
