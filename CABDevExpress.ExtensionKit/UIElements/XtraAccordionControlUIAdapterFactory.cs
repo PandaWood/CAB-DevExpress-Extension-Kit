@@ -21,7 +21,8 @@ namespace CABDevExpress.UIElements
             if (uiElement is AccordionControl)
                 return new AccordionControlGroupCollectionUIAdapter(((AccordionControl)uiElement).Elements);
 
-            if (uiElement is AccordionControlElement && ((AccordionControlElement)uiElement).Style == ElementStyle.Group)
+            //if (uiElement is AccordionControlElement && ((AccordionControlElement)uiElement).Style == ElementStyle.Group)
+            if (uiElement is AccordionControlElement)
                 return new AccordionControlElementCollectionUIAdapter(((AccordionControlElement)uiElement).Elements);
 
             throw ExceptionFactory.CreateInvalidAdapterElementType(uiElement.GetType(), GetType());
