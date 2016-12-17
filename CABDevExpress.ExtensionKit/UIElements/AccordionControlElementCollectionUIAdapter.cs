@@ -51,9 +51,15 @@ namespace CABDevExpress.UIElements
         /// </summary>
         /// <param name="uiElement"></param>
         /// <returns></returns>
-        protected virtual int GetInsertingIndex(object uiElement)
+        protected virtual int GetInsertingIndex(AccordionControlElement uiElement)
         {
-            return itemCollection.Count;
+            //AccordionControlElement itemCollection[1];
+            int iIndex = 0;
+            for (iIndex = 0; iIndex < itemCollection.Count; iIndex++)
+                if (string.Compare(uiElement.Text,itemCollection[iIndex].Text)<0)
+                    break;
+            return iIndex;
+            //return itemCollection.Count;
         }
     }
 }
