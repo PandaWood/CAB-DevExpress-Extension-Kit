@@ -54,7 +54,7 @@ namespace BankShell
             //RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspaceNames.ShellContentWorkspace);
             RootWorkItem.Items.Add(Shell.NavBarWorkspace, WorkspaceNames.ShellNavBarWorkspace);
             RootWorkItem.Items.Add(Shell.DockManagerWorkspace, WorkspaceNames.DockManagerWorkspace);
-
+            RootWorkItem.Workspaces[WorkspaceNames.ShellContentWorkspace].SmartPartActivated += BankShellApplication_SmartPartActivated;
 #if UseRibbonForm
             RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.Ribbon, Shell.Ribbon);
             RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainMenu, Shell.homePage);
@@ -106,6 +106,11 @@ namespace BankShell
             RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new WindowMenu(Shell.mainMenuBar, ContentWorkspace,  RootWorkItem));
 #endif
             UIElementBuilder.LoadFromConfig(RootWorkItem);
+        }
+
+        private void BankShellApplication_SmartPartActivated(object sender, Microsoft.Practices.CompositeUI.SmartParts.WorkspaceEventArgs e)
+        {
+            Shell.DeckWorkspaceSendToBack();
         }
 
         #region HandleException

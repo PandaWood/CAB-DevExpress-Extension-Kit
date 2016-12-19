@@ -92,9 +92,24 @@ namespace BankShell
             get { return navBarWorkspace; }
         }
 
+        public void DeckWorkspaceSendToBack()
+        {
+            this.deckWorkspace1.SendToBack();
+        }
+
         public DockManagerWorkspace DockManagerWorkspace
         {
             get { return dockManagerWorkspace; }
+        }
+
+        private void dockManager_ActivePanelChanged(object sender, DevExpress.XtraBars.Docking.ActivePanelChangedEventArgs e)
+        {
+            DeckWorkspaceSendToBack();
+        }
+
+        private void dockManager_Collapsing(object sender, DevExpress.XtraBars.Docking.DockPanelEventArgs e)
+        {
+            DeckWorkspaceSendToBack();
         }
     }
 }
