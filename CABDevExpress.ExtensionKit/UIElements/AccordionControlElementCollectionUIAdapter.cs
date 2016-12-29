@@ -56,7 +56,7 @@ namespace CABDevExpress.UIElements
             //AccordionControlElement itemCollection[1];
             int iIndex = 0;
             for (iIndex = 0; iIndex < itemCollection.Count; iIndex++)
-                if (string.Compare(uiElement.Text,itemCollection[iIndex].Text)<0)
+                if (string.Compare(uiElement.Style.ToString() + uiElement.Text, itemCollection[iIndex].Style.ToString() + itemCollection[iIndex].Text)<0)
                     break;
             return iIndex;
             //return itemCollection.Count;
