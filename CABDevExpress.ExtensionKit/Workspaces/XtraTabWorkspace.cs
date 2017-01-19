@@ -92,8 +92,9 @@ namespace CABDevExpress.Workspaces
                 page.ImageIndex = smartPartInfo.ImageIndex;
                 page.PageEnabled = smartPartInfo.PageEnabled;
                 page.PageVisible = smartPartInfo.PageVisible;
+                page.ShowCloseButton = smartPartInfo.ShowCloseButton;
 
-				if (smartPartInfo.Text != null || smartPartInfo.Text != null)	// don't apply if not set
+                if (smartPartInfo.Text != null || smartPartInfo.Text != null)	// don't apply if not set
                     page.Text = smartPartInfo.Text ?? smartPartInfo.Title;
 
                 page.Tooltip = smartPartInfo.Tooltip;

@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using Microsoft.Practices.CompositeUI.WinForms;
+using DevExpress.Utils;
 
 namespace CABDevExpress.SmartPartInfos
 {
@@ -71,10 +72,26 @@ namespace CABDevExpress.SmartPartInfos
 			set { pageVisible = value; }
 		}
 
-		/// <summary>
-		/// Gets or sets the control's height and width.
-		/// </summary>
-		public Size Size { get; set; }
+
+        [DefaultValue(true)]
+        [Description("Gets or sets whether the ShowCloseButton is visible.")]
+        [Category("Behavior")]
+        private DefaultBoolean bShowCloseButton = DefaultBoolean.True;
+
+        /// <summary>
+        ///  Gets or sets whether the tab page is visible.
+        /// </summary>
+        public DefaultBoolean ShowCloseButton
+        {
+            get { return bShowCloseButton; }
+            set { bShowCloseButton = value; }
+        }
+
+
+        /// <summary>
+        /// Gets or sets the control's height and width.
+        /// </summary>
+        public Size Size { get; set; }
 
 		/// <summary>
 		/// Gets or sets the tab order of the control within its container.
