@@ -34,6 +34,18 @@ namespace CABDevExpress.Workspaces
         public XtraTabWorkspace()
         {
             composer = new WorkspaceComposer<Control, XtraTabSmartPartInfo>(this);
+            this.CloseButtonClick += XtraTabWorkspace_CloseButtonClick;
+        }
+
+        private void XtraTabWorkspace_CloseButtonClick(object sender, EventArgs e)
+        {
+            ClosePageButtonEventArgs arg = e as ClosePageButtonEventArgs;
+            if (pages.ContainsValue((XtraTabPage)arg.Page) == true)
+            {
+                Control control = GetControlFromPage((XtraTabPage)arg.Page);
+                if (control != null && composer.SmartParts.Contains(control) == true)
+                    Close(control);
+            }
         }
 
         /// <summary>
@@ -203,7 +215,10 @@ namespace CABDevExpress.Workspaces
             base.OnSelectedPageChanged(sender, e);
             if (callComposerActivateOnIndexChange && TabPages.Count != 0)
             {
-                // Locate the smart part corresponding to the page.
+                //sulla prima pagina del controllo disabilito la possibilità di chiusura del primo TAB aperto
+                if (TabPages.Count != 0 && TabPages[0] == SelectedTabPage)
+                    SelectedTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
+                    // Locate the smart part corresponding to the page.
                 foreach (KeyValuePair<Control, XtraTabPage> pair in pages)
                 {
                     if (pair.Value == SelectedTabPage)
@@ -321,6 +336,8 @@ namespace CABDevExpress.Workspaces
             pages.Remove(smartPart);
 
             smartPart.Disposed -= ControlDisposed;
+            if (!smartPart.IsDisposed)
+                smartPart.Dispose();
             //smartPart.Dispose();
         }
 
