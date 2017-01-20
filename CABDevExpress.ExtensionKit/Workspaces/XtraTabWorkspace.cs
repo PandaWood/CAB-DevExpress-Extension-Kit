@@ -217,7 +217,7 @@ namespace CABDevExpress.Workspaces
             if (callComposerActivateOnIndexChange && TabPages.Count != 0)
             {
                 //sulla prima pagina del controllo disabilito la possibilità di chiusura del primo TAB aperto
-                if (TabPages.Count != 0 && TabPages[0] == SelectedTabPage)
+                if (TabPages.Count == 1 && TabPages[0] == SelectedTabPage)
                     SelectedTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
                     // Locate the smart part corresponding to the page.
                 foreach (KeyValuePair<Control, XtraTabPage> pair in pages)
@@ -304,6 +304,8 @@ namespace CABDevExpress.Workspaces
                 callComposerActivateOnIndexChange = false;
                 SelectedTabPage = GetTabPageFromName(key);
                 SelectedTabPage.Show();
+                if (TabPages.Count == 1 && TabPages[0] == SelectedTabPage)
+                    SelectedTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
             }
             finally
             {
@@ -333,12 +335,15 @@ namespace CABDevExpress.Workspaces
         protected virtual void OnClose(Control smartPart)
         {
             PopulatePages();
-            TabPages.Remove(pages[smartPart]);
-            pages.Remove(smartPart);
+            if (pages.ContainsKey(smartPart) && TabPages.Contains(pages[smartPart]) ==true)
+            { 
+                TabPages.Remove(pages[smartPart]);
+                pages.Remove(smartPart);
 
-            smartPart.Disposed -= ControlDisposed;
-            if (!smartPart.IsDisposed)
-                smartPart.Dispose();
+                smartPart.Disposed -= ControlDisposed;
+                if (!smartPart.IsDisposed)
+                    smartPart.Dispose();
+            }
             //smartPart.Dispose();
         }
 
