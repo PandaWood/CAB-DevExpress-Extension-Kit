@@ -1,20 +1,30 @@
-CABDevExpress.ExtensionKit 4th Drop
+CAB DevExpress Extension Kit is a library that allows the use of DevExpress WinForm components
+within CAB (Composite UI Application Block).
 
-### Release Notes
+![](images/bankteller-skin.png)
 
-#### Things changed
-- I've gone back to calling release 'drops' because they are not as official as a 'version' as it's a
-source code framework and somtimes we're literally just dropping stuff in - and never delivering binaries.
+### CAB Information
+For more information on CAB see the the [SmartClient](http://www.codeplex.com/smartclient) project
+ and read [Rich Newman's Intro to CAB](http://richnewman.wordpress.com/intro-to-cab-toc/) for a
+ detailed and informative guide on each of CAB's components. Rich's articles would be essential
+  reading for those thinking about contributing to the CABDevExpress.ExtensionKit.
 
+_The BankTeller Sample Application (from the CAB distribution) modified to use DevExpress controls
+ and the CABDevExpress.ExtensionKit:_
+
+
+----------------------------------------------------
+
+#### Recent Changes
 - Removed IUIBarItemLinksAdapter (and implemented BarLinksOwnerCollectionUIAdapter : BarLinksCollectionUIAdapter
 removed IRibbonGroupUI (wasn't used)
 
 - Lots of small code clean-up in the Adapters (using Guard.ArgumentNotNull consistently; not checking for null if
 it's unnecessary, or doing if it is; wrong class name used in XML comments etc)
 
-* Removed the InternalCollection property for most UIElementAdapters (most of them weren't used, nor should be)
+- Removed the InternalCollection property for most UIElementAdapters (most of them weren't used, nor should be)
 
-* Fixed XtraNavBarWorkspace.Close() bug where NavBarGroups were not removed
+- Fixed XtraNavBarWorkspace.Close() bug where NavBarGroups were not removed
 
 #### Things Added
 
