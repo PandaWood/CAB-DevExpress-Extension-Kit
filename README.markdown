@@ -35,9 +35,9 @@ it's unnecessary, or doing if it is; wrong class name used in XML comments etc)
 - RibbonGalleryUIAdapter and RibbonGalleryGroupUIAdapter (thanks to DevLynx)
 
 Tests have been written and included using XUnit (not very comprehensive as yet, but it's a start)
-see the XUnit CodePlex site at http://www.codeplex.com/xunit 
+see the XUnit CodePlex site at https://github.com/xunit/xunit
 
-Note: there is a "ReSharper" plugin for XUnit at http://www.codeplex.com/xunitext/Release/ProjectReleases.aspx
+Note: there is a "ReSharper" plugin for XUnit at https://github.com/xunit/resharper-xunit
 
 
 We appreciate any comments or contributions.
