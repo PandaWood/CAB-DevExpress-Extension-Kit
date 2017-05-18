@@ -2,11 +2,13 @@
 .gitignore
 .idea/
 
-/QuickStarts/BankTeller/BankShell/bin/Debug
-/QuickStarts/BankTeller/BankShell/obj/Debug
-/QuickStarts/BankTeller/BankTellerCommon/bin/Debug
-/QuickStarts/BankTeller/BankTellerCommon/obj/Debug
-/QuickStarts/BankTeller/BankTellerModule/bin/Debug
-/QuickStarts/BankTeller/BankTellerModule/obj/Debug
-/QuickStarts/BankTeller/BankTellerModuleExtension/obj/Debug
+/QuickStarts/BankTeller/BankShell/bin
+/QuickStarts/BankTeller/BankShell/obj
+/QuickStarts/BankTeller/BankTellerCommon/bin
+/QuickStarts/BankTeller/BankTellerCommon/obj
+/QuickStarts/BankTeller/BankTellerModule/bin
+/QuickStarts/BankTeller/BankTellerModule/obj
+/QuickStarts/BankTeller/BankTellerModuleExtension/obj
+/CABDevExpress.ExtensionKit/obj
+/CABDevExpress.ExtensionKit.Tests/obj
 /bin
