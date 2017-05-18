@@ -21,7 +21,7 @@ namespace CABDevExpress.Workspaces
     /// </remarks>
     /// </summary>
     [Description("XtraTabbedMdi Workspace")]
-    public class XtraTabbedMdiWorkspace : XtraWindowWorkspace
+    public class XtraTabbedMdiWorkspace : XtraWindowWorkspace, IDisposable
     {
         private readonly XtraTabbedMdiManager tabbedMdiManager;
         private MdiMode mdiMode = MdiMode.Tabbed;
@@ -93,6 +93,17 @@ namespace CABDevExpress.Workspaces
             tabbedMdiManager.PageAdded += new MdiTabPageEventHandler(tabbedMdiManager_PageAdded);
         }
 
+        protected override void OnClose(Control smartPart)
+        {
+            Form mdiChild = this.GetOrCreateForm(smartPart);
+            if (mdiChild != null)
+            {
+                mdiChild.Activated -= MdiChild_Activated;
+                mdiChild.MdiParent = null;
+            }
+            base.OnClose(smartPart);
+        }
+
         /// <summary>
         /// Shows the form as a child of the specified <see cref="ParentMdiForm"/>.
         /// </summary>
@@ -105,8 +116,8 @@ namespace CABDevExpress.Workspaces
             mdiChild.MdiParent = parentMdiForm;
             mdiChild.Activated -= MdiChild_Activated;
             mdiChild.Activated += MdiChild_Activated;
-            mdiChild.Deactivate -= MdiChild_Deactivate;
-            mdiChild.Deactivate += MdiChild_Deactivate;
+            //mdiChild.Deactivate -= MdiChild_Deactivate;
+            //mdiChild.Deactivate += MdiChild_Deactivate;
             mdiChild.Show();
             if (mdiMode != MdiMode.Tabbed)
                 SetWindowLocation(mdiChild, smartPartInfo);
@@ -144,20 +155,20 @@ namespace CABDevExpress.Workspaces
             e.Page.Image = e.Page.MdiChild.Icon.ToBitmap();
         }
 
-        private void MdiChild_Deactivate(object sender, EventArgs e)
-        {
-            (sender as Form).Resize -= MdiChild_Resize;
-        }
+        //private void MdiChild_Deactivate(object sender, EventArgs e)
+        //{
+        //    (sender as Form).Resize -= MdiChild_Resize;
+        //}
 
-        private void MdiChild_Resize(object sender, EventArgs e)
-        {
-            DoMergeRibbon(sender);
-        }
+        //private void MdiChild_Resize(object sender, EventArgs e)
+        //{
+        //    DoMergeRibbon(sender);
+        //}
 
         private void MdiChild_Activated(object sender, EventArgs e)
         {
-            (sender as Form).Resize -= MdiChild_Resize;
-            (sender as Form).Resize += MdiChild_Resize;
+            //(sender as Form).Resize -= MdiChild_Resize;
+            //(sender as Form).Resize += MdiChild_Resize;
             DoMergeRibbon(sender);
         }
 
@@ -229,5 +240,42 @@ namespace CABDevExpress.Workspaces
             TabbedMdiManager.MdiParent = null;
             parentMdiForm.LayoutMdi(layout);
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    tabbedMdiManager.SelectedPageChanged -= this.xtraTabbedMdiManager_SelectedPageChanged;
+                    tabbedMdiManager.PageAdded -= tabbedMdiManager_PageAdded;
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+            base.Dispose();
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~XtraTabbedMdiWorkspace() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

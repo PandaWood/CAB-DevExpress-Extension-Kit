@@ -88,7 +88,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CABXtraTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Commands\AccordionControlElementCommandAdapter.cs" />
+    <Compile Include="ControlExtension.cs" />
     <Compile Include="UIElementsDynamic\BarLinksCollectionDynamicUIAdapter.cs" />
     <Compile Include="UIElementsDynamic\DynamicCommandEventLink.cs" />
     <Compile Include="UIElementsDynamic\RibbonGalleryDynamicUIAdapter.cs" />

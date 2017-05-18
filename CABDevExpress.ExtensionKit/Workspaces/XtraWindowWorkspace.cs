@@ -13,7 +13,7 @@ namespace CABDevExpress.Workspaces
     /// Implements a Workspace that shows smartparts in windows.
     /// <remarks>Uses DevExpress XtraForm to enable form-skinning</remarks>
     /// </summary>
-    public class XtraWindowWorkspace : Workspace<Control, XtraWindowSmartPartInfo>
+    public class XtraWindowWorkspace : Workspace<Control, XtraWindowSmartPartInfo>, IDisposable
     {
         private readonly Dictionary<Control, XtraForm> windowDictionary = new Dictionary<Control, XtraForm>();
         private bool fireActivatedFromForm = true;
@@ -150,29 +150,29 @@ namespace CABDevExpress.Workspaces
             windowDictionary.Remove(spcontrol);
         }
 
-    	private void ShowForm(Form form, XtraWindowSmartPartInfo smartPartInfo)
-    	{
-    		SetWindowProperties(form, smartPartInfo);
+        private void ShowForm(Form form, XtraWindowSmartPartInfo smartPartInfo)
+        {
+            SetWindowProperties(form, smartPartInfo);
 
-    		if (smartPartInfo.Modal)
-    		{
-    			SetWindowLocation(form, smartPartInfo); // Argument can be null. It's the default for the other overload.
-    			form.ShowDialog(ownerForm);
-    		}
-    		else
-    		{
-    			if (ownerForm != null) // Call changes if no owner is specified.
-    			{
-    				form.Show(ownerForm);
-    			}
-    			else
-    			{
-    				form.Show();
-    			}
-    			SetWindowLocation(form, smartPartInfo);
-    			form.BringToFront();
-    		}
-    	}
+            if (smartPartInfo.Modal)
+            {
+                SetWindowLocation(form, smartPartInfo); // Argument can be null. It's the default for the other overload.
+                form.ShowDialog(ownerForm);
+            }
+            else
+            {
+                if (ownerForm != null) // Call changes if no owner is specified.
+                {
+                    form.Show(ownerForm);
+                }
+                else
+                {
+                    form.Show();
+                }
+                SetWindowLocation(form, smartPartInfo);
+                form.BringToFront();
+            }
+        }
 
         /// <summary>
         /// WindowForm class
@@ -281,10 +281,16 @@ namespace CABDevExpress.Workspaces
         {
             Form form = windowDictionary[smartPart];
             smartPart.Disposed -= ControlDisposed;
-
-            form.Controls.Remove(smartPart);	// Remove the smartPart from the form to avoid disposing it.
-
-            form.Close();
+            if (form != null)
+            {
+                ((XtraWindowForm)form).WindowFormClosing -= WindowFormClosing;
+                ((XtraWindowForm)form).WindowFormClosed -= WindowFormClosed;
+                ((XtraWindowForm)form).WindowFormActivated -= WindowFormActivated;
+                form.Controls.Remove(smartPart);	// Remove the smartPart from the form to avoid disposing it.
+                form.Close();
+                form.Dispose();
+            }
+            form = null;
             windowDictionary.Remove(smartPart);
         }
 
@@ -310,5 +316,54 @@ namespace CABDevExpress.Workspaces
             smartPart.Show();
             ShowForm(form, smartPartInfo);
         }
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (windowDictionary != null)
+                    {
+                        foreach (Control ctrl in windowDictionary.Values)
+                        {
+                            ctrl.Disposed -= ControlDisposed;
+                            XtraWindowForm form = (XtraWindowForm)windowDictionary[ctrl];
+                            if (form != null)
+                            {
+                                form.WindowFormClosing -= WindowFormClosing;
+                                form.WindowFormClosed -= WindowFormClosed;
+                                form.WindowFormActivated -= WindowFormActivated;
+                            }
+                        }
+                        windowDictionary.Clear();
+                    }
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~XtraWindowWorkspace() {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

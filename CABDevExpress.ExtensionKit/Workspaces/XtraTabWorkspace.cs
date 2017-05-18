@@ -34,10 +34,10 @@ namespace CABDevExpress.Workspaces
         public XtraTabWorkspace()
         {
             composer = new WorkspaceComposer<Control, XtraTabSmartPartInfo>(this);
-            this.CloseButtonClick += XtraTabWorkspace_CloseButtonClick;
+            //this.CloseButtonClick += XtraTabWorkspace_CloseButtonClick;
         }
 
-        private void XtraTabWorkspace_CloseButtonClick(object sender, EventArgs e)
+        protected override void OnCloseButtonClick(object sender, EventArgs e)
         {
             ClosePageButtonEventArgs arg = e as ClosePageButtonEventArgs;
             if (pages.ContainsValue((XtraTabPage)arg.Page) == true)
@@ -46,6 +46,7 @@ namespace CABDevExpress.Workspaces
                 if (control != null && composer.SmartParts.Contains(control) == true)
                     Close(control);
             }
+            base.OnCloseButtonClick(sender, e);
         }
 
         /// <summary>
@@ -98,14 +99,14 @@ namespace CABDevExpress.Workspaces
                     page.Text = smartPartInfo.Text ?? smartPartInfo.Title;
 
                 page.Tooltip = smartPartInfo.Tooltip;
-				
-				if (smartPartInfo.PageHeaderFont != null)
-				{
-					page.Appearance.Header.Font = smartPartInfo.PageHeaderFont;
-					page.Appearance.Header.Options.UseFont = true;
-				}
 
-				SelectedTabPage = currentSelection;		// preserve selection through the operation
+                if (smartPartInfo.PageHeaderFont != null)
+                {
+                    page.Appearance.Header.Font = smartPartInfo.PageHeaderFont;
+                    page.Appearance.Header.Options.UseFont = true;
+                }
+
+                SelectedTabPage = currentSelection;		// preserve selection through the operation
             }
             finally
             {
@@ -140,6 +141,7 @@ namespace CABDevExpress.Workspaces
             if (page == null)
             {
                 page = new XtraTabPage();
+                page.SetStyle(ControlStyles.CacheText, true);
                 // added the following line for issue #11167
                 page.ClientSize = this.ClientSize;
                 page.Controls.Add(smartPart);
@@ -170,7 +172,7 @@ namespace CABDevExpress.Workspaces
                         {
                             XtraTabSmartPartInfo tabinfo = new XtraTabSmartPartInfo();
                             tabinfo.ActivateTab = false;
-							populatingPages = true;		// Avoid circular calls to this method.
+                            populatingPages = true;		// Avoid circular calls to this method.
                             try
                             {
                                 Show(control, tabinfo);
@@ -187,6 +189,7 @@ namespace CABDevExpress.Workspaces
 
         private void ControlDisposed(object sender, EventArgs e)
         {
+            //this.CloseButtonClick -= XtraTabWorkspace_CloseButtonClick;
             Control control = sender as Control;
             if (control != null && pages.ContainsKey(control))
             {
@@ -219,7 +222,7 @@ namespace CABDevExpress.Workspaces
                 //sulla prima pagina del controllo disabilito la possibilità di chiusura del primo TAB aperto
                 if (TabPages.Count == 1 && TabPages[0] == SelectedTabPage)
                     SelectedTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-                    // Locate the smart part corresponding to the page.
+                // Locate the smart part corresponding to the page.
                 foreach (KeyValuePair<Control, XtraTabPage> pair in pages)
                 {
                     if (pair.Value == SelectedTabPage)
@@ -283,8 +286,8 @@ namespace CABDevExpress.Workspaces
         {
             foreach (XtraTabPage tabPage in TabPages)
             {
-            	if (tabPage.Name == name)
-            		return tabPage;
+                if (tabPage.Name == name)
+                    return tabPage;
             }
             return null;
         }
@@ -335,12 +338,17 @@ namespace CABDevExpress.Workspaces
         protected virtual void OnClose(Control smartPart)
         {
             PopulatePages();
-            if (pages.ContainsKey(smartPart) && TabPages.Contains(pages[smartPart]) ==true)
-            { 
-                TabPages.Remove(pages[smartPart]);
-                pages.Remove(smartPart);
-
+            if (smartPart != null)
+            {
                 smartPart.Disposed -= ControlDisposed;
+                if (pages.ContainsKey(smartPart))
+                {
+                    if (TabPages.Contains(pages[smartPart]) == true)
+                        TabPages.Remove(pages[smartPart]);
+                    if (pages[smartPart].Controls != null)
+                        pages[smartPart].Controls.Remove(smartPart);
+                    pages.Remove(smartPart);
+                }
                 if (!smartPart.IsDisposed)
                     smartPart.Dispose();
             }
@@ -378,7 +386,7 @@ namespace CABDevExpress.Workspaces
             {
                 Activate(smartPart);
             }
-
+            smartPart.Disposed -= ControlDisposed;
             smartPart.Disposed += ControlDisposed;
         }
 
@@ -561,5 +569,10 @@ namespace CABDevExpress.Workspaces
         /// See <see cref="IWorkspace.SmartPartActivated"/> for more information.
         /// </summary>
         public event EventHandler<WorkspaceEventArgs> SmartPartActivated;
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
 }

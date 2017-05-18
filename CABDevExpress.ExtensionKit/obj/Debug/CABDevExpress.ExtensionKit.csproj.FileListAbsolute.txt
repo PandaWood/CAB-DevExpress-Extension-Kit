@@ -1,0 +1,10 @@
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\bin\CABDevExpress.ExtensionKit.dll.config
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\bin\CABDevExpress.ExtensionKit.XML
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\bin\CABDevExpress.ExtensionKit.dll
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\bin\CABDevExpress.ExtensionKit.pdb
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\CABDevExpress.ExtensionKit\obj\Debug\CABDevExpress.ExtensionKit.csprojResolveAssemblyReference.cache
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\CABDevExpress.ExtensionKit\obj\Debug\CABDevExpress.Workspaces.XtraNavBarWorkspace.resources
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\CABDevExpress.ExtensionKit\obj\Debug\CABDevExpress.ExtensionKit.csproj.GenerateResource.Cache
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\CABDevExpress.ExtensionKit\obj\Debug\CABDevExpress.ExtensionKit.dll.licenses
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\CABDevExpress.ExtensionKit\obj\Debug\CABDevExpress.ExtensionKit.dll
+C:\Dati\GitHub\CAB-DevExpress-Extension-Kit\CABDevExpress.ExtensionKit\obj\Debug\CABDevExpress.ExtensionKit.pdb
