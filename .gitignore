@@ -1,6 +1,8 @@
-# Created by .ignore support plugin (hsz.mobi)
-.gitignore
 .idea/
+*.suo
+*.user
+.vs/
+*.userprefs
 
 /QuickStarts/BankTeller/BankShell/bin
 /QuickStarts/BankTeller/BankShell/obj
