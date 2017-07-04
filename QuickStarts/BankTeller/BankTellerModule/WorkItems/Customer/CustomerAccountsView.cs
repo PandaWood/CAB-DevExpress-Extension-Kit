@@ -94,5 +94,23 @@ namespace BankTellerModule.WorkItems.Customer
             if (ParentWorkItem != null)
                 ParentWorkItem.Commands[CommandNames.DxMenuSamplePopup].AddInvoker(popupMenuItem, "Click");
 		}
-	}
+
+        private void gridAccounts_DragDrop(object sender, DragEventArgs e)
+        {
+            MessageBox.Show("DEVEXPRESS-gridAccounts_DragDrop event!");
+        }
+
+        private void gridAccounts_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = System.Windows.Forms.DragDropEffects.Link;
+            if (e.Data.GetDataPresent("FileGroupDescriptor"))
+                e.Effect = System.Windows.Forms.DragDropEffects.Copy;
+        }
+
+        private void CustomerAccountsView_DragEnter(object sender, DragEventArgs e)
+        {
+            MessageBox.Show("DEVEXPRESS-CustomerAccountsView_DragEnter event!");
+        }
+    }
 }

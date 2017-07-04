@@ -81,7 +81,7 @@ namespace CABDevExpress.Workspaces
             // 
             // tabbedMdiManager
             // 
-            TabbedMdiManager.AllowDragDrop = DevExpress.Utils.DefaultBoolean.True;
+            TabbedMdiManager.AllowDragDrop = DevExpress.Utils.DefaultBoolean.False;
             TabbedMdiManager.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InActiveTabPageHeader;
             //tabbedMdiManager.Controller = this.barAndDockingController1;
             TabbedMdiManager.HeaderButtons = ((DevExpress.XtraTab.TabButtons)(((DevExpress.XtraTab.TabButtons.Next | DevExpress.XtraTab.TabButtons.Close)

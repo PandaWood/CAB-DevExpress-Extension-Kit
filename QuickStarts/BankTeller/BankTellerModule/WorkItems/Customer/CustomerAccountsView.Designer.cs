@@ -41,50 +41,53 @@ namespace BankTellerModule.WorkItems.Customer
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.CustomerAccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.gridAccounts = new DevExpress.XtraGrid.GridControl();
-			this.gridAccountsView = new DevExpress.XtraGrid.Views.Grid.GridView();
-			((System.ComponentModel.ISupportInitialize)(this.CustomerAccountBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gridAccounts)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gridAccountsView)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// CustomerAccountBindingSource
-			// 
-			this.CustomerAccountBindingSource.DataSource = typeof(CustomerAccount);
-			// 
-			// gridAccounts
-			// 
-			this.gridAccounts.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.gridAccounts.EmbeddedNavigator.Name = "";
-			this.gridAccounts.Location = new System.Drawing.Point(0, 0);
-			this.gridAccounts.MainView = this.gridAccountsView;
-			this.gridAccounts.Name = "gridAccounts";
-			this.gridAccounts.Size = new System.Drawing.Size(445, 271);
-			this.gridAccounts.TabIndex = 2;
-			this.gridAccounts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-			                                                                                        	this.gridAccountsView});
-			// 
-			// gridView1
-			// 
-			this.gridAccountsView.GridControl = this.gridAccounts;
-			this.gridAccountsView.Name = "gridView1";
-			this.gridAccountsView.OptionsBehavior.Editable = false;
-			this.gridAccountsView.OptionsSelection.EnableAppearanceFocusedCell = false;
-			// 
-			// CustomerAccountsView
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.gridAccounts);
-			this.Name = "CustomerAccountsView";
-			this.Size = new System.Drawing.Size(445, 271);
-			this.Load += new System.EventHandler(this.CustomerAccountsView_Load);
-			((System.ComponentModel.ISupportInitialize)(this.CustomerAccountBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gridAccounts)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gridAccountsView)).EndInit();
-			this.ResumeLayout(false);
+            this.components = new System.ComponentModel.Container();
+            this.CustomerAccountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridAccounts = new DevExpress.XtraGrid.GridControl();
+            this.gridAccountsView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomerAccountBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAccounts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAccountsView)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // CustomerAccountBindingSource
+            // 
+            this.CustomerAccountBindingSource.DataSource = typeof(BankTellerCommon.CustomerAccount);
+            // 
+            // gridAccounts
+            // 
+            this.gridAccounts.AllowDrop = true;
+            this.gridAccounts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridAccounts.Location = new System.Drawing.Point(0, 0);
+            this.gridAccounts.MainView = this.gridAccountsView;
+            this.gridAccounts.Name = "gridAccounts";
+            this.gridAccounts.Size = new System.Drawing.Size(445, 271);
+            this.gridAccounts.TabIndex = 2;
+            this.gridAccounts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridAccountsView});
+            this.gridAccounts.DragDrop += new System.Windows.Forms.DragEventHandler(this.gridAccounts_DragDrop);
+            this.gridAccounts.DragEnter += new System.Windows.Forms.DragEventHandler(this.gridAccounts_DragEnter);
+            // 
+            // gridAccountsView
+            // 
+            this.gridAccountsView.GridControl = this.gridAccounts;
+            this.gridAccountsView.Name = "gridAccountsView";
+            this.gridAccountsView.OptionsBehavior.Editable = false;
+            this.gridAccountsView.OptionsSelection.EnableAppearanceFocusedCell = false;
+            // 
+            // CustomerAccountsView
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gridAccounts);
+            this.Name = "CustomerAccountsView";
+            this.Size = new System.Drawing.Size(445, 271);
+            this.Load += new System.EventHandler(this.CustomerAccountsView_Load);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.CustomerAccountsView_DragEnter);
+            ((System.ComponentModel.ISupportInitialize)(this.CustomerAccountBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAccounts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridAccountsView)).EndInit();
+            this.ResumeLayout(false);
 
 		}
 
