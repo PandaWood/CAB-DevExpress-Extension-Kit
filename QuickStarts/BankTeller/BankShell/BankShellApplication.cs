@@ -10,10 +10,12 @@
 //===============================================================================
 
 using System;
+using BankShell.Properties;
 using BankTellerModule.Constants;
 using CABDevExpress;
 using CABDevExpress.UIElements;
 using CABDevExpress.Workspaces;
+using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.UserSkins;
 using DevExpress.XtraBars.Ribbon;
@@ -33,10 +35,18 @@ namespace BankShell
         public static void Main()
         {
             BonusSkins.Register();
-            OfficeSkins.Register();
             SkinManager.EnableFormSkins();
+            if (String.IsNullOrEmpty(Settings.Default.AppSkin))
+                UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
+            else
+                UserLookAndFeel.Default.SetSkinStyle(Settings.Default.AppSkin);
 
             new BankShellApplication().Run();
+            if (!String.IsNullOrEmpty(UserLookAndFeel.Default?.ActiveSkinName))
+            {
+                Settings.Default.AppSkin = UserLookAndFeel.Default.ActiveSkinName;
+                Settings.Default.Save();
+            }
         }
 
         // This method is called just after your shell has been created (the root work item
