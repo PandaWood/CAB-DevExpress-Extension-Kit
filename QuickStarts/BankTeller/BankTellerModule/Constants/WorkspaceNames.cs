@@ -5,5 +5,6 @@ namespace BankTellerModule.Constants
 		public const string ShellNavBarWorkspace = "ShellNavBarWorkspace";
 		public const string ShellContentWorkspace = "ShellContentWorkspace";
 		public const string DockManagerWorkspace = "DockManagerWorkspace";
-	}
+        public const string DeckWorkspace = "DeckWorkspace";
+    }
 }

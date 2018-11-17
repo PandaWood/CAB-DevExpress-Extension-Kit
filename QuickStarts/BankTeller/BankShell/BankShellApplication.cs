@@ -64,7 +64,9 @@ namespace BankShell
             //RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspaceNames.ShellContentWorkspace);
             RootWorkItem.Items.Add(Shell.NavBarWorkspace, WorkspaceNames.ShellNavBarWorkspace);
             RootWorkItem.Items.Add(Shell.DockManagerWorkspace, WorkspaceNames.DockManagerWorkspace);
+            RootWorkItem.Items.Add(Shell.DeckWorkspace, WorkspaceNames.DeckWorkspace);
             RootWorkItem.Workspaces[WorkspaceNames.ShellContentWorkspace].SmartPartActivated += BankShellApplication_SmartPartActivated;
+            RootWorkItem.Workspaces[WorkspaceNames.ShellContentWorkspace].SmartPartClosing += BankShellApplication_SmartPartClosing;
 #if UseRibbonForm
             RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.Ribbon, Shell.Ribbon);
             RootWorkItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.MainMenu, Shell.homePage);
@@ -116,6 +118,13 @@ namespace BankShell
             RootWorkItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add(new WindowMenu(Shell.mainMenuBar, ContentWorkspace,  RootWorkItem));
 #endif
             UIElementBuilder.LoadFromConfig(RootWorkItem);
+        }
+
+        private void BankShellApplication_SmartPartClosing(object sender, Microsoft.Practices.CompositeUI.SmartParts.WorkspaceCancelEventArgs e)
+        {
+            CABDevExpress.Workspaces.XtraTabbedMdiWorkspace wks = sender as CABDevExpress.Workspaces.XtraTabbedMdiWorkspace;
+            if (wks!=null && wks.SmartParts.Count==1)
+                Shell.DeckWorkspaceBringToFront();
         }
 
         private void BankShellApplication_SmartPartActivated(object sender, Microsoft.Practices.CompositeUI.SmartParts.WorkspaceEventArgs e)

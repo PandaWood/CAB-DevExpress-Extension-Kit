@@ -45,8 +45,12 @@ namespace BankTellerModule
             bankTellerWorkItem.Show(navbarWorkspace, contentWorkspace);
 
 			IWorkspace dockWorkspace = workItem.Workspaces[WorkspaceNames.DockManagerWorkspace];
-			bankTellerWorkItem.Show(dockWorkspace);
-		}
+            bankTellerWorkItem.Show(dockWorkspace);
+
+            BankTellerWorkItem bankTellerWorkItemBis = workItem.WorkItems.AddNew<BankTellerWorkItem>();
+            IWorkspace deckWorkspace1 = workItem.Workspaces[WorkspaceNames.DeckWorkspace];
+            bankTellerWorkItemBis.Show(deckWorkspace1);
+        }
 
 		private void AddCustomerMenuItem()
 		{

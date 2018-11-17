@@ -97,9 +97,18 @@ namespace BankShell
             this.deckWorkspace1.SendToBack();
         }
 
+        public void DeckWorkspaceBringToFront()
+        {
+            this.deckWorkspace1.BringToFront();
+        }
+
         public DockManagerWorkspace DockManagerWorkspace
         {
             get { return dockManagerWorkspace; }
+        }
+        public Microsoft.Practices.CompositeUI.WinForms.DeckWorkspace DeckWorkspace
+        {
+            get { return deckWorkspace1; }
         }
 
         private void dockManager_ActivePanelChanged(object sender, DevExpress.XtraBars.Docking.ActivePanelChangedEventArgs e)
