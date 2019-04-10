@@ -305,7 +305,11 @@ namespace CABDevExpress.Workspaces
             try
             {
                 callComposerActivateOnIndexChange = false;
-                SelectedTabPage = GetTabPageFromName(key);
+                XtraTabPage pg = GetTabPageFromName(key);
+                //Versione Originale rivista il 2019.04.10
+                pg.PageVisible = true;
+                SelectedTabPage = pg;
+                //Versione Originale rivista il 2019.04.10
                 SelectedTabPage.Show();
                 if (TabPages.Count == 1 && TabPages[0] == SelectedTabPage)
                     SelectedTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
@@ -360,11 +364,22 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected virtual void OnHide(Control smartPart)
         {
-            if (smartPart.Visible)
+            //Versione Originale rivista il 2019.04.10
+            //if (smartPart.Visible)
+            //{
+            //    PopulatePages();
+            //    string key = pages[smartPart].Name;
+            //    GetTabPageFromName(key).Hide();
+            //    ActivateSiblingTab();
+            //}
+            //Versione Originale rivista il 2019.04.10
+            PopulatePages();
+            string key = pages[smartPart].Name;
+            XtraTabPage page = GetTabPageFromName(key);
+            if (page?.PageVisible == true)
             {
-                PopulatePages();
-                string key = pages[smartPart].Name;
-                GetTabPageFromName(key).Hide();
+                page.Hide();
+                page.PageVisible = false;
                 ActivateSiblingTab();
             }
         }
