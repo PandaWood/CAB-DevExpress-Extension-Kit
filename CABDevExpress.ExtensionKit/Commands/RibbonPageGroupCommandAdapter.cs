@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraBars.Ribbon;
 using Microsoft.Practices.CompositeUI.Commands;
@@ -19,7 +20,21 @@ namespace CABDevExpress.Commands
         /// Initializes  a new <see cref="RibbonPageGroupCommandAdapter"/> with the 
         /// given <see cref="DXMenuItem"/>.
         /// </summary>
-        public RibbonPageGroupCommandAdapter(RibbonPageGroup item, string eventName): base(item, eventName)
-        { }
+        public RibbonPageGroupCommandAdapter(RibbonPageGroup item, string eventName): base(item, eventName){ }
+
+        /// <summary>
+        /// Handles the changes in the <see cref="Command"/> by refreshing 
+        /// the <see cref="RepositoryItem.Enabled"/> property.
+        /// </summary>
+        protected override void OnCommandChanged(Command command)
+        {
+            base.OnCommandChanged(command);
+
+            foreach (KeyValuePair<RibbonPageGroup, List<string>> pair in Invokers)
+            {
+                pair.Key.Enabled = (command.Status == CommandStatus.Enabled);
+                pair.Key.Visible = (command.Status != CommandStatus.Unavailable);
+            }
+        }
     }
 }
