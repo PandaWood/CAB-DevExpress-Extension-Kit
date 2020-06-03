@@ -106,6 +106,7 @@
     <Compile Include="UIElements\RibbonAppMenuBottomPaneSimpleButtonUIAdapter.cs" />
     <Compile Include="UIElements\RibbonGalleryGroupUIAdapter.cs" />
     <Compile Include="UIElements\RibbonGalleryUIAdapter.cs" />
+    <Compile Include="UIElements\RibbonPageCategoryCollectionUIAdapter.cs" />
     <Compile Include="UIElements\XtraAccordionControlUIAdapterFactory.cs" />
     <Compile Include="Workspaces\XtraTabbedMdiWorkspace.cs">
     </Compile>
