@@ -32,11 +32,17 @@ namespace CABDevExpress.UIElements
 			if (uiElement is RibbonPageCollection)
 				return new RibbonPageCollectionUIAdapter(((RibbonPageCollection)uiElement));
 
-			if (uiElement is BarItemWrapper)
-				return new BarLinksOwnerCollectionUIAdapter(((BarItemWrapper) uiElement).Item,
-				                                            ((BarItemWrapper) uiElement).ItemLinks);
+            if (uiElement is RibbonPageCategoryCollection)
+                return new RibbonPageCategoryCollectionUIAdapter((RibbonPageCategoryCollection)uiElement);
 
-			if (uiElement is RibbonQuickAccessToolbar)
+			if (uiElement is RibbonPageCategory)
+				return new RibbonPageCollectionUIAdapter(((RibbonPageCategory)uiElement).Pages);
+
+			if (uiElement is BarItemWrapper)
+                return new BarLinksOwnerCollectionUIAdapter(((BarItemWrapper)uiElement).Item,
+                                                            ((BarItemWrapper)uiElement).ItemLinks);
+
+            if (uiElement is RibbonQuickAccessToolbar)
 				return new RibbonQuickAccessToolbarUIAdapter((RibbonQuickAccessToolbar) uiElement);
 
 			if (uiElement is RibbonStatusBar)
@@ -63,7 +69,9 @@ namespace CABDevExpress.UIElements
 			       uiElement is RibbonPageCollection ||
 			       uiElement is BarItemWrapper ||
 			       uiElement is RibbonQuickAccessToolbar ||
-			       uiElement is RibbonStatusBar;
+			       uiElement is RibbonStatusBar ||
+                   uiElement is RibbonPageCategoryCollection ||
+				   uiElement is RibbonPageCategory;
 		}
 	}
 }
