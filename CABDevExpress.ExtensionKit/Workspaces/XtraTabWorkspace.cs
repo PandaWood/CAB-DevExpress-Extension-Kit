@@ -35,6 +35,8 @@ namespace CABDevExpress.Workspaces
         {
             composer = new WorkspaceComposer<Control, XtraTabSmartPartInfo>(this);
             //this.CloseButtonClick += XtraTabWorkspace_CloseButtonClick;
+            //2021.10.27 aggiunto per ottenere evidenza del TAB Attivo
+            this.AppearancePage.HeaderActive.Font = new System.Drawing.Font(System.Drawing.SystemFonts.DefaultFont.Name, (float)Decimal.Round((Decimal)System.Drawing.SystemFonts.DefaultFont.Size * (Decimal)1.21), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
         }
 
         protected override void OnCloseButtonClick(object sender, EventArgs e)
