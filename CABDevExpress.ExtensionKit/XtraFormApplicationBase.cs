@@ -2,6 +2,7 @@ using CABDevExpress.Commands;
 using CABDevExpress.UIElements;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI;
@@ -36,6 +37,7 @@ namespace CABDevExpress
             mapService.Register(typeof(NavBarItem), typeof(NavBarItemCommandAdapter));
             mapService.Register(typeof(DXMenuItem), typeof(DXMenuItemCommandAdapter));
             mapService.Register(typeof(RepositoryItemHyperLinkEdit), typeof(RepositoryItemHyperLinkEditCommandAdapter));
+            mapService.Register(typeof(RibbonPageGroup), typeof(RibbonPageGroupCommandAdapter));
         }
 
         private void RegisterUIElementAdapterFactories()
