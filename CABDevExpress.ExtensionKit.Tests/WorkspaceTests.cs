@@ -4,8 +4,7 @@ using CABDevExpress.SmartPartInfos;
 using CABDevExpress.Workspaces;
 using DevExpress.XtraBars.Docking;
 using DevExpress.XtraNavBar;
-using Xunit;
-using XunitExt;
+using NUnit.Framework;
 
 namespace CABDevExpress.ExtensionKit.Tests
 {
@@ -13,21 +12,31 @@ namespace CABDevExpress.ExtensionKit.Tests
 	/// These are pretty basic/fundamental tests at this stage (the project started with no tests)
 	/// Would like to grow this suite of tests to give us enough coverage to make changes with confidence
 	/// </summary>
+	[TestFixture]
 	public class WorkspaceTests
 	{
-		readonly TestableSmartPart _smartPart = new TestableSmartPart();
+		private static TestableSmartPart _smartPart = null;
+		[SetUp]
+		public void Setup()
+		{
+			_smartPart = new TestableSmartPart();
+		}
+		[TearDown]
+		public void TearDown()
+		{
+			_smartPart = null;
+		}
 
-		[Fact]
+		[Test]
 		public void CanShowAndClose_DockManagerWorkspace()
 		{
 			// the DockManager must be passed a ContainerControl or the Workspace won't handle it
 			// perhaps we should add something to the workspace to guard this....
 			var dockManagerWorkspace = new DockManagerWorkspace(new DockManager(new ContainerControl()));
 			dockManagerWorkspace.Show(_smartPart);
-
-			dockManagerWorkspace.DockPanels.Count.ShouldEqual(1);
+			Assert.AreEqual(1, dockManagerWorkspace.DockPanels.Count);
 			dockManagerWorkspace.Close(_smartPart);
-			dockManagerWorkspace.DockPanels.Count.ShouldEqual(0);
+			Assert.AreEqual(0, dockManagerWorkspace.DockPanels.Count);
 		}
 
 		
@@ -37,7 +46,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 		/// took a different course of action, hence wrote this test to confirm that this code-path works.
 		/// This test shouldn't be taken as a good reason for this condition to exist
 		/// </summary>
-		[Fact]
+		 [Test]
 		public void CanShow_DockManagerWorkspace_If_PanelName_Is_NotNull()
 		{
 			
@@ -51,16 +60,14 @@ namespace CABDevExpress.ExtensionKit.Tests
 			                    	};
 			dockManagerWorkspace.Show(_smartPart, smartPartInfo);
 
-			dockManagerWorkspace.DockPanels.Count.ShouldEqual(1);
-			dockManager.Panels[0].Name.ShouldEqual("Bob");
-			dockManager.Panels[0].Dock.ShouldEqual(DockingStyle.Bottom);
-
+			Assert.AreEqual(1, dockManagerWorkspace.DockPanels.Count);
+			Assert.AreEqual("Bob", dockManager.Panels[0].Name);
+			Assert.AreEqual(DockingStyle.Bottom, dockManager.Panels[0].Dock);
 			dockManagerWorkspace.Close(_smartPart);
-
-			dockManagerWorkspace.DockPanels.Count.ShouldEqual(0);
+			Assert.AreEqual(0, dockManagerWorkspace.DockPanels.Count);
 		}
 
-		[Fact]
+		 [Test]
 		public void CanShowAndClose_XtraTabWorkspace()
 		{
 			Font tahoma9ptFont = new Font("Tahoma", 9.75f);
@@ -68,41 +75,41 @@ namespace CABDevExpress.ExtensionKit.Tests
 			var xtraTabWorkspace = new XtraTabWorkspace();
 			xtraTabWorkspace.Show(_smartPart, smartPartInfo);
 
-			xtraTabWorkspace.TabPages.Count.ShouldEqual(1);
-			xtraTabWorkspace.SmartParts.Count.ShouldEqual(1);
-			xtraTabWorkspace.SelectedTabPage.Text.ShouldEqual("text");
-			xtraTabWorkspace.SelectedTabPage.Appearance.Header.Font.ShouldEqual(tahoma9ptFont);
+			Assert.AreEqual(1, xtraTabWorkspace.TabPages.Count);
+			Assert.AreEqual(1, xtraTabWorkspace.SmartParts.Count);
+			Assert.AreEqual("text", xtraTabWorkspace.SelectedTabPage.Text);
+			Assert.AreEqual(tahoma9ptFont, xtraTabWorkspace.SelectedTabPage.Appearance.Header.Font);
 
 			xtraTabWorkspace.Close(_smartPart);
-			xtraTabWorkspace.TabPages.Count.ShouldEqual(0);
-			xtraTabWorkspace.SmartParts.Count.ShouldEqual(0);
+			Assert.AreEqual(0, xtraTabWorkspace.TabPages.Count);
+			Assert.AreEqual(0, xtraTabWorkspace.SmartParts.Count);
 		}
 
-		[Fact]
+		 [Test]
 		public void CanShowAndCloseAndHide_XtraNavBarWorkspace()
 		{
 			var navbarWorkspace = new XtraNavBarWorkspace();
 			var smartPartInfo = new XtraNavBarGroupSmartPartInfo {Title = "Test Title"};
 
-			navbarWorkspace.Groups.Count.ShouldEqual(0);
+			Assert.AreEqual(0, navbarWorkspace.Groups.Count);
 
 			// show the workspace
 			navbarWorkspace.Show(_smartPart, smartPartInfo);
-			navbarWorkspace.Groups.Count.ShouldEqual(1);
-			navbarWorkspace.Groups[0].GroupStyle.ShouldEqual(NavBarGroupStyle.ControlContainer);
+			Assert.AreEqual(1, navbarWorkspace.Groups.Count);
+			Assert.AreEqual(NavBarGroupStyle.ControlContainer, navbarWorkspace.Groups[0].GroupStyle);
 
 			// hide and the group still exists, but not visible
 			navbarWorkspace.Hide(_smartPart);
 
-			navbarWorkspace.Groups.Count.ShouldEqual(1);
-			navbarWorkspace.Groups[0].Visible.ShouldBeFalse();
+			Assert.AreEqual(1, navbarWorkspace.Groups.Count);
+			Assert.IsFalse(navbarWorkspace.Groups[0].Visible);
 
 			// close removes
 			navbarWorkspace.Close(_smartPart);
-			navbarWorkspace.Groups.Count.ShouldEqual(0);
+			Assert.AreEqual(0, navbarWorkspace.Groups.Count);
 		}
 
-		[Fact]
+		 [Test]
 		public void CanMove_AndThen_Activate_Correct_SmartPart()
 		{
 			var tabWorkspace = new XtraTabWorkspace();
@@ -114,8 +121,8 @@ namespace CABDevExpress.ExtensionKit.Tests
 			tabWorkspace.Show(smartPart2);
 			tabWorkspace.Show(smartPart3);
 
-			tabWorkspace.TabPages.Count.ShouldEqual(3);
-			tabWorkspace.ActiveSmartPart.ShouldBeSameAs(smartPart3);
+			Assert.AreEqual(3, tabWorkspace.TabPages.Count);
+			Assert.AreSame(smartPart3, tabWorkspace.ActiveSmartPart);
 		}
 	}
 }

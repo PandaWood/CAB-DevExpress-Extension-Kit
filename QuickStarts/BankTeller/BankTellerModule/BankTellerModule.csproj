@@ -1,27 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}</ProjectGuid>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BankTellerModule</RootNamespace>
-    <AssemblyName>BankTellerModule</AssemblyName>
     <SccProjectName>%24/CABDevExpress/QuickStarts/BankTeller/BankTellerModule</SccProjectName>
     <SccLocalPath>.</SccLocalPath>
     <SccAuxPath>https://tfs.codeplex.com/tfs/tfs03</SccAuxPath>
     <SccProvider>{4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}</SccProvider>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -36,218 +21,35 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;UseRibbonForm</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
     <OutputPath>..\BankShell\bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v21.2.Export, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v21.2.Wizard, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v21.2.UI, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Practices.CompositeUI, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\CAB\Microsoft.Practices.CompositeUI.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.CompositeUI.WinForms, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\CAB\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\CAB\Microsoft.Practices.ObjectBuilder.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Constants\CommandNames.cs" />
-    <Compile Include="Constants\EventNames.cs" />
-    <Compile Include="Constants\ExtensionSiteNames.cs" />
-    <Compile Include="Constants\SmartPartNames.cs" />
-    <Compile Include="Constants\WorkItemStates.cs" />
-    <Compile Include="Constants\WorkspaceNames.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Services\CustomerQueueService.cs" />
-    <Compile Include="WorkItems\BankTeller\AboutBankTellerView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\AboutBankTellerView.Designer.cs">
-      <DependentUpon>AboutBankTellerView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\BankTellerWorkItem.cs" />
-    <Compile Include="WorkItems\BankTeller\CustomerView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\CustomerView.Designer.cs">
-      <DependentUpon>CustomerView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\StatisticsBarView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\StatisticsBarView.Designer.cs">
-      <DependentUpon>StatisticsBarView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerDetailController.cs" />
-    <Compile Include="Services\CustomerAccountService.cs" />
-    <Compile Include="WorkItems\Customer\CustomerAccountsView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerAccountsView.Designer.cs">
-      <DependentUpon>CustomerAccountsView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerCommentsView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerCommentsView.Designer.cs">
-      <DependentUpon>CustomerCommentsView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\CustomerQueueController.cs" />
-    <Compile Include="WorkItems\Customer\CustomerDetailView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerDetailView.Designer.cs">
-      <DependentUpon>CustomerDetailView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerSummaryController.cs" />
-    <Compile Include="WorkItems\Customer\CustomerWorkItem.cs" />
-    <Compile Include="WorkItems\Customer\CustomerHeaderView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerHeaderView.Designer.cs">
-      <DependentUpon>CustomerHeaderView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerSummaryView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\Customer\CustomerSummaryView.Designer.cs">
-      <DependentUpon>CustomerSummaryView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\CustomerQueueView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\CustomerQueueView.Designer.cs">
-      <DependentUpon>CustomerQueueView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BankTellerModuleInit.cs" />
-    <Compile Include="WorkItems\BankTeller\UserInfoView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WorkItems\BankTeller\UserInfoView.Designer.cs">
-      <DependentUpon>UserInfoView.cs</DependentUpon>
-    </Compile>
+    <Compile Update="WorkItems\BankTeller\AboutBankTellerView.cs" />
+    <Compile Update="WorkItems\BankTeller\CustomerView.cs" />
+    <Compile Update="WorkItems\BankTeller\StatisticsBarView.cs" />
+    <Compile Update="WorkItems\Customer\CustomerAccountsView.cs" />
+    <Compile Update="WorkItems\Customer\CustomerCommentsView.cs" />
+    <Compile Update="WorkItems\Customer\CustomerDetailView.cs" />
+    <Compile Update="WorkItems\Customer\CustomerHeaderView.cs" />
+    <Compile Update="WorkItems\Customer\CustomerSummaryView.cs" />
+    <Compile Update="WorkItems\BankTeller\CustomerQueueView.cs" />
+    <Compile Update="WorkItems\BankTeller\UserInfoView.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj">
-      <Project>{811DD8C8-6696-4566-A142-8ED28759D7A5}</Project>
-      <Name>CABDevExpress.ExtensionKit</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BankTellerCommon\BankTellerCommon.csproj">
-      <Project>{5461523C-4DCE-4672-BC72-7F0C99501F43}</Project>
-      <Name>BankTellerCommon</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\..\CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj" />
+    <ProjectReference Include="..\BankTellerCommon\BankTellerCommon.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <SubType>Designer</SubType>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\BankTeller\AboutBankTellerView.resx">
-      <DependentUpon>AboutBankTellerView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\BankTeller\CustomerView.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>CustomerView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\BankTeller\StatisticsBarView.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>StatisticsBarView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\Customer\CustomerAccountsView.resx">
-      <DependentUpon>CustomerAccountsView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\Customer\CustomerCommentsView.resx">
-      <DependentUpon>CustomerCommentsView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\Customer\CustomerHeaderView.resx">
-      <DependentUpon>CustomerHeaderView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\Customer\CustomerDetailView.resx">
-      <DependentUpon>CustomerDetailView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\Customer\CustomerSummaryView.resx">
-      <DependentUpon>CustomerSummaryView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\BankTeller\CustomerQueueView.resx">
-      <DependentUpon>CustomerQueueView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkItems\BankTeller\UserInfoView.resx">
-      <DependentUpon>UserInfoView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\statsSmall.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\statsLarge.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\customersLarge.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\DataSources\BankTellerCommon.Customer.datasource" />
-    <None Include="Properties\DataSources\BankTellerCommon.CustomerAccount.datasource" />
-    <None Include="Resources\customersSmall.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
@@ -272,22 +74,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\AcceptCustomer.ico" />
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="DevExpress.RichEdit.Export" Version="21.2.*-*" />
+    <PackageReference Include="DevExpress.Win.Design" Version="21.2.*-*" />
+    <PackageReference Include="Microsoft.Practices.CompositeUI" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Practices.CompositeUI.WinForms" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Practices.ObjectBuilder" Version="1.0.51206" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Edit.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AcceptCustomer16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AcceptCustomer32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Edit16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Edit32.png" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

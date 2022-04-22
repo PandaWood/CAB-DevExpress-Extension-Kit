@@ -5,43 +5,44 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid;
 using DevExpress.XtraNavBar;
 using Microsoft.Practices.CompositeUI.UIElements;
-using Xunit;
+using NUnit.Framework;
 
 namespace CABDevExpress.ExtensionKit.Tests
 {
+	[TestFixture]
 	public class UIElementAdapterTests
 	{
-		[Fact]
+		[Test]
 		public void XtraBarUIAdapterFactory_CanReturn_CorrectType_For_Bar()
 		{
 			Bar bar = new Bar {Manager = new BarManager()};
 
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(bar);
-			Assert.IsType(typeof(BarLinksCollectionUIAdapter), adapter);
+			Assert.IsInstanceOf(typeof(BarLinksCollectionUIAdapter), adapter);
 		}
 
-		[Fact]
+		[Test]
 		public void XtraBarUIAdapterFactory_CanReturn_CorrectType_For_BarManager()
 		{
 			var barManager = new BarManager();
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barManager);
 
-			Assert.IsType(typeof(BarsUIAdapter), adapter);
+			Assert.IsInstanceOf(typeof(BarsUIAdapter), adapter);
 		}
 
-		[Fact]
+		 [Test]
 		public void XtraNavBarUIAdapterFactory_CanReturn_CorrectType_For_NavBarControl()
 		{
 			var navBarControl = new NavBarControl();
 			IUIElementAdapter adapter = new XtraNavBarUIAdapterFactory().GetAdapter(navBarControl);
 
-			Assert.IsType(typeof(NavBarGroupCollectionUIAdapter), adapter);
+			Assert.IsInstanceOf(typeof(NavBarGroupCollectionUIAdapter), adapter);
 		}
 
 		/// <summary>
 		/// We're testing both add() and remove() within each test, it's not worth the effort to separate them
 		/// </summary>
-		[Fact]
+		 [Test]
 		public void CanAddAndRemove_From_NavBarGroupCollectionUIAdapter()
 		{
 			var navBarControl = new NavBarControl();
@@ -50,63 +51,63 @@ namespace CABDevExpress.ExtensionKit.Tests
 			//add
 			var navBarGroup = new NavBarGroup();
 			var addedGroup = adapter.Add(navBarGroup);
-			Assert.Equal(navBarGroup, addedGroup as NavBarGroup);
-			Assert.Equal(1, navBarControl.Groups.Count);
+			Assert.AreEqual(navBarGroup, addedGroup as NavBarGroup);
+			Assert.AreEqual(1, navBarControl.Groups.Count);
 
 			//remove
 			adapter.Remove(addedGroup);
-			Assert.Equal(0, navBarControl.Groups.Count);
+			Assert.AreEqual(0, navBarControl.Groups.Count);
 		}
 
-		[Fact]
+		 [Test]
 		public void CanAddAndRemove_From_BarsUIAdapter()
 		{
 			var barManager = new BarManager();
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barManager);
 
-			Assert.IsType(typeof(BarsUIAdapter), adapter);
+			Assert.IsInstanceOf(typeof(BarsUIAdapter), adapter);
 			
 			//add
 			Bar bar = new Bar(barManager);
 			var addedBar = adapter.Add(bar);
-			Assert.Equal(bar, addedBar as Bar);
-			Assert.Equal(1, barManager.Bars.Count);
+			Assert.AreEqual(bar, addedBar as Bar);
+			Assert.AreEqual(1, barManager.Bars.Count);
 
 			//remove
 			adapter.Remove(bar);
-			Assert.Equal(0, barManager.Bars.Count);
+			Assert.AreEqual(0, barManager.Bars.Count);
 
-			adapter.Remove(new Bar(barManager));	// ensure that attempting to remove a non-added object, does nothing
-			Assert.Equal(0, barManager.Bars.Count);
+			adapter.Remove(new Bar(barManager));    // ensure that attempting to remove a non-added object, does nothing
+			Assert.AreEqual(0, barManager.Bars.Count);
 		}
 
-		[Fact]
+		 [Test]
 		public void CanAddAndRemove_From_NavigatorCustomButtonUIAdapter()
 		{
 			var gridControl = new GridControl();
 			NavigatorCustomButtons buttons = gridControl.EmbeddedNavigator.Buttons.CustomButtons;
 			IUIElementAdapter adapter = new NavigatorCustomButtonUIAdapterFactory().GetAdapter(buttons);
-			Assert.IsType(typeof(NavigatorCustomButtonUIAdapter), adapter);
+			Assert.IsInstanceOf(typeof(NavigatorCustomButtonUIAdapter), adapter);
 
 			//add
 			var button = new NavigatorCustomButton(0);
 			var addedButton = adapter.Add(button);
-			Assert.Equal(button, addedButton as NavigatorCustomButton);
-			Assert.Equal(1, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count);
+			Assert.AreEqual(button, addedButton as NavigatorCustomButton);
+			Assert.AreEqual(1, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count);
 
 			//remove
 			adapter.Remove(button);
-			Assert.Equal(0, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count);
+			Assert.AreEqual(0, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count);
 		}
 
-		[Fact]
+		 [Test]
 		public void XtraNavBarUIAdapterFactory_Throws_Exception_WhenGiven_IncorrectType()
 		{
 			// use the wrong factory and expect an exception
 			Assert.Throws<ArgumentException>(() => new XtraNavBarUIAdapterFactory().GetAdapter(new NavigatorCustomButton(0)));
 		}
 
-		[Fact]
+		 [Test]
 		public void CanAddAndRemove_From_BarLinksOwnerCollectionUIAdapter()
 		{	
 			// Looking at the Adapter, the prerequisite setup is that the BarItem passed to the 
@@ -118,20 +119,20 @@ namespace CABDevExpress.ExtensionKit.Tests
 
 			var barItemWrapper = new BarItemWrapper(bar.ItemLinks, editItem);
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barItemWrapper);
-			Assert.IsType(typeof(BarLinksOwnerCollectionUIAdapter), adapter);
+			Assert.IsInstanceOf(typeof(BarLinksOwnerCollectionUIAdapter), adapter);
 
 			//add
 			BarItem buttonItem = new BarButtonItem(bar.Manager, "test2");
 			var objectAdded = adapter.Add(buttonItem);
-			Assert.Equal(buttonItem, objectAdded as BarButtonItem);
-			Assert.Equal(2, barItemWrapper.ItemLinks.Count);
+			Assert.AreEqual(buttonItem, objectAdded as BarButtonItem);
+			Assert.AreEqual(2, barItemWrapper.ItemLinks.Count);
 
 			//remove
 			adapter.Remove(buttonItem);
-			Assert.Equal(1, barItemWrapper.ItemLinks.Count);
+			Assert.AreEqual(1, barItemWrapper.ItemLinks.Count);
 
 			adapter.Remove(editItem);
-			Assert.Equal(0, barItemWrapper.ItemLinks.Count);
+			Assert.AreEqual(0, barItemWrapper.ItemLinks.Count);
 		}
 	}
 }
