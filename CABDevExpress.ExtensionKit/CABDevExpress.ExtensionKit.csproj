@@ -27,7 +27,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyVersion></AssemblyVersion>
-    <Version>21.2.7</Version>
+    <Version>21.2.8</Version>
   </PropertyGroup>
 	<PropertyGroup>
 		<NetFrameworks>|net461|net472|</NetFrameworks>
@@ -41,38 +41,38 @@
 	<!--https://supportcenter.devexpress.com/ticket/details/t849492/new-winforms-sdk-style-project-error-adding-dx-component per aggiunta HintPath reference manualmente-->
 	<ItemGroup Condition="$(NetFrameworks.contains('|$(TargetFramework)|'))">
 		<Reference Include="Accessibility" />
-		<Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.Pdf.v21.2.Core.dll</HintPath>
+		<Reference Include="DevExpress.Pdf.v21.2.Core, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.RichEdit.v21.2.Export, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.RichEdit.v21.2.Export.dll</HintPath>
+		<Reference Include="DevExpress.RichEdit.v21.2.Export, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.Office.v21.2.Core.dll</HintPath>
+		<Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.RichEdit.v21.2.Core.dll</HintPath>
+		<Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.Printing.v21.2.Core.dll</HintPath>
+		<Reference Include="DevExpress.Printing.v21.2.Core, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.Data.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.Data.v21.2.dll</HintPath>
+		<Reference Include="DevExpress.Data.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.Data.Desktop.v21.2.dll</HintPath>
+		<Reference Include="DevExpress.Data.Desktop.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.Utils.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.Utils.v21.2.dll</HintPath>
+		<Reference Include="DevExpress.Utils.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.XtraBars.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.XtraBars.v21.2.dll</HintPath>
+		<Reference Include="DevExpress.XtraBars.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.XtraEditors.v21.2.dll</HintPath>
+		<Reference Include="DevExpress.XtraEditors.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
-		<Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework\DevExpress.XtraNavBar.v21.2.dll</HintPath>
+		<Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+			
 		</Reference>
 		<Reference Include="System" />
 		<Reference Include="System.Data" />
@@ -119,7 +119,7 @@
 	  <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Condition="!$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win.Design" Version="21.2.7" />
+    <PackageReference Condition="!$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win.Design" Version="21.2.8" />
     <PackageReference Include="Microsoft.Practices.ObjectBuilder" Version="1.0.51206" />
   </ItemGroup>
 </Project>
