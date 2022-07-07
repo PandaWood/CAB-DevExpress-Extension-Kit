@@ -92,7 +92,7 @@ namespace CABDevExpress.Workspaces
             // tabbedMdiManager.PageRemoved += new DevExpress.XtraTabbedMdi.MdiTabPageEventHandler(this.xtraTabbedMdiManager_PageRemoved);
             tabbedMdiManager.PageAdded += new MdiTabPageEventHandler(tabbedMdiManager_PageAdded);
             //2021.10.27 aggiunto per ottenere evidenza del TAB Attivo
-            tabbedMdiManager.AppearancePage.HeaderActive.Font = new System.Drawing.Font(System.Drawing.SystemFonts.DefaultFont.Name, (float)Decimal.Round((Decimal)System.Drawing.SystemFonts.DefaultFont.Size * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            tabbedMdiManager.AppearancePage.HeaderActive.Font = new System.Drawing.Font(tabbedMdiManager.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)tabbedMdiManager.AppearancePage.HeaderActive.Font.Size * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
         }
 
         protected override void OnClose(Control smartPart)
