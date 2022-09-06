@@ -86,7 +86,8 @@ namespace CABDevExpress.UIElements
 		protected override void Remove(GalleryItemGroup uiElement)
 		{
 			Guard.ArgumentNotNull(uiElement, "GalleryItemGroup");
-			ribbonGallery.Gallery.Groups.Remove(uiElement);
+            if (ribbonGallery.Gallery.Groups.Contains(uiElement))
+                ribbonGallery.Gallery.Groups.Remove(uiElement);
 		}
 	}
 }
