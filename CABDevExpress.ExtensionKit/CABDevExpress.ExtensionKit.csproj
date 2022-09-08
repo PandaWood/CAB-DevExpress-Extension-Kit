@@ -41,42 +41,6 @@
 	<!--https://supportcenter.devexpress.com/ticket/details/t849492/new-winforms-sdk-style-project-error-adding-dx-component per aggiunta HintPath reference manualmente-->
 	<ItemGroup Condition="$(NetFrameworks.contains('|$(TargetFramework)|'))">
 		<Reference Include="Accessibility" />
-		<Reference Include="DevExpress.Pdf.v22.1.Core, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.Pdf.v22.1.Core.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.RichEdit.v22.1.Export, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.RichEdit.v22.1.Export.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Office.v22.1.Core, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.Office.v22.1.Core.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.RichEdit.v22.1.Core, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.RichEdit.v22.1.Core.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Printing.v22.1.Core, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.Printing.v22.1.Core.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Data.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.Data.v22.1.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Data.Desktop.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.Data.Desktop.v22.1.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Utils.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.Utils.v22.1.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.XtraBars.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.XtraBars.v22.1.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.XtraEditors.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.XtraEditors.v22.1.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.XtraNavBar.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.XtraNavBar.v22.1.dll</HintPath>
-		</Reference>
-		<Reference Include="DevExpress.Drawing.v22.1, Version=22.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-			<HintPath>C:\Program Files\DevExpress 22.1\Components\Bin\Framework\DevExpress.Drawing.v22.1.dll</HintPath>
-		</Reference>
 		<Reference Include="System" />
 		<Reference Include="System.Data" />
 		<Reference Include="System.Drawing" />
@@ -91,31 +55,13 @@
 		<Compile Update="Workspaces\XtraTabWorkspace.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 2.0 %28x86%29</ProductName>
-			<Install>true</Install>
-		</BootstrapperPackage>
-		<BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 3.0 %28x86%29</ProductName>
-			<Install>false</Install>
-		</BootstrapperPackage>
-		<BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 3.5</ProductName>
-			<Install>false</Install>
-		</BootstrapperPackage>
-		<BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-			<Visible>False</Visible>
-			<ProductName>.NET Framework 3.5 SP1</ProductName>
-			<Install>false</Install>
-		</BootstrapperPackage>
-	</ItemGroup>
-	<ItemGroup>
 		<EmbeddedResource Include="Properties\licenses.licx" />
 	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="DevExpress.Win.Grid" Version="22.1.4" />
+		<PackageReference Include="DevExpress.Win.Navigation" Version="22.1.4" />
+		<PackageReference Include="DevExpress.Win.Printing" Version="22.1.4" />
+		<PackageReference Include="DevExpress.Win.Reporting" Version="22.1.4" />
 		<PackageReference Include="Microsoft.Practices.CompositeUI" Version="3.0.0" />
 		<PackageReference Include="Microsoft.Practices.CompositeUI.WinForms" Version="3.0.0" />
 		<PackageReference Include="Microsoft.Practices.CompositeUI.WPF" Version="3.0.0" />
