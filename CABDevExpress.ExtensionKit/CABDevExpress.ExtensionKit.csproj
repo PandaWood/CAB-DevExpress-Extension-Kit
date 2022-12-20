@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-windows;net461;net472</TargetFrameworks>
+		<TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
 		<OutputType>Library</OutputType>
 		<RootNamespace>CABDevExpress</RootNamespace>
 		<SccProjectName>SAK</SccProjectName>
@@ -27,10 +27,10 @@
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyVersion></AssemblyVersion>
-		<Version>22.1.4.1</Version>
+		<Version>22.1.7</Version>
 	</PropertyGroup>
 	<PropertyGroup>
-		<NetFrameworks>|net461|net472|</NetFrameworks>
+		<NetFrameworks>|net48|</NetFrameworks>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<OutputPath>..\bin\</OutputPath>
@@ -58,17 +58,17 @@
 		<EmbeddedResource Include="Properties\licenses.licx" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="DevExpress.Win.Grid" Version="22.1.4" />
-		<PackageReference Include="DevExpress.Win.Navigation" Version="22.1.4" />
-		<PackageReference Include="DevExpress.Win.Printing" Version="22.1.4" />
-		<PackageReference Include="DevExpress.Win.Reporting" Version="22.1.4" />
+		<PackageReference Include="DevExpress.Win.Grid" Version="22.1.7" />
+		<PackageReference Include="DevExpress.Win.Navigation" Version="22.1.7" />
+		<PackageReference Include="DevExpress.Win.Printing" Version="22.1.7" />
+		<PackageReference Include="DevExpress.Win.Reporting" Version="22.1.7" />
 		<PackageReference Include="Microsoft.Practices.CompositeUI" Version="3.0.0" />
 		<PackageReference Include="Microsoft.Practices.CompositeUI.WinForms" Version="3.0.0" />
 		<PackageReference Include="Microsoft.Practices.CompositeUI.WPF" Version="3.0.0" />
 		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Condition="!$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win.Design" Version="22.1.4" />
+		<PackageReference Condition="!$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win.Design" Version="22.1.7" />
 		<PackageReference Include="Microsoft.Practices.ObjectBuilder" Version="1.0.51206" />
 	</ItemGroup>
 </Project>
