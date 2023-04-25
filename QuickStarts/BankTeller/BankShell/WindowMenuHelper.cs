@@ -15,18 +15,18 @@ namespace BankShell
 
         //private MdiMode mdiMode = MdiMode.Tabbed;
         //private XtraTabbedMdiManager mdiManager;
-        private XtraTabbedMdiWorkspace mdiWorkspace;
+        private XtraDocumentManagerWorkspace mdiWorkspace;
         //private Form shell;
 
         internal WindowMenuHelper() { }
 
-        internal WindowMenuHelper(XtraTabbedMdiWorkspace mdiManager)
+        internal WindowMenuHelper(XtraDocumentManagerWorkspace mdiManager)
         {
             mdiWorkspace = mdiManager;
             //Shell = shell;
         }
 
-        public XtraTabbedMdiWorkspace MdiWorkSpace
+        public XtraDocumentManagerWorkspace MdiWorkSpace
         {
             get { return mdiWorkspace; }
             set { mdiWorkspace = value; }

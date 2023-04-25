@@ -58,7 +58,7 @@ namespace BankShell
         {
             base.AfterShellCreated();
 
-            XtraTabbedMdiWorkspace ContentWorkspace = new XtraTabbedMdiWorkspace(Shell);
+            XtraDocumentManagerWorkspace ContentWorkspace = new XtraDocumentManagerWorkspace(Shell);
             RootWorkItem.Items.Add(ContentWorkspace, WorkspaceNames.ShellContentWorkspace);
          
             //RootWorkItem.Items.Add(new MdiWorkspace(Shell), WorkspaceNames.ShellContentWorkspace);
@@ -122,7 +122,7 @@ namespace BankShell
 
         private void BankShellApplication_SmartPartClosing(object sender, Microsoft.Practices.CompositeUI.SmartParts.WorkspaceCancelEventArgs e)
         {
-            CABDevExpress.Workspaces.XtraTabbedMdiWorkspace wks = sender as CABDevExpress.Workspaces.XtraTabbedMdiWorkspace;
+            CABDevExpress.Workspaces.XtraDocumentManagerWorkspace wks = sender as CABDevExpress.Workspaces.XtraDocumentManagerWorkspace;
             if (wks!=null && wks.SmartParts.Count==1)
                 Shell.DeckWorkspaceBringToFront();
         }

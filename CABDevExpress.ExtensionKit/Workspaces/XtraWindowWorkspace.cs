@@ -122,7 +122,7 @@ namespace CABDevExpress.Workspaces
 
         private void WindowFormActivated(object sender, WorkspaceEventArgs e)
         {
-            if (fireActivatedFromForm)
+            if (fireActivatedFromForm && SmartParts.Contains(e.SmartPart))
             {
                 RaiseSmartPartActivated(e.SmartPart);
                 SetActiveSmartPart(e.SmartPart);
@@ -144,9 +144,13 @@ namespace CABDevExpress.Workspaces
         {
             form.ClientSize = smartPart.Size;
         }
-
+        protected virtual void BeforeEntryRemove(XtraForm frm) { }
         private void RemoveEntry(Control spcontrol)
         {
+            XtraForm frm = null;
+            if (windowDictionary != null)
+                frm = windowDictionary[spcontrol];
+            BeforeEntryRemove(frm);
             windowDictionary.Remove(spcontrol);
         }
 

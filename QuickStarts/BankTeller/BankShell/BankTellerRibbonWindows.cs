@@ -14,7 +14,7 @@ namespace BankShell
     {
         private static WindowMenuHelper windowMenuHelper = new WindowMenuHelper();
 
-        internal static void Add(WorkItem workItem, XtraTabbedMdiWorkspace mdiManager)
+        internal static void Add(WorkItem workItem, XtraDocumentManagerWorkspace mdiManager)
         {
             RibbonPageGroup ribbonGroup = new RibbonPageGroup(ExtensionSiteNames.RibbonWindows);
             workItem.UIExtensionSites[ExtensionSiteNames.MainMenu].Add<RibbonPageGroup>(ribbonGroup);

@@ -12,12 +12,12 @@ namespace BankShell
     public class WindowMenu : BarSubItem
     {
     	private Bar bar;
-        private readonly XtraTabbedMdiWorkspace mdiManager;
+        private readonly XtraDocumentManagerWorkspace mdiManager;
         //private readonly Form shell;
         private WindowMenuHelper menuHelper;
         private WorkItem rootWorkItem;
 
-        public WindowMenu(Bar bar, XtraTabbedMdiWorkspace mdiManager, WorkItem rootWorkItem)
+        public WindowMenu(Bar bar, XtraDocumentManagerWorkspace mdiManager, WorkItem rootWorkItem)
         {
             this.bar = bar;
             this.mdiManager = mdiManager;
