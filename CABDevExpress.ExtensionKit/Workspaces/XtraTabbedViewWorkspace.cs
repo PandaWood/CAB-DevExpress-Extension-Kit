@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using CABDevExpress.DocumentHost;
 using System.Windows.Forms;
 //using System.Windows.Forms;
 using CABDevExpress.SmartPartInfos;
@@ -158,9 +157,6 @@ namespace CABDevExpress.Workspaces
                 composer.WorkItem = value;
                 if (this.Parent != null)
                 {
-                    MdiClient mdiClient = DevExpress.Utils.Mdi.MdiClientSubclasser.GetMdiClient(this.Parent as Form);
-                    if (mdiClient != null) 
-                        ToolTipController.DefaultController.AddClientControl(mdiClient, new TabbedViewToolTipClient(TabbedView));
                     if (TabbedView.Manager != null)
                     {
                         TabbedView.Manager.RibbonAndBarsMergeStyle = DevExpress.XtraBars.Docking2010.Views.RibbonAndBarsMergeStyle.Always;
@@ -210,7 +206,7 @@ namespace CABDevExpress.Workspaces
                 TabbedView.EndUpdate();
                 if (smartPartInfo.Text != null || smartPartInfo.Text != null)	// don't apply if not set
                     page.Caption = smartPartInfo.Text ?? smartPartInfo.Title;
-                page.AccessibleDescription = smartPartInfo.Tooltip;
+                ((DevExpress.XtraBars.Docking2010.Views.Tabbed.Document)page).Tooltip = smartPartInfo.Tooltip;
                 //TODO: Aggiunto il tool tip che non è nativo
                 //page.Tooltip = smartPartInfo.Tooltip;
                 //if (smartPartInfo.PageHeaderFont != null)
