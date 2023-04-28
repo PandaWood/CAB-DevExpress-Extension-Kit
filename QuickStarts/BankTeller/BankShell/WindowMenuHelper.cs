@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using CABDevExpress.Workspaces;
 using DevExpress.XtraTabbedMdi;
+using Microsoft.Practices.CompositeUI;
 
 namespace BankShell
 {
@@ -16,6 +17,7 @@ namespace BankShell
         //private MdiMode mdiMode = MdiMode.Tabbed;
         //private XtraTabbedMdiManager mdiManager;
         private XtraDocumentManagerWorkspace mdiWorkspace;
+        private bool bUseXtraTabbedView = true;
         //private Form shell;
 
         internal WindowMenuHelper() { }
@@ -31,6 +33,8 @@ namespace BankShell
             get { return mdiWorkspace; }
             set { mdiWorkspace = value; }
         }
+
+        public WorkItem WorkItem { get; internal set; }
 
         //public Form Shell
         //{
@@ -55,7 +59,11 @@ namespace BankShell
            // LayoutMdi(MdiLayout.Cascade);
             mdiWorkspace.LayoutMdi(MdiLayout.Cascade);
         }
-
+        public void UseXtraTabbedView(object sender, EventArgs e)
+        {
+            bUseXtraTabbedView = !bUseXtraTabbedView;
+            WorkItem.RootWorkItem.State["UseXtraTabbedView"] = bUseXtraTabbedView;
+        }
         public void MdiLayoutTileHorizontal(object sender, EventArgs e)
         {
             //LayoutMdi(MdiLayout.TileHorizontal);

@@ -106,7 +106,7 @@ namespace CABDevExpress.Workspaces
             Form mdiChild = this.GetOrCreateForm(smartPart);
             if (mdiChild != null)
             {
-                mdiChild.Activated -= MdiChild_Activated;
+                //mdiChild.Activated -= MdiChild_Activated;
                 mdiChild.MdiParent = null;
             }
             base.OnClose(smartPart);
@@ -135,6 +135,7 @@ namespace CABDevExpress.Workspaces
             _baseView.Controller.Activate(document);
             //mdiChild.BringToFront();
             //mdiChild.Show();
+            DoMergeRibbon(mdiChild);
             if (mdiMode != MdiMode.Tabbed)
                 SetWindowLocation(mdiChild, smartPartInfo);
         }
@@ -165,31 +166,24 @@ namespace CABDevExpress.Workspaces
         //    DoMergeRibbon(sender);
         //}
 
-        private void MdiChild_Activated(object sender, EventArgs e)
-        {
-            //(sender as Form).Resize -= MdiChild_Resize;
-            //(sender as Form).Resize += MdiChild_Resize;
-            DoMergeRibbon(sender);
-        }
-
         private void DoMergeRibbon(object sender)
         {
-
-            (sender as Form).BeginInvoke(new Action(() =>
-            {
-                if (this.parentMdiForm is RibbonForm)
+            if (sender != null)
+                (sender as Control)?.BeginInvoke(new Action(() =>
                 {
-                    (this.parentMdiForm as RibbonForm).Ribbon.UnMergeRibbon();
-                    RibbonControl childRibbon = FindRibbon(sender);
-                    if (this.parentMdiForm is RibbonForm && childRibbon != null)
+                    if (this.parentMdiForm is RibbonForm)
                     {
-                        if (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.Always
-                            || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
-                            || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form).WindowState == FormWindowState.Maximized))
-                            (this.parentMdiForm as RibbonForm).Ribbon.MergeRibbon(childRibbon);
+                        (this.parentMdiForm as RibbonForm).Ribbon.UnMergeRibbon();
+                        RibbonControl childRibbon = FindRibbon(sender);
+                        if (this.parentMdiForm is RibbonForm && childRibbon != null)
+                        {
+                            if (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.Always
+                                || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
+                                || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form).WindowState == FormWindowState.Maximized))
+                                (this.parentMdiForm as RibbonForm).Ribbon.MergeRibbon(childRibbon);
+                        }
                     }
-                }
-            }));
+                }));
         }
 
         static RibbonControl FindRibbon(object sender)

@@ -21,6 +21,7 @@ namespace BankShell
             workItem.UIExtensionSites.RegisterSite(ExtensionSiteNames.RibbonWindows, ribbonGroup);
 
             windowMenuHelper.MdiWorkSpace = mdiManager;
+            windowMenuHelper.WorkItem = workItem;
             //windowMenuHelper.Shell = shell;
 
             AddAllRibbonItems(workItem); 
@@ -34,6 +35,10 @@ namespace BankShell
 
             BarCheckItem bbiTabbed = AddCheckItem(workItem, "&Use Tabbed MDI", windowMenuHelper.MdiChangeMode);
             bbiTabbed.Checked = true;
+
+            workItem.RootWorkItem.State["UseXtraTabbedView"] = true;
+            BarCheckItem bbiXtraTabbedView = AddCheckItem(workItem, "&Use XtraTabbedView", windowMenuHelper.UseXtraTabbedView);
+            bbiXtraTabbedView.Checked = true;
 
             BarSubItem bsiWindows = new BarSubItem();
             bsiWindows.Caption = "&Windows";

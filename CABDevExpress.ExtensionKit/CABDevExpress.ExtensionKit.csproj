@@ -52,6 +52,7 @@
 		<Compile Update="CABXtraTabPage.cs" />
 		<Compile Update="UIElements\RibbonGroupUI.cs" />
 		<Compile Update="Workspaces\XtraNavBarWorkspace.cs" />
+		<Compile Update="Workspaces\XtraTabbedViewWorkspace.cs" />
 		<Compile Update="Workspaces\XtraTabWorkspace.cs" />
 	</ItemGroup>
 	<ItemGroup>

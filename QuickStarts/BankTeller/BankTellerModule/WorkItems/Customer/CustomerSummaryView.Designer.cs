@@ -69,7 +69,7 @@ namespace BankTellerModule.WorkItems.Customer
 			this.tabbedWorkspace1.SelectedTabPage = this.tabSummary;
 			this.tabbedWorkspace1.Size = new System.Drawing.Size(539, 320);
 			this.tabbedWorkspace1.TabIndex = 1;
-			this.tabbedWorkspace1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.tabbedWorkspace1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
 			                                                                             	this.tabSummary,
 			                                                                             	this.tabAccounts});
 			// 

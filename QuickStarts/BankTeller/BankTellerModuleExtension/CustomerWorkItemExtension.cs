@@ -19,7 +19,7 @@ namespace CustomerMapExtensionModule
 			           		Title = "Customer Map",
 			           		Description = "Map of the customer location"
 			           	};
-			WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE].Show(mapView, info);
+			WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE]?.Show(mapView, info);
 		}
 	}
 }

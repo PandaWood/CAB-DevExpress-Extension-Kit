@@ -11,6 +11,7 @@
 
 using System;
 using BankTellerModule.Constants;
+using CABDevExpress.Workspaces;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.WinForms;
@@ -39,9 +40,9 @@ namespace BankTellerModule.WorkItems.Customer
 		{
 			if (WorkItem.Status != WorkItemStatus.Active) return;
 
-			var tabWorkspace = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as TabWorkspace;
+			var tabWorkspace = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as XtraTabWorkspace;
 			if (tabWorkspace != null)
-				tabWorkspace.SelectedIndex = 0;
+				tabWorkspace.SelectedTabPageIndex = 0;
 		}
 		
 	}

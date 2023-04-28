@@ -30,9 +30,9 @@ namespace BankTellerModule.WorkItems.Customer
 		public static readonly string CUSTOMERDETAIL_TABWORKSPACE = "tabbedWorkspace1";
 
 		private BarItem editCustomerMenuItem1;
-		private CustomerSummaryView customerSummaryView;
-		private CustomerCommentsView commentsView;
-		private BarStaticItem addressLabel;
+		private object customerSummaryView;
+        private CustomerCommentsView commentsView;
+        private BarStaticItem addressLabel;
 
 		// This event is published to indicate that the module would like to
 		// "update status". The only subscriber to this event today is the shell
@@ -46,7 +46,13 @@ namespace BankTellerModule.WorkItems.Customer
 
 		public void Show(IWorkspace parentWorkspace)
 		{
-			customerSummaryView = customerSummaryView ?? Items.AddNew<CustomerSummaryView>();
+			bool bUseXtraTabbedView = false;
+			if (base.RootWorkItem.State["UseXtraTabbedView"] != null && ((bool)base.RootWorkItem.State["UseXtraTabbedView"]) == true)
+				bUseXtraTabbedView = true;
+            if (bUseXtraTabbedView == true)
+                customerSummaryView = customerSummaryView ?? Items.AddNew<TabbedViewCustomerSummaryView>();
+			else
+				customerSummaryView = customerSummaryView ?? Items.AddNew<CustomerSummaryView>();
 
 			AddMenuItems();
 
@@ -65,10 +71,13 @@ namespace BankTellerModule.WorkItems.Customer
 			Activate();
             parentWorkspace.SmartPartActivated += new EventHandler<WorkspaceEventArgs>(parentWorkspace_SmartPartActivated);
 
-			// When activating, force focus on the first tab in the view.
-			// Extensions may have added stuff at the end of the tab.
-			customerSummaryView.FocusFirstTab();
-		}
+            // When activating, force focus on the first tab in the view.
+            // Extensions may have added stuff at the end of the tab.
+            if(bUseXtraTabbedView == true)
+	            ((TabbedViewCustomerSummaryView)customerSummaryView).FocusFirstTab();
+			else
+                ((CustomerSummaryView)customerSummaryView).FocusFirstTab();
+        }
 
         void parentWorkspace_SmartPartActivated(object sender, WorkspaceEventArgs e)
         {
@@ -173,8 +182,15 @@ namespace BankTellerModule.WorkItems.Customer
 		{
 			if (Status != WorkItemStatus.Active) return;
 
-			Form form = customerSummaryView.ParentForm;
-			string tooltipText = "This is customer work item " + ID;
+            bool bUseXtraTabbedView = false;
+            if (base.RootWorkItem.State["UseXtraTabbedView"] != null && ((bool)base.RootWorkItem.State["UseXtraTabbedView"]) == true)
+                bUseXtraTabbedView = true;
+			Form form;
+            if (bUseXtraTabbedView)
+				form = ((TabbedViewCustomerSummaryView)customerSummaryView).ParentForm;
+			else
+                form = ((CustomerSummaryView)customerSummaryView).ParentForm;
+            string tooltipText = "This is customer work item " + ID;
 			var toolTip = new ToolTip {IsBalloon = true};
 			if (form != null) 
 				toolTip.Show(tooltipText, form, form.Size.Width - 30, 30, 3000);

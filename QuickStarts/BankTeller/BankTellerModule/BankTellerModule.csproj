@@ -26,7 +26,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DefineConstants>TRACE;DEBUG;UseRibbonForm</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UseRibbonForm;UseXtraTabbedViewWorkSpace</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>..\BankShell\bin\Release\</OutputPath>
@@ -39,6 +39,9 @@
     <Compile Update="WorkItems\Customer\CustomerCommentsView.cs" />
     <Compile Update="WorkItems\Customer\CustomerDetailView.cs" />
     <Compile Update="WorkItems\Customer\CustomerHeaderView.cs" />
+    <Compile Update="WorkItems\Customer\TabbedViewCustomerSummaryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="WorkItems\Customer\CustomerSummaryView.cs" />
     <Compile Update="WorkItems\BankTeller\CustomerQueueView.cs" />
     <Compile Update="WorkItems\BankTeller\UserInfoView.cs" />

@@ -51,8 +51,6 @@ namespace BankShell
             homePage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             mainStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             deckWorkspace1 = new Microsoft.Practices.CompositeUI.WinForms.DeckWorkspace();
-            ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)dockManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)navBarWorkspace).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ribbonControl1).BeginInit();
@@ -95,11 +93,11 @@ namespace BankShell
             // 
             ribbonControl1.ApplicationButtonDropDownControl = applicationMenu;
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barStaticItem1, ribbonControl1.SearchEditItem });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, barStaticItem1 });
             ribbonControl1.Location = new System.Drawing.Point(0, 0);
             ribbonControl1.MaxItemId = 1;
             ribbonControl1.Name = "ribbonControl1";
-            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homePage, ribbonPage1 });
+            ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homePage });
             ribbonControl1.Size = new System.Drawing.Size(861, 143);
             ribbonControl1.StatusBar = mainStatusBar;
             // 
@@ -130,17 +128,6 @@ namespace BankShell
             deckWorkspace1.Size = new System.Drawing.Size(660, 555);
             deckWorkspace1.TabIndex = 6;
             deckWorkspace1.Text = "deckWorkspace1";
-            // 
-            // ribbonPage1
-            // 
-            ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
-            ribbonPage1.Name = "ribbonPage1";
-            ribbonPage1.Text = "ribbonPage1";
-            // 
-            // ribbonPageGroup1
-            // 
-            ribbonPageGroup1.Name = "ribbonPageGroup1";
-            ribbonPageGroup1.Text = "ribbonPageGroup1";
             // 
             // BankShellRibbonForm
             // 
@@ -177,8 +164,6 @@ namespace BankShell
         internal DevExpress.XtraBars.Ribbon.RibbonPage homePage;
         internal DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu;
         private Microsoft.Practices.CompositeUI.WinForms.DeckWorkspace deckWorkspace1;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }
 }
 
