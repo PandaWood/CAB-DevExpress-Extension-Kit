@@ -21,6 +21,10 @@ using System.Windows.Automation;
 using System.Windows.Forms;
 using System.Linq;
 using System.Drawing;
+using System.IO;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Xml.Serialization;
 
 namespace BankTellerModule.WorkItems.Customer
 {
@@ -43,17 +47,47 @@ namespace BankTellerModule.WorkItems.Customer
 
         private void OnSave(object sender, EventArgs e)
         {
-            //controller.Save();
+            controller.Save();
             ;
-            if (bAccountShowed)
-                controller.WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE].Hide(account);
-            else
-                controller.WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE].Show(account);
-            bAccountShowed = !bAccountShowed;
+            //if (bAccountShowed)
+            //    controller.WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE].Hide(account);
+            //else
+            //    controller.WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE].Show(account);
+            //bAccountShowed = !bAccountShowed;
+
+            //CABDevExpress.Workspaces.XtraTabbedViewWorkspace tabWks = controller.WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as CABDevExpress.Workspaces.XtraTabbedViewWorkspace;
+            ////TODO: Eliminare
+            //String strLayout = null;
+            //MemoryStream stream = new MemoryStream();
+            //tabWks.SaveLayoutToStream(stream, false);
+            //stream.Seek(0, System.IO.SeekOrigin.Begin);
+            //using (StreamReader reader = new StreamReader(stream))
+            //{
+            //    strLayout = reader.ReadToEnd();
+            //    ;
+            //}
+            //FileInfo fi = new FileInfo(@"C:\Temp\SamplePersist.xml");
+            //if (fi.Directory != null && !fi.Directory.Exists)
+            //    fi.Directory.Create();
+            //System.IO.FileStream isoStream;
+            //using (isoStream = new System.IO.FileStream(fi.FullName, FileMode.Create, System.IO.FileAccess.Write))
+            //{
+            //    try
+            //    {
+            //        XmlSerializer ser = new XmlSerializer(typeof(String));
+            //        ser.Serialize(isoStream, strLayout);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        ;
+            //    }
+            //}
+
+            //TODO: Eliminare
         }
         CustomerDetailView detail = null;
         CustomerAccountsView account = null;
-        bool bAccountShowed = true;
+        //bool bAccountShowed = true;
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);

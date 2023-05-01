@@ -697,5 +697,13 @@ namespace CABDevExpress.Workspaces
             }
             TabbedView = null;
         }
+        public void SaveLayoutToStream(System.IO.Stream stream, bool binaryStream)
+        {
+            TabbedView?.SaveLayoutToStream(stream, binaryStream);
+        }
+        public void RestoreLayoutFromStream(System.IO.Stream stream, bool binaryStream) 
+        {
+            TabbedView?.RestoreLayoutFromStream(stream, binaryStream);
+        }
     }
 }
