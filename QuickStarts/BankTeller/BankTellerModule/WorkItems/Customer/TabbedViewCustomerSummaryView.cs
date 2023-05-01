@@ -61,7 +61,7 @@ namespace BankTellerModule.WorkItems.Customer
             {
                 //var detail = (Control)Activator.CreateInstance(typeof(CustomerDetailView));
                 detail = controller.WorkItem.Items.AddNew<CustomerDetailView>();
-                var smartPartInfo = new CABDevExpress.SmartPartInfos.XtraTabSmartPartInfo {  Title = "Summary", PageHeaderFont = new Font("Tahoma", 9.75f)};
+                var smartPartInfo = new CABDevExpress.SmartPartInfos.XtraTabSmartPartInfo { Title = "Summary", PageHeaderFont = new Font("Tahoma", 9.75f) };
                 tabbedWorkspace1.Show(detail, smartPartInfo);
             }
             if (tabbedWorkspace1.TabbedView.Documents.FirstOrDefault(f => String.Compare(f.Caption, "Accounts", true) == 0) == null)

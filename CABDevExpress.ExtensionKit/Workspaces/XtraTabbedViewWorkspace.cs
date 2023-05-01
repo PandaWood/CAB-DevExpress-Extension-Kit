@@ -34,13 +34,16 @@ namespace CABDevExpress.Workspaces
         private bool callComposerActivateOnIndexChange = true;
         private bool populatingPages;
         private bool _bIsTabClosable = true;
-
+        private System.ComponentModel.IContainer components;
+        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;
         /// <summary>
         /// Initializes a new <see cref="XtraTabbedViewWorkspace"/>
         /// </summary>
         public XtraTabbedViewWorkspace()
             : base()
         {
+            this.components = new System.ComponentModel.Container();
+            documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             TabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView();
             composer = new WorkspaceComposer<System.Windows.Forms.Control, XtraTabSmartPartInfo>(this);
             //TabbedView.DocumentProperties.AllowPin = true;
@@ -60,6 +63,9 @@ namespace CABDevExpress.Workspaces
             TabbedView.CustomDocumentsHostWindow += TabbedView_CustomDocumentsHostWindow;
             TabbedView.QueryControl -= TabbedView_QueryControl;
             TabbedView.QueryControl += TabbedView_QueryControl;
+            documentManager.ContainerControl = this;
+            documentManager.View = TabbedView;
+            documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { TabbedView });
         }
 
         private static void SetTabClosable(DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView TabbedView, bool bClosable)

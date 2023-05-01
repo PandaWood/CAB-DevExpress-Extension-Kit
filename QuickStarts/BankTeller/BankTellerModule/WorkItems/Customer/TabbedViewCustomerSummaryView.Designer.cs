@@ -48,10 +48,9 @@ namespace BankTellerModule.WorkItems.Customer
             customerAccountsView1 = new CustomerAccountsView();
             customerDetailView1 = new CustomerDetailView();
             tabbedWorkspace1 = new CABDevExpress.Workspaces.XtraTabbedViewWorkspace();
-            SaveButton = new DevExpress.XtraEditors.SimpleButton();
+            SaveButton = new SimpleButton();
             customerContextMenu = new System.Windows.Forms.ContextMenuStrip(components);
             infoProvider = new Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfoProvider();
-            documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             barManager1 = new DevExpress.XtraBars.BarManager(components);
             barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -61,7 +60,6 @@ namespace BankTellerModule.WorkItems.Customer
             tabAccounts = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(components);
             tabSummary = new DevExpress.XtraBars.Docking2010.Views.Tabbed.Document(components);
             customerHeaderView1 = new CustomerHeaderView();
-            ((System.ComponentModel.ISupportInitialize)documentManager1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)documentGroup1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tabAccounts).BeginInit();
@@ -89,7 +87,6 @@ namespace BankTellerModule.WorkItems.Customer
             tabbedWorkspace1.Location = new System.Drawing.Point(3, 84);
             tabbedWorkspace1.Name = "tabbedWorkspace1";
             tabbedWorkspace1.Size = new System.Drawing.Size(688, 293);
-            tabbedWorkspace1.IsTabClosable = false;
             tabbedWorkspace1.TabIndex = 7;
             // 
             // SaveButton
@@ -106,13 +103,6 @@ namespace BankTellerModule.WorkItems.Customer
             // 
             customerContextMenu.Name = "customerContextMenu";
             customerContextMenu.Size = new System.Drawing.Size(61, 4);
-            // 
-            // documentManager1
-            // 
-            documentManager1.ContainerControl = tabbedWorkspace1;
-            documentManager1.MenuManager = barManager1;
-            documentManager1.View = tabbedWorkspace1.TabbedView;
-            documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedWorkspace1.TabbedView });
             // 
             // barManager1
             // 
@@ -191,7 +181,6 @@ namespace BankTellerModule.WorkItems.Customer
             Name = "TabbedViewCustomerSummaryView";
             Size = new System.Drawing.Size(694, 411);
             Load += TabbedViewCustomerSummaryView_Load;
-            ((System.ComponentModel.ISupportInitialize)documentManager1).EndInit();
             ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
             ((System.ComponentModel.ISupportInitialize)documentGroup1).EndInit();
             ((System.ComponentModel.ISupportInitialize)tabAccounts).EndInit();
@@ -209,7 +198,6 @@ namespace BankTellerModule.WorkItems.Customer
         private DevExpress.XtraEditors.SimpleButton SaveButton;
         private System.Windows.Forms.ContextMenuStrip customerContextMenu;
         private Microsoft.Practices.CompositeUI.SmartParts.SmartPartInfoProvider infoProvider;
-        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
