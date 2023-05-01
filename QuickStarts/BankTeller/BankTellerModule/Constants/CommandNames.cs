@@ -6,7 +6,9 @@ namespace BankTellerModule.Constants
 		public const string HelpAbout = "HelpAboutCommand";		// string is repeated in config
 		public const string AcceptCustomer = "QueueAcceptCustomer";
 		public const string EditCustomer = "EditCustomer";
-		public const string DxMenuSamplePopup = "DxMenuSamplePopup";
+        public const string SaveLayout = "SaveLayout";
+        public const string RestoreLayout = "RestoreLayout";
+        public const string DxMenuSamplePopup = "DxMenuSamplePopup";
 
         // UseRibbonForm
         public const string RibbonCascadeWindows = "RibbonCascadeWindows";

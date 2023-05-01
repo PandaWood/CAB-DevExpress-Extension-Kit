@@ -30,7 +30,9 @@ namespace BankTellerModule.WorkItems.Customer
 		public static readonly string CUSTOMERDETAIL_TABWORKSPACE = "tabbedWorkspace1";
 
 		private BarItem editCustomerMenuItem1;
-		private object customerSummaryView;
+		private BarItem saveLayoutMenuItem;
+        private BarItem restoreLayoutMenuItem;
+        private object customerSummaryView;
         private CustomerCommentsView commentsView;
         private BarStaticItem addressLabel;
 
@@ -114,9 +116,43 @@ namespace BankTellerModule.WorkItems.Customer
 			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(editCustomerMenuItem1);
             UIExtensionSites[ExtensionSiteNames.ToolBar].Add(editCustomerMenuItem1);
 #endif
-		}
+            Commands[CommandNames.EditCustomer].AddInvoker(editCustomerMenuItem1, "ItemClick");
 
-		private void SetUIElementVisibility(bool visible)
+            const string saveLayoutCaption = "Save Layout";
+            saveLayoutMenuItem = new BarButtonItem
+            {
+                Caption = saveLayoutCaption,
+                Hint = saveLayoutCaption,
+                Glyph = Resources.Edit16,
+                LargeGlyph = Resources.Edit32
+            };
+#if UseRibbonForm
+            UIExtensionSites[ExtensionSiteNames.File].Add(saveLayoutMenuItem);
+#else
+			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(saveLayoutMenuItem);
+            UIExtensionSites[ExtensionSiteNames.ToolBar].Add(saveLayoutMenuItem);
+#endif
+            Commands[CommandNames.SaveLayout].AddInvoker(saveLayoutMenuItem, "ItemClick");
+
+            const string restoreLayoutCaption = "Restore Layout";
+            restoreLayoutMenuItem = new BarButtonItem
+            {
+                Caption = restoreLayoutCaption,
+                Hint = restoreLayoutCaption,
+                Glyph = Resources.Edit16,
+                LargeGlyph = Resources.Edit32
+            };
+#if UseRibbonForm
+            UIExtensionSites[ExtensionSiteNames.File].Add(restoreLayoutMenuItem);
+#else
+			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(restoreLayoutMenuItem);
+            UIExtensionSites[ExtensionSiteNames.ToolBar].Add(restoreLayoutMenuItem);
+#endif
+            Commands[CommandNames.RestoreLayout].AddInvoker(restoreLayoutMenuItem, "ItemClick");
+
+        }
+
+        private void SetUIElementVisibility(bool visible)
 		{
 			if (editCustomerMenuItem1 != null)
 				editCustomerMenuItem1.Visibility = visible ? BarItemVisibility.Always : BarItemVisibility.Never;

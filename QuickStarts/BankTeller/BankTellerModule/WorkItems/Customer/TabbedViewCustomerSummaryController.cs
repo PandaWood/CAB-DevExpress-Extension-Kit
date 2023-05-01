@@ -10,6 +10,7 @@
 //===============================================================================
 
 using System;
+using System.IO;
 using BankTellerModule.Constants;
 using CABDevExpress.Workspaces;
 using Microsoft.Practices.CompositeUI;
@@ -40,10 +41,39 @@ namespace BankTellerModule.WorkItems.Customer
 		{
 			if (WorkItem.Status != WorkItemStatus.Active) return;
 
-			var tabWorkspace = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as XtraTabWorkspace;
-			if (tabWorkspace != null)
-				tabWorkspace.SelectedTabPageIndex = 0;
+			var tabWorkspace = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as XtraTabbedViewWorkspace;
 		}
-		
-	}
+        String _streamString;
+        [CommandHandler(CommandNames.SaveLayout)]
+        public void OnSaveLayout(object sender, EventArgs args)
+        {
+            if (WorkItem.Status != WorkItemStatus.Active) return;
+
+            XtraTabbedViewWorkspace tabWorkspace = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as XtraTabbedViewWorkspace;
+            MemoryStream layoutStream = new MemoryStream();
+            tabWorkspace.SaveLayoutToStream(layoutStream, false);
+            layoutStream.Seek(0, System.IO.SeekOrigin.Begin);
+            using (StreamReader reader = new StreamReader(layoutStream, System.Text.Encoding.ASCII))
+            {
+                _streamString = reader.ReadToEnd();
+            }
+        }
+
+        [CommandHandler(CommandNames.RestoreLayout)]
+        public void OnRestoreLayout(object sender, EventArgs args)
+        {
+            if (WorkItem.Status != WorkItemStatus.Active) return;
+
+            XtraTabbedViewWorkspace tabWorkspace = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as XtraTabbedViewWorkspace;
+            if (tabWorkspace != null && String.IsNullOrEmpty(_streamString))
+            {
+                byte[] layoutData = System.Text.Encoding.ASCII.GetBytes(_streamString);
+                MemoryStream layoutStream = new System.IO.MemoryStream(layoutData);
+                layoutStream.Seek(0, SeekOrigin.Begin);
+                tabWorkspace.RestoreLayoutFromStream(layoutStream, false);
+            }
+        }
+        
+
+    }
 }
