@@ -246,5 +246,13 @@ namespace CABDevExpress.Workspaces
             if (dockPanelDictionary.ContainsKey(smartPart))
                 dockPanelDictionary.Remove(smartPart);
         }
+        public void SaveLayoutToStream(System.IO.Stream stream)
+        {
+            dockManager?.SaveLayoutToStream(stream);
+        }
+        public void RestoreLayoutFromStream(System.IO.Stream stream)
+        {
+            dockManager?.RestoreLayoutFromStream(stream);
+        }
     }
 }

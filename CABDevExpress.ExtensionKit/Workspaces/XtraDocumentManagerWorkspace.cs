@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CABDevExpress.SmartPartInfos;
+using DevExpress.XtraBars.Docking2010.Views.Tabbed;
 
 namespace CABDevExpress.Workspaces
 {
@@ -286,6 +287,14 @@ namespace CABDevExpress.Workspaces
                 _baseView.EndUpdate();
             }
 
+        }
+        public void SaveLayoutToStream(System.IO.Stream stream, bool binaryStream)
+        {
+            _baseView?.SaveLayoutToStream(stream, binaryStream);
+        }
+        public void RestoreLayoutFromStream(System.IO.Stream stream, bool binaryStream)
+        {
+            _baseView?.RestoreLayoutFromStream(stream, binaryStream);
         }
 
         #region IDisposable Support
