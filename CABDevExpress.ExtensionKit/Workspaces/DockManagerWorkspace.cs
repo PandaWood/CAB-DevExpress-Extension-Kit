@@ -31,6 +31,7 @@ namespace CABDevExpress.Workspaces
         /// <param name="dockManager">The DockManager that new DockPanels are added to</param>
         public DockManagerWorkspace(DockManager dockManager)
         {
+            Guard.ArgumentNotNull(dockManager.Form, "dockManager.Form");
             this.dockManager = dockManager;
         }
         public DockManagerWorkspace(DockManager dockManager, WorkItem workItem, String workSpaceName) 
