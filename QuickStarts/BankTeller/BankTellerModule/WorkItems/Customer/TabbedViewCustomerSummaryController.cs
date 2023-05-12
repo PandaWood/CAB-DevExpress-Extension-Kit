@@ -65,7 +65,7 @@ namespace BankTellerModule.WorkItems.Customer
             if (WorkItem.Status != WorkItemStatus.Active) return;
 
             XtraTabbedViewWorkspace tabWorkspace = WorkItem.Workspaces[CustomerWorkItem.CUSTOMERDETAIL_TABWORKSPACE] as XtraTabbedViewWorkspace;
-            if (tabWorkspace != null && String.IsNullOrEmpty(_streamString))
+            if (tabWorkspace != null && !String.IsNullOrEmpty(_streamString))
             {
                 byte[] layoutData = System.Text.Encoding.ASCII.GetBytes(_streamString);
                 MemoryStream layoutStream = new System.IO.MemoryStream(layoutData);

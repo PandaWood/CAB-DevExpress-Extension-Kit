@@ -213,5 +213,18 @@ namespace CABDevExpress.SmartPartInfos
         /// Gets or sets the DockPanel's name.
         ///</summary>
         public string Name { get; set; }
+        ///<summary>
+        /// Gets or sets the panel's visible state
+        ///</summary>
+        [Category("Appearance")]
+        public bool ShowCloseButton { get; set; } = true;
+        [Category("Appearance")]
+        public bool ShowAutoHideButton { get; set; } = true;
+
+        [Category("Appearance")]
+        public bool ShowMaximizeButton { get; set; } = true;
+
+        [Category("Appearance")]
+        public bool ShowMinimizeButton { get; set; } = true;
     }
 }

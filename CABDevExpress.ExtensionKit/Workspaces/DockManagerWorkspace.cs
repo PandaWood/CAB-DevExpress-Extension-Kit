@@ -7,13 +7,14 @@ using DevExpress.XtraBars.Docking;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.CompositeUI.Utility;
 using System.Reflection;
+using Microsoft.Practices.CompositeUI;
 
 namespace CABDevExpress.Workspaces
 {
     /// <summary>
     /// Implements a Workspace that shows smartparts in DockedWindows
     /// </summary>
-    public class DockManagerWorkspace : Workspace<Control, DockManagerSmartPartInfo>
+    public class DockManagerWorkspace : Workspace<Control, DockManagerSmartPartInfo>, IDisposable
     {
         private readonly Dictionary<Control, DockPanel> dockPanelDictionary = new Dictionary<Control, DockPanel>();
         private readonly DockManager dockManager;
@@ -22,7 +23,8 @@ namespace CABDevExpress.Workspaces
         /// Initializes the workspace with no DockManager windows.
         /// </summary>
         public DockManagerWorkspace() { }
-
+        private WorkItem WorkItem;
+        string WorkSpaceName;
         /// <summary>
         /// Initializes the workspace with the DockManager which all new DockPanels are added to. 
         /// </summary>
@@ -30,6 +32,25 @@ namespace CABDevExpress.Workspaces
         public DockManagerWorkspace(DockManager dockManager)
         {
             this.dockManager = dockManager;
+        }
+        public DockManagerWorkspace(DockManager dockManager, WorkItem workItem, String workSpaceName) 
+            : this(dockManager)
+        {
+            WorkItem = workItem;
+            WorkSpaceName = workSpaceName;
+            if (WorkItem.Workspaces[WorkSpaceName] != null)
+            {
+                IWorkspace dockWorkspace = WorkItem.Workspaces[WorkSpaceName];
+                WorkItem.Workspaces.Remove(dockWorkspace);
+                WorkItem.Items.Remove(this);
+            }
+            if (WorkItem.Workspaces[WorkSpaceName] == null)
+            {
+                WorkItem.Items.Add(this, WorkSpaceName);
+                IWorkspace dockWorkspace = WorkItem.Workspaces[WorkSpaceName];
+                WorkItem.Workspaces.Add(dockWorkspace);
+            }
+
         }
 
         /// <summary>
@@ -136,6 +157,10 @@ namespace CABDevExpress.Workspaces
             dockPanel.Text = info.Title;
             dockPanel.Name = info.Name;
             dockPanel.Visibility = info.Visibility;
+            dockPanel.Options.ShowCloseButton    = info.ShowCloseButton ;
+            dockPanel.Options.ShowAutoHideButton = info.ShowAutoHideButton;
+            dockPanel.Options.ShowMaximizeButton = info.ShowMaximizeButton;
+            dockPanel.Options.ShowMinimizeButton = info.ShowMinimizeButton;
         }
 
         private void ControlDisposed(object sender, EventArgs e)
@@ -253,6 +278,24 @@ namespace CABDevExpress.Workspaces
         public void RestoreLayoutFromStream(System.IO.Stream stream)
         {
             dockManager?.RestoreLayoutFromStream(stream);
+        }
+
+        public void Dispose()
+        {
+            try
+            {
+                if (WorkItem?.Workspaces[WorkSpaceName] != null)
+                {
+                    IWorkspace dockWorkspace = WorkItem.Workspaces[WorkSpaceName];
+                    WorkItem.Workspaces.Remove(dockWorkspace);
+                    WorkItem.Items.Remove(this);
+                }
+                WorkItem = null;
+            }
+            catch(Exception ex) 
+            {
+                throw;
+            }
         }
     }
 }
