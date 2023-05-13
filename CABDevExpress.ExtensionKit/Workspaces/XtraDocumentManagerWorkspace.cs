@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CABDevExpress.SmartPartInfos;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
+using DevExpress.XtraGrid.Views.Base;
+using DevExpress.XtraRichEdit.Model;
 
 namespace CABDevExpress.Workspaces
 {
@@ -25,10 +27,10 @@ namespace CABDevExpress.Workspaces
     [Description("XtraDocumentManager Workspace")]
     public class XtraDocumentManagerWorkspace : XtraWindowWorkspace, IDisposable
     {
-        private readonly DevExpress.XtraBars.Docking2010.DocumentManager _documentManager;
+        private DevExpress.XtraBars.Docking2010.DocumentManager _documentManager;
         private DevExpress.XtraBars.Docking2010.Views.BaseView _baseView;
         private MdiMode mdiMode = MdiMode.Tabbed;
-        private readonly Form parentMdiForm;
+        private Form _parentMdiForm;
 
         public enum MdiMode
         {
@@ -75,9 +77,9 @@ namespace CABDevExpress.Workspaces
             : base(parentForm)
         {
             _documentManager = pTabbedMdiManager;
-            parentMdiForm = parentForm;
-            _documentManager.MdiParent = parentMdiForm;
-            _documentManager.ContainerControl = parentMdiForm;
+            _parentMdiForm = parentForm;
+            _documentManager.MdiParent = _parentMdiForm;
+            _documentManager.ContainerControl = _parentMdiForm;
             Initialize(mdiMode);
         }
 
@@ -86,7 +88,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         public Form ParentMdiForm
         {
-            get { return parentMdiForm; }
+            get { return _parentMdiForm; }
         }
 
 
@@ -128,7 +130,7 @@ namespace CABDevExpress.Workspaces
             //mdiChild.Deactivate -= MdiChild_Deactivate;
             //mdiChild.Deactivate += MdiChild_Deactivate;
 
-            _documentManager.MdiParent = parentMdiForm;
+            _documentManager.MdiParent = _parentMdiForm;
             _baseView.BeginUpdate();
             BaseDocument document = _baseView.AddDocument(mdiChild);
             document.ImageOptions.Image = mdiChild.Icon.ToBitmap();
@@ -136,7 +138,11 @@ namespace CABDevExpress.Workspaces
             _baseView.Controller.Activate(document);
             //mdiChild.BringToFront();
             //mdiChild.Show();
-            DoMergeRibbon(mdiChild);
+            //RibonMergerManagerHelper.DoMergeRibbon(mdiChild, this._parentMdiForm, 
+            //    (x) =>  x.MdiMergeStyle == RibbonMdiMergeStyle.Always
+            //        || (x.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
+            //        || (x.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (mdiChild as Form)?.WindowState == FormWindowState.Maximized)
+            //    );
             if (mdiMode != MdiMode.Tabbed)
                 SetWindowLocation(mdiChild, smartPartInfo);
         }
@@ -145,8 +151,12 @@ namespace CABDevExpress.Workspaces
         {
             if (mdiMode != MdiMode.Tabbed)
                 base.OnApplySmartPartInfo(smartPart, smartPartInfo);
-            if (smartPart.Parent != null)
-                DoMergeRibbon(smartPart.Parent);
+            //if (smartPart.Parent != null)
+            //    RibonMergerManagerHelper.DoMergeRibbon(smartPart.Parent, this._parentMdiForm,
+            //    (x) => x.MdiMergeStyle == RibbonMdiMergeStyle.Always
+            //        || (x.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
+            //        || (x.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (smartPart.Parent as Form)?.WindowState == FormWindowState.Maximized)
+            //    );
         }
 
         /// <summary>
@@ -167,45 +177,45 @@ namespace CABDevExpress.Workspaces
         //    DoMergeRibbon(sender);
         //}
 
-        private void DoMergeRibbon(object sender)
-        {
-            if (sender != null)
-                (sender as Control)?.BeginInvoke(new Action(() =>
-                {
-                    if (this.parentMdiForm is RibbonForm)
-                    {
-                        (this.parentMdiForm as RibbonForm).Ribbon.UnMergeRibbon();
-                        RibbonControl childRibbon = FindRibbon(sender);
-                        if (this.parentMdiForm is RibbonForm && childRibbon != null)
-                        {
-                            if (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.Always
-                                || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
-                                || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form).WindowState == FormWindowState.Maximized))
-                                (this.parentMdiForm as RibbonForm).Ribbon.MergeRibbon(childRibbon);
-                        }
-                    }
-                }));
-        }
+        //private void DoMergeRibbon(object sender)
+        //{
+        //    if (sender != null)
+        //        (sender as Control)?.BeginInvoke(new Action(() =>
+        //        {
+        //            if (this.parentMdiForm is RibbonForm)
+        //            {
+        //                (this.parentMdiForm as RibbonForm).Ribbon.UnMergeRibbon();
+        //                RibbonControl childRibbon = FindRibbon(sender);
+        //                if (this.parentMdiForm is RibbonForm && childRibbon != null)
+        //                {
+        //                    if (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.Always
+        //                        || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
+        //                        || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form).WindowState == FormWindowState.Maximized))
+        //                        (this.parentMdiForm as RibbonForm).Ribbon.MergeRibbon(childRibbon);
+        //                }
+        //            }
+        //        }));
+        //}
 
-        static RibbonControl FindRibbon(object sender)
-        {
-            System.Windows.Forms.Control ctrlMaster = sender as System.Windows.Forms.Control;
-            if (ctrlMaster != null && ctrlMaster.Controls != null)
-            {
-                foreach (System.Windows.Forms.Control ctrl in ctrlMaster.Controls)
-                {
-                    if (ctrl is RibbonControl)
-                        return ctrl as RibbonControl;
-                    if (ctrl.Controls != null)
-                    {
-                        RibbonControl ribbon = FindRibbon(ctrl);
-                        if (ribbon != null)
-                            return ribbon;
-                    }
-                }
-            }
-            return null;
-        }
+        //static RibbonControl FindRibbon(object sender)
+        //{
+        //    System.Windows.Forms.Control ctrlMaster = sender as System.Windows.Forms.Control;
+        //    if (ctrlMaster != null && ctrlMaster.Controls != null)
+        //    {
+        //        foreach (System.Windows.Forms.Control ctrl in ctrlMaster.Controls)
+        //        {
+        //            if (ctrl is RibbonControl)
+        //                return ctrl as RibbonControl;
+        //            if (ctrl.Controls != null)
+        //            {
+        //                RibbonControl ribbon = FindRibbon(ctrl);
+        //                if (ribbon != null)
+        //                    return ribbon;
+        //            }
+        //        }
+        //    }
+        //    return null;
+        //}
 
         /// <summary>
         /// 
@@ -236,7 +246,7 @@ namespace CABDevExpress.Workspaces
                 }
                 else
                 {
-                    _baseView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(GetFormIContainer(parentMdiForm));
+                    _baseView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(GetFormIContainer(_parentMdiForm));
                     _documentManager.View = _baseView;
                     _documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { _baseView });
                     ((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).DocumentProperties.AllowPin = false;
@@ -272,7 +282,7 @@ namespace CABDevExpress.Workspaces
             if (mdiMode == MdiMode.Windowed)
             {
                 Initialize(mdiMode);
-                parentMdiForm.LayoutMdi(layout);
+                _parentMdiForm.LayoutMdi(layout);
             }
         }
 
@@ -308,8 +318,12 @@ namespace CABDevExpress.Workspaces
                 {
                     _baseView.DocumentAdded -= DocumentManagerDocumentAdded;
                     _baseView.DocumentActivated -= DocumentManagerDocumentActivated;
+                    _baseView?.Dispose();
+                    _documentManager?.Dispose();
                 }
-
+                _baseView = null;
+                _documentManager = null;
+                _parentMdiForm = null;
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
                 // TODO: set large fields to null.
 

@@ -131,8 +131,12 @@ namespace CABDevExpress.Workspaces
         {
             if (mdiMode != MdiMode.Tabbed)
                 base.OnApplySmartPartInfo(smartPart, smartPartInfo);
-            if (smartPart.Parent != null)
-                DoMergeRibbon(smartPart.Parent);
+            //if (smartPart.Parent != null)
+            //    RibonMergerManagerHelper.DoMergeRibbon(smartPart.Parent, this.parentMdiForm,
+            //        (x) => x.MdiMergeStyle == RibbonMdiMergeStyle.Always
+            //            || (x.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
+            //            || (x.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (smartPart.Parent as Form)?.WindowState == FormWindowState.Maximized)
+            //        );
         }
 
         /// <summary>
@@ -171,47 +175,52 @@ namespace CABDevExpress.Workspaces
         {
             //(sender as Form).Resize -= MdiChild_Resize;
             //(sender as Form).Resize += MdiChild_Resize;
-            DoMergeRibbon(sender);
+            //DoMergeRibbon(sender);
+            //RibonMergerManagerHelper.DoMergeRibbon(sender, this.parentMdiForm,
+            //    (x) => x.MdiMergeStyle == RibbonMdiMergeStyle.Always
+            //        || (x.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
+            //        || (x.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form)?.WindowState == FormWindowState.Maximized)
+            //    );
         }
 
-        private void DoMergeRibbon(object sender)
-        {
-            (sender as Form).BeginInvoke(new Action(() =>
-            {
-                if (this.parentMdiForm is RibbonForm)
-                {
-                    (this.parentMdiForm as RibbonForm).Ribbon.UnMergeRibbon();
-                    RibbonControl childRibbon = FindRibbon(sender);
-                    if (this.parentMdiForm is RibbonForm && childRibbon != null)
-                    {
-                        if (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.Always
-                            || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
-                            || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form).WindowState == FormWindowState.Maximized))
-                            (this.parentMdiForm as RibbonForm).Ribbon.MergeRibbon(childRibbon);
-                    }
-                }
-            }));
-        }
+        //private void DoMergeRibbon(object sender)
+        //{
+        //    (sender as Form).BeginInvoke(new Action(() =>
+        //    {
+        //        if (this.parentMdiForm is RibbonForm)
+        //        {
+        //            (this.parentMdiForm as RibbonForm).Ribbon.UnMergeRibbon();
+        //            RibbonControl childRibbon = FindRibbon(sender);
+        //            if (this.parentMdiForm is RibbonForm && childRibbon != null)
+        //            {
+        //                if (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.Always
+        //                    || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Tabbed)
+        //                    || (childRibbon.MdiMergeStyle == RibbonMdiMergeStyle.OnlyWhenMaximized && mdiMode == MdiMode.Windowed && (sender as Form).WindowState == FormWindowState.Maximized))
+        //                    (this.parentMdiForm as RibbonForm).Ribbon.MergeRibbon(childRibbon);
+        //            }
+        //        }
+        //    }));
+        //}
 
-        static RibbonControl FindRibbon(object sender)
-        {
-            Control ctrlMaster = sender as Control;
-            if (ctrlMaster != null && ctrlMaster.Controls != null)
-            {
-                foreach (Control ctrl in ctrlMaster.Controls)
-                {
-                    if (ctrl is RibbonControl)
-                        return ctrl as RibbonControl;
-                    if (ctrl.Controls != null)
-                    {
-                        RibbonControl ribbon = FindRibbon(ctrl);
-                        if (ribbon != null)
-                            return ribbon;
-                    }
-                }
-            }
-            return null;
-        }
+        //static RibbonControl FindRibbon(object sender)
+        //{
+        //    Control ctrlMaster = sender as Control;
+        //    if (ctrlMaster != null && ctrlMaster.Controls != null)
+        //    {
+        //        foreach (Control ctrl in ctrlMaster.Controls)
+        //        {
+        //            if (ctrl is RibbonControl)
+        //                return ctrl as RibbonControl;
+        //            if (ctrl.Controls != null)
+        //            {
+        //                RibbonControl ribbon = FindRibbon(ctrl);
+        //                if (ribbon != null)
+        //                    return ribbon;
+        //            }
+        //        }
+        //    }
+        //    return null;
+        //}
 
         /// <summary>
         /// 

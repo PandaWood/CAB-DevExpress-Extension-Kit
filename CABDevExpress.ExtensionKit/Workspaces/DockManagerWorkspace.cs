@@ -8,6 +8,7 @@ using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.CompositeUI.Utility;
 using System.Reflection;
 using Microsoft.Practices.CompositeUI;
+using DevExpress.XtraBars.Ribbon;
 
 namespace CABDevExpress.Workspaces
 {
@@ -16,8 +17,8 @@ namespace CABDevExpress.Workspaces
     /// </summary>
     public class DockManagerWorkspace : Workspace<Control, DockManagerSmartPartInfo>, IDisposable
     {
-        private readonly Dictionary<Control, DockPanel> dockPanelDictionary = new Dictionary<Control, DockPanel>();
-        private readonly DockManager dockManager;
+        private readonly Dictionary<Control, DockPanel> _dockPanelDictionary = new Dictionary<Control, DockPanel>();
+        private readonly DockManager _dockManager;
 
     	/// <summary>
         /// Initializes the workspace with no DockManager windows.
@@ -25,6 +26,8 @@ namespace CABDevExpress.Workspaces
         public DockManagerWorkspace() { }
         private WorkItem WorkItem;
         string WorkSpaceName;
+        private bool disposedValue;
+
         /// <summary>
         /// Initializes the workspace with the DockManager which all new DockPanels are added to. 
         /// </summary>
@@ -32,7 +35,7 @@ namespace CABDevExpress.Workspaces
         public DockManagerWorkspace(DockManager dockManager)
         {
             Guard.ArgumentNotNull(dockManager.Form, "dockManager.Form");
-            this.dockManager = dockManager;
+            this._dockManager = dockManager;
         }
         public DockManagerWorkspace(DockManager dockManager, WorkItem workItem, String workSpaceName) 
             : this(dockManager)
@@ -60,7 +63,7 @@ namespace CABDevExpress.Workspaces
         [Browsable(false)]
         public ReadOnlyDictionary<Control, DockPanel> DockPanels
         {
-            get { return new ReadOnlyDictionary<Control, DockPanel>(dockPanelDictionary); }
+            get { return new ReadOnlyDictionary<Control, DockPanel>(_dockPanelDictionary); }
         }
 
         /// <summary>
@@ -69,9 +72,9 @@ namespace CABDevExpress.Workspaces
         protected DockPanel GetOrCreateDockPanel(Control control, DockManagerSmartPartInfo smartPartInfo)
         {
             DockPanel dockPanel = null;
-            if (dockPanelDictionary.ContainsKey(control))
+            if (_dockPanelDictionary.ContainsKey(control))
             {
-                dockPanel = dockPanelDictionary[control];
+                dockPanel = _dockPanelDictionary[control];
             }
 			else
             {	
@@ -110,25 +113,25 @@ namespace CABDevExpress.Workspaces
     	{
     		if (string.IsNullOrEmpty(smartPartInfo.ParentPanelName))
     		{
-    			dockPanel = dockManager.AddPanel(smartPartInfo.Dock);
+    			dockPanel = _dockManager.AddPanel(smartPartInfo.Dock);
     		}
     		else
     		{
-    			foreach (DockPanel dockRootPanel in dockManager.RootPanels)
+    			foreach (DockPanel dockRootPanel in _dockManager.RootPanels)
     			{
     				if (dockRootPanel.Name != smartPartInfo.ParentPanelName) continue;
 
-    				dockPanel = dockManager.AddPanel(smartPartInfo.Dock);
+    				dockPanel = _dockManager.AddPanel(smartPartInfo.Dock);
     				dockPanel.DockAsTab(dockRootPanel);
     				break;
     			}
 
     			if (dockPanel == null)
-    				dockPanel = dockManager.AddPanel(smartPartInfo.Dock); //If the panel is not found, just create one
+    				dockPanel = _dockManager.AddPanel(smartPartInfo.Dock); //If the panel is not found, just create one
     		}
 
     		control.Dock = DockStyle.Fill;
-    		dockPanelDictionary.Add(control, dockPanel);
+    		_dockPanelDictionary.Add(control, dockPanel);
     		dockPanel.Controls.Add(control);
     		return dockPanel;
     	}
@@ -170,9 +173,9 @@ namespace CABDevExpress.Workspaces
             if (control != null && SmartParts.Contains(sender))
             {
                 CloseInternal(control);
-                if (dockPanelDictionary.ContainsKey(control))
-                    dockPanelDictionary[control].Close();
-                dockPanelDictionary.Remove(control);
+                if (_dockPanelDictionary.ContainsKey(control))
+                    _dockPanelDictionary[control].Close();
+                _dockPanelDictionary.Remove(control);
             }
         }
 
@@ -186,7 +189,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnActivate(Control smartPart)
         {
-        	DockPanel dockPanel = dockPanelDictionary[smartPart];
+        	DockPanel dockPanel = _dockPanelDictionary[smartPart];
             dockPanel.BringToFront();
         	dockPanel.Show();
         }
@@ -199,7 +202,7 @@ namespace CABDevExpress.Workspaces
         {
             if (dockPanel.Dock != DockingStyle.Fill && dockPanel.Dock != DockingStyle.Float)
             {
-                foreach (DockPanel currPanel in dockPanelDictionary.Values)
+                foreach (DockPanel currPanel in _dockPanelDictionary.Values)
                 {
                     DockPanel currTabbedToDocAsTab = GetTabbedPanel(currPanel, dockPanel);
                     if (currTabbedToDocAsTab != null)
@@ -228,8 +231,10 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnApplySmartPartInfo(Control smartPart, DockManagerSmartPartInfo smartPartInfo)
         {
-            DockPanel dockPanel = dockPanelDictionary[smartPart];
+            DockPanel dockPanel = _dockPanelDictionary[smartPart];
             SetDockPanelProperties(dockPanel, smartPartInfo);
+            //RibonMergerManagerHelper.DoMergeRibbon(smartPart, this._dockManager.Form.TopLevelControl,
+            //    (x) => x.MdiMergeStyle == RibbonMdiMergeStyle.Always);
         }
 
         /// <summary>
@@ -237,17 +242,28 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnShow(Control smartPart, DockManagerSmartPartInfo smartPartInfo)
         {
-            dockManager.BeginUpdate();
-            MethodInfo mi = dockManager.GetType().GetMethod("SetRedraw", BindingFlags.Instance | BindingFlags.NonPublic);
-            if (mi != null) mi.Invoke(dockManager, new object[] { dockManager.Form, false });
-            DockPanel dockPanel = GetOrCreateDockPanel(smartPart, smartPartInfo);
-            //TODO:2016.11.17 new features to be tested
-            EvaluateOpenOnTab(dockPanel);
-            //TODO:2016.11.17 new features to be tested
-            smartPart.Show();
-            ShowDockPanel(dockPanel, smartPartInfo);
-            if (mi != null) mi.Invoke(dockManager, new object[] { dockManager.Form, true });
-            dockManager.EndUpdate();
+            Guard.ArgumentNotNull(smartPart, "smartPart");
+            try
+            { 
+                _dockManager.BeginUpdate();
+                MethodInfo mi = _dockManager.GetType().GetMethod("SetRedraw", BindingFlags.Instance | BindingFlags.NonPublic);
+                if (mi != null) mi.Invoke(_dockManager, new object[] { _dockManager.Form, false });
+                DockPanel dockPanel = GetOrCreateDockPanel(smartPart, smartPartInfo);
+                //TODO:2016.11.17 new features to be tested
+                EvaluateOpenOnTab(dockPanel);
+                //TODO:2016.11.17 new features to be tested
+                smartPart.Show();
+                ShowDockPanel(dockPanel, smartPartInfo);
+                if (mi != null) mi.Invoke(_dockManager, new object[] { _dockManager.Form, true });
+            }
+            catch (Exception ex) { throw; }
+            finally
+            {
+                _dockManager.EndUpdate();
+                //RibonMergerManagerHelper.DoMergeRibbon(smartPart, this._dockManager.Form.TopLevelControl,
+                //    (x) => x.MdiMergeStyle == RibbonMdiMergeStyle.Always);
+            }
+            smartPart.Disposed -= ControlDisposed;
             smartPart.Disposed += ControlDisposed;
         }
 
@@ -256,7 +272,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnHide(Control smartPart)
         {
-        	dockPanelDictionary[smartPart].Hide();
+        	_dockPanelDictionary[smartPart].Hide();
         }
 
         /// <summary>
@@ -264,39 +280,65 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnClose(Control smartPart)
         {
-            DockPanel dockPanel = dockPanelDictionary[smartPart];
-            smartPart.Disposed -= ControlDisposed;
-
-            dockPanel.Controls.Remove(smartPart);	// Remove the smartPart from the DockPanel to avoid disposing it
-			dockManager.RemovePanel(dockPanel);		// changed from dockPanel.Close() but not unit tested
-            if (dockPanelDictionary.ContainsKey(smartPart))
-                dockPanelDictionary.Remove(smartPart);
+            DockPanel dockPanel = null;
+            if (smartPart != null)
+            {
+                smartPart.Disposed -= ControlDisposed;
+                if (_dockPanelDictionary.ContainsKey(smartPart))
+                {
+                    dockPanel = _dockPanelDictionary[smartPart];
+                    _dockPanelDictionary.Remove(smartPart);
+                }
+                if (dockPanel != null)
+                {
+                    dockPanel.Controls.Remove(smartPart);   // Remove the smartPart from the DockPanel to avoid disposing it
+                    _dockManager.RemovePanel(dockPanel);        // changed from dockPanel.Close() but not unit tested
+                }
+            }
         }
         public void SaveLayoutToStream(System.IO.Stream stream)
         {
-            dockManager?.SaveLayoutToStream(stream);
+            _dockManager?.SaveLayoutToStream(stream);
         }
         public void RestoreLayoutFromStream(System.IO.Stream stream)
         {
-            dockManager?.RestoreLayoutFromStream(stream);
+            _dockManager?.RestoreLayoutFromStream(stream);
         }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    if (WorkItem?.Workspaces[WorkSpaceName] != null)
+                    {
+                        IWorkspace dockWorkspace = WorkItem.Workspaces[WorkSpaceName];
+                        WorkItem.Workspaces.Remove(dockWorkspace);
+                        WorkItem.Items.Remove(this);
+                        _dockPanelDictionary?.Clear();
+                    }
+                }
+                WorkItem = null;
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~DockManagerWorkspace()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
 
         public void Dispose()
         {
-            try
-            {
-                if (WorkItem?.Workspaces[WorkSpaceName] != null)
-                {
-                    IWorkspace dockWorkspace = WorkItem.Workspaces[WorkSpaceName];
-                    WorkItem.Workspaces.Remove(dockWorkspace);
-                    WorkItem.Items.Remove(this);
-                }
-                WorkItem = null;
-            }
-            catch(Exception ex) 
-            {
-                throw;
-            }
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

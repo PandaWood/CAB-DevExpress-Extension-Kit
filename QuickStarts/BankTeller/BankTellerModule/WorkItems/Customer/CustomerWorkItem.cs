@@ -118,37 +118,37 @@ namespace BankTellerModule.WorkItems.Customer
 #endif
             Commands[CommandNames.EditCustomer].AddInvoker(editCustomerMenuItem1, "ItemClick");
 
-            const string saveLayoutCaption = "Save Layout";
-            saveLayoutMenuItem = new BarButtonItem
-            {
-                Caption = saveLayoutCaption,
-                Hint = saveLayoutCaption,
-                Glyph = Resources.Edit16,
-                LargeGlyph = Resources.Edit32
-            };
-#if UseRibbonForm
-            UIExtensionSites[ExtensionSiteNames.File].Add(saveLayoutMenuItem);
-#else
-			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(saveLayoutMenuItem);
-            UIExtensionSites[ExtensionSiteNames.ToolBar].Add(saveLayoutMenuItem);
-#endif
-            Commands[CommandNames.SaveLayout].AddInvoker(saveLayoutMenuItem, "ItemClick");
+//            const string saveLayoutCaption = "Save Layout";
+//            saveLayoutMenuItem = new BarButtonItem
+//            {
+//                Caption = saveLayoutCaption,
+//                Hint = saveLayoutCaption,
+//                Glyph = Resources.Edit16,
+//                LargeGlyph = Resources.Edit32
+//            };
+//#if UseRibbonForm
+//            UIExtensionSites[ExtensionSiteNames.File].Add(saveLayoutMenuItem);
+//#else
+//			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(saveLayoutMenuItem);
+//            UIExtensionSites[ExtensionSiteNames.ToolBar].Add(saveLayoutMenuItem);
+//#endif
+//            Commands[CommandNames.SaveLayout].AddInvoker(saveLayoutMenuItem, "ItemClick");
 
-            const string restoreLayoutCaption = "Restore Layout";
-            restoreLayoutMenuItem = new BarButtonItem
-            {
-                Caption = restoreLayoutCaption,
-                Hint = restoreLayoutCaption,
-                Glyph = Resources.Edit16,
-                LargeGlyph = Resources.Edit32
-            };
-#if UseRibbonForm
-            UIExtensionSites[ExtensionSiteNames.File].Add(restoreLayoutMenuItem);
-#else
-			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(restoreLayoutMenuItem);
-            UIExtensionSites[ExtensionSiteNames.ToolBar].Add(restoreLayoutMenuItem);
-#endif
-            Commands[CommandNames.RestoreLayout].AddInvoker(restoreLayoutMenuItem, "ItemClick");
+//            const string restoreLayoutCaption = "Restore Layout";
+//            restoreLayoutMenuItem = new BarButtonItem
+//            {
+//                Caption = restoreLayoutCaption,
+//                Hint = restoreLayoutCaption,
+//                Glyph = Resources.Edit16,
+//                LargeGlyph = Resources.Edit32
+//            };
+//#if UseRibbonForm
+//            UIExtensionSites[ExtensionSiteNames.File].Add(restoreLayoutMenuItem);
+//#else
+//			UIExtensionSites[Resources.CustomerMenuExtensionSite].Add(restoreLayoutMenuItem);
+//            UIExtensionSites[ExtensionSiteNames.ToolBar].Add(restoreLayoutMenuItem);
+//#endif
+//            Commands[CommandNames.RestoreLayout].AddInvoker(restoreLayoutMenuItem, "ItemClick");
 
         }
 

@@ -10,6 +10,7 @@ using DevExpress.Utils;
 using DevExpress.XtraBars.Docking2010;
 using DevExpress.XtraBars.Docking2010.Views;
 using DevExpress.XtraBars.Docking2010.Views.Tabbed;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using DevExpress.XtraTab;
 using Microsoft.Practices.CompositeUI;
@@ -35,7 +36,7 @@ namespace CABDevExpress.Workspaces
         private bool populatingPages;
         private bool _bIsTabClosable = true;
         private System.ComponentModel.IContainer components;
-        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;
+        private DevExpress.XtraBars.Docking2010.DocumentManager _documentManager;
         /// <summary>
         /// Initializes a new <see cref="XtraTabbedViewWorkspace"/>
         /// </summary>
@@ -43,7 +44,7 @@ namespace CABDevExpress.Workspaces
             : base()
         {
             this.components = new System.ComponentModel.Container();
-            documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            _documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             TabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView();
             composer = new WorkspaceComposer<System.Windows.Forms.Control, XtraTabSmartPartInfo>(this);
             //TabbedView.DocumentProperties.AllowPin = true;
@@ -63,9 +64,9 @@ namespace CABDevExpress.Workspaces
             TabbedView.CustomDocumentsHostWindow += TabbedView_CustomDocumentsHostWindow;
             TabbedView.QueryControl -= TabbedView_QueryControl;
             TabbedView.QueryControl += TabbedView_QueryControl;
-            documentManager.ContainerControl = this;
-            documentManager.View = TabbedView;
-            documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { TabbedView });
+            _documentManager.ContainerControl = this;
+            _documentManager.View = TabbedView;
+            _documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { TabbedView });
         }
 
         private static void SetTabClosable(DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView TabbedView, bool bClosable)
@@ -415,6 +416,8 @@ namespace CABDevExpress.Workspaces
             if (smartPartInfo.ActivateTab)
             {
                 Activate(smartPart);
+                //RibonMergerManagerHelper.DoMergeRibbon(smartPart, this.TopLevelControl,
+                //    (x) => x.MdiMergeStyle != RibbonMdiMergeStyle.Never);
             }
         }
 
@@ -473,18 +476,27 @@ namespace CABDevExpress.Workspaces
         /// <param name="smartPartInfo">The associated smart part info for the smart part being shown.</param>
         protected virtual void OnShow(System.Windows.Forms.Control smartPart, XtraTabSmartPartInfo smartPartInfo)
         {
-            PopulatePages();
-            ResetSelectedIndexIfNoTabs();
-
-            DevExpress.XtraBars.Docking2010.Views.BaseDocument page = GetOrCreateTabPage(smartPart);
-            SetTabProperties(page, smartPartInfo);
-
-            if (smartPartInfo.ActivateTab)
+            try
             {
-                Activate(smartPart);
+                PopulatePages();
+                ResetSelectedIndexIfNoTabs();
+
+                DevExpress.XtraBars.Docking2010.Views.BaseDocument page = GetOrCreateTabPage(smartPart);
+                SetTabProperties(page, smartPartInfo);
+
+                if (smartPartInfo.ActivateTab)
+                {
+                    Activate(smartPart);
+                }
             }
-            smartPart.Disposed -= ControlDisposed;
-            smartPart.Disposed += ControlDisposed;
+            catch (Exception ex) { throw; }
+            finally
+            {
+                smartPart.Disposed -= ControlDisposed;
+                smartPart.Disposed += ControlDisposed;
+                //RibonMergerManagerHelper.DoMergeRibbon(smartPart, this.TopLevelControl,
+                //    (x) => x.MdiMergeStyle != RibbonMdiMergeStyle.Never);
+            }
         }
 
         /// <summary>
