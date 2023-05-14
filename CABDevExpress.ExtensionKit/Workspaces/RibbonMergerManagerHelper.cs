@@ -21,19 +21,25 @@ namespace CABDevExpress.Workspaces
         public static void DoMergeRibbon(object sender, RibbonForm rf, Func<RibbonControl, bool> fnCondition)
         {
             if (sender != null && rf != null)
-                (sender as Control)?.BeginInvoke(new Action(() =>
+            {
+                Control uc = sender as Control;
+                if ((uc?.Handle?? IntPtr.Zero) != IntPtr.Zero)
                 {
-                    if (rf != null)
+                    uc.BeginInvoke(new Action(() =>
                     {
-                        rf.Ribbon.UnMergeRibbon();
-                        RibbonControl childRibbon = FindRibbon(sender);
-                        if (childRibbon != null)
+                        if (rf != null)
                         {
-                            if (fnCondition(childRibbon) == true)
-                                rf.Ribbon.MergeRibbon(childRibbon);
+                            rf.Ribbon.UnMergeRibbon();
+                            RibbonControl childRibbon = FindRibbon(sender);
+                            if (childRibbon != null)
+                            {
+                                if (fnCondition(childRibbon) == true)
+                                    rf.Ribbon.MergeRibbon(childRibbon);
+                            }
                         }
-                    }
-                }));
+                    }));
+                }
+            }
         }
 
         public static RibbonControl FindRibbon(object sender)
