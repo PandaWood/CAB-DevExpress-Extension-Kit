@@ -142,25 +142,27 @@ namespace CABDevExpress.Workspaces
         protected static void SetDockPanelProperties(DockPanel dockPanel, DockManagerSmartPartInfo info)
         {
             if (string.IsNullOrEmpty(info.ParentPanelName))
+            {
                 dockPanel.Dock = info.Dock;
+                dockPanel.FloatLocation = info.FloatLocation;
+                dockPanel.FloatSize = info.FloatSize;
+                dockPanel.FloatVertical = info.FloatVertical;
+                dockPanel.SavedDock = info.SavedDock;
+                dockPanel.SavedIndex = info.SavedIndex;
+                dockPanel.SavedParent = info.SavedParent;
+                dockPanel.SavedTabbed = info.SavedTabbed;
+                dockPanel.Visibility = info.Visibility;
+            }
 
-            dockPanel.FloatLocation = info.FloatLocation;
-            dockPanel.FloatSize = info.FloatSize;
-            dockPanel.FloatVertical = info.FloatVertical;
             dockPanel.ID = info.ID;
             dockPanel.ImageIndex = info.ImageIndex;
             dockPanel.Index = info.Index;
-            dockPanel.SavedDock = info.SavedDock;
-            dockPanel.SavedIndex = info.SavedIndex;
-            dockPanel.SavedParent = info.SavedParent;
-            dockPanel.SavedTabbed = info.SavedTabbed;
             dockPanel.Tabbed = info.Tabbed;
             dockPanel.TabsPosition = info.TabsPosition;
             dockPanel.TabsScroll = info.TabsScroll;
             dockPanel.TabText = info.TabText;
             dockPanel.Text = info.Title;
             dockPanel.Name = info.Name;
-            dockPanel.Visibility = info.Visibility;
             dockPanel.Options.ShowCloseButton    = info.ShowCloseButton ;
             dockPanel.Options.ShowAutoHideButton = info.ShowAutoHideButton;
             dockPanel.Options.ShowMaximizeButton = info.ShowMaximizeButton;
