@@ -29,12 +29,14 @@ namespace CABDevExpress.Workspaces
                     {
                         if (rf != null)
                         {
-                            rf.Ribbon.UnMergeRibbon();
                             RibbonControl childRibbon = FindRibbon(sender);
                             if (childRibbon != null)
                             {
                                 if (fnCondition(childRibbon) == true)
+                                {
+                                    rf.Ribbon.UnMergeRibbon();
                                     rf.Ribbon.MergeRibbon(childRibbon);
+                                }
                             }
                         }
                     }));
