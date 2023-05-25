@@ -15,7 +15,7 @@ namespace CABDevExpress.Workspaces
     /// </summary>
     public class XtraWindowWorkspace : Workspace<Control, XtraWindowSmartPartInfo>, IDisposable
     {
-        private readonly Dictionary<Control, XtraForm> windowDictionary = new Dictionary<Control, XtraForm>();
+        private readonly Dictionary<Control, XtraForm> _windowDictionary = new Dictionary<Control, XtraForm>();
         private bool fireActivatedFromForm = true;
         protected readonly IWin32Window ownerForm;
 
@@ -40,7 +40,7 @@ namespace CABDevExpress.Workspaces
         [Browsable(false)]
         public ReadOnlyDictionary<Control, XtraForm> Windows
         {
-            get { return new ReadOnlyDictionary<Control, XtraForm>(windowDictionary); }
+            get { return new ReadOnlyDictionary<Control, XtraForm>(_windowDictionary); }
         }
 
         /// <summary>
@@ -51,18 +51,19 @@ namespace CABDevExpress.Workspaces
         protected Form GetOrCreateForm(Control control)
         {
             XtraWindowForm form;
-            if (windowDictionary.ContainsKey(control))
+            if (_windowDictionary.ContainsKey(control))
             {
-                form = (XtraWindowForm)windowDictionary[control];
+                form = (XtraWindowForm)_windowDictionary[control];
             }
             else
             {
                 form = new XtraWindowForm();
-                windowDictionary.Add(control, form);
+                _windowDictionary.Add(control, form);
                 // reversed the order of these following two lines for issue 11166
                 CalculateSize(control, form);
                 form.Controls.Add(control);
                 control.Dock = DockStyle.Fill;
+                control.Disposed -= ControlDisposed;
                 control.Disposed += ControlDisposed;
                 WireUpForm(form);
             }
@@ -110,6 +111,9 @@ namespace CABDevExpress.Workspaces
             if (control != null && SmartParts.Contains(sender))
             {
                 CloseInternal(control);
+                if (_windowDictionary.ContainsKey(control))
+                    _windowDictionary[control].Close();
+                _windowDictionary.Remove(control);
             }
         }
 
@@ -148,10 +152,10 @@ namespace CABDevExpress.Workspaces
         private void RemoveEntry(Control spcontrol)
         {
             XtraForm frm = null;
-            if (windowDictionary != null)
-                frm = windowDictionary[spcontrol];
+            if (_windowDictionary != null)
+                frm = _windowDictionary[spcontrol];
             BeforeEntryRemove(frm);
-            windowDictionary.Remove(spcontrol);
+            _windowDictionary.Remove(spcontrol);
         }
 
         private void ShowForm(Form form, XtraWindowSmartPartInfo smartPartInfo)
@@ -259,7 +263,7 @@ namespace CABDevExpress.Workspaces
             try
             {
                 fireActivatedFromForm = false;	// Prevent double firing from composer Workspace class and form
-                Form form = windowDictionary[smartPart];
+                Form form = _windowDictionary[smartPart];
                 form.BringToFront();
                 form.Show();
             }
@@ -274,7 +278,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnHide(Control smartPart)
         {
-            Form form = windowDictionary[smartPart];
+            Form form = _windowDictionary[smartPart];
             form.Hide();
         }
 
@@ -283,7 +287,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnClose(Control smartPart)
         {
-            Form form = windowDictionary[smartPart];
+            Form form = _windowDictionary[smartPart];
             smartPart.Disposed -= ControlDisposed;
             if (form != null)
             {
@@ -295,7 +299,7 @@ namespace CABDevExpress.Workspaces
                 form.Dispose();
             }
             form = null;
-            windowDictionary.Remove(smartPart);
+            _windowDictionary.Remove(smartPart);
         }
 
         /// <summary>
@@ -304,7 +308,7 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected override void OnApplySmartPartInfo(Control smartPart, XtraWindowSmartPartInfo smartPartInfo)
         {
-            Form form = windowDictionary[smartPart];
+            Form form = _windowDictionary[smartPart];
             SetWindowProperties(form, smartPartInfo);
             SetWindowLocation(form, smartPartInfo);
         }
@@ -330,12 +334,12 @@ namespace CABDevExpress.Workspaces
             {
                 if (disposing)
                 {
-                    if (windowDictionary != null)
+                    if (_windowDictionary != null)
                     {
-                        foreach (Control ctrl in windowDictionary.Values)
+                        foreach (Control ctrl in _windowDictionary.Values)
                         {
                             ctrl.Disposed -= ControlDisposed;
-                            XtraWindowForm form = (XtraWindowForm)windowDictionary[ctrl];
+                            XtraWindowForm form = (XtraWindowForm)_windowDictionary[ctrl];
                             if (form != null)
                             {
                                 form.WindowFormClosing -= WindowFormClosing;
@@ -343,7 +347,7 @@ namespace CABDevExpress.Workspaces
                                 form.WindowFormActivated -= WindowFormActivated;
                             }
                         }
-                        windowDictionary.Clear();
+                        _windowDictionary.Clear();
                     }
                 }
 
