@@ -60,7 +60,10 @@ namespace CABDevExpress.Workspaces
         {
             if (_dockPanelDictionary!=null)
                 foreach(DockPanel panel in _dockPanelDictionary.Values)
-                    panel.Close();
+                {
+                    if (object.Equals(panel, e.Panel) == true)
+                        panel.Close();
+                }
         }
 
         public DockManagerWorkspace(DockManager dockManager, WorkItem workItem, String workSpaceName) 
@@ -358,7 +361,7 @@ namespace CABDevExpress.Workspaces
         }
 
         /// <summary>
-        /// Closes the DockPanel where the smart part is being shown.
+        /// Closes the DockPanel where the smart part is being shown. this methos is implementation of (Microsoft.Practices.CompositeUI.SmartParts=>protected abstract void OnClose(TSmartPart smartPart));
         /// </summary>
         protected override void OnClose(Control smartPart)
         {
@@ -373,10 +376,10 @@ namespace CABDevExpress.Workspaces
                 }
                 if (dockPanel != null)
                 {
-                    dockPanel.Controls.Remove(smartPart);   // Remove the smartPart from the DockPanel to avoid disposing it
-                    _dockManager.RemovePanel(dockPanel);        // changed from dockPanel.Close() but not unit tested
                     dockPanel.ClosingPanel -= DockPanelClosingPanel;
                     dockPanel.ClosedPanel -= DockPanelClosedPanel;
+                    dockPanel.Controls.Remove(smartPart);   // Remove the smartPart from the DockPanel to avoid disposing it
+                    _dockManager.RemovePanel(dockPanel);    // changed from dockPanel.Close() but not unit tested
                 }
                 if (!smartPart.IsDisposed)
                     smartPart.Dispose();
