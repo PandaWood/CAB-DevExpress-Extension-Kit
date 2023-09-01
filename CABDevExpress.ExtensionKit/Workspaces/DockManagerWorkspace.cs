@@ -108,7 +108,7 @@ namespace CABDevExpress.Workspaces
 			else
             {	
                 dockPanel = CreateDockPanel(control, smartPartInfo, dockPanel);
-                CalculateSize(control, dockPanel);
+                CalculateSize(control, smartPartInfo, dockPanel);
                 control.Disposed -= ControlDisposed;
                 control.Disposed += ControlDisposed;
                 WireUpPanel(dockPanel);
@@ -215,9 +215,12 @@ namespace CABDevExpress.Workspaces
     		return dockPanel;
     	}
 
-        private static void CalculateSize(Control smartPart, DockPanel panel)
+        private static void CalculateSize(Control smartPart, DockManagerSmartPartInfo smartPartInfo, DockPanel panel)
         {
             panel.ClientSize = smartPart.Size;
+            DockPanel existingPanel = panel.DockManager.RootPanels?.FirstOrDefault(w=>w.Dock == smartPartInfo.Dock);
+            if (existingPanel!=null)
+                panel.ClientSize = existingPanel.ClientSize;
         }
         /// <summary>
         /// Sets  <see cref="DockManagerSmartPartInfo"/> specific properties for the given DockPanel 
