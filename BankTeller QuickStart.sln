@@ -1,83 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankShell", "QuickStarts\BankTeller\BankShell\BankShell.csproj", "{62B89443-7C08-4753-9C43-F53DABF7549D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A7848178-09E6-4FC7-A21E-9CB9418984A5} = {A7848178-09E6-4FC7-A21E-9CB9418984A5}
-		{5461523C-4DCE-4672-BC72-7F0C99501F43} = {5461523C-4DCE-4672-BC72-7F0C99501F43}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTellerCommon", "QuickStarts\BankTeller\BankTellerCommon\BankTellerCommon.csproj", "{5461523C-4DCE-4672-BC72-7F0C99501F43}"
-	ProjectSection(ProjectDependencies) = postProject
-		{811DD8C8-6696-4566-A142-8ED28759D7A5} = {811DD8C8-6696-4566-A142-8ED28759D7A5}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerMapExtensionModule", "QuickStarts\BankTeller\BankTellerModuleExtension\CustomerMapExtensionModule.csproj", "{A7848178-09E6-4FC7-A21E-9CB9418984A5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankTellerModule", "QuickStarts\BankTeller\BankTellerModule\BankTellerModule.csproj", "{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CABDevExpress.ExtensionKit", "CABDevExpress.ExtensionKit\CABDevExpress.ExtensionKit.csproj", "{811DD8C8-6696-4566-A142-8ED28759D7A5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CABDevExpress.ExtensionKit.Tests", "CABDevExpress.ExtensionKit.Tests\CABDevExpress.ExtensionKit.Tests.csproj", "{EEED0AF9-C263-4ACC-923B-8F5CFDF247C0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{62B89443-7C08-4753-9C43-F53DABF7549D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{62B89443-7C08-4753-9C43-F53DABF7549D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{62B89443-7C08-4753-9C43-F53DABF7549D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{62B89443-7C08-4753-9C43-F53DABF7549D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5461523C-4DCE-4672-BC72-7F0C99501F43}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7848178-09E6-4FC7-A21E-9CB9418984A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5E262B3-2535-4579-B2A6-3FC5BD45EABB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{811DD8C8-6696-4566-A142-8ED28759D7A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{811DD8C8-6696-4566-A142-8ED28759D7A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{811DD8C8-6696-4566-A142-8ED28759D7A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{811DD8C8-6696-4566-A142-8ED28759D7A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EEED0AF9-C263-4ACC-923B-8F5CFDF247C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEED0AF9-C263-4ACC-923B-8F5CFDF247C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEED0AF9-C263-4ACC-923B-8F5CFDF247C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEED0AF9-C263-4ACC-923B-8F5CFDF247C0}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs03
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = QuickStarts\\BankTeller\\BankShell\\BankShell.csproj
-		SccProjectName1 = QuickStarts/BankTeller/BankShell
-		SccLocalPath1 = QuickStarts\\BankTeller\\BankShell
-		SccProjectUniqueName2 = QuickStarts\\BankTeller\\BankTellerCommon\\BankTellerCommon.csproj
-		SccProjectName2 = QuickStarts/BankTeller/BankTellerCommon
-		SccLocalPath2 = QuickStarts\\BankTeller\\BankTellerCommon
-		SccProjectUniqueName3 = QuickStarts\\BankTeller\\BankTellerModule\\BankTellerModule.csproj
-		SccProjectName3 = QuickStarts/BankTeller/BankTellerModule
-		SccLocalPath3 = QuickStarts\\BankTeller\\BankTellerModule
-		SccProjectUniqueName4 = QuickStarts\\BankTeller\\BankTellerModuleExtension\\CustomerMapExtensionModule.csproj
-		SccProjectName4 = QuickStarts/BankTeller/BankTellerModuleExtension
-		SccLocalPath4 = QuickStarts\\BankTeller\\BankTellerModuleExtension
-		SccProjectUniqueName5 = CABDevExpress.ExtensionKit\\CABDevExpress.ExtensionKit.csproj
-		SccProjectName5 = CABDevExpress.ExtensionKit
-		SccLocalPath5 = CABDevExpress.ExtensionKit
-		SccProjectUniqueName6 = CABDevExpress.ExtensionKit.Tests\\CABDevExpress.ExtensionKit.Tests.csproj
-		SccProjectName6 = CABDevExpress.ExtensionKit.Tests
-		SccLocalPath6 = CABDevExpress.ExtensionKit.Tests
 	EndGlobalSection
 EndGlobal

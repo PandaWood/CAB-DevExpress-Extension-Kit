@@ -69,8 +69,8 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="DevExpress.Win.BonusSkins" Version="22.2.7" />
-    <PackageReference Include="DevExpress.Win.Design" Version="22.2.7" />
+    <PackageReference Include="DevExpress.Win.BonusSkins" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Win.Design" Version="23.1.5" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Properties\Settings.settings">
