@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-windows;net48</TargetFrameworks>
+		<TargetFrameworks>net8.0-windows;net48</TargetFrameworks>
 		<OutputType>Library</OutputType>
 		<RootNamespace>CABDevExpress</RootNamespace>
 		<SccProjectName>SAK</SccProjectName>
@@ -27,7 +27,7 @@
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyVersion></AssemblyVersion>
-		<Version>23.1.5</Version>
+		<Version>23.1.7</Version>
 	</PropertyGroup>
 	<PropertyGroup>
 		<NetFrameworks>|net48|</NetFrameworks>
@@ -59,14 +59,14 @@
 		<EmbeddedResource Include="Properties\licenses.licx" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Practices.CompositeUI" Version="3.0.0" />
-		<PackageReference Include="Microsoft.Practices.CompositeUI.WinForms" Version="3.0.0" />
-		<PackageReference Include="Microsoft.Practices.CompositeUI.WPF" Version="3.0.0" />
-		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
+		<PackageReference Include="Microsoft.Practices.CompositeUI" Version="3.0.1" />
+		<PackageReference Include="Microsoft.Practices.CompositeUI.WinForms" Version="3.0.1" />
+		<PackageReference Include="Microsoft.Practices.CompositeUI.WPF" Version="3.0.1" />
+		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Condition="!$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win.Design" Version="23.1.5" />
-		<PackageReference Condition="$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win" Version="23.1.5" />
-		<PackageReference Include="Microsoft.Practices.ObjectBuilder" Version="1.0.51206" />
+		<PackageReference Condition="!$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win.Design" Version="23.1.7" />
+		<PackageReference Condition="$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win" Version="23.1.7" />
+		<PackageReference Include="Microsoft.Practices.ObjectBuilder" Version="1.0.51207" />
 	</ItemGroup>
 </Project>

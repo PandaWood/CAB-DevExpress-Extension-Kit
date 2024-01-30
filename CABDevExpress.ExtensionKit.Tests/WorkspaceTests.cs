@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using CABDevExpress.SmartPartInfos;
@@ -34,9 +35,9 @@ namespace CABDevExpress.ExtensionKit.Tests
 			// perhaps we should add something to the workspace to guard this....
 			var dockManagerWorkspace = new DockManagerWorkspace(new DockManager(new ContainerControl()));
 			dockManagerWorkspace.Show(_smartPart);
-			Assert.AreEqual(1, dockManagerWorkspace.DockPanels.Count);
+			Assert.That(Object.Equals(1, dockManagerWorkspace.DockPanels.Count), Is.True);
 			dockManagerWorkspace.Close(_smartPart);
-			Assert.AreEqual(0, dockManagerWorkspace.DockPanels.Count);
+			Assert.That(Object.Equals(0, dockManagerWorkspace.DockPanels.Count), Is.True);
 		}
 
 		
@@ -60,11 +61,11 @@ namespace CABDevExpress.ExtensionKit.Tests
 			                    	};
 			dockManagerWorkspace.Show(_smartPart, smartPartInfo);
 
-			Assert.AreEqual(1, dockManagerWorkspace.DockPanels.Count);
-			Assert.AreEqual("Bob", dockManager.Panels[0].Name);
-			Assert.AreEqual(DockingStyle.Bottom, dockManager.Panels[0].Dock);
+			Assert.That(Object.Equals(1, dockManagerWorkspace.DockPanels.Count), Is.True);
+			Assert.That(Object.Equals("Bob", dockManager.Panels[0].Name), Is.True);
+			Assert.That(Object.Equals(DockingStyle.Bottom, dockManager.Panels[0].Dock), Is.True);
 			dockManagerWorkspace.Close(_smartPart);
-			Assert.AreEqual(0, dockManagerWorkspace.DockPanels.Count);
+			Assert.That(Object.Equals(0, dockManagerWorkspace.DockPanels.Count), Is.True);
 		}
 
 		 [Test]
@@ -75,14 +76,14 @@ namespace CABDevExpress.ExtensionKit.Tests
 			var xtraTabWorkspace = new XtraTabWorkspace();
 			xtraTabWorkspace.Show(_smartPart, smartPartInfo);
 
-			Assert.AreEqual(1, xtraTabWorkspace.TabPages.Count);
-			Assert.AreEqual(1, xtraTabWorkspace.SmartParts.Count);
-			Assert.AreEqual("text", xtraTabWorkspace.SelectedTabPage.Text);
-			Assert.AreEqual(tahoma9ptFont, xtraTabWorkspace.SelectedTabPage.Appearance.Header.Font);
+			Assert.That(Object.Equals(1, xtraTabWorkspace.TabPages.Count), Is.True);
+			Assert.That(Object.Equals(1, xtraTabWorkspace.SmartParts.Count), Is.True);
+			Assert.That(Object.Equals("text", xtraTabWorkspace.SelectedTabPage.Text), Is.True);
+			Assert.That(Object.Equals(tahoma9ptFont, xtraTabWorkspace.SelectedTabPage.Appearance.Header.Font), Is.True);
 
 			xtraTabWorkspace.Close(_smartPart);
-			Assert.AreEqual(0, xtraTabWorkspace.TabPages.Count);
-			Assert.AreEqual(0, xtraTabWorkspace.SmartParts.Count);
+			Assert.That(Object.Equals(0, xtraTabWorkspace.TabPages.Count), Is.True);
+			Assert.That(Object.Equals(0, xtraTabWorkspace.SmartParts.Count), Is.True);
 		}
 
 		 [Test]
@@ -91,22 +92,22 @@ namespace CABDevExpress.ExtensionKit.Tests
 			var navbarWorkspace = new XtraNavBarWorkspace();
 			var smartPartInfo = new XtraNavBarGroupSmartPartInfo {Title = "Test Title"};
 
-			Assert.AreEqual(0, navbarWorkspace.Groups.Count);
+			Assert.That(Object.Equals(0, navbarWorkspace.Groups.Count), Is.True);
 
 			// show the workspace
 			navbarWorkspace.Show(_smartPart, smartPartInfo);
-			Assert.AreEqual(1, navbarWorkspace.Groups.Count);
-			Assert.AreEqual(NavBarGroupStyle.ControlContainer, navbarWorkspace.Groups[0].GroupStyle);
+            Assert.That(Object.Equals(1, navbarWorkspace.Groups.Count), Is.True);
+			Assert.That(Object.Equals(NavBarGroupStyle.ControlContainer, navbarWorkspace.Groups[0].GroupStyle), Is.True);
 
 			// hide and the group still exists, but not visible
 			navbarWorkspace.Hide(_smartPart);
 
-			Assert.AreEqual(1, navbarWorkspace.Groups.Count);
-			Assert.IsFalse(navbarWorkspace.Groups[0].Visible);
+			Assert.That(Object.Equals(1, navbarWorkspace.Groups.Count), Is.True);
+			Assert.That(navbarWorkspace.Groups[0].Visible, Is.False);
 
 			// close removes
 			navbarWorkspace.Close(_smartPart);
-			Assert.AreEqual(0, navbarWorkspace.Groups.Count);
+			Assert.That(Object.Equals(0, navbarWorkspace.Groups.Count), Is.True);
 		}
 
 		 [Test]
@@ -121,8 +122,8 @@ namespace CABDevExpress.ExtensionKit.Tests
 			tabWorkspace.Show(smartPart2);
 			tabWorkspace.Show(smartPart3);
 
-			Assert.AreEqual(3, tabWorkspace.TabPages.Count);
-			Assert.AreSame(smartPart3, tabWorkspace.ActiveSmartPart);
-		}
+			Assert.That(Object.Equals(3, tabWorkspace.TabPages.Count), Is.True);
+			Assert.That(Object.ReferenceEquals(smartPart3, tabWorkspace.ActiveSmartPart), Is.True);
+        }
 	}
 }

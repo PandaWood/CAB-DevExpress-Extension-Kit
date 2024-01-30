@@ -18,7 +18,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 			Bar bar = new Bar {Manager = new BarManager()};
 
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(bar);
-			Assert.IsInstanceOf(typeof(BarLinksCollectionUIAdapter), adapter);
+			Assert.That(adapter?.GetType()==typeof(BarLinksCollectionUIAdapter), Is.True);
 		}
 
 		[Test]
@@ -27,7 +27,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 			var barManager = new BarManager();
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barManager);
 
-			Assert.IsInstanceOf(typeof(BarsUIAdapter), adapter);
+			Assert.That(adapter?.GetType() == typeof(BarsUIAdapter), Is.True);
 		}
 
 		 [Test]
@@ -36,7 +36,7 @@ namespace CABDevExpress.ExtensionKit.Tests
 			var navBarControl = new NavBarControl();
 			IUIElementAdapter adapter = new XtraNavBarUIAdapterFactory().GetAdapter(navBarControl);
 
-			Assert.IsInstanceOf(typeof(NavBarGroupCollectionUIAdapter), adapter);
+            Assert.That(adapter?.GetType() == typeof(NavBarGroupCollectionUIAdapter), Is.True);
 		}
 
 		/// <summary>
@@ -51,12 +51,12 @@ namespace CABDevExpress.ExtensionKit.Tests
 			//add
 			var navBarGroup = new NavBarGroup();
 			var addedGroup = adapter.Add(navBarGroup);
-			Assert.AreEqual(navBarGroup, addedGroup as NavBarGroup);
-			Assert.AreEqual(1, navBarControl.Groups.Count);
+			Assert.That(Object.Equals(navBarGroup, addedGroup as NavBarGroup), Is.True);
+			Assert.That(Object.Equals(1, navBarControl.Groups.Count), Is.True);
 
 			//remove
 			adapter.Remove(addedGroup);
-			Assert.AreEqual(0, navBarControl.Groups.Count);
+			Assert.That(Object.Equals(0, navBarControl.Groups.Count), Is.True);
 		}
 
 		 [Test]
@@ -65,20 +65,20 @@ namespace CABDevExpress.ExtensionKit.Tests
 			var barManager = new BarManager();
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barManager);
 
-			Assert.IsInstanceOf(typeof(BarsUIAdapter), adapter);
+            Assert.That(adapter?.GetType() == typeof(BarsUIAdapter), Is.True);
 			
 			//add
 			Bar bar = new Bar(barManager);
 			var addedBar = adapter.Add(bar);
-			Assert.AreEqual(bar, addedBar as Bar);
-			Assert.AreEqual(1, barManager.Bars.Count);
+			Assert.That(Object.Equals(bar, addedBar as Bar), Is.True);
+			Assert.That(Object.Equals(1, barManager.Bars.Count), Is.True);
 
 			//remove
 			adapter.Remove(bar);
-			Assert.AreEqual(0, barManager.Bars.Count);
+			Assert.That(Object.Equals(0, barManager.Bars.Count), Is.True);
 
 			adapter.Remove(new Bar(barManager));    // ensure that attempting to remove a non-added object, does nothing
-			Assert.AreEqual(0, barManager.Bars.Count);
+			Assert.That(Object.Equals(0, barManager.Bars.Count), Is.True);
 		}
 
 		 [Test]
@@ -87,17 +87,17 @@ namespace CABDevExpress.ExtensionKit.Tests
 			var gridControl = new GridControl();
 			NavigatorCustomButtons buttons = gridControl.EmbeddedNavigator.Buttons.CustomButtons;
 			IUIElementAdapter adapter = new NavigatorCustomButtonUIAdapterFactory().GetAdapter(buttons);
-			Assert.IsInstanceOf(typeof(NavigatorCustomButtonUIAdapter), adapter);
+            Assert.That(adapter?.GetType() == typeof(NavigatorCustomButtonUIAdapter), Is.True);
 
 			//add
 			var button = new NavigatorCustomButton(0);
 			var addedButton = adapter.Add(button);
-			Assert.AreEqual(button, addedButton as NavigatorCustomButton);
-			Assert.AreEqual(1, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count);
+			Assert.That(Object.Equals(button, addedButton as NavigatorCustomButton), Is.True);
+			Assert.That(Object.Equals(1, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count), Is.True);
 
 			//remove
 			adapter.Remove(button);
-			Assert.AreEqual(0, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count);
+			Assert.That(Object.Equals(0, gridControl.EmbeddedNavigator.Buttons.CustomButtons.Count), Is.True);
 		}
 
 		 [Test]
@@ -119,20 +119,20 @@ namespace CABDevExpress.ExtensionKit.Tests
 
 			var barItemWrapper = new BarItemWrapper(bar.ItemLinks, editItem);
 			IUIElementAdapter adapter = new XtraBarUIAdapterFactory().GetAdapter(barItemWrapper);
-			Assert.IsInstanceOf(typeof(BarLinksOwnerCollectionUIAdapter), adapter);
+			Assert.That(adapter?.GetType() == typeof(BarLinksOwnerCollectionUIAdapter), Is.True);
 
 			//add
 			BarItem buttonItem = new BarButtonItem(bar.Manager, "test2");
 			var objectAdded = adapter.Add(buttonItem);
-			Assert.AreEqual(buttonItem, objectAdded as BarButtonItem);
-			Assert.AreEqual(2, barItemWrapper.ItemLinks.Count);
+			Assert.That(Object.Equals(buttonItem, objectAdded as BarButtonItem), Is.True);
+			Assert.That(Object.Equals(2, barItemWrapper.ItemLinks.Count), Is.True);
 
 			//remove
 			adapter.Remove(buttonItem);
-			Assert.AreEqual(1, barItemWrapper.ItemLinks.Count);
+			Assert.That(Object.Equals(1, barItemWrapper.ItemLinks.Count), Is.True);
 
 			adapter.Remove(editItem);
-			Assert.AreEqual(0, barItemWrapper.ItemLinks.Count);
+			Assert.That(Object.Equals(0, barItemWrapper.ItemLinks.Count), Is.True);
 		}
 	}
 }

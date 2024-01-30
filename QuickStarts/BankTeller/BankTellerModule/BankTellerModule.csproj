@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
     <SccProjectName>%24/CABDevExpress/QuickStarts/BankTeller/BankTellerModule</SccProjectName>
     <SccLocalPath>.</SccLocalPath>
@@ -39,9 +39,7 @@
     <Compile Update="WorkItems\Customer\CustomerCommentsView.cs" />
     <Compile Update="WorkItems\Customer\CustomerDetailView.cs" />
     <Compile Update="WorkItems\Customer\CustomerHeaderView.cs" />
-    <Compile Update="WorkItems\Customer\TabbedViewCustomerSummaryView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="WorkItems\Customer\TabbedViewCustomerSummaryView.cs" />
     <Compile Update="WorkItems\Customer\CustomerSummaryView.cs" />
     <Compile Update="WorkItems\BankTeller\CustomerQueueView.cs" />
     <Compile Update="WorkItems\BankTeller\UserInfoView.cs" />
@@ -55,13 +53,13 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.310801">
+    <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="DevExpress.RichEdit.Export" Version="23.1.5" />
-    <PackageReference Include="DevExpress.Win.Design" Version="23.1.5" />
-    <PackageReference Include="Microsoft.Practices.CompositeUI" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Practices.CompositeUI.WinForms" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Practices.ObjectBuilder" Version="1.0.51206" />
+    <PackageReference Include="DevExpress.RichEdit.Export" Version="23.1.7" />
+    <PackageReference Include="DevExpress.Win.Design" Version="23.1.7" />
+    <PackageReference Include="Microsoft.Practices.CompositeUI" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Practices.CompositeUI.WinForms" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Practices.ObjectBuilder" Version="1.0.51207" />
   </ItemGroup>
 </Project>
