@@ -381,6 +381,7 @@ namespace CABDevExpress.Workspaces
                 {
                     dockPanel.ClosingPanel -= DockPanelClosingPanel;
                     dockPanel.ClosedPanel -= DockPanelClosedPanel;
+                    smartPart.Tag = new System.Drawing.Rectangle(dockPanel.FloatFormRestoreBounds.X, dockPanel.FloatFormRestoreBounds.Y, dockPanel.FloatFormRestoreBounds.Width, dockPanel.FloatFormRestoreBounds.Height);
                     dockPanel.Controls.Remove(smartPart);   // Remove the smartPart from the DockPanel to avoid disposing it
                     _dockManager.RemovePanel(dockPanel);    // changed from dockPanel.Close() but not unit tested
                 }
