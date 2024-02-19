@@ -218,6 +218,8 @@ namespace CABDevExpress.Workspaces
         private static void CalculateSize(Control smartPart, DockManagerSmartPartInfo smartPartInfo, DockPanel panel)
         {
             panel.ClientSize = smartPart.Size;
+            if (smartPartInfo != null && smartPartInfo.FloatSize.Width != 0 && smartPartInfo.FloatSize.Height != 0)
+                panel.ClientSize = new System.Drawing.Size(smartPartInfo.FloatSize.Width, smartPartInfo.FloatSize.Height);
             DockPanel existingPanel = panel.DockManager.RootPanels?.FirstOrDefault(w=>w.Dock == smartPartInfo.Dock);
             if (existingPanel!=null)
                 panel.ClientSize = existingPanel.ClientSize;
