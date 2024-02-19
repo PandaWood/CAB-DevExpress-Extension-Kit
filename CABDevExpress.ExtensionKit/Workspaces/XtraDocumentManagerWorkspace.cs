@@ -226,6 +226,11 @@ namespace CABDevExpress.Workspaces
             Initialize(mdiMode);
         }
 
+        public void ChangeFontSize(float dSize)
+        {
+            ((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font = new System.Drawing.Font(((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)dSize * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+        }
+
         private void Initialize(MdiMode mode)
         {
             //DocumentManager.MdiParent = (mode == MdiMode.Tabbed) ? parentMdiForm : null;
