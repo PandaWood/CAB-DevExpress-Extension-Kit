@@ -36,7 +36,14 @@ namespace CABDevExpress.Workspaces
             composer = new WorkspaceComposer<Control, XtraTabSmartPartInfo>(this);
             //this.CloseButtonClick += XtraTabWorkspace_CloseButtonClick;
             //2021.10.27 aggiunto per ottenere evidenza del TAB Attivo
-            this.AppearancePage.HeaderActive.Font = new System.Drawing.Font(this.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)this.AppearancePage.HeaderActive.Font.Size * (Decimal)1.21), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            this.AppearancePage.HeaderActive.Font = new System.Drawing.Font(this.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)DevExpress.XtraEditors.WindowsFormsSettings.DefaultFont.Size * (Decimal)1.21), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            this.FontChanged -= XtraTabWorkspace_FontChanged;
+            this.FontChanged += XtraTabWorkspace_FontChanged;
+        }
+
+        private void XtraTabWorkspace_FontChanged(object sender, EventArgs e)
+        {
+            this.AppearancePage.HeaderActive.Font = new System.Drawing.Font(this.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)DevExpress.XtraEditors.WindowsFormsSettings.DefaultFont.Size * (Decimal)1.21), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
         }
 
         protected override void OnCloseButtonClick(object sender, EventArgs e)
@@ -590,6 +597,7 @@ namespace CABDevExpress.Workspaces
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);
+            this.FontChanged -= XtraTabWorkspace_FontChanged;
         }
     }
 }

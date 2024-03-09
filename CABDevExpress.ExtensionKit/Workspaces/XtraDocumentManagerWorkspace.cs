@@ -81,6 +81,14 @@ namespace CABDevExpress.Workspaces
             _documentManager.MdiParent = _parentMdiForm;
             _documentManager.ContainerControl = _parentMdiForm;
             Initialize(mdiMode);
+            if (_parentMdiForm!=null)
+                _parentMdiForm.FontChanged += ParentMdiFormFontChanged;
+        }
+
+        private void ParentMdiFormFontChanged(object sender, EventArgs e)
+        {
+            if (_baseView!=null)
+                ((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font = new System.Drawing.Font(((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)(Decimal)DevExpress.XtraEditors.WindowsFormsSettings.DefaultFont.Size * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
         }
 
         /// <summary>
@@ -226,11 +234,6 @@ namespace CABDevExpress.Workspaces
             Initialize(mdiMode);
         }
 
-        public void ChangeFontSize(float dSize)
-        {
-            ((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font = new System.Drawing.Font(((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)dSize * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
-        }
-
         private void Initialize(MdiMode mode)
         {
             //DocumentManager.MdiParent = (mode == MdiMode.Tabbed) ? parentMdiForm : null;
@@ -260,7 +263,7 @@ namespace CABDevExpress.Workspaces
                     ((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).DocumentGroupProperties.HeaderButtons = ((DevExpress.XtraTab.TabButtons)(((DevExpress.XtraTab.TabButtons.Next | DevExpress.XtraTab.TabButtons.Close)
                                 | DevExpress.XtraTab.TabButtons.Default)));
                     ((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).DocumentGroupProperties.HeaderButtonsShowMode = TabButtonShowMode.Always;
-                    ((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font = new System.Drawing.Font(((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font.Size * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+                    ((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font = new System.Drawing.Font(((DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView)_baseView).AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)DevExpress.XtraEditors.WindowsFormsSettings.DefaultFont.Size * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
                     foreach (DevExpress.XtraBars.Docking2010.Views.BaseDocument view in _baseView.Documents)
                         view.ImageOptions.Image = view.Form?.Icon.ToBitmap();
                 }
@@ -319,10 +322,15 @@ namespace CABDevExpress.Workspaces
         {
             if (!disposedValue)
             {
-                if (disposing && _baseView != null)
+                if (disposing)
                 {
-                    _baseView.DocumentAdded -= DocumentManagerDocumentAdded;
-                    _baseView.DocumentActivated -= DocumentManagerDocumentActivated;
+                    if (_baseView != null)
+                    {
+                        _baseView.DocumentAdded -= DocumentManagerDocumentAdded;
+                        _baseView.DocumentActivated -= DocumentManagerDocumentActivated;
+                    }
+                    if (_parentMdiForm != null)
+                        _parentMdiForm.FontChanged -= ParentMdiFormFontChanged;
                     _baseView?.Dispose();
                     _documentManager?.Dispose();
                 }

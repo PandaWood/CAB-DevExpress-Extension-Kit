@@ -64,7 +64,13 @@ namespace CABDevExpress.Workspaces
             parentMdiForm.IsMdiContainer = true;
             Initialize();
             SetMdiMode();
-
+            if (parentForm != null)
+                parentForm.FontChanged += ParentMdiForm_FontChanged;
+        }
+        private void ParentMdiForm_FontChanged(object sender, EventArgs e)
+        {
+            if (tabbedMdiManager!=null)
+                tabbedMdiManager.AppearancePage.HeaderActive.Font = new System.Drawing.Font(tabbedMdiManager.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)DevExpress.XtraEditors.WindowsFormsSettings.DefaultFont.Size * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
         }
 
         /// <summary>
@@ -92,7 +98,7 @@ namespace CABDevExpress.Workspaces
             // tabbedMdiManager.PageRemoved += new DevExpress.XtraTabbedMdi.MdiTabPageEventHandler(this.xtraTabbedMdiManager_PageRemoved);
             tabbedMdiManager.PageAdded += new MdiTabPageEventHandler(tabbedMdiManager_PageAdded);
             //2021.10.27 aggiunto per ottenere evidenza del TAB Attivo
-            tabbedMdiManager.AppearancePage.HeaderActive.Font = new System.Drawing.Font(tabbedMdiManager.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)tabbedMdiManager.AppearancePage.HeaderActive.Font.Size * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            tabbedMdiManager.AppearancePage.HeaderActive.Font = new System.Drawing.Font(tabbedMdiManager.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)DevExpress.XtraEditors.WindowsFormsSettings.DefaultFont.Size * (Decimal)1.33), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
         }
 
         protected override void OnClose(Control smartPart)
@@ -263,6 +269,8 @@ namespace CABDevExpress.Workspaces
                 {
                     tabbedMdiManager.SelectedPageChanged -= this.xtraTabbedMdiManager_SelectedPageChanged;
                     tabbedMdiManager.PageAdded -= tabbedMdiManager_PageAdded;
+                    if (parentMdiForm != null)
+                        parentMdiForm.FontChanged -= ParentMdiForm_FontChanged;
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
@@ -272,6 +280,7 @@ namespace CABDevExpress.Workspaces
             }
             base.Dispose();
         }
+
 
         // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
         // ~XtraTabbedMdiWorkspace() {

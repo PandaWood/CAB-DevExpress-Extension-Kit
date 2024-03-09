@@ -53,7 +53,7 @@ namespace CABDevExpress.Workspaces
             //            | DevExpress.XtraTab.TabButtons.Default)));
             _bIsTabClosable = true;
             XtraTabbedViewWorkspace.SetTabClosable(TabbedView, _bIsTabClosable);
-            TabbedView.AppearancePage.HeaderActive.Font = new System.Drawing.Font(TabbedView.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)TabbedView.AppearancePage.HeaderActive.Font.Size * (Decimal)1.21), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
+            TabbedView.AppearancePage.HeaderActive.Font = new System.Drawing.Font(TabbedView.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)DevExpress.XtraEditors.WindowsFormsSettings.DefaultFont.Size * (Decimal)1.21), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
             TabbedView.DocumentSelectorProperties.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
             TabbedView.FloatingDocumentContainer = DevExpress.XtraBars.Docking2010.Views.FloatingDocumentContainer.DocumentsHost;
             TabbedView.DocumentActivated -= DocumentActivated;
@@ -67,6 +67,12 @@ namespace CABDevExpress.Workspaces
             _documentManager.ContainerControl = this;
             _documentManager.View = TabbedView;
             _documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { TabbedView });
+            this.FontChanged += XtraTabbedViewWorkspace_FontChanged;
+        }
+
+        private void XtraTabbedViewWorkspace_FontChanged(object sender, EventArgs e)
+        {
+            TabbedView.AppearancePage.HeaderActive.Font = new System.Drawing.Font(TabbedView.AppearancePage.HeaderActive.Font.Name, (float)Decimal.Round((Decimal)DevExpress.XtraEditors.WindowsFormsSettings.DefaultFont.Size * (Decimal)1.21), System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline);
         }
 
         private static void SetTabClosable(DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView TabbedView, bool bClosable)
@@ -708,6 +714,7 @@ namespace CABDevExpress.Workspaces
                 } catch { }
             }
             TabbedView = null;
+            this.FontChanged -= XtraTabbedViewWorkspace_FontChanged;
         }
         public void SaveLayoutToStream(System.IO.Stream stream, bool binaryStream)
         {
