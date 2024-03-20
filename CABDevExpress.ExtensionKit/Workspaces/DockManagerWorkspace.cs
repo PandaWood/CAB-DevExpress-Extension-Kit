@@ -171,6 +171,34 @@ namespace CABDevExpress.Workspaces
             _dockPanelDictionary.Remove(spcontrol);
         }
 
+        private void PushDockPanetPropertyOnSmartPart(Control smartpart, DockPanel dockPanel)
+        {
+            DockPanelSaveInfo dockPanelSaveInfo = null;
+            if (dockPanel.Dock == DevExpress.XtraBars.Docking.DockingStyle.Float)
+                dockPanelSaveInfo = new DockPanelSaveInfo()
+                {
+                    Rectangle = new System.Drawing.Rectangle(dockPanel.FloatFormRestoreBounds.X, dockPanel.FloatFormRestoreBounds.Y, dockPanel.FloatFormRestoreBounds.Width, dockPanel.FloatFormRestoreBounds.Height),
+                    Visibility = dockPanel.Visibility,
+                    Dock = dockPanel.Dock,
+                    SavedDock = dockPanel.SavedDock,
+                    TabsPosition = dockPanel.TabsPosition,
+                };
+            else
+                dockPanelSaveInfo = new DockPanelSaveInfo()
+                {
+                    Rectangle = new System.Drawing.Rectangle(dockPanel.ClientRectangle.X, dockPanel.ClientRectangle.Y, dockPanel.ClientRectangle.Width, dockPanel.ClientRectangle.Height),
+                    Visibility = dockPanel.Visibility,
+                    Dock = dockPanel.Dock,
+                    SavedDock = dockPanel.SavedDock,
+                    TabsPosition = dockPanel.TabsPosition,
+                };
+            //https://supportcenter.devexpress.com/ticket/details/cq57302/how-can-i-determine-that-a-docking-panel-in-autohide-mode-is-made-visible-slides-out
+            //Workaround, non si sa perchè in fase di chiusura della main form dockPanel.Visibility vale sempre DockVisibility.Visible
+            if (dockPanelSaveInfo.Visibility == DockVisibility.Visible && dockPanel?.ControlContainer != null && dockPanel.ControlContainer.Visible == false)
+                dockPanelSaveInfo.Visibility = DockVisibility.AutoHide;
+            smartpart.Tag = dockPanelSaveInfo;
+
+        }
 
         private void DockPanelClosingPanel(object sender, DockPanelCancelEventArgs e)
         {
@@ -185,7 +213,10 @@ namespace CABDevExpress.Workspaces
             //RaiseSmartPartClosing(e);
             Control smartpart = _dockPanelDictionary?.FirstOrDefault(w => Object.ReferenceEquals(w.Value, e?.Panel) == true).Key;
             if (smartpart != null)
+            {
+                PushDockPanetPropertyOnSmartPart(smartpart, e.Panel);
                 RaiseSmartPartClosing(smartpart);
+            }
         }
 
         private DockPanel CreateDockPanel(Control control, DockManagerSmartPartInfo smartPartInfo, DockPanel dockPanel)
@@ -383,10 +414,7 @@ namespace CABDevExpress.Workspaces
                 {
                     dockPanel.ClosingPanel -= DockPanelClosingPanel;
                     dockPanel.ClosedPanel -= DockPanelClosedPanel;
-                    if (dockPanel.Dock == DevExpress.XtraBars.Docking.DockingStyle.Float)
-                        smartPart.Tag = new System.Drawing.Rectangle(dockPanel.FloatFormRestoreBounds.X, dockPanel.FloatFormRestoreBounds.Y, dockPanel.FloatFormRestoreBounds.Width, dockPanel.FloatFormRestoreBounds.Height);
-                    else
-                        smartPart.Tag = new System.Drawing.Rectangle(dockPanel.ClientRectangle.X, dockPanel.ClientRectangle.Y, dockPanel.ClientRectangle.Width, dockPanel.ClientRectangle.Height);
+                    PushDockPanetPropertyOnSmartPart(smartPart, dockPanel);
                     dockPanel.Controls.Remove(smartPart);   // Remove the smartPart from the DockPanel to avoid disposing it
                     _dockManager.RemovePanel(dockPanel);    // changed from dockPanel.Close() but not unit tested
                 }
