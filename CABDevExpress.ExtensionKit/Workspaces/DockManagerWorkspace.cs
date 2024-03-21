@@ -367,7 +367,7 @@ namespace CABDevExpress.Workspaces
             try
             { 
                 _dockManager.BeginUpdate();
-                MethodInfo mi = _dockManager.GetType().GetMethod("SetRedraw", BindingFlags.Instance | BindingFlags.NonPublic);
+                MethodInfo mi = _dockManager.GetType().GetMethod("SetRedrawNew", BindingFlags.Instance | BindingFlags.NonPublic);
                 if (mi != null) mi.Invoke(_dockManager, new object[] { _dockManager.Form, false });
                 DockPanel dockPanel = GetOrCreateDockPanel(smartPart, smartPartInfo);
                 //TODO:2016.11.17 new features to be tested
