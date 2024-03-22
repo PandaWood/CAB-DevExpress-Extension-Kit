@@ -40,6 +40,7 @@ namespace CABDevExpress.Workspaces
             this._dockManager = dockManager;
             this._dockManager.UnregisterDockPanel -= dockManagerUnregisterDockPanel;
             this._dockManager.UnregisterDockPanel += dockManagerUnregisterDockPanel;
+            this._dockManager.DockingOptions.AllowDockToCenter = DevExpress.Utils.DefaultBoolean.True;
         }
 
         private void FormClosed(object sender, FormClosedEventArgs e)
@@ -260,7 +261,8 @@ namespace CABDevExpress.Workspaces
         /// </summary>
         protected static void SetDockPanelProperties(DockPanel dockPanel, DockManagerSmartPartInfo info)
         {
-            if (string.IsNullOrEmpty(info.ParentPanelName))
+            //if (string.IsNullOrEmpty(info.ParentPanelName))
+            if (!info.DoNotTouchDockStyleAndVisibility)
             {
                 dockPanel.Dock = info.Dock;
                 dockPanel.FloatLocation = info.FloatLocation;
@@ -321,7 +323,8 @@ namespace CABDevExpress.Workspaces
         //TODO:2016.11.17 new features to be tested
         protected void EvaluateOpenOnTab(DockPanel dockPanel)
         {
-            if (dockPanel.Dock != DockingStyle.Fill && dockPanel.Dock != DockingStyle.Float)
+            //if (dockPanel.Dock != DockingStyle.Fill && dockPanel.Dock != DockingStyle.Float)
+            if (dockPanel.Dock != DockingStyle.Float)
             {
                 foreach (DockPanel currPanel in _dockPanelDictionary.Values)
                 {

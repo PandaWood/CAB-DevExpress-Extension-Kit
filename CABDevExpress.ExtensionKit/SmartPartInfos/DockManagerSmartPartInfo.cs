@@ -226,5 +226,9 @@ namespace CABDevExpress.SmartPartInfos
 
         [Category("Appearance")]
         public bool ShowMinimizeButton { get; set; } = true;
+
+        [Browsable(false)]
+        [DefaultValue(false)]
+        public bool DoNotTouchDockStyleAndVisibility { get; set; }
     }
 }
