@@ -22,14 +22,14 @@ namespace CABDevExpress.Workspaces
         {
             if (sender != null && rf != null)
             {
-                Control uc = sender as Control;
-                if ((uc?.Handle?? IntPtr.Zero) != IntPtr.Zero)
+                RibbonControl childRibbon = sender as RibbonControl;
+                if (childRibbon!=null && (childRibbon?.Handle?? IntPtr.Zero) != IntPtr.Zero)
                 {
-                    uc.BeginInvoke(new Action(() =>
+                    childRibbon.BeginInvoke(new Action(() =>
                     {
                         if (rf != null)
                         {
-                            RibbonControl childRibbon = FindRibbon(sender);
+                            //RibbonControl childRibbon = FindRibbon(sender);
                             if (childRibbon != null)
                             {
                                 if (fnCondition(childRibbon) == true)
@@ -44,24 +44,24 @@ namespace CABDevExpress.Workspaces
             }
         }
 
-        public static RibbonControl FindRibbon(object sender)
-        {
-            System.Windows.Forms.Control ctrlMaster = sender as System.Windows.Forms.Control;
-            if (ctrlMaster != null && ctrlMaster.Controls != null)
-            {
-                foreach (System.Windows.Forms.Control ctrl in ctrlMaster.Controls)
-                {
-                    if (ctrl is RibbonControl)
-                        return ctrl as RibbonControl;
-                    if (ctrl.Controls != null)
-                    {
-                        RibbonControl ribbon = FindRibbon(ctrl);
-                        if (ribbon != null)
-                            return ribbon;
-                    }
-                }
-            }
-            return null;
-        }
+        //public static RibbonControl FindRibbon(object sender)
+        //{
+        //    System.Windows.Forms.Control ctrlMaster = sender as System.Windows.Forms.Control;
+        //    if (ctrlMaster != null && ctrlMaster.Controls != null)
+        //    {
+        //        foreach (System.Windows.Forms.Control ctrl in ctrlMaster.Controls)
+        //        {
+        //            if (ctrl is RibbonControl)
+        //                return ctrl as RibbonControl;
+        //            if (ctrl.Controls != null)
+        //            {
+        //                RibbonControl ribbon = FindRibbon(ctrl);
+        //                if (ribbon != null)
+        //                    return ribbon;
+        //            }
+        //        }
+        //    }
+        //    return null;
+        //}
     }
 }
