@@ -195,8 +195,10 @@ namespace CABDevExpress.Workspaces
                 };
             //https://supportcenter.devexpress.com/ticket/details/cq57302/how-can-i-determine-that-a-docking-panel-in-autohide-mode-is-made-visible-slides-out
             //Workaround, non si sa perchè in fase di chiusura della main form dockPanel.Visibility vale sempre DockVisibility.Visible
-            if (dockPanelSaveInfo.Visibility == DockVisibility.Visible && dockPanel?.ControlContainer != null && dockPanel.ControlContainer.Visible == false)
-                dockPanelSaveInfo.Visibility = DockVisibility.AutoHide;
+            //Esclusi il set di dockPanelSaveInfo.Visibility = DockVisibility.AutoHide; perchè in fase di apertura multipla di dockPanel in alcuni casi
+            //la dockPanelSaveInfo.Visibility veniva settata a Hidden provocando l'apertura del dockPanel in un panel separato rispetto alla workspace richiesta
+            //if (dockPanelSaveInfo.Visibility == DockVisibility.Visible && dockPanel?.ControlContainer != null && dockPanel.ControlContainer.Visible == false)
+            //    dockPanelSaveInfo.Visibility = DockVisibility.AutoHide;
             smartpart.Tag = dockPanelSaveInfo;
 
         }
