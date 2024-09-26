@@ -27,7 +27,7 @@
 		<ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<AssemblyVersion></AssemblyVersion>
-		<Version>24.1.5</Version>
+		<Version>24.1.6</Version>
 	</PropertyGroup>
 	<PropertyGroup>
 		<NetFrameworks>|net48|</NetFrameworks>
@@ -65,8 +65,8 @@
 		<PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Condition="!$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win.Design" Version="24.1.5" />
-		<PackageReference Condition="$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win" Version="24.1.5" />
+		<PackageReference Condition="!$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win.Design" Version="24.1.6" />
+		<PackageReference Condition="$(NetFrameworks.contains('|$(TargetFramework)|'))" Include="DevExpress.Win" Version="24.1.6" />
 		<PackageReference Include="Microsoft.Practices.ObjectBuilder" Version="1.0.51208" />
 	</ItemGroup>
 </Project>
