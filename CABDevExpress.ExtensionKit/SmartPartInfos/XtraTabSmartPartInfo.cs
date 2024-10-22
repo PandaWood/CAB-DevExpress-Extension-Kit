@@ -137,5 +137,6 @@ namespace CABDevExpress.SmartPartInfos
 		}
 
 		public Font PageHeaderFont { get; set; }
-	}
+        public bool HideTabHeader { get; set; }
+    }
 }

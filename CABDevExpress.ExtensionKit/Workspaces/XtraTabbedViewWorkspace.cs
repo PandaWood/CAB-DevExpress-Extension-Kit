@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 //using System.Windows.Forms;
 using CABDevExpress.SmartPartInfos;
@@ -193,7 +194,9 @@ namespace CABDevExpress.Workspaces
 
             try
             {
-                DevExpress.XtraBars.Docking2010.Views.BaseDocument currentSelection = TabbedView.ActiveDocument;
+                DevExpress.XtraBars.Docking2010.Views.BaseDocument currentSelection = page;
+                if (currentSelection == null)
+                    currentSelection = TabbedView.ActiveDocument;
                 callComposerActivateOnIndexChange = false;
                 if (smartPartInfo.Position == TabPosition.Beginning)
                 {
@@ -208,6 +211,7 @@ namespace CABDevExpress.Workspaces
                     TabbedView.Documents.Add(page);
                 }
                 TabbedView.BeginUpdate();
+                TabbedView.DocumentGroupProperties.ShowTabHeader = !(TabbedView.Documents.Count(c => c.Control.Visible == true) == 1 && smartPartInfo.HideTabHeader == true);
                 page.Control.BackColor = smartPartInfo.BackColor;
                 page.Control.ForeColor = smartPartInfo.ForeColor;
                 if (smartPartInfo.Image != null)
@@ -216,7 +220,6 @@ namespace CABDevExpress.Workspaces
                 page.Control.Enabled = smartPartInfo.PageEnabled;
                 page.Control.Visible = smartPartInfo.PageVisible;
                 page.Properties.AllowClose = smartPartInfo.ShowCloseButton == DevExpress.Utils.DefaultBoolean.True && _bIsTabClosable ? DevExpress.Utils.DefaultBoolean.True : DevExpress.Utils.DefaultBoolean.False;
-                TabbedView.EndUpdate();
                 if (smartPartInfo.Text != null || smartPartInfo.Text != null)	// don't apply if not set
                     page.Caption = smartPartInfo.Text ?? smartPartInfo.Title;
                 ((DevExpress.XtraBars.Docking2010.Views.Tabbed.Document)page).Tooltip = smartPartInfo.Tooltip;
@@ -230,6 +233,7 @@ namespace CABDevExpress.Workspaces
                 //TODO: Fine
                 if (currentSelection?.Control!=null)
                     TabbedView.ActivateDocument(currentSelection.Control);
+                TabbedView.EndUpdate();
             }
             finally
             {
