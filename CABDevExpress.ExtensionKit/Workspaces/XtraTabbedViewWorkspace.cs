@@ -333,24 +333,25 @@ namespace CABDevExpress.Workspaces
         }
         private void ActivateSiblingTab(int iPageIndex)
         {
-            if (iPageIndex > 0)
+            System.Windows.Forms.Control ctrl = null;
+            int iPageToActivate = -1;
+            while (iPageIndex > 0 && iPageToActivate == -1)
             {
                 iPageIndex--;
-                System.Windows.Forms.Control ctrl = GetControlFromPage(TabbedView.Documents[iPageIndex]);
-                TabbedView.ActivateDocument(ctrl);
-                composer.SetActiveSmartPart(ctrl);
+                if ((TabbedView.Documents[iPageIndex].Control?.Visible??false) == true)
+                    iPageToActivate = iPageIndex;
             }
-            else if (iPageIndex < TabbedView.Documents.Count - 1)
+            while (iPageIndex < TabbedView.Documents.Count - 1 && iPageToActivate == -1)
             {
                 iPageIndex++;
-                System.Windows.Forms.Control ctrl = GetControlFromPage(TabbedView.Documents[iPageIndex]);
+                if ((TabbedView.Documents[iPageIndex].Control?.Visible ?? false) == true)
+                    iPageToActivate = iPageIndex;
+            }
+            if (iPageToActivate != -1)
+                ctrl = GetControlFromPage(TabbedView.Documents[iPageToActivate]);
+            if (ctrl!=null)
                 TabbedView.ActivateDocument(ctrl);
-                composer.SetActiveSmartPart(ctrl);
-            }
-            else
-            {
-                composer.SetActiveSmartPart(null);
-            }
+            composer.SetActiveSmartPart(ctrl);
         }
 
         private void ResetSelectedIndexIfNoTabs()
