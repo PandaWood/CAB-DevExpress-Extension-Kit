@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Forms;
 using CABDevExpress.SmartPartInfos;
+using DevExpress.XtraBars.Docking2010.Views.Tabbed;
 using DevExpress.XtraTab;
 using DevExpress.XtraTab.ViewInfo;
 using Microsoft.Practices.CompositeUI;
@@ -258,18 +259,38 @@ namespace CABDevExpress.Workspaces
 
         private void ActivateSiblingTab()
         {
-            if (SelectedTabPageIndex > 0)
+            //if (SelectedTabPageIndex > 0)
+            //{
+            //    SelectedTabPageIndex--;
+            //}
+            //else if (SelectedTabPageIndex < TabPages.Count - 1)
+            //{
+            //    SelectedTabPageIndex++;
+            //}
+            //else
+            //{
+            //    composer.SetActiveSmartPart(null);
+            //}
+            System.Windows.Forms.Control ctrl = null;
+            int iPageToActivate = -1;
+            int iPageIndex = SelectedTabPageIndex;
+            while (iPageIndex > 0 && iPageToActivate == -1)
             {
-                SelectedTabPageIndex--;
+                iPageIndex--;
+                if (TabPages[iPageIndex].PageVisible == true)
+                    iPageToActivate = iPageIndex;
             }
-            else if (SelectedTabPageIndex < TabPages.Count - 1)
+            while (iPageIndex < TabPages.Count - 1 && iPageToActivate == -1)
             {
-                SelectedTabPageIndex++;
+                iPageIndex++;
+                if (TabPages[iPageIndex].PageVisible == true)
+                    iPageToActivate = iPageIndex;
             }
-            else
-            {
-                composer.SetActiveSmartPart(null);
-            }
+            if (iPageToActivate != -1)
+                ctrl = GetControlFromPage(TabPages[iPageToActivate]);
+            //if (ctrl != null)
+            //    TabbedView.ActivateDocument(ctrl);
+            composer.SetActiveSmartPart(ctrl);
         }
 
         private void ResetSelectedIndexIfNoTabs()

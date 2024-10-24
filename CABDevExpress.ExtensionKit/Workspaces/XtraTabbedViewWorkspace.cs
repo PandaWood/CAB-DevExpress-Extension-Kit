@@ -194,9 +194,10 @@ namespace CABDevExpress.Workspaces
 
             try
             {
-                DevExpress.XtraBars.Docking2010.Views.BaseDocument currentSelection = page;
-                if (currentSelection == null)
-                    currentSelection = TabbedView.ActiveDocument;
+                //DevExpress.XtraBars.Docking2010.Views.BaseDocument currentSelection = page;
+                //if (currentSelection == null)
+                //    currentSelection = TabbedView.ActiveDocument;
+                DevExpress.XtraBars.Docking2010.Views.BaseDocument currentSelection = TabbedView.ActiveDocument;
                 callComposerActivateOnIndexChange = false;
                 if (smartPartInfo.Position == TabPosition.Beginning)
                 {
@@ -231,7 +232,7 @@ namespace CABDevExpress.Workspaces
                 //    page.Appearance.Header.Options.UseFont = true;
                 //}
                 //TODO: Fine
-                if (currentSelection?.Control!=null)
+                if (TabbedView.ActiveDocument != currentSelection && currentSelection?.Control!=null)
                     TabbedView.ActivateDocument(currentSelection.Control);
                 TabbedView.EndUpdate();
             }
@@ -399,13 +400,14 @@ namespace CABDevExpress.Workspaces
             try
             {
                 callComposerActivateOnIndexChange = false;
-                DevExpress.XtraBars.Docking2010.Views.BaseDocument page = GetTabPageFromName(key);
+                DevExpress.XtraBars.Docking2010.Views.BaseDocument document = GetTabPageFromName(key);
                 TabbedView.BeginUpdate();
-                page.Control.Visible = true;
+                document.Control.Visible = true;
                 DefaultBoolean AllowClose = IsTabClosable ? DevExpress.Utils.DefaultBoolean.True : DevExpress.Utils.DefaultBoolean.False;
                 if (TabbedView.Documents.Count == 1)
                     AllowClose = DefaultBoolean.False;
-                ((DevExpress.XtraBars.Docking2010.Views.Tabbed.Document)page).Properties.AllowClose = AllowClose;
+                TabbedView.ActivateDocument(smartPart);
+                ((DevExpress.XtraBars.Docking2010.Views.Tabbed.Document)document).Properties.AllowClose = AllowClose;
                 TabbedView.EndUpdate();
             }
             finally
