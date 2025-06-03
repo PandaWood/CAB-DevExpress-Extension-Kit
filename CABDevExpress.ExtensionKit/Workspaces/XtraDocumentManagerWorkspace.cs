@@ -157,8 +157,12 @@ namespace CABDevExpress.Workspaces
 
         protected override void OnApplySmartPartInfo(System.Windows.Forms.Control smartPart, XtraWindowSmartPartInfo smartPartInfo)
         {
-            if (mdiMode != MdiMode.Tabbed)
-                base.OnApplySmartPartInfo(smartPart, smartPartInfo);
+            //20250603 forzata l'esecuzione a prescindere dall'MdiMode per consentire l'aggiornamento della proprietà Title della view
+            //il valore di smartPartInfo.FormBorderStyle è stato settato di conseguenza
+            //if (mdiMode != MdiMode.Tabbed)
+            //    base.OnApplySmartPartInfo(smartPart, smartPartInfo);
+            smartPartInfo.FormBorderStyle = mdiMode == MdiMode.Tabbed ? System.Windows.Forms.FormBorderStyle.None : System.Windows.Forms.FormBorderStyle.Sizable;
+            base.OnApplySmartPartInfo(smartPart, smartPartInfo);
             //if (smartPart.Parent != null)
             //    RibonMergerManagerHelper.DoMergeRibbon(smartPart.Parent, this._parentMdiForm,
             //    (x) => x.MdiMergeStyle == RibbonMdiMergeStyle.Always
