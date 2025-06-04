@@ -78,8 +78,8 @@ namespace CABDevExpress.Workspaces
         {
             form.WindowState = info.WindowState;
             form.Text = info.Title;
-            form.Width = info.Width != 0 ? info.Width : form.Width;
-            form.Height = info.Height != 0 ? info.Height : form.Height;
+            form.Width = info.Width != 0 && info.FormBorderStyle != System.Windows.Forms.FormBorderStyle.None ? info.Width : form.Width;
+            form.Height = info.Height != 0 && info.FormBorderStyle != System.Windows.Forms.FormBorderStyle.None ? info.Height : form.Height;
             form.ControlBox = info.ControlBox;
             form.MaximizeBox = info.MaximizeBox;
             form.MinimizeBox = info.MinimizeBox;
