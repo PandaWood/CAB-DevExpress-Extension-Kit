@@ -101,7 +101,7 @@ namespace CABDevExpress.Workspaces
             // called on it, it will suddenly go to the top-left of the screen (Location 0,0)
             // as that's the default for the Location property but is not where the form will 
             // be if it's FormStartPosition.CenterParent position is set
-            if (info.StartPosition != FormStartPosition.CenterParent)
+            if (info.StartPosition != FormStartPosition.CenterParent && info.FormBorderStyle != System.Windows.Forms.FormBorderStyle.None)
                 form.Location = info.Location;
         }
 
