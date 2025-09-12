@@ -65,7 +65,7 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="DevExpress.Win.Design" Version="24.2.3" />
+    <PackageReference Include="DevExpress.Win.Design" Version="25.1.5" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
     <PackageReference Include="Microsoft.Practices.CompositeUI" Version="3.0.2" />
     <PackageReference Include="Microsoft.Practices.CompositeUI.WinForms" Version="3.0.2" />
