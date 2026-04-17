@@ -72,14 +72,15 @@ namespace BankTellerModule.WorkItems.BankTeller
 			                   		SmallImage = Resources.customersSmall
 			                   	};
 
-			var statsInfo = new XtraNavBarGroupSmartPartInfo
-			                	{
-			                		Title = "Statistics",
-			                		LargeImage = Resources.statsLarge,
-			                		SmallImage = Resources.statsSmall
-			                	};
 
 			navbarWorkspace.Show(customerView, customerInfo);
+
+            var statsInfo = new XtraNavBarGroupSmartPartInfo
+            {
+                Title = "Statistics",
+                LargeImage = Resources.statsLarge,
+                SmallImage = Resources.statsSmall
+            }; 
 			navbarWorkspace.Show(statisticsBarView, statsInfo);
 		}
 

@@ -74,18 +74,18 @@ namespace BankShell
             // 
             navBarWorkspace.ContentButtonHint = null;
             navBarWorkspace.Dock = System.Windows.Forms.DockStyle.Left;
-            navBarWorkspace.Location = new System.Drawing.Point(0, 143);
+            navBarWorkspace.Location = new System.Drawing.Point(0, 158);
             navBarWorkspace.Name = "navBarWorkspace";
             navBarWorkspace.OptionsNavPane.ExpandedWidth = 196;
-            navBarWorkspace.Size = new System.Drawing.Size(196, 555);
+            navBarWorkspace.Size = new System.Drawing.Size(196, 547);
             navBarWorkspace.TabIndex = 1;
             navBarWorkspace.View = new DevExpress.XtraNavBar.ViewInfo.SkinNavigationPaneViewInfoRegistrator();
             // 
             // splitterControl1
             // 
-            splitterControl1.Location = new System.Drawing.Point(196, 143);
+            splitterControl1.Location = new System.Drawing.Point(196, 158);
             splitterControl1.Name = "splitterControl1";
-            splitterControl1.Size = new System.Drawing.Size(5, 555);
+            splitterControl1.Size = new System.Drawing.Size(10, 547);
             splitterControl1.TabIndex = 2;
             splitterControl1.TabStop = false;
             // 
@@ -93,12 +93,12 @@ namespace BankShell
             // 
             ribbonControl1.ApplicationButtonDropDownControl = applicationMenu;
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, ribbonControl1.SearchEditItem, barStaticItem1 });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barStaticItem1 });
             ribbonControl1.Location = new System.Drawing.Point(0, 0);
             ribbonControl1.MaxItemId = 1;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { homePage });
-            ribbonControl1.Size = new System.Drawing.Size(861, 143);
+            ribbonControl1.Size = new System.Drawing.Size(861, 158);
             ribbonControl1.StatusBar = mainStatusBar;
             // 
             // applicationMenu
@@ -115,17 +115,17 @@ namespace BankShell
             // mainStatusBar
             // 
             mainStatusBar.ItemLinks.Add(barStaticItem1);
-            mainStatusBar.Location = new System.Drawing.Point(0, 698);
+            mainStatusBar.Location = new System.Drawing.Point(0, 705);
             mainStatusBar.Name = "mainStatusBar";
             mainStatusBar.Ribbon = ribbonControl1;
-            mainStatusBar.Size = new System.Drawing.Size(861, 31);
+            mainStatusBar.Size = new System.Drawing.Size(861, 24);
             // 
             // deckWorkspace1
             // 
             deckWorkspace1.Dock = System.Windows.Forms.DockStyle.Fill;
-            deckWorkspace1.Location = new System.Drawing.Point(201, 143);
+            deckWorkspace1.Location = new System.Drawing.Point(206, 158);
             deckWorkspace1.Name = "deckWorkspace1";
-            deckWorkspace1.Size = new System.Drawing.Size(660, 555);
+            deckWorkspace1.Size = new System.Drawing.Size(655, 547);
             deckWorkspace1.TabIndex = 6;
             deckWorkspace1.Text = "deckWorkspace1";
             // 

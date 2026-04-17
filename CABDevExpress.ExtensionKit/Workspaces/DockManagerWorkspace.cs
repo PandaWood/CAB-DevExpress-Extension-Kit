@@ -194,8 +194,8 @@ namespace CABDevExpress.Workspaces
                     TabsPosition = dockPanel.TabsPosition,
                 };
             //https://supportcenter.devexpress.com/ticket/details/cq57302/how-can-i-determine-that-a-docking-panel-in-autohide-mode-is-made-visible-slides-out
-            //Workaround, non si sa perchè in fase di chiusura della main form dockPanel.Visibility vale sempre DockVisibility.Visible
-            //Esclusi il set di dockPanelSaveInfo.Visibility = DockVisibility.AutoHide; perchè in fase di apertura multipla di dockPanel in alcuni casi
+            //Workaround, non si sa perchÃ¨ in fase di chiusura della main form dockPanel.Visibility vale sempre DockVisibility.Visible
+            //Esclusi il set di dockPanelSaveInfo.Visibility = DockVisibility.AutoHide; perchÃ¨ in fase di apertura multipla di dockPanel in alcuni casi
             //la dockPanelSaveInfo.Visibility veniva settata a Hidden provocando l'apertura del dockPanel in un panel separato rispetto alla workspace richiesta
             //if (dockPanelSaveInfo.Visibility == DockVisibility.Visible && dockPanel?.ControlContainer != null && dockPanel.ControlContainer.Visible == false)
             //    dockPanelSaveInfo.Visibility = DockVisibility.AutoHide;
@@ -304,7 +304,7 @@ namespace CABDevExpress.Workspaces
             }
         }
 
-        private static void ShowDockPanel(DockPanel dockPanel, DockManagerSmartPartInfo smartPartInfo)
+        private void ShowDockPanel(DockPanel dockPanel, DockManagerSmartPartInfo smartPartInfo)
         {
             SetDockPanelProperties(dockPanel, smartPartInfo);
         }
@@ -359,6 +359,7 @@ namespace CABDevExpress.Workspaces
         {
             DockPanel dockPanel = _dockPanelDictionary[smartPart];
             SetDockPanelProperties(dockPanel, smartPartInfo);
+            dockPanel.DockTo(smartPartInfo.Dock);
             //RibonMergerManagerHelper.DoMergeRibbon(smartPart, this._dockManager.Form.TopLevelControl,
             //    (x) => x.MdiMergeStyle == RibbonMdiMergeStyle.Always);
         }
@@ -369,18 +370,21 @@ namespace CABDevExpress.Workspaces
         protected override void OnShow(Control smartPart, DockManagerSmartPartInfo smartPartInfo)
         {
             Guard.ArgumentNotNull(smartPart, "smartPart");
+            DockPanel dockPanel=null;
             try
             { 
                 _dockManager.BeginUpdate();
                 MethodInfo mi = _dockManager.GetType().GetMethod("SetRedrawNew", BindingFlags.Instance | BindingFlags.NonPublic);
                 if (mi != null) mi.Invoke(_dockManager, new object[] { _dockManager.Form, false });
-                DockPanel dockPanel = GetOrCreateDockPanel(smartPart, smartPartInfo);
+                dockPanel = GetOrCreateDockPanel(smartPart, smartPartInfo);
                 //TODO:2016.11.17 new features to be tested
                 EvaluateOpenOnTab(dockPanel);
                 //TODO:2016.11.17 new features to be tested
                 smartPart.Show();
                 ShowDockPanel(dockPanel, smartPartInfo);
+                dockPanel.DockTo(smartPartInfo.Dock);
                 if (mi != null) mi.Invoke(_dockManager, new object[] { _dockManager.Form, true });
+
             }
             catch (Exception ex) { throw; }
             finally
