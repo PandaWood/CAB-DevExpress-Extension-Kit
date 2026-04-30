@@ -383,8 +383,22 @@ namespace CABDevExpress.Workspaces
                 smartPart.Show();
                 ShowDockPanel(dockPanel, smartPartInfo);
                 dockPanel.DockTo(smartPartInfo.Dock);
-                if (mi != null) mi.Invoke(_dockManager, new object[] { _dockManager.Form, true });
-
+                if (mi != null) 
+                    mi.Invoke(_dockManager, new object[] { _dockManager.Form, true });
+                System.Windows.Forms.UserControl userControl = _dockManager.Form as System.Windows.Forms.UserControl;
+                if (userControl != null && userControl.Controls!=null && userControl.Controls.Count>0)
+                {
+                    //2026.04.30 se lo user control contiene uno o più oggetti di tipo PanelControl utilizzo il workaround che segue per effettuare il refresh 
+                    //ed evitare il problema del panel appena aperto che va in overlap sullo UserControl sottostante
+                    foreach (PanelControl panelControl in userControl.Controls.OfType<PanelControl>())
+                    {
+                        panelControl.BeginInvoke(new Action(() =>
+                        {
+                            panelControl.SendToBack();
+                            panelControl.BringToFront();
+                        }));
+                    }
+                }
             }
             catch (Exception ex) { throw; }
             finally
