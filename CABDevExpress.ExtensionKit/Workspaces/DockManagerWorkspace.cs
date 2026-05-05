@@ -359,7 +359,8 @@ namespace CABDevExpress.Workspaces
         {
             DockPanel dockPanel = _dockPanelDictionary[smartPart];
             SetDockPanelProperties(dockPanel, smartPartInfo);
-            dockPanel.DockTo(smartPartInfo.Dock);
+            //20260506:eliminato il dockPanel.DockTo(smartPartInfo.Dock); perchè in alcuni casi (es: dockPanel.Dock = DockingStyle.Fill) provocava l'apertura del dockPanel in un panel separato rispetto alla workspace richiesta
+            //dockPanel.DockTo(smartPartInfo.Dock);
             //RibonMergerManagerHelper.DoMergeRibbon(smartPart, this._dockManager.Form.TopLevelControl,
             //    (x) => x.MdiMergeStyle == RibbonMdiMergeStyle.Always);
         }
@@ -382,7 +383,8 @@ namespace CABDevExpress.Workspaces
                 //TODO:2016.11.17 new features to be tested
                 smartPart.Show();
                 ShowDockPanel(dockPanel, smartPartInfo);
-                dockPanel.DockTo(smartPartInfo.Dock);
+                //20260506:eliminato il dockPanel.DockTo(smartPartInfo.Dock); perchè in alcuni casi (es: dockPanel.Dock = DockingStyle.Fill) provocava l'apertura del dockPanel in un panel separato rispetto alla workspace richiesta
+                //dockPanel.DockTo(smartPartInfo.Dock);
                 if (mi != null) 
                     mi.Invoke(_dockManager, new object[] { _dockManager.Form, true });
                 System.Windows.Forms.UserControl userControl = _dockManager.Form as System.Windows.Forms.UserControl;
