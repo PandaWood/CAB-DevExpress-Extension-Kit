@@ -392,13 +392,15 @@ namespace CABDevExpress.Workspaces
                 {
                     //2026.04.30 se lo user control contiene uno o più oggetti di tipo PanelControl utilizzo il workaround che segue per effettuare il refresh 
                     //ed evitare il problema del panel appena aperto che va in overlap sullo UserControl sottostante
-                    foreach (PanelControl panelControl in userControl.Controls.OfType<PanelControl>())
+                    foreach (PanelControl panelControl in userControl.Controls.OfType<PanelControl>().OrderBy(o=>o.Dock).ToList())
                     {
+                        // si fa per tutti i panel, facendo in modo di eseguire l'azione in ordine in base al tipo di dock, anche per DockStyle.None
+                        //if (panelControl.Dock != DockStyle.None)
                         panelControl.BeginInvoke(new Action(() =>
-                        {
-                            panelControl.SendToBack();
-                            panelControl.BringToFront();
-                        }));
+                            {
+                                panelControl.SendToBack();
+                                panelControl.BringToFront();
+                            }));
                     }
                 }
             }
