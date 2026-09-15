@@ -63,6 +63,7 @@ namespace CABDevExpress.Workspaces
         /// Dependency injection setter property to get the <see cref="WorkItem"/> where object is contained.
         /// </summary>
         [ServiceDependency]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public WorkItem WorkItem
         {
             set { composer.WorkItem = value; }
@@ -229,7 +230,7 @@ namespace CABDevExpress.Workspaces
             base.OnSelectedPageChanged(sender, e);
             if (callComposerActivateOnIndexChange && TabPages.Count != 0)
             {
-                //sulla prima pagina del controllo disabilito la possibilit‡ di chiusura del primo TAB aperto
+                //sulla prima pagina del controllo disabilito la possibilit√† di chiusura del primo TAB aperto
                 if (TabPages.Count == 1 && TabPages[0] == SelectedTabPage)
                     SelectedTabPage.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
                 // Locate the smart part corresponding to the page.

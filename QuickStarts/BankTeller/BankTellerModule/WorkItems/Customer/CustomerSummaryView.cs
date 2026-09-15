@@ -2,18 +2,19 @@
 // Microsoft patterns & practices
 // CompositeUI Application Block
 //===============================================================================
-// Copyright © Microsoft Corporation.  All rights reserved.
+// Copyright Â© Microsoft Corporation.  All rights reserved.
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
 // OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
 // LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System;
 using BankTellerModule.Constants;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
+using System;
+using System.ComponentModel;
 
 namespace BankTellerModule.WorkItems.Customer
 {
@@ -29,6 +30,7 @@ namespace BankTellerModule.WorkItems.Customer
 
        
         [CreateNew]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public CustomerSummaryController Controller
         {
             set { controller = value; }

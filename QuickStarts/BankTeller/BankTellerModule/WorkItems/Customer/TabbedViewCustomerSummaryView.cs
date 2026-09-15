@@ -2,28 +2,29 @@
 // Microsoft patterns & practices
 // CompositeUI Application Block
 //===============================================================================
-// Copyright © Microsoft Corporation.  All rights reserved.
+// Copyright Â© Microsoft Corporation.  All rights reserved.
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
 // OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
 // LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System;
 using BankTellerModule.Constants;
 using DevExpress.Mvvm.POCO;
-using DevExpress.XtraBars.Docking2010.Views.Tabbed;
 using DevExpress.XtraBars.Docking2010.Views;
+using DevExpress.XtraBars.Docking2010.Views.Tabbed;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
-using System.Windows.Automation;
-using System.Windows.Forms;
-using System.Linq;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
+using System.Windows.Automation;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace BankTellerModule.WorkItems.Customer
@@ -40,6 +41,7 @@ namespace BankTellerModule.WorkItems.Customer
 
 
         [CreateNew]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public TabbedViewCustomerSummaryController Controller
         {
             set { controller = value; }

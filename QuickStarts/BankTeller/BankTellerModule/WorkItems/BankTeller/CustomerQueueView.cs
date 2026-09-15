@@ -2,20 +2,21 @@
 // Microsoft patterns & practices
 // CompositeUI Application Block
 //===============================================================================
-// Copyright © Microsoft Corporation.  All rights reserved.
+// Copyright Â© Microsoft Corporation.  All rights reserved.
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
 // OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
 // LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System;
-using System.Windows.Forms;
 using BankTellerModule.Constants;
 using DevExpress.XtraEditors;
 using Microsoft.Practices.CompositeUI.Commands;
 using Microsoft.Practices.CompositeUI.SmartParts;
 using Microsoft.Practices.ObjectBuilder;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BankTellerModule.WorkItems.BankTeller
 {
@@ -27,7 +28,8 @@ namespace BankTellerModule.WorkItems.BankTeller
 		// We need our controller, so that we can work with a customer when
 		// the user clicks on one
 		[CreateNew]
-		public CustomerQueueController MyController
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public CustomerQueueController MyController
 		{
 			set { myController = value; }
 		}

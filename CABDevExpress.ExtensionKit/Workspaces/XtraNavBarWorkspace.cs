@@ -29,6 +29,7 @@ namespace CABDevExpress.Workspaces
         /// Dependency injection setter property to get the <see cref="WorkItem"/> where the object is contained.
         /// </summary>
         [ServiceDependency]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public WorkItem WorkItem
         {
             set { composer.WorkItem = value; }

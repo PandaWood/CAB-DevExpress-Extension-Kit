@@ -2,15 +2,13 @@
 // Microsoft patterns & practices
 // CompositeUI Application Block
 //===============================================================================
-// Copyright © Microsoft Corporation.  All rights reserved.
+// Copyright Â© Microsoft Corporation.  All rights reserved.
 // THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
 // OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
 // LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
 // FITNESS FOR A PARTICULAR PURPOSE.
 //===============================================================================
 
-using System;
-using System.Windows.Forms;
 using BankTellerModule.Constants;
 using BankTellerModule.Services;
 using DevExpress.Utils;
@@ -21,6 +19,9 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using Microsoft.Practices.CompositeUI;
 using Microsoft.Practices.CompositeUI.SmartParts;
+using System;
+using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace BankTellerModule.WorkItems.Customer
 {
@@ -35,20 +36,23 @@ namespace BankTellerModule.WorkItems.Customer
 
 		// The Customer state is stored in our parent work item
 		[State]
-		public BankTellerCommon.Customer Customer
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public BankTellerCommon.Customer Customer
 		{
 			set { customer = value; }
 		}
 
 		// Make sure our required CustomerAccountService is available
 		[ServiceDependency]
-		public CustomerAccountService AccountService
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public CustomerAccountService AccountService
 		{
 			set { accountService = value; }
 		}
 
 		[ServiceDependency]
-		public WorkItem ParentWorkItem { protected get; set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public WorkItem ParentWorkItem { protected get; set; }
 
 		public CustomerAccountsView()
 		{

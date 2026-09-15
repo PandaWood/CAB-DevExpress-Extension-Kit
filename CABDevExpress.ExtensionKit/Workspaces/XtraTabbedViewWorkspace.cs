@@ -124,7 +124,7 @@ namespace CABDevExpress.Workspaces
         {
             if (callComposerActivateOnIndexChange && TabbedView.Documents.Count != 0)
             {
-                //sulla prima pagina del controllo disabilito la possibilit‡ di chiusura del primo TAB aperto
+                //sulla prima pagina del controllo disabilito la possibilit√† di chiusura del primo TAB aperto
                 TabbedView.ActiveDocument.BeginUpdate();
 
                 DefaultBoolean AllowClose = IsTabClosable ? DevExpress.Utils.DefaultBoolean.True : DevExpress.Utils.DefaultBoolean.False;
@@ -165,6 +165,7 @@ namespace CABDevExpress.Workspaces
         /// Dependency injection setter property to get the <see cref="WorkItem"/> where object is contained.
         /// </summary>
         [ServiceDependency]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public WorkItem WorkItem
         {
             set { 
@@ -224,7 +225,7 @@ namespace CABDevExpress.Workspaces
                 if (smartPartInfo.Text != null || smartPartInfo.Text != null)	// don't apply if not set
                     page.Caption = smartPartInfo.Text ?? smartPartInfo.Title;
                 ((DevExpress.XtraBars.Docking2010.Views.Tabbed.Document)page).Tooltip = smartPartInfo.Tooltip;
-                //TODO: Aggiunto il tool tip che non Ë nativo
+                //TODO: Aggiunto il tool tip che non √® nativo
                 //page.Tooltip = smartPartInfo.Tooltip;
                 //if (smartPartInfo.PageHeaderFont != null)
                 //{

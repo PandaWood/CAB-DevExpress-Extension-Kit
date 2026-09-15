@@ -19,12 +19,14 @@ namespace CABDevExpress.SmartPartInfos
         ///  parent control
         ///</summary>
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public DockingStyle Dock { get; set; }
 
         ///<summary>
         /// Gets or sets the floating panel's location
         ///</summary>
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Point FloatLocation { get; set; }
 
         private Size floatSize = new Size(200, 200);
@@ -33,6 +35,7 @@ namespace CABDevExpress.SmartPartInfos
 		/// Gets or sets the size of the panel when it is floating
         ///</summary>
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Size FloatSize
         {
             get { return floatSize; }
@@ -65,6 +68,7 @@ namespace CABDevExpress.SmartPartInfos
         /// Gets or sets the dock panel's unique identifier
         ///</summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public Guid ID { get; set; }
 
         private int imageIndex = -1;
@@ -106,6 +110,7 @@ namespace CABDevExpress.SmartPartInfos
         /// or is hidden
         ///</summary>
         [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public DockingStyle SavedDock { get; set; }
 
         private int savedIndex = -1;
@@ -149,6 +154,7 @@ namespace CABDevExpress.SmartPartInfos
 		/// Gets or sets the position of tabs
         ///</summary>
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public TabsPosition TabsPosition
         {
             get { return tabsPosition; }
@@ -181,6 +187,7 @@ namespace CABDevExpress.SmartPartInfos
         /// Gets or sets the panel's visible state
         ///</summary>
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public DockVisibility Visibility { get; set; }
 
         ///<summary>
@@ -203,6 +210,7 @@ namespace CABDevExpress.SmartPartInfos
 		/// Gets or sets the Panel which the current panel will be docked in.
 		/// Leave blank if no ParentPanel is needed
         ///</summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string ParentPanelName
         {
             get { return parentPanelName; }
@@ -212,19 +220,24 @@ namespace CABDevExpress.SmartPartInfos
         ///<summary>
         /// Gets or sets the DockPanel's name.
         ///</summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public string Name { get; set; }
         ///<summary>
         /// Gets or sets the panel's visible state
         ///</summary>
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool ShowCloseButton { get; set; } = true;
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool ShowAutoHideButton { get; set; } = true;
 
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool ShowMaximizeButton { get; set; } = true;
 
         [Category("Appearance")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool ShowMinimizeButton { get; set; } = true;
 
         [Browsable(false)]

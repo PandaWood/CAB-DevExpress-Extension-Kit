@@ -28,7 +28,8 @@ namespace CABDevExpress.UIElements
 		///</summary>
 		[Description("Name of the Ribbon Page to Place this Ribbon Group")]
 		[Category("Ribbon Data")]
-		public string RibbonPageName
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public string RibbonPageName
 		{
 			get { return ribbonPageName; }
 			set { ribbonPageName = value; }
@@ -46,13 +47,15 @@ namespace CABDevExpress.UIElements
 		///</summary>
 		[Category("Ribbon Data")]
 		[Description("Button Items To appear in Ribbon Page Group")]
-		public DXButtonItem[] BarButtonItems { get; set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public DXButtonItem[] BarButtonItems { get; set; }
 
 		///<summary>
 		///</summary>
 		[Category("Ribbon Data")]
 		[Description("Check Items To appear in Ribbon Page Group")]
-		public DXCheckItem[] BarCheckItems { get; set; }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public DXCheckItem[] BarCheckItems { get; set; }
 	}
 
 	///<summary>
